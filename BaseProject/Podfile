@@ -1,0 +1,10 @@
+# platform :ios, “7.0”
+target ‘BaseProject’ do
+
+pod ‘YYKit’
+pod 'AFNetworking'
+pod 'SDWebImage'
+pod 'MBProgressHUD'
+pod 'ReactiveObjC'
+
+end
