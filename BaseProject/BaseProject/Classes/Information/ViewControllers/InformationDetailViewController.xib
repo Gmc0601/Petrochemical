@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InformationDetailViewController">
+            <connections>
+                <outlet property="dateLabel" destination="R6R-4R-5HH" id="7g5-yz-9ZG"/>
+                <outlet property="nameLabel" destination="ojo-t4-vLl" id="yvp-OJ-dMv"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ojo-t4-vLl">
+                    <rect key="frame" x="16" y="74" width="288" height="21.5"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="100" id="eUg-9U-Mv5"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="10" id="kH4-Rb-9zz"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <color key="textColor" red="0.14117647059999999" green="0.14117647059999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R6R-4R-5HH">
+                    <rect key="frame" x="16" y="98.5" width="288" height="23"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="23" id="WUG-G8-dbG"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="23" id="c1m-x0-jGL"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="R6R-4R-5HH" firstAttribute="top" secondItem="ojo-t4-vLl" secondAttribute="bottom" constant="3" id="H7f-Or-tR3"/>
+                <constraint firstItem="R6R-4R-5HH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="MjI-Dv-5nS"/>
+                <constraint firstAttribute="trailing" secondItem="ojo-t4-vLl" secondAttribute="trailing" constant="16" id="RQx-zb-ybi"/>
+                <constraint firstItem="ojo-t4-vLl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="ipX-M9-tOI"/>
+                <constraint firstAttribute="trailing" secondItem="R6R-4R-5HH" secondAttribute="trailing" constant="16" id="n0g-g2-L4r"/>
+                <constraint firstItem="ojo-t4-vLl" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="74" id="rDM-Qt-zHb"/>
+            </constraints>
+            <point key="canvasLocation" x="-444" y="-157"/>
+        </view>
+    </objects>
+</document>

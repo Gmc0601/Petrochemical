@@ -89,8 +89,6 @@ typedef enum {
              [self.superScrollview removeObserver:self forKeyPath:@"contentOffset"];
             
         }
-        
-       
     }
 }
 
