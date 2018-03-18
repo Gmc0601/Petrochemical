@@ -19,6 +19,16 @@
     [self setNavigation];
     
     
+    NSDictionary *dic = @{
+                          @"mobile" : @"17682318061"
+                          };
+    
+    [HttpRequest postPath:@"_sms_002" params:dic resultBlock:^(id responseObject, NSError *error) {
+        NSLog(@"%@", responseObject);
+    }];
+    
+    
+    
 }
 - (void)setNavigation {
 //    rightBtn
