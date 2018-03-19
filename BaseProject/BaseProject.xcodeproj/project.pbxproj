@@ -134,6 +134,12 @@
 		82B6D2F0205F4FB400C65CA4 /* CargoidentificationSecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82B6D2E6205F4FB400C65CA4 /* CargoidentificationSecondViewController.xib */; };
 		82B6D2F1205F4FB400C65CA4 /* CargoidentificationFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B6D2E7205F4FB400C65CA4 /* CargoidentificationFirstViewController.m */; };
 		82B6D2F2205F4FB400C65CA4 /* CargoidentificationFirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82B6D2E8205F4FB400C65CA4 /* CargoidentificationFirstViewController.xib */; };
+		82B6D2F7205F53F000C65CA4 /* MyCarInformationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B6D2F5205F53F000C65CA4 /* MyCarInformationTableViewCell.m */; };
+		82B6D2F8205F53F000C65CA4 /* MyCarInformationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82B6D2F6205F53F000C65CA4 /* MyCarInformationTableViewCell.xib */; };
+		82B6D2FD205F63B100C65CA4 /* AddMyCarInformationFristViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B6D2FB205F63B100C65CA4 /* AddMyCarInformationFristViewController.m */; };
+		82B6D2FE205F63B100C65CA4 /* AddMyCarInformationFristViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82B6D2FC205F63B100C65CA4 /* AddMyCarInformationFristViewController.xib */; };
+		82B6D302205F63CE00C65CA4 /* AddMyCarInformationSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B6D300205F63CE00C65CA4 /* AddMyCarInformationSecondViewController.m */; };
+		82B6D303205F63CE00C65CA4 /* AddMyCarInformationSecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82B6D301205F63CE00C65CA4 /* AddMyCarInformationSecondViewController.xib */; };
 		B79A5CFD6299881CB3643ACB /* libPods-BaseProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65EBE4FCE8758654A9B05419 /* libPods-BaseProject.a */; };
 /* End PBXBuildFile section */
 
@@ -397,6 +403,15 @@
 		82B6D2E6205F4FB400C65CA4 /* CargoidentificationSecondViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CargoidentificationSecondViewController.xib; sourceTree = "<group>"; };
 		82B6D2E7205F4FB400C65CA4 /* CargoidentificationFirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CargoidentificationFirstViewController.m; sourceTree = "<group>"; };
 		82B6D2E8205F4FB400C65CA4 /* CargoidentificationFirstViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CargoidentificationFirstViewController.xib; sourceTree = "<group>"; };
+		82B6D2F4205F53F000C65CA4 /* MyCarInformationTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCarInformationTableViewCell.h; sourceTree = "<group>"; };
+		82B6D2F5205F53F000C65CA4 /* MyCarInformationTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCarInformationTableViewCell.m; sourceTree = "<group>"; };
+		82B6D2F6205F53F000C65CA4 /* MyCarInformationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCarInformationTableViewCell.xib; sourceTree = "<group>"; };
+		82B6D2FA205F63B100C65CA4 /* AddMyCarInformationFristViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddMyCarInformationFristViewController.h; sourceTree = "<group>"; };
+		82B6D2FB205F63B100C65CA4 /* AddMyCarInformationFristViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddMyCarInformationFristViewController.m; sourceTree = "<group>"; };
+		82B6D2FC205F63B100C65CA4 /* AddMyCarInformationFristViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddMyCarInformationFristViewController.xib; sourceTree = "<group>"; };
+		82B6D2FF205F63CE00C65CA4 /* AddMyCarInformationSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddMyCarInformationSecondViewController.h; sourceTree = "<group>"; };
+		82B6D300205F63CE00C65CA4 /* AddMyCarInformationSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddMyCarInformationSecondViewController.m; sourceTree = "<group>"; };
+		82B6D301205F63CE00C65CA4 /* AddMyCarInformationSecondViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddMyCarInformationSecondViewController.xib; sourceTree = "<group>"; };
 		A2BC379B4929E517CCEBBD81 /* Pods-BaseProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-BaseProject/Pods-BaseProject.release.xcconfig"; sourceTree = "<group>"; };
 		F79BCDCE7109E930EA932FB6 /* Pods-BaseProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BaseProject/Pods-BaseProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1184,9 +1199,11 @@
 		82B6D2DD205F4FB400C65CA4 /* MyCarInformation */ = {
 			isa = PBXGroup;
 			children = (
+				82B6D2F9205F62CF00C65CA4 /* AddMyCarInformation */,
+				82B6D2F3205F53C700C65CA4 /* view */,
 				82B6D2DE205F4FB400C65CA4 /* MyCarInformationListViewController.h */,
-				82B6D2DF205F4FB400C65CA4 /* MyCarInformationListViewController.xib */,
 				82B6D2E0205F4FB400C65CA4 /* MyCarInformationListViewController.m */,
+				82B6D2DF205F4FB400C65CA4 /* MyCarInformationListViewController.xib */,
 			);
 			path = MyCarInformation;
 			sourceTree = "<group>";
@@ -1202,14 +1219,37 @@
 		82B6D2E2205F4FB400C65CA4 /* Cargoidentification */ = {
 			isa = PBXGroup;
 			children = (
-				82B6D2E3205F4FB400C65CA4 /* CargoidentificationSecondViewController.m */,
 				82B6D2E4205F4FB400C65CA4 /* CargoidentificationFirstViewController.h */,
-				82B6D2E5205F4FB400C65CA4 /* CargoidentificationSecondViewController.h */,
-				82B6D2E6205F4FB400C65CA4 /* CargoidentificationSecondViewController.xib */,
 				82B6D2E7205F4FB400C65CA4 /* CargoidentificationFirstViewController.m */,
 				82B6D2E8205F4FB400C65CA4 /* CargoidentificationFirstViewController.xib */,
+				82B6D2E5205F4FB400C65CA4 /* CargoidentificationSecondViewController.h */,
+				82B6D2E3205F4FB400C65CA4 /* CargoidentificationSecondViewController.m */,
+				82B6D2E6205F4FB400C65CA4 /* CargoidentificationSecondViewController.xib */,
 			);
 			path = Cargoidentification;
+			sourceTree = "<group>";
+		};
+		82B6D2F3205F53C700C65CA4 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				82B6D2F4205F53F000C65CA4 /* MyCarInformationTableViewCell.h */,
+				82B6D2F5205F53F000C65CA4 /* MyCarInformationTableViewCell.m */,
+				82B6D2F6205F53F000C65CA4 /* MyCarInformationTableViewCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		82B6D2F9205F62CF00C65CA4 /* AddMyCarInformation */ = {
+			isa = PBXGroup;
+			children = (
+				82B6D2FA205F63B100C65CA4 /* AddMyCarInformationFristViewController.h */,
+				82B6D2FB205F63B100C65CA4 /* AddMyCarInformationFristViewController.m */,
+				82B6D2FC205F63B100C65CA4 /* AddMyCarInformationFristViewController.xib */,
+				82B6D2FF205F63CE00C65CA4 /* AddMyCarInformationSecondViewController.h */,
+				82B6D300205F63CE00C65CA4 /* AddMyCarInformationSecondViewController.m */,
+				82B6D301205F63CE00C65CA4 /* AddMyCarInformationSecondViewController.xib */,
+			);
+			path = AddMyCarInformation;
 			sourceTree = "<group>";
 		};
 		8AB54A90BAF4AC81002955D1 /* Pods */ = {
@@ -1337,6 +1377,7 @@
 				82B6D2F0205F4FB400C65CA4 /* CargoidentificationSecondViewController.xib in Resources */,
 				42F795D81F00CC3E00A11A69 /* arrowdown@2x.png in Resources */,
 				7AFAE4FC205A3D8400B14406 /* LogisticsDetailsViewController.xib in Resources */,
+				82B6D2F8205F53F000C65CA4 /* MyCarInformationTableViewCell.xib in Resources */,
 				82B6D2D5205F4FA000C65CA4 /* MyCenterViewController.xib in Resources */,
 				82B6D2ED205F4FB400C65CA4 /* MyCarInformationListViewController.xib in Resources */,
 				42F795D91F00CC3E00A11A69 /* arrowup@2x.png in Resources */,
@@ -1355,8 +1396,10 @@
 				82B6D2EB205F4FB400C65CA4 /* UserInformationViewController.xib in Resources */,
 				7AFAE4E7205A236600B14406 /* MJRefresh.bundle in Resources */,
 				7A328DD1205BA62D00BF9DAC /* InformationVideoTableViewCell.xib in Resources */,
+				82B6D2FE205F63B100C65CA4 /* AddMyCarInformationFristViewController.xib in Resources */,
 				82B6D2CB205F4F5900C65CA4 /* IQKeyboardManager.bundle in Resources */,
 				82B6D2E9205F4FB400C65CA4 /* SettingNickNameViewController.xib in Resources */,
+				82B6D303205F63CE00C65CA4 /* AddMyCarInformationSecondViewController.xib in Resources */,
 				42A4443B1EF133E000F90791 /* Main.storyboard in Resources */,
 				7AFD221A205F87C4009DB138 /* TransportDynamicsTableViewCell.xib in Resources */,
 			);
@@ -1493,6 +1536,7 @@
 				422F202C2047F848009481CC /* UIWebView+TS_JavaScriptContext.m in Sources */,
 				42C84EB91EF2DCD90008189D /* MainApi.m in Sources */,
 				42C84F1D1EF2EB650008189D /* NSString+SBJSON.m in Sources */,
+				82B6D302205F63CE00C65CA4 /* AddMyCarInformationSecondViewController.m in Sources */,
 				42C84ECB1EF2DD1A0008189D /* NSString+MD5.m in Sources */,
 				42C84F1C1EF2EB650008189D /* NSObject+SBJSON.m in Sources */,
 				7AFAE51D205A3FCE00B14406 /* MASCompositeConstraint.m in Sources */,
@@ -1509,6 +1553,7 @@
 				7AFD2205205F821B009DB138 /* MessageViewController.m in Sources */,
 				82B6D2C8205F4F5900C65CA4 /* IQBarButtonItem.m in Sources */,
 				7AFAE51C205A3FCE00B14406 /* ViewController+MASAdditions.m in Sources */,
+				82B6D2FD205F63B100C65CA4 /* AddMyCarInformationFristViewController.m in Sources */,
 				7AFAE4E5205A236600B14406 /* UIScrollView+MJRefresh.m in Sources */,
 				7AFAE521205A3FCE00B14406 /* View+MASAdditions.m in Sources */,
 				422F20032047E8B2009481CC /* UIButton+SSEdgeInsets.m in Sources */,
@@ -1525,6 +1570,7 @@
 				7AFAE4EB205A236600B14406 /* MJRefreshBackStateFooter.m in Sources */,
 				82B6D2CF205F4F5900C65CA4 /* IQUITextFieldView+Additions.m in Sources */,
 				42C84EB01EF2DB060008189D /* AppDelegate.m in Sources */,
+				82B6D2F7205F53F000C65CA4 /* MyCarInformationTableViewCell.m in Sources */,
 				82B6D2EE205F4FB400C65CA4 /* MyCarInformationListViewController.m in Sources */,
 				7AFAE4E6205A236600B14406 /* MJRefreshConst.m in Sources */,
 				7A328DD5205BB07500BF9DAC /* InformationDetailViewController.m in Sources */,

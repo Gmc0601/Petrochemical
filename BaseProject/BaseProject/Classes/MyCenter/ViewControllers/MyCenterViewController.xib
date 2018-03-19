@@ -121,7 +121,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AwG-Zv-kP8">
                                     <rect key="frame" x="0.0" y="55" width="375" height="54"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fEX-gG-SII">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baoguo" translatesAutoresizingMaskIntoConstraints="NO" id="fEX-gG-SII">
                                             <rect key="frame" x="20" y="18" width="26" height="18"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="26" id="L1x-I8-f3B"/>
@@ -539,6 +539,7 @@
         </view>
     </objects>
     <resources>
+        <image name="baoguo" width="15" height="15"/>
         <image name="lianxipingtai" width="22" height="22"/>
         <image name="shiyongzhinan" width="19" height="19"/>
         <image name="wodecheliang" width="26" height="18"/>
