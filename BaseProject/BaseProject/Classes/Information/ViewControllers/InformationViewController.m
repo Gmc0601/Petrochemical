@@ -12,7 +12,7 @@
 #import "InformationVideoTableViewCell.h"
 #import "InformationImageTableViewCell.h"
 #import "InformationDetailViewController.h"
-
+#import "MessageViewController.h"
 @interface InformationViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     
@@ -45,7 +45,8 @@
 }
 
 - (void)rightBarClick {
-    
+    MessageViewController *com = [[MessageViewController alloc] init];
+    [self.navigationController pushViewController:com animated:YES];
 }
 
 

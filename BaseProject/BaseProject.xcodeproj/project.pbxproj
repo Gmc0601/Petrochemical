@@ -97,6 +97,16 @@
 		7AFAE523205A3FCE00B14406 /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFAE517205A3FCE00B14406 /* MASViewConstraint.m */; };
 		7AFAE524205A3FCE00B14406 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFAE518205A3FCE00B14406 /* MASViewAttribute.m */; };
 		7AFAE525205A3FCE00B14406 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 7AFAE519205A3FCE00B14406 /* README.md */; };
+		7AFD2205205F821B009DB138 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFD2203205F821A009DB138 /* MessageViewController.m */; };
+		7AFD2206205F821B009DB138 /* MessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AFD2204205F821A009DB138 /* MessageViewController.xib */; };
+		7AFD220A205F86C9009DB138 /* SystemMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFD2208205F86C8009DB138 /* SystemMessageViewController.m */; };
+		7AFD220B205F86C9009DB138 /* SystemMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AFD2209205F86C8009DB138 /* SystemMessageViewController.xib */; };
+		7AFD220F205F86DD009DB138 /* TransportDynamicsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFD220D205F86DD009DB138 /* TransportDynamicsViewController.m */; };
+		7AFD2210205F86DD009DB138 /* TransportDynamicsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AFD220E205F86DD009DB138 /* TransportDynamicsViewController.xib */; };
+		7AFD2214205F87B0009DB138 /* SystemMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFD2212205F87B0009DB138 /* SystemMessageTableViewCell.m */; };
+		7AFD2215205F87B0009DB138 /* SystemMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AFD2213205F87B0009DB138 /* SystemMessageTableViewCell.xib */; };
+		7AFD2219205F87C4009DB138 /* TransportDynamicsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFD2217205F87C4009DB138 /* TransportDynamicsTableViewCell.m */; };
+		7AFD221A205F87C4009DB138 /* TransportDynamicsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AFD2218205F87C4009DB138 /* TransportDynamicsTableViewCell.xib */; };
 		82B6D29F205F4EE400C65CA4 /* LeasCustomAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B6D29D205F4EE400C65CA4 /* LeasCustomAlbum.m */; };
 		82B6D2C5205F4F5900C65CA4 /* IQTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B6D2A2205F4F5900C65CA4 /* IQTextView.m */; };
 		82B6D2C6205F4F5900C65CA4 /* IQToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B6D2A6205F4F5900C65CA4 /* IQToolbar.m */; };
@@ -323,6 +333,21 @@
 		7AFAE517205A3FCE00B14406 /* MASViewConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewConstraint.m; sourceTree = "<group>"; };
 		7AFAE518205A3FCE00B14406 /* MASViewAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewAttribute.m; sourceTree = "<group>"; };
 		7AFAE519205A3FCE00B14406 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		7AFD2202205F821A009DB138 /* MessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
+		7AFD2203205F821A009DB138 /* MessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
+		7AFD2204205F821A009DB138 /* MessageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageViewController.xib; sourceTree = "<group>"; };
+		7AFD2207205F86C8009DB138 /* SystemMessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SystemMessageViewController.h; sourceTree = "<group>"; };
+		7AFD2208205F86C8009DB138 /* SystemMessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SystemMessageViewController.m; sourceTree = "<group>"; };
+		7AFD2209205F86C8009DB138 /* SystemMessageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SystemMessageViewController.xib; sourceTree = "<group>"; };
+		7AFD220C205F86DD009DB138 /* TransportDynamicsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransportDynamicsViewController.h; sourceTree = "<group>"; };
+		7AFD220D205F86DD009DB138 /* TransportDynamicsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransportDynamicsViewController.m; sourceTree = "<group>"; };
+		7AFD220E205F86DD009DB138 /* TransportDynamicsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransportDynamicsViewController.xib; sourceTree = "<group>"; };
+		7AFD2211205F87B0009DB138 /* SystemMessageTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SystemMessageTableViewCell.h; sourceTree = "<group>"; };
+		7AFD2212205F87B0009DB138 /* SystemMessageTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SystemMessageTableViewCell.m; sourceTree = "<group>"; };
+		7AFD2213205F87B0009DB138 /* SystemMessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SystemMessageTableViewCell.xib; sourceTree = "<group>"; };
+		7AFD2216205F87C4009DB138 /* TransportDynamicsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransportDynamicsTableViewCell.h; sourceTree = "<group>"; };
+		7AFD2217205F87C4009DB138 /* TransportDynamicsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransportDynamicsTableViewCell.m; sourceTree = "<group>"; };
+		7AFD2218205F87C4009DB138 /* TransportDynamicsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransportDynamicsTableViewCell.xib; sourceTree = "<group>"; };
 		82B6D29D205F4EE400C65CA4 /* LeasCustomAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeasCustomAlbum.m; sourceTree = "<group>"; };
 		82B6D29E205F4EE400C65CA4 /* LeasCustomAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeasCustomAlbum.h; sourceTree = "<group>"; };
 		82B6D2A2205F4F5900C65CA4 /* IQTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQTextView.m; sourceTree = "<group>"; };
@@ -633,6 +658,7 @@
 				420D184E2057CF7500E1D8E1 /* Order */,
 				420D18472057CF7500E1D8E1 /* Information */,
 				42F795A21F00C84600A11A69 /* MyCenter */,
+				7AFD21FF205F8113009DB138 /* Message */,
 				42C84EA41EF2DB060008189D /* ViewController.h */,
 				42C84EA51EF2DB060008189D /* ViewController.m */,
 			);
@@ -1009,6 +1035,44 @@
 			path = Masonry;
 			sourceTree = "<group>";
 		};
+		7AFD21FF205F8113009DB138 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				7AFD2200205F8113009DB138 /* Models */,
+				7AFD2201205F8113009DB138 /* ViewControllers */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		7AFD2200205F8113009DB138 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7AFD2211205F87B0009DB138 /* SystemMessageTableViewCell.h */,
+				7AFD2212205F87B0009DB138 /* SystemMessageTableViewCell.m */,
+				7AFD2213205F87B0009DB138 /* SystemMessageTableViewCell.xib */,
+				7AFD2216205F87C4009DB138 /* TransportDynamicsTableViewCell.h */,
+				7AFD2217205F87C4009DB138 /* TransportDynamicsTableViewCell.m */,
+				7AFD2218205F87C4009DB138 /* TransportDynamicsTableViewCell.xib */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7AFD2201205F8113009DB138 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				7AFD2202205F821A009DB138 /* MessageViewController.h */,
+				7AFD2203205F821A009DB138 /* MessageViewController.m */,
+				7AFD2204205F821A009DB138 /* MessageViewController.xib */,
+				7AFD2207205F86C8009DB138 /* SystemMessageViewController.h */,
+				7AFD2208205F86C8009DB138 /* SystemMessageViewController.m */,
+				7AFD2209205F86C8009DB138 /* SystemMessageViewController.xib */,
+				7AFD220C205F86DD009DB138 /* TransportDynamicsViewController.h */,
+				7AFD220D205F86DD009DB138 /* TransportDynamicsViewController.m */,
+				7AFD220E205F86DD009DB138 /* TransportDynamicsViewController.xib */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		7F5FE81AF3930B1D8AB68F96 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1269,6 +1333,7 @@
 			files = (
 				7A328DCC205BA58700BF9DAC /* InformationImageTableViewCell.xib in Resources */,
 				82B6D2F2205F4FB400C65CA4 /* CargoidentificationFirstViewController.xib in Resources */,
+				7AFD2215205F87B0009DB138 /* SystemMessageTableViewCell.xib in Resources */,
 				82B6D2F0205F4FB400C65CA4 /* CargoidentificationSecondViewController.xib in Resources */,
 				42F795D81F00CC3E00A11A69 /* arrowdown@2x.png in Resources */,
 				7AFAE4FC205A3D8400B14406 /* LogisticsDetailsViewController.xib in Resources */,
@@ -1277,19 +1342,23 @@
 				42F795D91F00CC3E00A11A69 /* arrowup@2x.png in Resources */,
 				422F20292047F7B6009481CC /* LoginViewController.xib in Resources */,
 				7AFAE525205A3FCE00B14406 /* README.md in Resources */,
+				7AFD2210205F86DD009DB138 /* TransportDynamicsViewController.xib in Resources */,
 				7AFAE4B6205A115900B14406 /* ShipperOrderDetailCarListTableViewCell.xib in Resources */,
 				42A444431EF133E000F90791 /* LaunchScreen.storyboard in Resources */,
 				7AFAE51A205A3FCE00B14406 /* LICENSE in Resources */,
 				7AFAE4AC205A0F5C00B14406 /* ShipperOrderDetailViewController.xib in Resources */,
+				7AFD2206205F821B009DB138 /* MessageViewController.xib in Resources */,
 				42A444401EF133E000F90791 /* Assets.xcassets in Resources */,
 				7A75D3C12059213A00C6860A /* ShipperOrderTableViewCell.xib in Resources */,
 				7A328DD6205BB07500BF9DAC /* InformationDetailViewController.xib in Resources */,
+				7AFD220B205F86C9009DB138 /* SystemMessageViewController.xib in Resources */,
 				82B6D2EB205F4FB400C65CA4 /* UserInformationViewController.xib in Resources */,
 				7AFAE4E7205A236600B14406 /* MJRefresh.bundle in Resources */,
 				7A328DD1205BA62D00BF9DAC /* InformationVideoTableViewCell.xib in Resources */,
 				82B6D2CB205F4F5900C65CA4 /* IQKeyboardManager.bundle in Resources */,
 				82B6D2E9205F4FB400C65CA4 /* SettingNickNameViewController.xib in Resources */,
 				42A4443B1EF133E000F90791 /* Main.storyboard in Resources */,
+				7AFD221A205F87C4009DB138 /* TransportDynamicsTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1369,6 +1438,7 @@
 				82B6D2CE205F4F5900C65CA4 /* IQUIWindow+Hierarchy.m in Sources */,
 				7AFAE4EE205A236600B14406 /* MJRefreshAutoGifFooter.m in Sources */,
 				7AFAE520205A3FCE00B14406 /* NSArray+MASAdditions.m in Sources */,
+				7AFD2214205F87B0009DB138 /* SystemMessageTableViewCell.m in Sources */,
 				422F20042047E8B2009481CC /* NSString+commom.m in Sources */,
 				7A328DCB205BA58700BF9DAC /* InformationImageTableViewCell.m in Sources */,
 				42C84ECA1EF2DD1A0008189D /* NSDictionary+Smart.m in Sources */,
@@ -1387,6 +1457,7 @@
 				42F795CD1F00CBDF00A11A69 /* FactorySet.m in Sources */,
 				42F795BF1F00C8B200A11A69 /* TBTabBar.m in Sources */,
 				7AFAE4F0205A236600B14406 /* MJRefreshNormalHeader.m in Sources */,
+				7AFD2219205F87C4009DB138 /* TransportDynamicsTableViewCell.m in Sources */,
 				82B6D2EF205F4FB400C65CA4 /* CargoidentificationSecondViewController.m in Sources */,
 				7AFAE51E205A3FCE00B14406 /* MASConstraintMaker.m in Sources */,
 				7AFAE4F5205A236600B14406 /* MJRefreshBackFooter.m in Sources */,
@@ -1426,6 +1497,7 @@
 				42C84F1C1EF2EB650008189D /* NSObject+SBJSON.m in Sources */,
 				7AFAE51D205A3FCE00B14406 /* MASCompositeConstraint.m in Sources */,
 				7AFAE4F7205A236600B14406 /* MJRefreshComponent.m in Sources */,
+				7AFD220A205F86C9009DB138 /* SystemMessageViewController.m in Sources */,
 				42A4443E1EF133E000F90791 /* BaseProject.xcdatamodeld in Sources */,
 				42F795DA1F00CC3E00A11A69 /* TBRefreshFootView.m in Sources */,
 				422F202F2047F882009481CC /* CCWebViewViewController.m in Sources */,
@@ -1434,6 +1506,7 @@
 				7A328DD0205BA62D00BF9DAC /* InformationVideoTableViewCell.m in Sources */,
 				82B6D2C5205F4F5900C65CA4 /* IQTextView.m in Sources */,
 				7AFAE4AB205A0F5C00B14406 /* ShipperOrderDetailViewController.m in Sources */,
+				7AFD2205205F821B009DB138 /* MessageViewController.m in Sources */,
 				82B6D2C8205F4F5900C65CA4 /* IQBarButtonItem.m in Sources */,
 				7AFAE51C205A3FCE00B14406 /* ViewController+MASAdditions.m in Sources */,
 				7AFAE4E5205A236600B14406 /* UIScrollView+MJRefresh.m in Sources */,
@@ -1443,6 +1516,7 @@
 				42C84EB61EF2DCBC0008189D /* ConfigModel.m in Sources */,
 				7AFAE51F205A3FCE00B14406 /* MASLayoutConstraint.m in Sources */,
 				7AFAE4F6205A236600B14406 /* MJRefreshAutoFooter.m in Sources */,
+				7AFD220F205F86DD009DB138 /* TransportDynamicsViewController.m in Sources */,
 				82B6D2CD205F4F5900C65CA4 /* IQNSArray+Sort.m in Sources */,
 				42C84EB11EF2DB060008189D /* main.m in Sources */,
 				7AFAE4EF205A236600B14406 /* MJRefreshAutoNormalFooter.m in Sources */,
