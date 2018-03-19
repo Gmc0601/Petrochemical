@@ -7,6 +7,9 @@
 //
 
 #import "MyCenterViewController.h"
+#import "UserInformationViewController.h"
+
+#import "CargoidentificationFirstViewController.h"
 
 @interface MyCenterViewController ()
 
@@ -42,6 +45,32 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+#pragma mark -- method
+
+- (IBAction)settingUserInfoAction:(id)sender {
+    UserInformationViewController *userInfoVC = [UserInformationViewController new];
+    [self.navigationController pushViewController:userInfoVC animated:YES];
+}
+- (IBAction)myCarInfoAction:(id)sender {
+    
+}
+- (IBAction)myCargoInfoAction:(id)sender {
+    CargoidentificationFirstViewController *CargoidentificationVC1 = [CargoidentificationFirstViewController new];
+    [self.navigationController pushViewController:CargoidentificationVC1 animated:YES];
+}
+- (IBAction)myPublishCargoAction:(id)sender {
+}
+- (IBAction)myPublishCarAction:(id)sender {
+}
+- (IBAction)myRobOrderAction:(id)sender {
+}
+- (IBAction)linkPlatformAction:(id)sender {
+}
+- (IBAction)UserGuideAction:(id)sender {
+}
+- (IBAction)invitefriendsinviteFriendsAction:(id)sender {
 }
 
 
