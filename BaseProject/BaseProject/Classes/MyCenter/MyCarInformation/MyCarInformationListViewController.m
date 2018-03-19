@@ -7,31 +7,52 @@
 //
 
 #import "MyCarInformationListViewController.h"
+#import "MyCarInformationTableViewCell.h"
 
-@interface MyCarInformationListViewController ()
+@interface MyCarInformationListViewController ()<UITableViewDelegate,UITableViewDataSource>
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 
 @implementation MyCarInformationListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [self setupUI];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void) setupUI{
+    [self setCustomerTitle:@"我的车辆"];
+    self.view.backgroundColor = UIColorFromHex(0xF1F2F2);
+    self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
+    self.tableView.tableFooterView = nil;
+    
+    UIButton *rightButton = ({
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        button.frame = CGRectMake(0, 0, 20, 44);
+        [button setImage:[UIImage imageNamed:@"leastianjia"] forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(rightButtonAction) forControlEvents:UIControlEventTouchUpInside];
+        button;
+    });
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 2;
 }
-*/
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    MyCarInformationTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyCarInformationTableViewCellid"];
+    if (!cell) {
+        cell = [[NSBundle mainBundle] loadNibNamed:@"MyCarInformationTableViewCell" owner:self options:nil].firstObject;
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    return cell;
+}
+
+
+#pragma mark -- method
+- (void) rightButtonAction{
+    
+}
 @end

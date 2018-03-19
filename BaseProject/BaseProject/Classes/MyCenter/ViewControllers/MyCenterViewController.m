@@ -9,6 +9,7 @@
 #import "MyCenterViewController.h"
 #import "UserInformationViewController.h"
 
+#import "MyCarInformationListViewController.h"
 #import "CargoidentificationFirstViewController.h"
 
 @interface MyCenterViewController ()
@@ -54,7 +55,8 @@
     [self.navigationController pushViewController:userInfoVC animated:YES];
 }
 - (IBAction)myCarInfoAction:(id)sender {
-    
+    MyCarInformationListViewController *carInfoVC = [MyCarInformationListViewController new];
+    [self.navigationController pushViewController:carInfoVC animated:YES];
 }
 - (IBAction)myCargoInfoAction:(id)sender {
     CargoidentificationFirstViewController *CargoidentificationVC1 = [CargoidentificationFirstViewController new];
