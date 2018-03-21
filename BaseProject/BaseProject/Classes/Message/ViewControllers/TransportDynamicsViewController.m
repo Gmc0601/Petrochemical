@@ -18,15 +18,60 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setCustomerTitle:@"运输动态"];
-    self.listArray = @[@{}];
-    [self.tableView reloadData];
+
     [self addRightBarButtonItemWithTitle:@"清空" action:@selector(clickCleanAll:) color:RGBColor(36,36,36)];
+    [self requestList];
     // Do any additional setup after loading the view from its nib.
 }
 
 -(void)clickCleanAll:(UIButton *)sender{
+    NSDictionary *dic = @{
+                          @"userToken":@"e56d19bd376625cc2bc7aa6ae40e385a",
+                          };
     
+    [HttpRequest postPath:@"_deletemessage_001" params:dic resultBlock:^(id responseObject, NSError *error) {
+        
+        NSDictionary *dic = responseObject;
+        int errorint = [dic[@"error"] intValue];
+        if (errorint == 0 ) {
+            [ConfigModel mbProgressHUD:@"清空完成" andView:nil];
+            [self requestList];
+        }else {
+            NSString *errorStr = dic[@"info"];
+            NSLog(@"%@", errorStr);
+            [ConfigModel mbProgressHUD:errorStr andView:nil];
+        }
+    }];
 }
+
+-(void)requestList{
+    NSDictionary *dic = @{
+                          @"userToken":@"e56d19bd376625cc2bc7aa6ae40e385a",
+                          };
+    
+    [HttpRequest postPath:@"_userdongtai_001" params:dic resultBlock:^(id responseObject, NSError *error) {
+    
+        NSDictionary *dic = responseObject;
+    
+        int errorint = [dic[@"error"] intValue];
+        if (errorint == 0 ) {
+            NSArray *array = dic[@"info"];
+            if ([array isKindOfClass:[NSArray class]]) {
+                self.listArray = array;
+            }
+            else{
+                self.listArray = nil;
+            }
+            [self.tableView reloadData];
+        }else {
+            NSString *errorStr = dic[@"info"];
+            NSLog(@"%@", errorStr);
+            [ConfigModel mbProgressHUD:errorStr andView:nil];
+            
+        }
+    }];
+}
+
 
 #pragma mark -- UITableViewDataSource
 

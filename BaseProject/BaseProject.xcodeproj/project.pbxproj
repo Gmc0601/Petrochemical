@@ -59,6 +59,8 @@
 		7A328DD6205BB07500BF9DAC /* InformationDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A328DD4205BB07500BF9DAC /* InformationDetailViewController.xib */; };
 		7A75D3C02059213A00C6860A /* ShipperOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A75D3BE2059213A00C6860A /* ShipperOrderTableViewCell.m */; };
 		7A75D3C12059213A00C6860A /* ShipperOrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A75D3BF2059213A00C6860A /* ShipperOrderTableViewCell.xib */; };
+		7A80267920609E4300D1FDEF /* RobbingOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A80267720609E4300D1FDEF /* RobbingOrdersViewController.m */; };
+		7A80267A20609E4300D1FDEF /* RobbingOrdersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A80267820609E4300D1FDEF /* RobbingOrdersViewController.xib */; };
 		7AFAE4A7205A0C5E00B14406 /* Passport.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFAE4A6205A0C5E00B14406 /* Passport.m */; };
 		7AFAE4AB205A0F5C00B14406 /* ShipperOrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFAE4A9205A0F5C00B14406 /* ShipperOrderDetailViewController.m */; };
 		7AFAE4AC205A0F5C00B14406 /* ShipperOrderDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AFAE4AA205A0F5C00B14406 /* ShipperOrderDetailViewController.xib */; };
@@ -263,6 +265,9 @@
 		7A75D3BD2059213A00C6860A /* ShipperOrderTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShipperOrderTableViewCell.h; sourceTree = "<group>"; };
 		7A75D3BE2059213A00C6860A /* ShipperOrderTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShipperOrderTableViewCell.m; sourceTree = "<group>"; };
 		7A75D3BF2059213A00C6860A /* ShipperOrderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShipperOrderTableViewCell.xib; sourceTree = "<group>"; };
+		7A80267620609E4300D1FDEF /* RobbingOrdersViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RobbingOrdersViewController.h; sourceTree = "<group>"; };
+		7A80267720609E4300D1FDEF /* RobbingOrdersViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RobbingOrdersViewController.m; sourceTree = "<group>"; };
+		7A80267820609E4300D1FDEF /* RobbingOrdersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RobbingOrdersViewController.xib; sourceTree = "<group>"; };
 		7AFAE4A5205A0C5E00B14406 /* Passport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Passport.h; sourceTree = "<group>"; };
 		7AFAE4A6205A0C5E00B14406 /* Passport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Passport.m; sourceTree = "<group>"; };
 		7AFAE4A8205A0F5C00B14406 /* ShipperOrderDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShipperOrderDetailViewController.h; sourceTree = "<group>"; };
@@ -522,6 +527,9 @@
 				7A328DD2205BB07500BF9DAC /* InformationDetailViewController.h */,
 				7A328DD3205BB07500BF9DAC /* InformationDetailViewController.m */,
 				7A328DD4205BB07500BF9DAC /* InformationDetailViewController.xib */,
+				7A80267620609E4300D1FDEF /* RobbingOrdersViewController.h */,
+				7A80267720609E4300D1FDEF /* RobbingOrdersViewController.m */,
+				7A80267820609E4300D1FDEF /* RobbingOrdersViewController.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1372,6 +1380,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A328DCC205BA58700BF9DAC /* InformationImageTableViewCell.xib in Resources */,
+				7A80267A20609E4300D1FDEF /* RobbingOrdersViewController.xib in Resources */,
 				82B6D2F2205F4FB400C65CA4 /* CargoidentificationFirstViewController.xib in Resources */,
 				7AFD2215205F87B0009DB138 /* SystemMessageTableViewCell.xib in Resources */,
 				82B6D2F0205F4FB400C65CA4 /* CargoidentificationSecondViewController.xib in Resources */,
@@ -1479,6 +1488,7 @@
 			files = (
 				42F795BC1F00C8B200A11A69 /* BaseViewController.m in Sources */,
 				82B6D2CE205F4F5900C65CA4 /* IQUIWindow+Hierarchy.m in Sources */,
+				7A80267920609E4300D1FDEF /* RobbingOrdersViewController.m in Sources */,
 				7AFAE4EE205A236600B14406 /* MJRefreshAutoGifFooter.m in Sources */,
 				7AFAE520205A3FCE00B14406 /* NSArray+MASAdditions.m in Sources */,
 				7AFD2214205F87B0009DB138 /* SystemMessageTableViewCell.m in Sources */,

@@ -18,7 +18,7 @@
 - (IBAction)clickCall:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UIView *listView;
-
+@property(nonatomic,strong)NSDictionary *infoDic;
 @property(nonatomic,strong)NSArray *listArray;
 @end
 
@@ -34,14 +34,52 @@
     self.headImageView.layer.masksToBounds = YES;
     self.carNumberLabel.layer.cornerRadius = 3;
     self.carNumberLabel.layer.masksToBounds = YES;
-     [self.headImageView sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:DefaultImage];
-    self.listArray = @[@{@"remarks":@"哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈",@"date":@"2018-08-08 18:58:58",@"image":@[@{},@{}]},@{@"remarks":@"adfjaldfjalfjheheh呵呵呵呵呵呵呵呵",@"date":@"2018-08-08 18:58:59",@"image":@[]},@{@"remarks":@"adfjaldfjalfjheheh呵呵呵呵呵呵呵呵",@"date":@"2018-08-08 18:58:59",@"image":@[@{},@{},@{},@{},@{},@{}]},@{@"remarks":@"adfjaldfjalfjheheh呵呵呵呵呵呵呵呵",@"date":@"2018-08-08 18:58:59",@"image":@[@{},@{},@{},@{},@{},@{}]},@{@"remarks":@"adfjaldfjalfjheheh呵呵呵呵呵呵呵呵",@"date":@"2018-08-08 18:58:59",@"image":@[@{},@{},@{},@{},@{},@{}]},@{@"remarks":@"adfjaldfjalfjheheh呵呵呵呵呵呵呵呵",@"date":@"2018-08-08 18:58:59",@"image":@[@{},@{},@{},@{},@{},@{}]},@{@"remarks":@"adfjaldfjalfjheheh呵呵呵呵呵呵呵呵",@"date":@"2018-08-08 18:58:59",@"image":@[@{},@{},@{},@{},@{},@{}]}];
-    [self loadListView];
+    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:DefaultImage];
+    [self requestDetail];
     // Do any additional setup after loading the view from its nib.
 }
 
+-(void)requestDetail{
+    NSDictionary *dic = @{
+                          @"car_id":self.carId,
+                          @"good_num":self.orderId,
+                          @"userToken":@"cb97a780c081a49154bed3aa50842ff4",
+                          };
+    
+    [HttpRequest postPath:@"_transportation_details_001" params:dic resultBlock:^(id responseObject, NSError *error) {
+        
+        NSDictionary *dic = responseObject;
+        
+        int errorint = [dic[@"error"] intValue];
+        if (errorint == 0 ) {
+            NSDictionary *info = dic[@"info"];
+            if ([info isKindOfClass:[NSDictionary class]]) {
+                self.infoDic = info;
+                
+                NSArray *list = info[@"dongtai"];
+                if ([list isKindOfClass:[NSArray class]]) {
+                    self.listArray = list;
+                }
+            }
+
+            [self loadListView];
+        }else {
+            NSString *errorStr = dic[@"info"];
+            NSLog(@"%@", errorStr);
+            [ConfigModel mbProgressHUD:errorStr andView:nil];
+            
+        }
+    }];
+}
+
+
 -(void)loadListView{
     
+    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[self.infoDic objectForKey:@"img"]?:@""] placeholderImage:DefaultImage];
+    self.nameLabel.text = self.infoDic[@"car_name"];
+    self.carNumberLabel.text  =  self.infoDic[@"license"];
+    
+    self.quantityLabel.text = [NSString stringWithFormat:@"装货：%@吨",validString(self.infoDic[@"rough_weight"])];
     UIView *lastView;
     for (int i = 0; i<self.listArray.count; i++) {
         NSDictionary *dataDic = self.listArray[i];
@@ -74,7 +112,7 @@
         textLabel.textColor = RGBColor(36, 36, 36);
         textLabel.numberOfLines = 0;
         [itemView addSubview:textLabel];
-        textLabel.text = dataDic[@"remarks"];
+        textLabel.text = validString(dataDic[@"dynamic"]);
         [textLabel mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(10);
             make.left.equalTo(bluePointImageView.mas_right).offset(5);
@@ -88,16 +126,16 @@
         dateLabel.font = [UIFont systemFontOfSize:14];
         dateLabel.textColor = RGBColor(36, 36, 36);
         [itemView addSubview:dateLabel];
-        dateLabel.text = dataDic[@"date"];
+        dateLabel.text = dataDic[@"create_time"];
         [dateLabel mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(textLabel.mas_bottom).offset(5);
             make.left.equalTo(textLabel.mas_left);
             make.right.equalTo(textLabel.mas_right);
             make.height.mas_greaterThanOrEqualTo(0);
         }];
-        
-        NSArray *imagesArray = dataDic[@"image"];
-        if (imagesArray.count) {
+        NSString *images = validString(dataDic[@"img"]);
+        NSArray *imagesArray = [images componentsSeparatedByString:@","];
+        if (imagesArray.count&&images.length) {
             UIScrollView *scrollView = [[UIScrollView alloc] init];
             [itemView addSubview:scrollView];
             [scrollView mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -109,10 +147,10 @@
             }];
 
             for (int i = 0; i<imagesArray.count; i++) {
-                NSDictionary *imageDic = imagesArray[i];
+              
                 
                 UIImageView *imageView = [[UIImageView alloc] init];
-                [imageView sd_setImageWithURL:[NSURL URLWithString:imageDic[@"url"]?:@""] placeholderImage:DefaultImage];
+                [imageView sd_setImageWithURL:[NSURL URLWithString:imagesArray[i]] placeholderImage:DefaultImage];
                 [scrollView addSubview:imageView];
                 [imageView mas_updateConstraints:^(MASConstraintMaker *make) {
                     make.top.mas_equalTo(0);
@@ -182,5 +220,7 @@
 */
 
 - (IBAction)clickCall:(id)sender {
+    NSString *phoneString=[NSString stringWithFormat:@"tel://%@",validString(self.infoDic[@"car_mobile"])];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneString]];
 }
 @end

@@ -14,31 +14,35 @@
 @interface InformationDetailViewController ()<UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
-@property (strong, nonatomic) IBOutlet UIWebView *webView;
-@property (strong, nonatomic) IBOutlet UIView *videoView;
+@property (strong, nonatomic)  UIWebView *webView;
+@property (strong, nonatomic)  UIView *videoView;
+@property (strong, nonatomic)  UIImageView *coverImageView;
 @property (nonatomic,strong) AVPlayerViewController *player;
 @property (strong, nonatomic)AVPlayerItem *item;
+
+@property (strong, nonatomic)NSDictionary *infoDic;
 @end
 
 @implementation InformationDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self setCustomerTitle:@"咨询详情"];
-    if (0) {
-        self.webView = [[UIWebView alloc] init];
-        self.webView.delegate = self;
-        [self.view addSubview:self.webView];
-        WeakSelf(ws);
-        [self.webView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(ws.dateLabel.mas_bottom);
-            make.left.mas_offset(0);
-            make.right.mas_offset(0);
-            make.bottom.mas_offset(0);
-        }];
+    if (self.type==0) {
+        [self setCustomerTitle:@"资讯详情"];
     }
     else{
+      [self setCustomerTitle:@"通知详情"];
+    }
+    [self requestDetail];
+    // Do any additional setup after loading the view from its nib.
+}
+
+-(void)initView{
+    NSString * video = validString(self.infoDic[@"video"]);
+    self.nameLabel.text = self.infoDic[@"title"];
+    self.dateLabel.text = self.infoDic[@"create_time"];
+    if (video.length) {
+        
         WeakSelf(ws);
         self.videoView = [[UIView alloc] init];
         self.videoView.backgroundColor = [UIColor blackColor];
@@ -49,6 +53,16 @@
             make.right.mas_offset(0);
             make.height.mas_equalTo(kScreenW/2);
         }];
+        
+        self.coverImageView = [[UIImageView alloc] init];
+        self.coverImageView.contentMode = UIViewContentModeScaleAspectFill;
+        self.coverImageView.clipsToBounds = YES;
+        [self.coverImageView sd_setImageWithURL:[NSURL URLWithString:[self.infoDic objectForKey:@"img"]?:@""] placeholderImage:DefaultImage];
+        [self.videoView addSubview:self.coverImageView];
+        [self.coverImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(ws.videoView);
+        }];
+        
         UIButton *playButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [playButton addTarget:self action:@selector(clickPlayer:) forControlEvents:UIControlEventTouchUpInside];
         [playButton setImage:[UIImage imageNamed:@"bofang"] forState:UIControlStateNormal];
@@ -57,10 +71,22 @@
         [playButton mas_updateConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(ws.videoView);
         }];
-      
     }
-
-    // Do any additional setup after loading the view from its nib.
+    else{
+        self.webView = [[UIWebView alloc] init];
+        self.webView.delegate = self;
+        [self.view addSubview:self.webView];
+        NSString *content = self.infoDic[@"content"];
+        [self.webView loadHTMLString:validString(content) baseURL:nil];
+        
+        WeakSelf(ws);
+        [self.webView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(ws.dateLabel.mas_bottom);
+            make.left.mas_offset(0);
+            make.right.mas_offset(0);
+            make.bottom.mas_offset(0);
+        }];
+    }
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
@@ -75,9 +101,40 @@
     }
 }
 
+-(void)requestDetail{
+    NSDictionary *dic = @{
+                          @"id":self.idString,
+                          @"userToken":@"e56d19bd376625cc2bc7aa6ae40e385a",
+                          };
+    NSString *urlString ;
+    if (self.type==0) {
+        urlString = @"_information_details_001";
+    }
+    else{
+        urlString = @"_message_particulars_001";
+    }
+    
+    [HttpRequest postPath:urlString params:dic resultBlock:^(id responseObject, NSError *error) {
+        
+        NSDictionary *dic = responseObject;
+        
+        int errorint = [dic[@"error"] intValue];
+        if (errorint == 0 ) {
+            _infoDic = dic[@"info"];
+            [self initView];
+        }else {
+            NSString *errorStr = dic[@"info"];
+            NSLog(@"%@", errorStr);
+            [ConfigModel mbProgressHUD:errorStr andView:nil];
+        }
+    }];
+}
+
 -(void)clickPlayer:(UIButton *)sender{
     sender.hidden = YES;
-    NSURL *playUrl = [NSURL URLWithString:@"http://record.ytlive.cn/record/ytlive/live_15293/2018-03-18-15:24:37_2018-03-18-15:50:41.mp4"];
+    self.coverImageView.hidden = YES;
+    NSString * video = validString(self.infoDic[@"video"]);
+    NSURL *playUrl = [NSURL URLWithString:video];
    _item = [AVPlayerItem playerItemWithURL:playUrl];
     //如果要切换视频需要调AVPlayer的replaceCurrentItemWithPlayerItem:方法
    _player = [[AVPlayerViewController alloc]init];

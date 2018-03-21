@@ -29,18 +29,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setCustomerTitle:@"咨询"];
-    
-    self.listArray = @[@{@"type":@"0",@"name":@"xxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxyxxy"},@{@"type":@"1",@"name":@"xxyxxy"}].mutableCopy;
+
     [self addRightBarButtonWithFirstImage:[UIImage imageNamed:@"xin"] action:@selector(rightBarClick)];
     
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenW, kScreenH-64-49) style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.backgroundColor = RGBColor(227, 227, 227);
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    _tableView.estimatedRowHeight = 95;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
     
     [self setupRefresh];
+    [self initList];
     // Do any additional setup after loading the view.
 }
 
@@ -75,12 +77,38 @@
     _page = 1;
     self.listArray = [[NSMutableArray alloc] init];
     [self.tableView reloadData];
-    [self requestOrderList];
+    [self requestList];
     
 }
 
--(void)requestOrderList{
+-(void)requestList{
+    NSDictionary *dic = @{
+                          @"userToken":@"e56d19bd376625cc2bc7aa6ae40e385a",
+                          };
     
+    [HttpRequest postPath:@"_informationlist_001" params:dic resultBlock:^(id responseObject, NSError *error) {
+       
+        NSDictionary *dic = responseObject;
+       
+        int errorint = [dic[@"error"] intValue];
+        if (errorint == 0 ) {
+            NSArray *array = dic[@"info"];
+            if ([array isKindOfClass:[NSArray class]]) {
+                [self.listArray addObjectsFromArray: array];;
+            }
+            else{
+               
+            }
+            [self.tableView reloadData];
+        }else {
+            NSString *errorStr = dic[@"info"];
+            NSLog(@"%@", errorStr);
+            [ConfigModel mbProgressHUD:errorStr andView:nil];
+            
+        }
+         [self.tableView.mj_header endRefreshing];
+         [self.tableView.mj_footer endRefreshing];
+    }];
 }
 #pragma mark -- UITableViewDataSource
 
@@ -95,17 +123,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     NSDictionary *dataDic = [self.listArray objectAtIndex:indexPath.row];
-    NSInteger type = [dataDic[@"type"] integerValue];
-    if (type==0) {
-        NSString *cellStr = @"InformationImageTableViewCell";
-        InformationImageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellStr];
-        if (cell==nil) {
-            cell = [[NSBundle mainBundle] loadNibNamed:@"InformationImageTableViewCell" owner:nil options:nil][0];
-        }
-        [cell setData:self.listArray[indexPath.row]];
-        return cell;
-    }
-    else{
+    NSString * video = validString(dataDic[@"video"]);
+    if (video.length) {
         NSString *cellStr = @"InformationVideoTableViewCell";
         InformationVideoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellStr];
         if (cell==nil) {
@@ -114,15 +133,24 @@
         [cell setData:self.listArray[indexPath.row]];
         return cell;
     }
-
+    else{
+        NSString *cellStr = @"InformationImageTableViewCell";
+        InformationImageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellStr];
+        if (cell==nil) {
+            cell = [[NSBundle mainBundle] loadNibNamed:@"InformationImageTableViewCell" owner:nil options:nil][0];
+        }
+        [cell setData:self.listArray[indexPath.row]];
+        return cell;
+    }
 }
 
 #pragma mark--UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     InformationDetailViewController *con = [[InformationDetailViewController alloc] init];
-  //  NSDictionary *dataDic = self.listArray[indexPath.row];
-  //  con.orderId = dataDic[@"id"];
+    con.type = 0;
+    NSDictionary *dataDic = self.listArray[indexPath.row];
+    con.idString = dataDic[@"id"];
     [self.navigationController pushViewController:con animated:YES];
 }
 

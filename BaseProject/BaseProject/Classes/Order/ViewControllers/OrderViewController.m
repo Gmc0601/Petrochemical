@@ -11,39 +11,74 @@
 #import "MJRefresh.h"
 #import "ShipperOrderTableViewCell.h"
 #import "ShipperOrderDetailViewController.h"
+#import "MessageViewController.h"
 @interface OrderViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
-    
+    NSInteger menuIndex;
 }
 @property(nonatomic,strong)WJItemsControlView *topItemsView;
-@property (nonatomic,strong) NSMutableArray *listArray;
+@property (nonatomic,strong) NSDictionary *infoDic;
+@property (nonatomic,strong) NSArray *listArray;
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,assign) NSInteger page;
 
 @end
 
 @implementation OrderViewController
-
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+     [self requestList];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    menuIndex = 0;
     [self setCustomerTitle:@"货主订单"];
     [self addRightBarButtonWithFirstImage:[UIImage imageNamed:@"xin"] action:@selector(rightBarClick)];
-    self.listArray = [[NSMutableArray alloc] init];
-    [self.listArray addObject:@{}];
-    [self.listArray addObject:@{}];
+  
     [self setTopTypeInfo];
     
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 108, kScreenW, kScreenH-108-49) style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
+   
+    _tableView.estimatedRowHeight = 150;
     _tableView.backgroundColor = RGBColor(227, 227, 227);
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
     [self setupRefresh];
+   
 }
 
 - (void)rightBarClick {
+    MessageViewController *com = [[MessageViewController alloc] init];
+    [self.navigationController pushViewController:com animated:YES];
+}
+
+-(void)requestList{
+    NSDictionary *dic = @{
+                          @"userToken":@"cb97a780c081a49154bed3aa50842ff4",
+                          };
     
+    [HttpRequest postPath:@"_owner_indent_001" params:dic resultBlock:^(id responseObject, NSError *error) {
+        
+        NSDictionary *dic = responseObject;
+        
+        int errorint = [dic[@"error"] intValue];
+        if (errorint == 0 ) {
+            NSDictionary *infoDic = dic[@"info"];
+            if ([infoDic isKindOfClass:[NSDictionary class]]) {
+                self.infoDic = infoDic;
+            }
+            [self updateList];
+        }else {
+            NSString *errorStr = dic[@"info"];
+            NSLog(@"%@", errorStr);
+            [ConfigModel mbProgressHUD:errorStr andView:nil];
+            
+        }
+        [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
+    }];
 }
 
 
@@ -65,11 +100,37 @@
     
     [self.topItemsView setTapItemWithIndex:^(NSInteger index,BOOL animation){
        
+        menuIndex = index;
+        [weakSelf updateList];
         [weakSelf.topItemsView moveToIndex:index];
         [weakSelf.topItemsView endMoveToIndex:index];
        
     }];
     [self.view addSubview:self.topItemsView];
+}
+
+-(void)updateList{
+    NSArray *array;
+    if (menuIndex==0) {
+       array = self.infoDic[@"quanbu"];
+    }
+    else if (menuIndex==1) {
+        array = self.infoDic[@"daizhuanghuo"];
+    }
+    else if (menuIndex==2) {
+        array = self.infoDic[@"yunshuzhong"];
+    }
+    else if (menuIndex==3) {
+        array = self.infoDic[@"yiwancheng"];
+    }
+    
+    if ([array isKindOfClass:[NSArray class]]) {
+        self.listArray = self.infoDic[@"quanbu"];
+    }
+    else{
+        self.listArray = nil;
+    }
+    [self.tableView reloadData];
 }
 
 -(void)setupRefresh{
@@ -81,29 +142,26 @@
      // 设置自动切换透明度(在导航栏下面自动隐藏)
      self.tableView.mj_header.automaticallyChangeAlpha = YES;
     
-    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        if (ws.listArray.count==ws.page*20) {
-            ws.page = _page+1;
-            [ws initList];
-        }else{
-           
-            [ws.tableView.mj_footer endRefreshing];
-        }
-    }];
-     self.tableView.mj_footer.automaticallyChangeAlpha = YES;
+//    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+//        if (ws.listArray.count==ws.page*20) {
+//            ws.page = _page+1;
+//            [ws initList];
+//        }else{
+//
+//            [ws.tableView.mj_footer endRefreshing];
+//        }
+//    }];
+//     self.tableView.mj_footer.automaticallyChangeAlpha = YES;
 }
 
 -(void)initList{
     _page = 1;
-    self.listArray = [[NSMutableArray alloc] init];
+    self.listArray = nil;
     [self.tableView reloadData];
-    [self requestOrderList];
+    [self requestList];
     
 }
 
--(void)requestOrderList{
-    
-}
 #pragma mark -- UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -129,7 +187,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     ShipperOrderDetailViewController *con = [[ShipperOrderDetailViewController alloc] init];
     NSDictionary *dataDic = self.listArray[indexPath.row];
-    con.orderId = dataDic[@"id"];
+    con.orderId = dataDic[@"good_num"];
     [self.navigationController pushViewController:con animated:YES];
 }
 

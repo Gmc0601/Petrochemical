@@ -15,15 +15,15 @@
     // Initialization code
 }
 -(void)setData:(NSDictionary *)dataDic{
-    
-    self.orderNumberLabel = dataDic[@"orderNumber"];
-    self.carLabel.text = [NSString stringWithFormat:@"%ld辆车运输",[dataDic[@"carNumber"] integerValue]];
-    self.startAreaLabel.text = validString(dataDic[@"startaddress"]);
-    self.startAreaLabel.text = validString(dataDic[@"startArea"]);
-    self.endAddressLabel.text = validString(dataDic[@"endaddress"]);
-    self.endAreaLabel.text = validString(dataDic[@"endaddress"]);
+    //1待装货2运输中3已结束4全部
+    self.orderNumberLabel = dataDic[@"good_num"];
+    self.carLabel.text = [NSString stringWithFormat:@"%ld辆车运输",[dataDic[@"car_num"] integerValue]];
+    self.startAreaLabel.text = validString(dataDic[@"loading"]);
+    self.startAddressLabel.text = validString(dataDic[@"loading_address"]);
+    self.endAddressLabel.text = validString(dataDic[@"unload"]);
+    self.endAreaLabel.text = validString(dataDic[@"unload_address"]);
     self.typeLabel.text = dataDic[@"type"];
-    self.quantityLabel.text = dataDic[@"quantity"];
+    self.quantityLabel.text = [NSString stringWithFormat:@"共%@吨",dataDic[@"weight"]];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

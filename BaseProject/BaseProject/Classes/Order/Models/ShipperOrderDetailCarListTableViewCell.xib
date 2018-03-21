@@ -77,7 +77,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xsu-rk-MrA">
                         <rect key="frame" x="80" y="79" width="54" height="16"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="浙A 56789" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbI-MQ-50O">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="鄂B6U929" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbI-MQ-50O">
                                 <rect key="frame" x="0.0" y="0.0" width="54" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
@@ -166,7 +166,7 @@
                 <outlet property="remarkLabel" destination="JQT-ZH-EzA" id="ndx-fe-w0a"/>
                 <outlet property="statusLabel" destination="8K1-ui-u6b" id="I0T-4s-pvr"/>
             </connections>
-            <point key="canvasLocation" x="-1227" y="-63"/>
+            <point key="canvasLocation" x="-1398" y="-62"/>
         </tableViewCell>
     </objects>
     <resources>

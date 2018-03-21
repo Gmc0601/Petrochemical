@@ -23,8 +23,8 @@
 
 #if HHTest
 
-#define    BaseApi       @"http://139.224.70.219:8989/index.php"
-
+//#define    BaseApi       @"http://139.224.70.219:8989/index.php"
+#define    BaseApi       @"http://lm.feiyouce.com/index.php"
 #else
 
 #define    BaseApi      @"正式地址"

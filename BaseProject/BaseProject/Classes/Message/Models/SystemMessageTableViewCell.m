@@ -16,7 +16,8 @@
 }
 
 -(void)setData:(NSDictionary *)dataDic{
-    
+    self.nameLabel.text = dataDic[@"title"];
+    self.detailLabel.text = validString( dataDic[@"vice_title"]);
 }
 
 

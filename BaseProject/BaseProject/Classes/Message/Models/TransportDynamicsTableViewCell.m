@@ -16,6 +16,16 @@
 }
 
 -(void)setData:(NSDictionary *)dataDic{
+    self.numberLabel.text = [NSString stringWithFormat:@"货单号：%@",dataDic[@"good_num"]];
+    self.nameLabel.text = [NSString stringWithFormat:@"[%@ %@]",dataDic[@"license"],dataDic[@"car_name"]];;
+    self.detailLabel.text = validString(dataDic[@"dynamic"]);
+    
+    NSString *dateString = dataDic[@"create_time"];
+    NSArray *array = [dateString componentsSeparatedByString:@" "];
+    if (array.count>=2) {
+        self.dateLabel.text = array.firstObject;
+        self.timeLabel.text = array[1];
+    }
     
 }
 

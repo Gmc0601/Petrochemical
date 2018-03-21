@@ -252,7 +252,7 @@
                 <constraint firstAttribute="bottom" secondItem="ICS-PF-UPZ" secondAttribute="bottom" id="p8j-x1-nXJ"/>
                 <constraint firstItem="BRc-hi-u9c" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="yav-kI-kGg"/>
             </constraints>
-            <point key="canvasLocation" x="57.5" y="60.5"/>
+            <point key="canvasLocation" x="-6" y="79"/>
         </view>
     </objects>
     <resources>

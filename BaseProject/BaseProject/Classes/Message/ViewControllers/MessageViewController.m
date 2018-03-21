@@ -18,7 +18,10 @@
 @end
 
 @implementation MessageViewController
-
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self requestDetail];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -28,10 +31,30 @@
     
     self.twoNuberLabel.layer.cornerRadius = 3;
     self.twoNuberLabel.layer.masksToBounds = YES;
-    
-    self.oneNumberLabel.text = [NSString stringWithFormat:@"%d   ",0];
-    self.twoNuberLabel.text = [NSString stringWithFormat:@"%d   ",0];
     // Do any additional setup after loading the view from its nib.
+}
+
+-(void)requestDetail{
+    NSDictionary *dic = @{
+                          @"userToken":@"e56d19bd376625cc2bc7aa6ae40e385a",
+                          };
+    
+    [HttpRequest postPath:@"_shuliangs_001" params:dic resultBlock:^(id responseObject, NSError *error) {
+        
+        NSDictionary *dic = responseObject;
+        
+        int errorint = [dic[@"error"] intValue];
+        if (errorint == 0 ) {
+            NSDictionary *infoDic = dic[@"info"];
+            self.oneNumberLabel.text = [NSString stringWithFormat:@"%ld   ",[infoDic[@"message_num"] integerValue]];
+            self.twoNuberLabel.text = [NSString stringWithFormat:@"%ld   ",[infoDic[@"carriage_num"] integerValue]];
+            
+        }else {
+            NSString *errorStr = dic[@"info"];
+            NSLog(@"%@", errorStr);
+            [ConfigModel mbProgressHUD:errorStr andView:nil];
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
