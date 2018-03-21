@@ -13,9 +13,10 @@
 #import "InformationImageTableViewCell.h"
 #import "InformationDetailViewController.h"
 #import "MessageViewController.h"
+#import "UIButton+message.h"
 @interface InformationViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
-    
+    UIButton *messageButton;
 }
 @property(nonatomic,strong)WJItemsControlView *topItemsView;
 @property (nonatomic,strong) NSMutableArray *listArray;
@@ -25,12 +26,16 @@
 @end
 
 @implementation InformationViewController
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [messageButton updateMessage];
 
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setCustomerTitle:@"咨询"];
 
-    [self addRightBarButtonWithFirstImage:[UIImage imageNamed:@"xin"] action:@selector(rightBarClick)];
+    
     
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenW, kScreenH-64-49) style:UITableViewStylePlain];
     _tableView.delegate = self;
@@ -43,7 +48,20 @@
     
     [self setupRefresh];
     [self initList];
-    // Do any additional setup after loading the view.
+    [self setNavInfo];
+}
+
+-(void)setNavInfo{
+    messageButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    messageButton.frame = CGRectMake(0, 0, 44, 44);
+    [messageButton setImage:[UIImage imageNamed:@"xin"] forState:UIControlStateNormal];
+    [messageButton setImage:[UIImage imageNamed:@"xinyuandian"] forState:UIControlStateSelected];
+    [messageButton addTarget:self action:@selector(rightBarClick) forControlEvents:UIControlEventTouchUpInside];
+    messageButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    [messageButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 5 * kScreenWidth / 375.0)];
+    
+    UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:messageButton];
+    self.navigationItem.rightBarButtonItem = rightBarButtonItem;
 }
 
 - (void)rightBarClick {

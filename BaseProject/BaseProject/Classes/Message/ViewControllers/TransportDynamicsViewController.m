@@ -29,7 +29,7 @@
                           @"userToken":@"e56d19bd376625cc2bc7aa6ae40e385a",
                           };
     
-    [HttpRequest postPath:@"_deletemessage_001" params:dic resultBlock:^(id responseObject, NSError *error) {
+    [HttpRequest postPath:@"_delete_dynamic_001" params:dic resultBlock:^(id responseObject, NSError *error) {
         
         NSDictionary *dic = responseObject;
         int errorint = [dic[@"error"] intValue];
@@ -49,7 +49,7 @@
                           @"userToken":@"e56d19bd376625cc2bc7aa6ae40e385a",
                           };
     
-    [HttpRequest postPath:@"_userdongtai_001" params:dic resultBlock:^(id responseObject, NSError *error) {
+    [HttpRequest postPath:@"_message_dynamic_001" params:dic resultBlock:^(id responseObject, NSError *error) {
     
         NSDictionary *dic = responseObject;
     
