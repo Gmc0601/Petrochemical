@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="94.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hW2-yK-5cz">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hW2-yK-5cz">
                         <rect key="frame" x="193" y="10" width="115" height="75"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="115" id="6Gk-pf-GdV"/>
@@ -44,6 +44,13 @@
                         <color key="textColor" red="0.49019607843137253" green="0.49019607843137253" blue="0.49019607843137253" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xTn-PE-eoc" userLabel="H-line">
+                        <rect key="frame" x="20" y="93.5" width="300" height="1"/>
+                        <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="wIM-Es-cCW"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="AOG-fw-WAB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="4" id="G5I-nG-CVF"/>
@@ -53,8 +60,11 @@
                     <constraint firstItem="AOG-fw-WAB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="6" id="XlS-Td-g94"/>
                     <constraint firstItem="hW2-yK-5cz" firstAttribute="leading" secondItem="AOG-fw-WAB" secondAttribute="trailing" constant="5" id="XsD-VM-hpn"/>
                     <constraint firstAttribute="trailing" secondItem="hW2-yK-5cz" secondAttribute="trailing" constant="12" id="hhG-ul-NXx"/>
+                    <constraint firstAttribute="trailing" secondItem="xTn-PE-eoc" secondAttribute="trailing" id="l2l-9R-UEw"/>
+                    <constraint firstItem="xTn-PE-eoc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="nok-Iu-PGk"/>
                     <constraint firstItem="Xfa-8y-hUR" firstAttribute="top" secondItem="AOG-fw-WAB" secondAttribute="bottom" constant="8" id="opC-e8-1Ih"/>
                     <constraint firstItem="hW2-yK-5cz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="qlx-nm-IW9"/>
+                    <constraint firstAttribute="bottom" secondItem="xTn-PE-eoc" secondAttribute="bottom" id="uJf-5D-Bas"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -62,7 +72,7 @@
                 <outlet property="headImageView" destination="hW2-yK-5cz" id="UrC-DY-2gE"/>
                 <outlet property="nameLable" destination="AOG-fw-WAB" id="3KM-vo-RTH"/>
             </connections>
-            <point key="canvasLocation" x="-127" y="-100"/>
+            <point key="canvasLocation" x="-336" y="-140.5"/>
         </tableViewCell>
     </objects>
 </document>

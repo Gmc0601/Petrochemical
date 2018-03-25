@@ -10,4 +10,6 @@
 
 @interface InformationDetailViewController : BaseViewController
 
+@property(nonatomic,assign)NSInteger type;//0:资讯详情；1：消息详情
+@property(nonatomic,strong)NSString *idString;
 @end

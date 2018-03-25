@@ -18,8 +18,9 @@
 }
 
 -(void)setData:(NSDictionary *)dataDic{
-    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[dataDic objectForKey:@"path"]?:@""] placeholderImage:DefaultImage];
-    self.nameLable.text = dataDic[@"name"];
+    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[dataDic objectForKey:@"img"]?:@""] placeholderImage:DefaultImage];
+    self.nameLable.text = dataDic[@"title"];
+    self.DateLabel.text = dataDic[@"create_time"];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

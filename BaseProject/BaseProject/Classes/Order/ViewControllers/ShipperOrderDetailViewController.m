@@ -30,7 +30,8 @@
 
 
 @property(nonatomic,strong)WJItemsControlView *topItemsView;
-@property (nonatomic,strong) NSMutableArray *carListArray;
+@property (nonatomic,strong) NSArray *carListArray;
+@property (nonatomic,strong) NSDictionary *infoDic;
 
 @end
 
@@ -39,18 +40,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setCustomerTitle:@"订单详情"];
-    self.carListArray = [[NSMutableArray alloc] init];
-    [self.carListArray addObject:@{}];
-    [self.carListArray addObject:@{}];
+
     [self setTopTypeInfo];
+    [self requestCarList];
     // Do any additional setup after loading the view from its nib.
 }
-
-
 //头部类型
 -(void)setTopTypeInfo{
     //头部控制的segMent
-    NSArray *titleArr = @[@"运输信息",@"货运详情"];
+    NSArray *titleArr = @[@"运输信息",@"货源详情"];
     WJItemsConfig *config = [[WJItemsConfig alloc]init];
     config.itemWidth = kScreenW/2.0;
     config.selectedColor = UIColorFromHex(0x028BF3);
@@ -81,6 +79,60 @@
     [self.topView addSubview:self.topItemsView];
 }
 
+-(void)requestCarList{
+    NSDictionary *dic = @{
+                          @"userToken":@"cb97a780c081a49154bed3aa50842ff4",
+                          @"good_num":self.orderId,
+                          };
+    
+    [HttpRequest postPath:@"_transportation_001" params:dic resultBlock:^(id responseObject, NSError *error) {
+        
+        NSDictionary *dic = responseObject;
+        
+        int errorint = [dic[@"error"] intValue];
+        if (errorint == 0 ) {
+            NSArray *carList = dic[@"info"];
+            if ([carList isKindOfClass:[NSArray class]]) {
+                self.carListArray = carList;
+            }
+            
+            [self.tableView reloadData];
+        }else {
+            NSString *errorStr = dic[@"info"];
+            NSLog(@"%@", errorStr);
+            [ConfigModel mbProgressHUD:errorStr andView:nil];
+            
+        }
+    }];
+}
+
+
+-(void)requestDetail{
+    NSDictionary *dic = @{
+                          @"userToken":@"cb97a780c081a49154bed3aa50842ff4",
+                          @"good_num":self.orderId,
+                          };
+    
+    [HttpRequest postPath:@"_user_goodsdetails_001" params:dic resultBlock:^(id responseObject, NSError *error) {
+        
+        NSDictionary *dic = responseObject;
+        
+        int errorint = [dic[@"error"] intValue];
+        if (errorint == 0 ) {
+           NSDictionary *info = dic[@"info"];
+            self.infoDic = info;
+            
+        }else {
+            NSString *errorStr = dic[@"info"];
+            NSLog(@"%@", errorStr);
+            [ConfigModel mbProgressHUD:errorStr andView:nil];
+            
+        }
+    }];
+}
+
+
+
 #pragma mark -- UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -107,13 +159,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     LogisticsDetailsViewController *con = [[LogisticsDetailsViewController alloc] init];
+    NSDictionary *dataDic = self.carListArray[indexPath.row];
+    con.carId = dataDic[@"car_id"];
+    con.orderId = self.orderId;
     [self.navigationController pushViewController:con animated:YES];
 }
 
 
 -(void)clickCall:(UIButton *)sender{
     NSDictionary *carDic = self.carListArray[sender.tag];
-    NSString *phoneString=[NSString stringWithFormat:@"tel://%@",validString(carDic[@"phone"])];
+    NSString *phoneString=[NSString stringWithFormat:@"tel://%@",validString(carDic[@"car_mobile"])];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneString]];
 }
 - (void)didReceiveMemoryWarning {

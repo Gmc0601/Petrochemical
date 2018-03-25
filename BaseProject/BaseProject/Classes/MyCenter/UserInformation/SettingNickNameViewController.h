@@ -9,7 +9,6 @@
 #import "BaseViewController.h"
 
 @interface SettingNickNameViewController : BaseViewController
-
 @property (weak, nonatomic) IBOutlet UITextField *nickNameTextField;
-
+@property (copy, nonatomic) void(^retunrEditValue)(NSString *text);
 @end

@@ -26,11 +26,22 @@
 }
 
 -(void)setData:(NSDictionary *)dataDic{
-    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[dataDic objectForKey:@"path"]?:@""] placeholderImage:DefaultImage];
-    self.nameLabel.text = dataDic[@"name"];
-    self.statusLabel.text = dataDic[@"status"];
-    self.carNumberLabel.text  =  dataDic[@"carNumber"];
-    self.remarkLabel.text = @"司机已接单，将按时前往装货点进行装货";
+    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[dataDic objectForKey:@"img"]?:@""] placeholderImage:DefaultImage];
+    self.nameLabel.text = dataDic[@"car_name"];
+    NSInteger state = [dataDic[@"carriage_status"] integerValue];//1待装货 2运输中 3已结束
+    if (state==1) {
+        self.statusLabel.text = @"待装货";
+    }
+    else if (state==2) {
+        self.statusLabel.text = @"运输中";
+    }
+    else if (state==3) {
+        self.statusLabel.text = @"已结束";
+    }
+   
+    self.carNumberLabel.text  =  dataDic[@"license"];
+    self.remarkLabel.text = validString(dataDic[@"carriage"]);
+    self.quantityLabel.text = [NSString stringWithFormat:@"装货：%@吨",validString(dataDic[@"rough_weight"])];
     
 }
 

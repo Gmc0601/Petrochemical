@@ -9,5 +9,6 @@
 #import "BaseViewController.h"
 
 @interface LogisticsDetailsViewController : BaseViewController
-
+@property(nonatomic,strong) NSString *orderId;
+@property(nonatomic,strong) NSString *carId;
 @end

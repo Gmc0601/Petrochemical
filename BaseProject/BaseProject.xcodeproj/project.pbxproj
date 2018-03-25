@@ -59,6 +59,8 @@
 		7A328DD6205BB07500BF9DAC /* InformationDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A328DD4205BB07500BF9DAC /* InformationDetailViewController.xib */; };
 		7A75D3C02059213A00C6860A /* ShipperOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A75D3BE2059213A00C6860A /* ShipperOrderTableViewCell.m */; };
 		7A75D3C12059213A00C6860A /* ShipperOrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A75D3BF2059213A00C6860A /* ShipperOrderTableViewCell.xib */; };
+		7A80267920609E4300D1FDEF /* RobbingOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A80267720609E4300D1FDEF /* RobbingOrdersViewController.m */; };
+		7A80267A20609E4300D1FDEF /* RobbingOrdersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A80267820609E4300D1FDEF /* RobbingOrdersViewController.xib */; };
 		7AFAE4A7205A0C5E00B14406 /* Passport.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFAE4A6205A0C5E00B14406 /* Passport.m */; };
 		7AFAE4AB205A0F5C00B14406 /* ShipperOrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFAE4A9205A0F5C00B14406 /* ShipperOrderDetailViewController.m */; };
 		7AFAE4AC205A0F5C00B14406 /* ShipperOrderDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AFAE4AA205A0F5C00B14406 /* ShipperOrderDetailViewController.xib */; };
@@ -107,6 +109,9 @@
 		7AFD2215205F87B0009DB138 /* SystemMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AFD2213205F87B0009DB138 /* SystemMessageTableViewCell.xib */; };
 		7AFD2219205F87C4009DB138 /* TransportDynamicsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFD2217205F87C4009DB138 /* TransportDynamicsTableViewCell.m */; };
 		7AFD221A205F87C4009DB138 /* TransportDynamicsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AFD2218205F87C4009DB138 /* TransportDynamicsTableViewCell.xib */; };
+		8211DC532062014900A747A4 /* UIImage+MyProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 8211DC522062014900A747A4 /* UIImage+MyProperty.m */; };
+		8211DC57206205D100A747A4 /* CustomSeletedPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8211DC56206205D100A747A4 /* CustomSeletedPickView.m */; };
+		8211DC59206205DD00A747A4 /* CustomSeletedPickView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8211DC58206205DD00A747A4 /* CustomSeletedPickView.xib */; };
 		82B6D29F205F4EE400C65CA4 /* LeasCustomAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B6D29D205F4EE400C65CA4 /* LeasCustomAlbum.m */; };
 		82B6D2C5205F4F5900C65CA4 /* IQTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B6D2A2205F4F5900C65CA4 /* IQTextView.m */; };
 		82B6D2C6205F4F5900C65CA4 /* IQToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B6D2A6205F4F5900C65CA4 /* IQToolbar.m */; };
@@ -263,6 +268,9 @@
 		7A75D3BD2059213A00C6860A /* ShipperOrderTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShipperOrderTableViewCell.h; sourceTree = "<group>"; };
 		7A75D3BE2059213A00C6860A /* ShipperOrderTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShipperOrderTableViewCell.m; sourceTree = "<group>"; };
 		7A75D3BF2059213A00C6860A /* ShipperOrderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShipperOrderTableViewCell.xib; sourceTree = "<group>"; };
+		7A80267620609E4300D1FDEF /* RobbingOrdersViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RobbingOrdersViewController.h; sourceTree = "<group>"; };
+		7A80267720609E4300D1FDEF /* RobbingOrdersViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RobbingOrdersViewController.m; sourceTree = "<group>"; };
+		7A80267820609E4300D1FDEF /* RobbingOrdersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RobbingOrdersViewController.xib; sourceTree = "<group>"; };
 		7AFAE4A5205A0C5E00B14406 /* Passport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Passport.h; sourceTree = "<group>"; };
 		7AFAE4A6205A0C5E00B14406 /* Passport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Passport.m; sourceTree = "<group>"; };
 		7AFAE4A8205A0F5C00B14406 /* ShipperOrderDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShipperOrderDetailViewController.h; sourceTree = "<group>"; };
@@ -354,6 +362,11 @@
 		7AFD2216205F87C4009DB138 /* TransportDynamicsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransportDynamicsTableViewCell.h; sourceTree = "<group>"; };
 		7AFD2217205F87C4009DB138 /* TransportDynamicsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransportDynamicsTableViewCell.m; sourceTree = "<group>"; };
 		7AFD2218205F87C4009DB138 /* TransportDynamicsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransportDynamicsTableViewCell.xib; sourceTree = "<group>"; };
+		8211DC512062014900A747A4 /* UIImage+MyProperty.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+MyProperty.h"; sourceTree = "<group>"; };
+		8211DC522062014900A747A4 /* UIImage+MyProperty.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MyProperty.m"; sourceTree = "<group>"; };
+		8211DC55206205D100A747A4 /* CustomSeletedPickView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomSeletedPickView.h; sourceTree = "<group>"; };
+		8211DC56206205D100A747A4 /* CustomSeletedPickView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomSeletedPickView.m; sourceTree = "<group>"; };
+		8211DC58206205DD00A747A4 /* CustomSeletedPickView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomSeletedPickView.xib; sourceTree = "<group>"; };
 		82B6D29D205F4EE400C65CA4 /* LeasCustomAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeasCustomAlbum.m; sourceTree = "<group>"; };
 		82B6D29E205F4EE400C65CA4 /* LeasCustomAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeasCustomAlbum.h; sourceTree = "<group>"; };
 		82B6D2A2205F4F5900C65CA4 /* IQTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQTextView.m; sourceTree = "<group>"; };
@@ -522,6 +535,9 @@
 				7A328DD2205BB07500BF9DAC /* InformationDetailViewController.h */,
 				7A328DD3205BB07500BF9DAC /* InformationDetailViewController.m */,
 				7A328DD4205BB07500BF9DAC /* InformationDetailViewController.xib */,
+				7A80267620609E4300D1FDEF /* RobbingOrdersViewController.h */,
+				7A80267720609E4300D1FDEF /* RobbingOrdersViewController.m */,
+				7A80267820609E4300D1FDEF /* RobbingOrdersViewController.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -661,6 +677,8 @@
 				422F1FFD2047E8B2009481CC /* UIButton+SSEdgeInsets.m */,
 				422F1FFB2047E858009481CC /* UIViewController+BarButton.h */,
 				422F1FFA2047E858009481CC /* UIViewController+BarButton.m */,
+				8211DC512062014900A747A4 /* UIImage+MyProperty.h */,
+				8211DC522062014900A747A4 /* UIImage+MyProperty.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1096,6 +1114,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8211DC54206205AD00A747A4 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				8211DC55206205D100A747A4 /* CustomSeletedPickView.h */,
+				8211DC56206205D100A747A4 /* CustomSeletedPickView.m */,
+				8211DC58206205DD00A747A4 /* CustomSeletedPickView.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		82B6D29C205F4EE400C65CA4 /* CustomAlbum */ = {
 			isa = PBXGroup;
 			children = (
@@ -1187,11 +1215,11 @@
 			isa = PBXGroup;
 			children = (
 				82B6D2D7205F4FB400C65CA4 /* UserInformationViewController.h */,
-				82B6D2D8205F4FB400C65CA4 /* SettingNickNameViewController.h */,
-				82B6D2D9205F4FB400C65CA4 /* SettingNickNameViewController.xib */,
 				82B6D2DA205F4FB400C65CA4 /* UserInformationViewController.m */,
 				82B6D2DB205F4FB400C65CA4 /* UserInformationViewController.xib */,
+				82B6D2D8205F4FB400C65CA4 /* SettingNickNameViewController.h */,
 				82B6D2DC205F4FB400C65CA4 /* SettingNickNameViewController.m */,
+				82B6D2D9205F4FB400C65CA4 /* SettingNickNameViewController.xib */,
 			);
 			path = UserInformation;
 			sourceTree = "<group>";
@@ -1219,6 +1247,7 @@
 		82B6D2E2205F4FB400C65CA4 /* Cargoidentification */ = {
 			isa = PBXGroup;
 			children = (
+				8211DC54206205AD00A747A4 /* view */,
 				82B6D2E4205F4FB400C65CA4 /* CargoidentificationFirstViewController.h */,
 				82B6D2E7205F4FB400C65CA4 /* CargoidentificationFirstViewController.m */,
 				82B6D2E8205F4FB400C65CA4 /* CargoidentificationFirstViewController.xib */,
@@ -1372,6 +1401,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A328DCC205BA58700BF9DAC /* InformationImageTableViewCell.xib in Resources */,
+				7A80267A20609E4300D1FDEF /* RobbingOrdersViewController.xib in Resources */,
 				82B6D2F2205F4FB400C65CA4 /* CargoidentificationFirstViewController.xib in Resources */,
 				7AFD2215205F87B0009DB138 /* SystemMessageTableViewCell.xib in Resources */,
 				82B6D2F0205F4FB400C65CA4 /* CargoidentificationSecondViewController.xib in Resources */,
@@ -1392,6 +1422,7 @@
 				42A444401EF133E000F90791 /* Assets.xcassets in Resources */,
 				7A75D3C12059213A00C6860A /* ShipperOrderTableViewCell.xib in Resources */,
 				7A328DD6205BB07500BF9DAC /* InformationDetailViewController.xib in Resources */,
+				8211DC59206205DD00A747A4 /* CustomSeletedPickView.xib in Resources */,
 				7AFD220B205F86C9009DB138 /* SystemMessageViewController.xib in Resources */,
 				82B6D2EB205F4FB400C65CA4 /* UserInformationViewController.xib in Resources */,
 				7AFAE4E7205A236600B14406 /* MJRefresh.bundle in Resources */,
@@ -1479,6 +1510,7 @@
 			files = (
 				42F795BC1F00C8B200A11A69 /* BaseViewController.m in Sources */,
 				82B6D2CE205F4F5900C65CA4 /* IQUIWindow+Hierarchy.m in Sources */,
+				7A80267920609E4300D1FDEF /* RobbingOrdersViewController.m in Sources */,
 				7AFAE4EE205A236600B14406 /* MJRefreshAutoGifFooter.m in Sources */,
 				7AFAE520205A3FCE00B14406 /* NSArray+MASAdditions.m in Sources */,
 				7AFD2214205F87B0009DB138 /* SystemMessageTableViewCell.m in Sources */,
@@ -1518,8 +1550,10 @@
 				7AFAE4A7205A0C5E00B14406 /* Passport.m in Sources */,
 				420D18262057A71300E1D8E1 /* UILabel+Width.m in Sources */,
 				7AFAE51B205A3FCE00B14406 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				8211DC532062014900A747A4 /* UIImage+MyProperty.m in Sources */,
 				42F795DB1F00CC3E00A11A69 /* TBRefreshHeadView.m in Sources */,
 				82B6D29F205F4EE400C65CA4 /* LeasCustomAlbum.m in Sources */,
+				8211DC57206205D100A747A4 /* CustomSeletedPickView.m in Sources */,
 				420D18462057AA9100E1D8E1 /* MyCenterViewController.m in Sources */,
 				82B6D2CA205F4F5900C65CA4 /* IQPreviousNextView.m in Sources */,
 				82B6D2D0205F4F5900C65CA4 /* IQUIScrollView+Additions.m in Sources */,

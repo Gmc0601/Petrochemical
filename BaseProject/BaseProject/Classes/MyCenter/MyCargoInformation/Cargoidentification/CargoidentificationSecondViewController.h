@@ -9,5 +9,7 @@
 #import "BaseViewController.h"
 
 @interface CargoidentificationSecondViewController : BaseViewController
-
+@property (strong, nonatomic) NSString *nameStr;
+@property (strong, nonatomic) NSString *idCardStr;
+@property (strong, nonatomic) NSString *idCardImageStr;
 @end

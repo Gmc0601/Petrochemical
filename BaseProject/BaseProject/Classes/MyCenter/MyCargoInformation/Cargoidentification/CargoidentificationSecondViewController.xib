@@ -15,6 +15,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CargoidentificationSecondViewController">
             <connections>
+                <outlet property="companyImageView" destination="Cd4-SS-eQe" id="QKp-QD-brA"/>
+                <outlet property="companyNameTextField" destination="TPA-W6-1aa" id="vfC-ZT-g4K"/>
+                <outlet property="salesmanNameLabel" destination="ptQ-6h-lox" id="6fy-MN-X2L"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -111,6 +114,12 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U0S-dl-Zs9">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
+                                    <connections>
+                                        <action selector="selectedSalemanAction:" destination="-1" eventType="touchUpInside" id="m4W-GJ-NLt"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -122,7 +131,11 @@
                                 <constraint firstAttribute="trailing" secondItem="8pk-1f-Qw9" secondAttribute="trailing" constant="35" id="NbC-HK-fr1"/>
                                 <constraint firstItem="ptQ-6h-lox" firstAttribute="leading" secondItem="dXU-5h-75z" secondAttribute="trailing" id="QPa-cT-EMl"/>
                                 <constraint firstItem="ptQ-6h-lox" firstAttribute="top" secondItem="Ddo-QN-Xgh" secondAttribute="top" id="Reu-ha-v0s"/>
+                                <constraint firstItem="U0S-dl-Zs9" firstAttribute="leading" secondItem="Ddo-QN-Xgh" secondAttribute="leading" id="Rhc-9t-bUf"/>
+                                <constraint firstItem="U0S-dl-Zs9" firstAttribute="top" secondItem="Ddo-QN-Xgh" secondAttribute="top" id="S4u-cR-rLf"/>
                                 <constraint firstItem="dXU-5h-75z" firstAttribute="top" secondItem="Ddo-QN-Xgh" secondAttribute="top" id="gTh-iA-8Qi"/>
+                                <constraint firstAttribute="bottom" secondItem="U0S-dl-Zs9" secondAttribute="bottom" id="gfR-xb-hWV"/>
+                                <constraint firstAttribute="trailing" secondItem="U0S-dl-Zs9" secondAttribute="trailing" id="s08-aC-pRg"/>
                                 <constraint firstAttribute="bottom" secondItem="ptQ-6h-lox" secondAttribute="bottom" id="vbl-G5-e5x"/>
                             </constraints>
                         </view>
@@ -180,6 +193,12 @@
                                 <constraint firstAttribute="width" secondItem="Cd4-SS-eQe" secondAttribute="height" multiplier="335:180" id="6Ft-kI-7eY"/>
                             </constraints>
                         </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wJ0-va-l0T">
+                            <rect key="frame" x="20" y="279" width="335" height="180"/>
+                            <connections>
+                                <action selector="selectedCompanyImageViewAction:" destination="-1" eventType="touchUpInside" id="0cG-1A-lmE"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <constraints>
                         <constraint firstItem="Cd4-SS-eQe" firstAttribute="leading" secondItem="uqT-YV-VJk" secondAttribute="leading" constant="20" id="3DU-RX-4dN"/>
@@ -194,13 +213,17 @@
                         <constraint firstItem="5ZR-if-Qbm" firstAttribute="top" secondItem="uqT-YV-VJk" secondAttribute="top" id="Xha-Pb-GS3"/>
                         <constraint firstItem="5ZR-if-Qbm" firstAttribute="leading" secondItem="uqT-YV-VJk" secondAttribute="leading" id="Zgh-s6-qxP"/>
                         <constraint firstAttribute="trailing" secondItem="5ZR-if-Qbm" secondAttribute="trailing" id="Zkg-SL-bla"/>
+                        <constraint firstItem="wJ0-va-l0T" firstAttribute="trailing" secondItem="Cd4-SS-eQe" secondAttribute="trailing" id="aVz-uB-fhe"/>
                         <constraint firstItem="Ddo-QN-Xgh" firstAttribute="top" secondItem="5ZR-if-Qbm" secondAttribute="bottom" id="b0q-xA-cQQ"/>
                         <constraint firstItem="oFe-GU-ady" firstAttribute="top" secondItem="IpE-i9-dZF" secondAttribute="bottom" id="dyB-QX-Y2r"/>
                         <constraint firstItem="oqj-a7-faS" firstAttribute="top" secondItem="oFe-GU-ady" secondAttribute="bottom" constant="20" id="eSr-VG-FKn"/>
                         <constraint firstAttribute="trailing" secondItem="Ddo-QN-Xgh" secondAttribute="trailing" id="f2l-S1-CaI"/>
+                        <constraint firstItem="wJ0-va-l0T" firstAttribute="bottom" secondItem="Cd4-SS-eQe" secondAttribute="bottom" id="fzf-29-AkX"/>
                         <constraint firstAttribute="trailing" secondItem="oVK-hy-iYe" secondAttribute="trailing" id="gFT-Nz-9wM"/>
                         <constraint firstItem="oVK-hy-iYe" firstAttribute="top" secondItem="Ddo-QN-Xgh" secondAttribute="bottom" id="hGj-Pv-95U"/>
+                        <constraint firstItem="wJ0-va-l0T" firstAttribute="leading" secondItem="Cd4-SS-eQe" secondAttribute="leading" id="hWP-l2-aQt"/>
                         <constraint firstAttribute="trailing" secondItem="IpE-i9-dZF" secondAttribute="trailing" id="iBp-A7-79F"/>
+                        <constraint firstItem="wJ0-va-l0T" firstAttribute="top" secondItem="Cd4-SS-eQe" secondAttribute="top" id="lkZ-2N-hiI"/>
                         <constraint firstAttribute="trailing" secondItem="oFe-GU-ady" secondAttribute="trailing" id="q5T-Mx-9nC"/>
                         <constraint firstItem="oFe-GU-ady" firstAttribute="leading" secondItem="uqT-YV-VJk" secondAttribute="leading" id="vbp-9D-lof"/>
                     </constraints>
@@ -215,6 +238,9 @@
                     <state key="normal" title="提交">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <connections>
+                        <action selector="requestAction:" destination="-1" eventType="touchUpInside" id="28I-oL-FcN"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -228,7 +254,7 @@
                 <constraint firstItem="5ZR-if-Qbm" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="oQk-pT-jVf"/>
                 <constraint firstAttribute="trailing" secondItem="uqT-YV-VJk" secondAttribute="trailing" id="pLG-RE-FwE"/>
             </constraints>
-            <point key="canvasLocation" x="-2" y="-80"/>
+            <point key="canvasLocation" x="-2.5" y="-80.5"/>
         </view>
     </objects>
     <resources>

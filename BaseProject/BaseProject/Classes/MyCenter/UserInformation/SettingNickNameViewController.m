@@ -23,7 +23,9 @@
 
 
 - (IBAction)saveButtonAction:(id)sender {
-    
+    _retunrEditValue(self.nickNameTextField.text);
+    [self.nickNameTextField resignFirstResponder];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end
