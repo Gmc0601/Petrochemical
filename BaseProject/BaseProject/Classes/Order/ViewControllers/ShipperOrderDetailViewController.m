@@ -10,6 +10,7 @@
 #import "ShipperOrderDetailCarListTableViewCell.h"
 #import "WJItemsControlView.h"
 #import "LogisticsDetailsViewController.h"
+#import "Masonry.h"
 @interface ShipperOrderDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -18,8 +19,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *orderNumberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *startAddressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *startAreaLabel;
-@property (weak, nonatomic) IBOutlet UILabel *endAddressLabel;
-@property (weak, nonatomic) IBOutlet UILabel *endAreaLabel;
+@property (weak, nonatomic) IBOutlet UIView *unloadView;
+
 @property (weak, nonatomic) IBOutlet UILabel *durationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -70,6 +71,9 @@
         else{
             weakSelf.tableView.hidden = YES;
             weakSelf.scrollView.hidden = NO;
+            if (!weakSelf.infoDic) {
+                [weakSelf requestDetail];
+            }
         }
         
         [weakSelf.topItemsView moveToIndex:index];
@@ -121,6 +125,7 @@
         if (errorint == 0 ) {
            NSDictionary *info = dic[@"info"];
             self.infoDic = info;
+            [self fillDetail];
             
         }else {
             NSString *errorStr = dic[@"info"];
@@ -131,7 +136,71 @@
     }];
 }
 
+-(void)fillDetail{
+    
+    [self.unloadView mas_remakeConstraints:^(MASConstraintMaker *make) {}];
+    for (UIView *subView in self.unloadView.subviews) {
+        [subView removeFromSuperview];
+    }
+    self.orderNumberLabel.text = self.infoDic[@"good_num"];
+    self.startAreaLabel.text = validString(self.infoDic[@"loading"]);
+    self.startAddressLabel.text = validString(self.infoDic[@"loading_address"]);
+   
+    self.durationLabel.text = validString(self.infoDic[@"mileage"]);
+    self.dateLabel.text = validString(self.infoDic[@"use_time"]);
+    self.nameLabel.text = validString(self.infoDic[@"type"]);
+    self.remarksLabel.text = validString(self.infoDic[@"remark"]);
+    
+    NSArray *unloadArray = self.infoDic[@"unload"];
+    NSArray *unloadAddressArray = self.infoDic[@"unload_address"];
+    if ([unloadArray isKindOfClass:[NSArray class]]) {
+        for (int i = 0; i<unloadArray.count; i++) {
+            UIView *itemView = [[UIView alloc] init];
+            [self.unloadView addSubview:itemView];
+            itemView.frame = CGRectMake(0, i*50, kScreenW, 50);
+            
+            UIImageView *iconImageView = [[UIImageView alloc] init];
+            iconImageView.image = [UIImage imageNamed:@"weizhi"];
+            iconImageView.frame = CGRectMake(12, 18, 11, 13);
+            [itemView addSubview:iconImageView];
 
+            UILabel *nameLabel = [[UILabel alloc] init];
+            nameLabel.font = [UIFont systemFontOfSize:15];
+            nameLabel.textColor = RGBColor(36, 36, 36);
+            nameLabel.text = @"卸货点";
+            nameLabel.frame = CGRectMake(31, 0, 82, 50);
+             [itemView addSubview:nameLabel];
+            
+            UILabel *areaLabel = [[UILabel alloc] init];
+            areaLabel.font = [UIFont systemFontOfSize:15];
+            areaLabel.textColor = RGBColor(36, 36, 36);
+            areaLabel.textAlignment = NSTextAlignmentRight;
+            areaLabel.text = unloadArray[i];
+            areaLabel.frame = CGRectMake(125, 2, kScreenW-125-12, 20);
+            [itemView addSubview:areaLabel];
+            if ([unloadAddressArray isKindOfClass:[NSArray class]]) {
+                if (i<unloadAddressArray.count) {
+                    UILabel *addressLabel = [[UILabel alloc] init];
+                    addressLabel.font = [UIFont systemFontOfSize:15];
+                    addressLabel.textColor = RGBColor(36, 36, 36);
+                    addressLabel.textAlignment = NSTextAlignmentRight;
+                    addressLabel.frame = CGRectMake(125, 24, kScreenW-125-12, 20);
+                    addressLabel.text = unloadAddressArray[i];
+                    [itemView addSubview:addressLabel];
+                }
+            }
+            
+            UILabel *lineLabel = [[UILabel alloc] init];
+            lineLabel.frame = CGRectMake(0, 49, kScreenW, 1);
+            lineLabel.backgroundColor = RGBColor(244, 244, 244);
+            [itemView addSubview:lineLabel];
+        }
+        float maxHeight = unloadArray.count*50;
+        [self.unloadView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(maxHeight);
+        }];
+    }
+}
 
 #pragma mark -- UITableViewDataSource
 
@@ -164,7 +233,6 @@
     con.orderId = self.orderId;
     [self.navigationController pushViewController:con animated:YES];
 }
-
 
 -(void)clickCall:(UIButton *)sender{
     NSDictionary *carDic = self.carListArray[sender.tag];

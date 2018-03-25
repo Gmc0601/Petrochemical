@@ -11,6 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyCenterViewController">
             <connections>
+                <outlet property="userHeaderImageView" destination="dA8-iM-jwo" id="J0w-Cg-UUI"/>
+                <outlet property="userNickNameLabel" destination="Jyn-dH-F9I" id="UNx-d2-arD"/>
+                <outlet property="user_statusLabel" destination="7A6-re-wmj" id="P7Y-1L-SrS"/>
                 <outlet property="view" destination="TFZ-SF-10X" id="jaE-VO-FKh"/>
             </connections>
         </placeholder>
@@ -147,8 +150,8 @@
                                                 <action selector="myCargoInfoAction:" destination="-1" eventType="touchUpInside" id="HKI-Rg-Xc3"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7A6-re-wmj">
-                                            <rect key="frame" x="289.5" y="0.0" width="37.5" height="54"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7A6-re-wmj">
+                                            <rect key="frame" x="327" y="0.0" width="0.0" height="54"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" red="0.0078431372549019607" green="0.54509803921568623" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>

@@ -61,6 +61,7 @@
 		7A75D3C12059213A00C6860A /* ShipperOrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A75D3BF2059213A00C6860A /* ShipperOrderTableViewCell.xib */; };
 		7A80267920609E4300D1FDEF /* RobbingOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A80267720609E4300D1FDEF /* RobbingOrdersViewController.m */; };
 		7A80267A20609E4300D1FDEF /* RobbingOrdersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A80267820609E4300D1FDEF /* RobbingOrdersViewController.xib */; };
+		7A80268A2062033500D1FDEF /* UIButton+message.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8026892062033500D1FDEF /* UIButton+message.m */; };
 		7AFAE4A7205A0C5E00B14406 /* Passport.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFAE4A6205A0C5E00B14406 /* Passport.m */; };
 		7AFAE4AB205A0F5C00B14406 /* ShipperOrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFAE4A9205A0F5C00B14406 /* ShipperOrderDetailViewController.m */; };
 		7AFAE4AC205A0F5C00B14406 /* ShipperOrderDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AFAE4AA205A0F5C00B14406 /* ShipperOrderDetailViewController.xib */; };
@@ -271,6 +272,8 @@
 		7A80267620609E4300D1FDEF /* RobbingOrdersViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RobbingOrdersViewController.h; sourceTree = "<group>"; };
 		7A80267720609E4300D1FDEF /* RobbingOrdersViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RobbingOrdersViewController.m; sourceTree = "<group>"; };
 		7A80267820609E4300D1FDEF /* RobbingOrdersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RobbingOrdersViewController.xib; sourceTree = "<group>"; };
+		7A8026882062033500D1FDEF /* UIButton+message.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+message.h"; sourceTree = "<group>"; };
+		7A8026892062033500D1FDEF /* UIButton+message.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+message.m"; sourceTree = "<group>"; };
 		7AFAE4A5205A0C5E00B14406 /* Passport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Passport.h; sourceTree = "<group>"; };
 		7AFAE4A6205A0C5E00B14406 /* Passport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Passport.m; sourceTree = "<group>"; };
 		7AFAE4A8205A0F5C00B14406 /* ShipperOrderDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShipperOrderDetailViewController.h; sourceTree = "<group>"; };
@@ -679,6 +682,8 @@
 				422F1FFA2047E858009481CC /* UIViewController+BarButton.m */,
 				8211DC512062014900A747A4 /* UIImage+MyProperty.h */,
 				8211DC522062014900A747A4 /* UIImage+MyProperty.m */,
+				7A8026882062033500D1FDEF /* UIButton+message.h */,
+				7A8026892062033500D1FDEF /* UIButton+message.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1124,6 +1129,13 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		822A271C20677B210093F5C9 /* MyCarDetailInfomation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MyCarDetailInfomation;
+			sourceTree = "<group>";
+		};
 		82B6D29C205F4EE400C65CA4 /* CustomAlbum */ = {
 			isa = PBXGroup;
 			children = (
@@ -1227,6 +1239,7 @@
 		82B6D2DD205F4FB400C65CA4 /* MyCarInformation */ = {
 			isa = PBXGroup;
 			children = (
+				822A271C20677B210093F5C9 /* MyCarDetailInfomation */,
 				82B6D2F9205F62CF00C65CA4 /* AddMyCarInformation */,
 				82B6D2F3205F53C700C65CA4 /* view */,
 				82B6D2DE205F4FB400C65CA4 /* MyCarInformationListViewController.h */,
@@ -1583,6 +1596,7 @@
 				7AFAE4E9205A236600B14406 /* UIView+MJExtension.m in Sources */,
 				7A328DD0205BA62D00BF9DAC /* InformationVideoTableViewCell.m in Sources */,
 				82B6D2C5205F4F5900C65CA4 /* IQTextView.m in Sources */,
+				7A80268A2062033500D1FDEF /* UIButton+message.m in Sources */,
 				7AFAE4AB205A0F5C00B14406 /* ShipperOrderDetailViewController.m in Sources */,
 				7AFD2205205F821B009DB138 /* MessageViewController.m in Sources */,
 				82B6D2C8205F4F5900C65CA4 /* IQBarButtonItem.m in Sources */,

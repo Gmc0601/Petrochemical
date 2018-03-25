@@ -14,8 +14,13 @@
 
 @interface MyCenterViewController ()
 
-@property (nonatomic, strong) UITableView *noUseTableView;
+@property (weak, nonatomic) IBOutlet UIImageView *userHeaderImageView;
+@property (weak, nonatomic) IBOutlet UILabel *userNickNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *user_statusLabel;
 
+
+@property (nonatomic, strong) UITableView *noUseTableView;
+@property (nonatomic, assign) int user_status;
 @end
 
 @implementation MyCenterViewController
@@ -29,14 +34,13 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     self.noUseTableView.scrollIndicatorInsets = self.noUseTableView.contentInset;
-    
-    
 }
 
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
+    [self cargoOwnerPlan];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -48,6 +52,22 @@
     [super didReceiveMemoryWarning];
 }
 
+- (void) cargoOwnerPlan {
+    //[user_status] => 1  认证进度 1待审核 2已通过 3认证失败
+    [HttpRequest postPath:@"_progress_001" params:@{@"userToken":TokenKey} resultBlock:^(id responseObject, NSError *error) {
+        NSDictionary *dic = responseObject;
+        int errorint = [dic[@"error"] intValue];
+        if (errorint == 0 ) {
+            NSDictionary *info = dic[@"info"];
+            if ([info isKindOfClass:[NSDictionary class]]) {
+                self.user_status = [[NSString stringWithFormat:@"%@",info[@"user_status"]] intValue];
+            }
+        }else {
+            NSString *errorStr = dic[@"info"];
+            [ConfigModel mbProgressHUD:errorStr andView:nil];
+        }
+    }];
+}
 #pragma mark -- method
 
 - (IBAction)settingUserInfoAction:(id)sender {
@@ -75,5 +95,24 @@
 - (IBAction)invitefriendsinviteFriendsAction:(id)sender {
 }
 
-
+#pragma mark -- setter
+- (void) setUser_status:(int)user_status{
+    _user_status = user_status;
+    switch (user_status) {
+        case 1:
+            self.user_statusLabel.text = @"待审核";
+            break;
+        case 2:
+            self.user_statusLabel.text = @"已通过";
+            break;
+        case 3:
+            self.user_statusLabel.text = @"认证失败";
+            break;
+            case 4:
+            self.user_statusLabel.text = @"未认证";
+            break;
+        default:
+            break;
+    }
+}
 @end

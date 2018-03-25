@@ -8,17 +8,22 @@
 
 #import "MyCarInformationListViewController.h"
 #import "MyCarInformationTableViewCell.h"
+#import "AddMyCarInformationFristViewController.h"
 
 @interface MyCarInformationListViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (strong, nonatomic) NSMutableArray *dataSource;
 @end
 
 @implementation MyCarInformationListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _dataSource = @[].mutableCopy;
     [self setupUI];
+    [self setupDataSource];
 }
 
 - (void) setupUI{
@@ -37,8 +42,25 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
 }
 
+- (void) setupDataSource{
+    [HttpRequest postPath:@"_user_car_001" params:@{@"userToken":TokenKey} resultBlock:^(id responseObject, NSError *error) {
+        NSDictionary *dic = responseObject;
+        int errorint = [dic[@"error"] intValue];
+        if (errorint == 0 ) {
+            NSArray *info = dic[@"info"];
+            if ([info isKindOfClass:[NSArray class]]) {
+                _dataSource = info.mutableCopy;
+            }
+        }else {
+            NSString *errorStr = dic[@"info"];
+            [ConfigModel mbProgressHUD:errorStr andView:nil];
+        }
+        [self.tableView reloadData];
+    }];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 2;
+    return _dataSource.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -53,6 +75,7 @@
 
 #pragma mark -- method
 - (void) rightButtonAction{
-    
+    AddMyCarInformationFristViewController *addCarInfoVC = [AddMyCarInformationFristViewController new];
+    [self.navigationController pushViewController:addCarInfoVC animated:YES];
 }
 @end

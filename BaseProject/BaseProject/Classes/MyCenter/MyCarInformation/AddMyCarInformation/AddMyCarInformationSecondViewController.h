@@ -9,5 +9,8 @@
 #import "BaseViewController.h"
 
 @interface AddMyCarInformationSecondViewController : BaseViewController
+@property (strong, nonatomic) NSString *nickNameStr;
+@property (strong, nonatomic) NSString *phoneStr;
+@property (strong, nonatomic) NSString *codeStr;
 
 @end

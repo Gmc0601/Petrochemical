@@ -43,7 +43,6 @@
             NSString *errorStr = dic[@"info"];
             NSLog(@"%@", errorStr);
             [ConfigModel mbProgressHUD:errorStr andView:nil];
-            
         }
     }];
 }
@@ -52,7 +51,6 @@
     NSDictionary *dic = @{
                           @"userToken":@"e56d19bd376625cc2bc7aa6ae40e385a",
                           };
-    
     [HttpRequest postPath:@"_message_001" params:dic resultBlock:^(id responseObject, NSError *error) {
       
         NSDictionary *dic = responseObject;
@@ -71,7 +69,6 @@
             NSString *errorStr = dic[@"info"];
             NSLog(@"%@", errorStr);
             [ConfigModel mbProgressHUD:errorStr andView:nil];
-            
         }
     }];
 }

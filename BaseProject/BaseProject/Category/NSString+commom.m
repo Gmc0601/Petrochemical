@@ -37,5 +37,10 @@
     return [self stringIsNilOrEmpty: string] || [string isBlankString];
 }
 
-
+- (BOOL) isPhoneNumber{
+    NSString *telRegex = @"(((13[0-9]{1})|(14[579]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+[0-9]{8})";
+    
+    NSPredicate *regExPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", telRegex];
+    return [regExPredicate evaluateWithObject:self];
+}
 @end

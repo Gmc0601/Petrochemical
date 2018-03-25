@@ -13,4 +13,5 @@
 + (BOOL)stringIsNilOrBlank:(NSString *)string;
 + (BOOL)stringIsNilOrEmpty:(NSString *)string;
 
+@property (readonly, assign) BOOL isPhoneNumber;
 @end

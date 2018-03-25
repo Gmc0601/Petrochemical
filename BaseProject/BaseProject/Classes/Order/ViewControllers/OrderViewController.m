@@ -12,9 +12,11 @@
 #import "ShipperOrderTableViewCell.h"
 #import "ShipperOrderDetailViewController.h"
 #import "MessageViewController.h"
+#import "UIButton+message.h"
 @interface OrderViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     NSInteger menuIndex;
+    UIButton *messageButton;
 }
 @property(nonatomic,strong)WJItemsControlView *topItemsView;
 @property (nonatomic,strong) NSDictionary *infoDic;
@@ -27,26 +29,40 @@
 @implementation OrderViewController
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [messageButton updateMessage];
      [self requestList];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     menuIndex = 0;
     [self setCustomerTitle:@"货主订单"];
-    [self addRightBarButtonWithFirstImage:[UIImage imageNamed:@"xin"] action:@selector(rightBarClick)];
   
     [self setTopTypeInfo];
     
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 108, kScreenW, kScreenH-108-49) style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
-   
+    _tableView.rowHeight = 150;
     _tableView.estimatedRowHeight = 150;
     _tableView.backgroundColor = RGBColor(227, 227, 227);
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
     [self setupRefresh];
-   
+    [self setNavInfo];
+}
+
+-(void)setNavInfo{
+    messageButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    messageButton.frame = CGRectMake(0, 0, 44, 44);
+ 
+    [messageButton setImage:[UIImage imageNamed:@"xin"] forState:UIControlStateNormal];
+    [messageButton setImage:[UIImage imageNamed:@"xinyuandian"] forState:UIControlStateSelected];
+    [messageButton addTarget:self action:@selector(rightBarClick) forControlEvents:UIControlEventTouchUpInside];
+    messageButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    [messageButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 5 * kScreenWidth / 375.0)];
+    
+    UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:messageButton];
+    self.navigationItem.rightBarButtonItem = rightBarButtonItem;
 }
 
 - (void)rightBarClick {
@@ -121,11 +137,11 @@
         array = self.infoDic[@"yunshuzhong"];
     }
     else if (menuIndex==3) {
-        array = self.infoDic[@"yiwancheng"];
+        array = self.infoDic[@"jiesu"];
     }
     
     if ([array isKindOfClass:[NSArray class]]) {
-        self.listArray = self.infoDic[@"quanbu"];
+        self.listArray = array;
     }
     else{
         self.listArray = nil;

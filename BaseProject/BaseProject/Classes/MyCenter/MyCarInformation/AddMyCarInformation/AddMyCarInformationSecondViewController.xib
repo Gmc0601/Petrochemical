@@ -13,6 +13,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddMyCarInformationSecondViewController">
             <connections>
+                <outlet property="carNumberTextField" destination="6Wz-AZ-o2C" id="Mg8-Ml-Mln"/>
+                <outlet property="carTypeTextField" destination="Hd7-JX-f8K" id="DBy-UA-qGO"/>
+                <outlet property="drivingLicenceImageView" destination="jlO-PB-pv8" id="CnI-po-CD5"/>
+                <outlet property="maxLoadTextField" destination="pJj-zx-vtk" id="yOm-jz-KT1"/>
+                <outlet property="otherImageView" destination="Wp4-vD-QZn" id="x1Z-MA-3sB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -89,6 +94,9 @@
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mO2-Ny-w8I">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
+                                    <connections>
+                                        <action selector="selectedCarTypeAction:" destination="-1" eventType="touchUpInside" id="OLk-ZK-tbz"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -151,7 +159,7 @@
                                 <constraint firstAttribute="height" constant="1" id="yYA-8k-bFK"/>
                             </constraints>
                         </view>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jlO-PB-pv8">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leasjiatu" translatesAutoresizingMaskIntoConstraints="NO" id="jlO-PB-pv8">
                             <rect key="frame" x="20" y="253" width="157.5" height="99.5"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="jlO-PB-pv8" secondAttribute="height" multiplier="158:100" id="fgd-ls-F0g"/>
@@ -159,12 +167,18 @@
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JeX-rw-VHq">
                             <rect key="frame" x="20" y="253" width="157.5" height="99.5"/>
+                            <connections>
+                                <action selector="addDrivingLicenceImageViewAction:" destination="-1" eventType="touchUpInside" id="tW8-RQ-OcR"/>
+                            </connections>
                         </button>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wp4-vD-QZn">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leasjiatu" translatesAutoresizingMaskIntoConstraints="NO" id="Wp4-vD-QZn">
                             <rect key="frame" x="198" y="253" width="157" height="99.5"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r9v-dh-n99">
                             <rect key="frame" x="198" y="253" width="157" height="99.5"/>
+                            <connections>
+                                <action selector="addOtherImageViewAction:" destination="-1" eventType="touchUpInside" id="Qto-Yi-8H0"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="司机驾驶证" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KWe-gf-27s">
                             <rect key="frame" x="21" y="222" width="76.5" height="18"/>
@@ -234,6 +248,9 @@
                     <state key="normal" title="提交审核">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <connections>
+                        <action selector="updateInfoAction:" destination="-1" eventType="touchUpInside" id="s0C-Wk-jkp"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -252,5 +269,6 @@
     </objects>
     <resources>
         <image name="leasfanhuisheise" width="17" height="10"/>
+        <image name="leasjiatu" width="335" height="180"/>
     </resources>
 </document>

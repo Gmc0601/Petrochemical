@@ -60,10 +60,10 @@
     return self.dataSource.count;
 }
 - (nullable NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
-    NSString *linkNameStr = self.dataSource[component][@"linkname"];
+    NSString *linkNameStr = self.dataSource[row][@"linkname"];
     return linkNameStr;
 }
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component __TVOS_PROHIBITED{
-    self.selectedValue = [self.dataSource[component] mutableCopy];
+    self.selectedValue = [self.dataSource[row] mutableCopy];
 }
 @end
