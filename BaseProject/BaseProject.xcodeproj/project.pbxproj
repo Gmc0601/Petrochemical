@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		035A23A2206B44150003CD31 /* DeliveryTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 035A23A1206B44150003CD31 /* DeliveryTypeView.m */; };
+		035A23A4206B44200003CD31 /* DeliveryTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 035A23A3206B44200003CD31 /* DeliveryTypeView.xib */; };
+		035A23A7206B48C20003CD31 /* CarListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 035A23A6206B48C20003CD31 /* CarListViewController.m */; };
+		035A23AA206B48CE0003CD31 /* GoodsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 035A23A9206B48CE0003CD31 /* GoodsListViewController.m */; };
 		420D18262057A71300E1D8E1 /* UILabel+Width.m in Sources */ = {isa = PBXBuildFile; fileRef = 420D18242057A71300E1D8E1 /* UILabel+Width.m */; };
 		420D183D2057AA5800E1D8E1 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420D183C2057AA5700E1D8E1 /* HomePageViewController.m */; };
 		420D18462057AA9100E1D8E1 /* MyCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420D18452057AA9100E1D8E1 /* MyCenterViewController.m */; };
@@ -167,6 +171,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		035A23A0206B44150003CD31 /* DeliveryTypeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeliveryTypeView.h; sourceTree = "<group>"; };
+		035A23A1206B44150003CD31 /* DeliveryTypeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeliveryTypeView.m; sourceTree = "<group>"; };
+		035A23A3206B44200003CD31 /* DeliveryTypeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeliveryTypeView.xib; sourceTree = "<group>"; };
+		035A23A5206B48C20003CD31 /* CarListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarListViewController.h; sourceTree = "<group>"; };
+		035A23A6206B48C20003CD31 /* CarListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarListViewController.m; sourceTree = "<group>"; };
+		035A23A8206B48CE0003CD31 /* GoodsListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsListViewController.h; sourceTree = "<group>"; };
+		035A23A9206B48CE0003CD31 /* GoodsListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsListViewController.m; sourceTree = "<group>"; };
 		420D18242057A71300E1D8E1 /* UILabel+Width.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Width.m"; sourceTree = "<group>"; };
 		420D18252057A71300E1D8E1 /* UILabel+Width.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Width.h"; sourceTree = "<group>"; };
 		420D183B2057AA5700E1D8E1 /* HomePageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
@@ -458,6 +469,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		035A239D206B43D40003CD31 /* Delivery */ = {
+			isa = PBXGroup;
+			children = (
+				035A239F206B43F70003CD31 /* View */,
+				035A239E206B43EA0003CD31 /* ViewControllers */,
+			);
+			path = Delivery;
+			sourceTree = "<group>";
+		};
+		035A239E206B43EA0003CD31 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				035A23A5206B48C20003CD31 /* CarListViewController.h */,
+				035A23A6206B48C20003CD31 /* CarListViewController.m */,
+				035A23A8206B48CE0003CD31 /* GoodsListViewController.h */,
+				035A23A9206B48CE0003CD31 /* GoodsListViewController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		035A239F206B43F70003CD31 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				035A23A0206B44150003CD31 /* DeliveryTypeView.h */,
+				035A23A1206B44150003CD31 /* DeliveryTypeView.m */,
+				035A23A3206B44200003CD31 /* DeliveryTypeView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		420D18312057AA0400E1D8E1 /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
@@ -697,6 +738,7 @@
 				420D18472057CF7500E1D8E1 /* Information */,
 				42F795A21F00C84600A11A69 /* MyCenter */,
 				7AFD21FF205F8113009DB138 /* Message */,
+				035A239D206B43D40003CD31 /* Delivery */,
 				42C84EA41EF2DB060008189D /* ViewController.h */,
 				42C84EA51EF2DB060008189D /* ViewController.m */,
 			);
@@ -1423,6 +1465,7 @@
 				82B6D2F8205F53F000C65CA4 /* MyCarInformationTableViewCell.xib in Resources */,
 				82B6D2D5205F4FA000C65CA4 /* MyCenterViewController.xib in Resources */,
 				82B6D2ED205F4FB400C65CA4 /* MyCarInformationListViewController.xib in Resources */,
+				035A23A4206B44200003CD31 /* DeliveryTypeView.xib in Resources */,
 				42F795D91F00CC3E00A11A69 /* arrowup@2x.png in Resources */,
 				422F20292047F7B6009481CC /* LoginViewController.xib in Resources */,
 				7AFAE525205A3FCE00B14406 /* README.md in Resources */,
@@ -1560,6 +1603,8 @@
 				82B6D2EC205F4FB400C65CA4 /* SettingNickNameViewController.m in Sources */,
 				82B6D2D1205F4F5900C65CA4 /* IQUIView+Hierarchy.m in Sources */,
 				42E6175B2058F14100B01D6D /* OrderViewController.m in Sources */,
+				035A23AA206B48CE0003CD31 /* GoodsListViewController.m in Sources */,
+				035A23A7206B48C20003CD31 /* CarListViewController.m in Sources */,
 				7AFAE4A7205A0C5E00B14406 /* Passport.m in Sources */,
 				420D18262057A71300E1D8E1 /* UILabel+Width.m in Sources */,
 				7AFAE51B205A3FCE00B14406 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
@@ -1607,6 +1652,7 @@
 				422F20032047E8B2009481CC /* UIButton+SSEdgeInsets.m in Sources */,
 				7AFAE4F2205A236600B14406 /* MJRefreshGifHeader.m in Sources */,
 				42C84EB61EF2DCBC0008189D /* ConfigModel.m in Sources */,
+				035A23A2206B44150003CD31 /* DeliveryTypeView.m in Sources */,
 				7AFAE51F205A3FCE00B14406 /* MASLayoutConstraint.m in Sources */,
 				7AFAE4F6205A236600B14406 /* MJRefreshAutoFooter.m in Sources */,
 				7AFD220F205F86DD009DB138 /* TransportDynamicsViewController.m in Sources */,

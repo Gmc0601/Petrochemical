@@ -38,7 +38,7 @@
     
     __weak typeof(self) weakSelf = self;
     [tabBar setDidClickPublishBtn:^{
-        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"MidelTabbarItem_Noti" object:nil];
     }];
     
 }
