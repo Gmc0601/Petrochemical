@@ -30,7 +30,7 @@
                     <rect key="frame" x="232.5" y="464" width="80" height="75"/>
                     <state key="normal" title=" " image="cheyuantubiao"/>
                     <connections>
-                        <action selector="carAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="fPD-7T-yuD"/>
+                        <action selector="carAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="Prd-qy-1n4"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xiY-gL-TTb">

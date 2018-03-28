@@ -11,7 +11,7 @@
 #import "DeliveryTypeView.h"
 #import "CarListViewController.h"
 #import "GoodsListViewController.h"
-
+#import "TBNavigationController.h"
 @interface ViewController ()
 
 @end
@@ -62,12 +62,14 @@
    
     [self gotoClose];
     CarListViewController * carListVC = [[CarListViewController alloc]init];
-    [self.navigationController pushViewController:carListVC animated:YES];
+   TBNavigationController *nav = [[TBNavigationController alloc] initWithRootViewController:carListVC];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 - (void)gotoGoods{
    [self gotoClose];
     GoodsListViewController * goodsListVC = [[GoodsListViewController alloc]init];
-    [self.navigationController pushViewController:goodsListVC animated:YES];
+    TBNavigationController *nav = [[TBNavigationController alloc] initWithRootViewController:goodsListVC];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

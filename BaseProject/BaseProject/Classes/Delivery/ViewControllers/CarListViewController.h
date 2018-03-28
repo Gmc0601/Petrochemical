@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface CarListViewController : UIViewController
+#import "BaseTableView.h"
+@interface CarListViewController : BaseTableView
 
 @end

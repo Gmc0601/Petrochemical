@@ -1,5 +1,5 @@
 //
-//  GoodsListViewController.h
+//  CarCell.h
 //  BaseProject
 //
 //  Created by DCQ on 2018/3/28.
@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseViewController.h"
-@interface GoodsListViewController : BaseViewController
+
+@interface CarCell : UITableViewCell
 
 @end

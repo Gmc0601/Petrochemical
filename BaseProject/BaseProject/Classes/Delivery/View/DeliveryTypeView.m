@@ -18,6 +18,11 @@
     [super awakeFromNib];
     self.bgView.backgroundColor = [UIColor whiteColor];
     self.bgView.alpha = 0.9;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction)];
+    [self.bgView addGestureRecognizer:tap];
+}
+- (void)tapAction {
+    [self closeAction:nil];
 }
 - (IBAction)closeAction:(id)sender {
     if (self.selectedBlock) {
@@ -31,7 +36,7 @@
 }
 - (IBAction)carAction:(id)sender {
     if (self.selectedBlock) {
-        self.selectedBlock(DeliverType_close);
+        self.selectedBlock(DeliverType_car);
     }
 }
 
