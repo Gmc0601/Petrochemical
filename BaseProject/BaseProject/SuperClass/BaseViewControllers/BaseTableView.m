@@ -51,17 +51,29 @@
 
 - (UITableView *)CC_table {
     if (!_CC_table) {
-        _CC_table = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenW, kScreenH - 64 - 50) style:UITableViewStylePlain];
+        _CC_table = [[UITableView alloc] initWithFrame:[self getTableFrame] style:[self getStyle]];
         _CC_table.backgroundColor = RGBColor(239, 240, 241);
         _CC_table.delegate = self;
         _CC_table.dataSource = self;
         [_CC_table setSeparatorStyle:UITableViewCellSeparatorStyleNone];
         WeakSelf(weakself);
-        [_CC_table addRefreshHeaderWithBlock:^{
-            [weakself CC_reloadDate];
-        }];
+        if ([self addRefreshHeader]) {
+            [_CC_table addRefreshHeaderWithBlock:^{
+                [weakself CC_reloadDate];
+            }];
+        }
+        
     }
     return _CC_table;
+}
+- (BOOL)addRefreshHeader{
+    return YES;
+}
+- (UITableViewStyle )getStyle{
+    return UITableViewStylePlain;
+}
+-(CGRect)getTableFrame{
+    return CGRectMake(0, 64, kScreenW, kScreenH - 64 - 50);
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

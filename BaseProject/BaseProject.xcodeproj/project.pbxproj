@@ -13,6 +13,8 @@
 		035A23AA206B48CE0003CD31 /* GoodsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 035A23A9206B48CE0003CD31 /* GoodsListViewController.m */; };
 		035A23AE206B6CD90003CD31 /* CarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 035A23AC206B6CD90003CD31 /* CarCell.m */; };
 		035A23AF206B6CD90003CD31 /* CarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 035A23AD206B6CD90003CD31 /* CarCell.xib */; };
+		035A23B7206B76A20003CD31 /* CarFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 035A23B6206B76A20003CD31 /* CarFooterView.m */; };
+		035A23B9206B76AB0003CD31 /* CarFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 035A23B8206B76AB0003CD31 /* CarFooterView.xib */; };
 		420D18262057A71300E1D8E1 /* UILabel+Width.m in Sources */ = {isa = PBXBuildFile; fileRef = 420D18242057A71300E1D8E1 /* UILabel+Width.m */; };
 		420D183D2057AA5800E1D8E1 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420D183C2057AA5700E1D8E1 /* HomePageViewController.m */; };
 		420D18462057AA9100E1D8E1 /* MyCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420D18452057AA9100E1D8E1 /* MyCenterViewController.m */; };
@@ -183,6 +185,9 @@
 		035A23AB206B6CD90003CD31 /* CarCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarCell.h; sourceTree = "<group>"; };
 		035A23AC206B6CD90003CD31 /* CarCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarCell.m; sourceTree = "<group>"; };
 		035A23AD206B6CD90003CD31 /* CarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarCell.xib; sourceTree = "<group>"; };
+		035A23B5206B76A20003CD31 /* CarFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarFooterView.h; sourceTree = "<group>"; };
+		035A23B6206B76A20003CD31 /* CarFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarFooterView.m; sourceTree = "<group>"; };
+		035A23B8206B76AB0003CD31 /* CarFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarFooterView.xib; sourceTree = "<group>"; };
 		420D18242057A71300E1D8E1 /* UILabel+Width.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Width.m"; sourceTree = "<group>"; };
 		420D18252057A71300E1D8E1 /* UILabel+Width.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Width.h"; sourceTree = "<group>"; };
 		420D183B2057AA5700E1D8E1 /* HomePageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
@@ -503,6 +508,9 @@
 				035A23AB206B6CD90003CD31 /* CarCell.h */,
 				035A23AC206B6CD90003CD31 /* CarCell.m */,
 				035A23AD206B6CD90003CD31 /* CarCell.xib */,
+				035A23B5206B76A20003CD31 /* CarFooterView.h */,
+				035A23B6206B76A20003CD31 /* CarFooterView.m */,
+				035A23B8206B76AB0003CD31 /* CarFooterView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1485,6 +1493,7 @@
 				7AFD2206205F821B009DB138 /* MessageViewController.xib in Resources */,
 				42A444401EF133E000F90791 /* Assets.xcassets in Resources */,
 				7A75D3C12059213A00C6860A /* ShipperOrderTableViewCell.xib in Resources */,
+				035A23B9206B76AB0003CD31 /* CarFooterView.xib in Resources */,
 				7A328DD6205BB07500BF9DAC /* InformationDetailViewController.xib in Resources */,
 				8211DC59206205DD00A747A4 /* CustomSeletedPickView.xib in Resources */,
 				7AFD220B205F86C9009DB138 /* SystemMessageViewController.xib in Resources */,
@@ -1632,6 +1641,7 @@
 				7AFAE4ED205A236600B14406 /* MJRefreshAutoStateFooter.m in Sources */,
 				82B6D2EA205F4FB400C65CA4 /* UserInformationViewController.m in Sources */,
 				422F1FFC2047E858009481CC /* UIViewController+BarButton.m in Sources */,
+				035A23B7206B76A20003CD31 /* CarFooterView.m in Sources */,
 				42F795DC1F00CC3E00A11A69 /* UIScrollView+TBRefresh.m in Sources */,
 				42F795C01F00C8B200A11A69 /* UINavigationBar+Awesome.m in Sources */,
 				42C84EAF1EF2DB060008189D /* ViewController.m in Sources */,

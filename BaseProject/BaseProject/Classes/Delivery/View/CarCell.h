@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface CarCell : UITableViewCell
-
+- (void)setupImg:(NSString *)imgName withTitle:(NSString *)title withTextFeild:(NSString *)content withPlaceholder:(NSString *)placeholder;
 @end
