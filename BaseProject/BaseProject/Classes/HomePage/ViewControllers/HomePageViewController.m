@@ -140,7 +140,7 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
 }
 
 -(void)requestList{
-    [ConfigModel saveString:@"cb97a780c081a49154bed3aa50842ff4" forKey:UserToken];
+    [ConfigModel saveString:@"02c8f878c1d5463b5bea89e893cde184" forKey:UserToken];
     [ConfigModel saveBoolObject:YES forKey:IsLogin];
     [ConfigModel showHud:self];
     

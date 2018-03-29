@@ -44,7 +44,7 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
     [self registerCell];
     self.CC_table.bounces = NO;
     [self setupBottomView];
-    self.isOpenLocation = YES;
+  
     [self openLocation];
     
 }
@@ -72,14 +72,27 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 50;
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 0.0001;
+}
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 80;
+}
+- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    
+    UIView *header = [[UIView alloc] init];
+    header.frame = CGRectMake(0, 0, self.view.frame.size.width, 10);
+    header.backgroundColor = [UIColor clearColor];
+    return header;
 }
 - (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     CarFooterView * footerView = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass([CarFooterView class]) owner:nil options:nil].firstObject;
     footerView.frame = CGRectMake(0, 0, self.view.frame.size.width, 80);
     return footerView;
 }
+
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     // 写这个方法防止报警告，只要子类中覆盖这个方法就不会影响显示
     UITableViewCell * cell = nil;
@@ -224,7 +237,7 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
     }];
 }
 - (void)gotoEmptyCarVC{
-    EmptyCarListViewController * emptyVC = [[EmptyCarListViewController alloc]init];
+    EmptyCarListViewController * emptyVC = [[EmptyCarListViewController alloc]initChooseCarId:self.car_id];
     WeakSelf(weakSelf);
     emptyVC.emptyCarBlock = ^(NSDictionary *carInfo) {
         [weakSelf  selectedCar:carInfo];
@@ -275,7 +288,7 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
 }
 - (void)getStartLoction{
     if (self.isOpenLocation) {
-        
+        [self.CC_table reloadData];
     }else{
         [self openLocation];
     }
@@ -316,8 +329,10 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
         // 5.临时开启后台定位  iOS9新增方法  必须要配置info.plist文件 后台定位不然直接崩溃
         //            self.locationManager.allowsBackgroundLocationUpdates = YES;
         //        }
-        
-        
+        if (self.isOpenLocation) {
+              [self.CC_table reloadData];
+        }
+          self.isOpenLocation = YES;
         NSLog(@"start gps");
         
     }else{
@@ -341,7 +356,7 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
 - (void)showNoLocationAlert{
     
     NSString * title = @"提示";
-    NSString * content = @"无法获取您的位置信息。请到手机系统的[设置]->[隐私]->[定位服务]中打开定位服务，并允许小佳老师使用定位服务。";
+    NSString * content = @"无法获取您的位置信息。请到手机系统的[设置]->[隐私]->[定位服务]中打开定位服务，并允许此app使用定位服务。";
     UIAlertController * alertC = [UIAlertController alertControllerWithTitle:title message:content preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction * action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
     [alertC addAction:action];
@@ -408,7 +423,7 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
             //            self.provinceName = state;
             
             //            self.subLocality =placemark.subLocality;
-            self.startLocation   = placemark.name;
+            self.startLocation   =[NSString stringWithFormat:@"%@%@%@",placemark.locality,placemark.subLocality, placemark.name];
             //系统会一直更新数据，直到选择停止更新，因为我们只需要获得一次经纬度即可，所以获取之后就停止更新
             [manager stopUpdatingLocation];
             

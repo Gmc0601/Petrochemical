@@ -11,7 +11,7 @@
 /*
  接口文档
  */
-#define TokenKey @"cb97a780c081a49154bed3aa50842ff4"
+#define TokenKey @"02c8f878c1d5463b5bea89e893cde184"
 
 #define UDID     0
 
