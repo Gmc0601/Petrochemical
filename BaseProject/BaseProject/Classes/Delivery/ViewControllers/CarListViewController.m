@@ -31,6 +31,7 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
 @property(nonatomic, assign) CGFloat  lat;//空车位置纬度
 @property(nonatomic, copy) NSString * maxLoad;//最大载重
 @property(nonatomic, strong) CLLocationManager *locationManager;
+@property(nonatomic, assign) NSInteger isOpenLocation;
 @end
 
 @implementation CarListViewController
@@ -43,7 +44,7 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
     [self registerCell];
     self.CC_table.bounces = NO;
     [self setupBottomView];
-    
+    self.isOpenLocation = YES;
     [self openLocation];
     
 }
@@ -189,7 +190,7 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
 - (void)sendCarInfo{
     
     NSDictionary *dic = @{
-                          @"userToken":@"e56d19bd376625cc2bc7aa6ae40e385a",
+                          @"userToken":@"02c8f878c1d5463b5bea89e893cde184",
                           @"car_id":self.car_id,
                           @"origin":self.startLocation,
                           @"destination":self.endLocation,
@@ -269,7 +270,11 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
     }];
 }
 - (void)getStartLoction{
-    
+    if (self.isOpenLocation) {
+        
+    }else{
+        [self openLocation];
+    }
     
 }
 
@@ -312,7 +317,7 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
         NSLog(@"start gps");
         
     }else{
-        
+         self.isOpenLocation = NO;
         [self showNoLocationAlert];
         
         

@@ -24,6 +24,16 @@
 		035A2401206C7F830003CD31 /* EmptyCarListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 035A23FB206C7F820003CD31 /* EmptyCarListViewController.m */; };
 		035A2402206C7F830003CD31 /* ChooseAddressListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 035A23FC206C7F820003CD31 /* ChooseAddressListViewController.m */; };
 		035A2403206C7F830003CD31 /* GoodsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 035A23FE206C7F830003CD31 /* GoodsListViewController.m */; };
+		035A2406206C97BD0003CD31 /* ChooseAddressSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 035A2405206C97BD0003CD31 /* ChooseAddressSearchView.m */; };
+		035A2408206C97C90003CD31 /* ChooseAddressSearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 035A2407206C97C90003CD31 /* ChooseAddressSearchView.xib */; };
+		035A240A206CC69C0003CD31 /* AMapLocationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035A2409206CC69C0003CD31 /* AMapLocationKit.framework */; };
+		035A240C206CC6C40003CD31 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 035A240B206CC6C40003CD31 /* libc++.tbd */; };
+		035A240E206CC6CE0003CD31 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035A240D206CC6CE0003CD31 /* CoreTelephony.framework */; };
+		035A2410206CC6D50003CD31 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035A240F206CC6D50003CD31 /* SystemConfiguration.framework */; };
+		035A2412206CC6DC0003CD31 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035A2411206CC6DC0003CD31 /* Security.framework */; };
+		035A2414206CC6E70003CD31 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 035A2413206CC6E70003CD31 /* libz.tbd */; };
+		035A2416206CC6EF0003CD31 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 035A2415206CC6EF0003CD31 /* libstdc++.6.0.9.tbd */; };
+		035A2419206CC7780003CD31 /* AMapFoundationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035A2418206CC7770003CD31 /* AMapFoundationKit.framework */; };
 		420D18262057A71300E1D8E1 /* UILabel+Width.m in Sources */ = {isa = PBXBuildFile; fileRef = 420D18242057A71300E1D8E1 /* UILabel+Width.m */; };
 		420D18462057AA9100E1D8E1 /* MyCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420D18452057AA9100E1D8E1 /* MyCenterViewController.m */; };
 		422F1FFC2047E858009481CC /* UIViewController+BarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 422F1FFA2047E858009481CC /* UIViewController+BarButton.m */; };
@@ -251,6 +261,18 @@
 		035A23FD206C7F830003CD31 /* EmptyCarListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyCarListViewController.h; sourceTree = "<group>"; };
 		035A23FE206C7F830003CD31 /* GoodsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsListViewController.m; sourceTree = "<group>"; };
 		035A23FF206C7F830003CD31 /* CarListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarListViewController.h; sourceTree = "<group>"; };
+		035A2404206C97BD0003CD31 /* ChooseAddressSearchView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChooseAddressSearchView.h; sourceTree = "<group>"; };
+		035A2405206C97BD0003CD31 /* ChooseAddressSearchView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChooseAddressSearchView.m; sourceTree = "<group>"; };
+		035A2407206C97C90003CD31 /* ChooseAddressSearchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseAddressSearchView.xib; sourceTree = "<group>"; };
+		035A2409206CC69C0003CD31 /* AMapLocationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapLocationKit.framework; sourceTree = "<group>"; };
+		035A240B206CC6C40003CD31 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		035A240D206CC6CE0003CD31 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		035A240F206CC6D50003CD31 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		035A2411206CC6DC0003CD31 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		035A2413206CC6E70003CD31 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		035A2415206CC6EF0003CD31 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
+		035A2417206CC7300003CD31 /* APIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIKey.h; sourceTree = "<group>"; };
+		035A2418206CC7770003CD31 /* AMapFoundationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapFoundationKit.framework; sourceTree = "<group>"; };
 		420D18242057A71300E1D8E1 /* UILabel+Width.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Width.m"; sourceTree = "<group>"; };
 		420D18252057A71300E1D8E1 /* UILabel+Width.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Width.h"; sourceTree = "<group>"; };
 		420D18442057AA9100E1D8E1 /* MyCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCenterViewController.h; sourceTree = "<group>"; };
@@ -591,7 +613,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				035A2416206CC6EF0003CD31 /* libstdc++.6.0.9.tbd in Frameworks */,
+				035A2419206CC7780003CD31 /* AMapFoundationKit.framework in Frameworks */,
+				035A2414206CC6E70003CD31 /* libz.tbd in Frameworks */,
+				035A2412206CC6DC0003CD31 /* Security.framework in Frameworks */,
+				035A2410206CC6D50003CD31 /* SystemConfiguration.framework in Frameworks */,
+				035A240E206CC6CE0003CD31 /* CoreTelephony.framework in Frameworks */,
+				035A240C206CC6C40003CD31 /* libc++.tbd in Frameworks */,
 				B79A5CFD6299881CB3643ACB /* libPods-BaseProject.a in Frameworks */,
+				035A240A206CC69C0003CD31 /* AMapLocationKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -652,6 +682,9 @@
 				035A23ED206C7F6C0003CD31 /* EmptyCarCell.h */,
 				035A23E7206C7F6B0003CD31 /* EmptyCarCell.m */,
 				035A23E8206C7F6B0003CD31 /* EmptyCarCell.xib */,
+				035A2404206C97BD0003CD31 /* ChooseAddressSearchView.h */,
+				035A2405206C97BD0003CD31 /* ChooseAddressSearchView.m */,
+				035A2407206C97C90003CD31 /* ChooseAddressSearchView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -805,7 +838,10 @@
 		42A4442F1EF133E000F90791 /* BaseProject */ = {
 			isa = PBXGroup;
 			children = (
+				035A2418206CC7770003CD31 /* AMapFoundationKit.framework */,
+				035A2409206CC69C0003CD31 /* AMapLocationKit.framework */,
 				42C84EB31EF2DC7B0008189D /* Header.pch */,
+				035A2417206CC7300003CD31 /* APIKey.h */,
 				42C84EB21EF2DC7B0008189D /* CCUrl.h */,
 				42C84EAE1EF2DB060008189D /* SuperClass */,
 				42C84EA31EF2DB060008189D /* Classes */,
@@ -1527,6 +1563,12 @@
 		7F5FE81AF3930B1D8AB68F96 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				035A2415206CC6EF0003CD31 /* libstdc++.6.0.9.tbd */,
+				035A2413206CC6E70003CD31 /* libz.tbd */,
+				035A2411206CC6DC0003CD31 /* Security.framework */,
+				035A240F206CC6D50003CD31 /* SystemConfiguration.framework */,
+				035A240D206CC6CE0003CD31 /* CoreTelephony.framework */,
+				035A240B206CC6C40003CD31 /* libc++.tbd */,
 				65EBE4FCE8758654A9B05419 /* libPods-BaseProject.a */,
 			);
 			name = Frameworks;
@@ -1845,6 +1887,7 @@
 				7AFAE4B6205A115900B14406 /* ShipperOrderDetailCarListTableViewCell.xib in Resources */,
 				42A444431EF133E000F90791 /* LaunchScreen.storyboard in Resources */,
 				035A23E3206C7F4A0003CD31 /* province_data.json in Resources */,
+				035A2408206C97C90003CD31 /* ChooseAddressSearchView.xib in Resources */,
 				7AFAE51A205A3FCE00B14406 /* LICENSE in Resources */,
 				7AFAE4AC205A0F5C00B14406 /* ShipperOrderDetailViewController.xib in Resources */,
 				7AFD2206205F821B009DB138 /* MessageViewController.xib in Resources */,
@@ -2054,6 +2097,7 @@
 				7A328DD0205BA62D00BF9DAC /* InformationVideoTableViewCell.m in Sources */,
 				82B6D2C5205F4F5900C65CA4 /* IQTextView.m in Sources */,
 				7A80268A2062033500D1FDEF /* UIButton+message.m in Sources */,
+				035A2406206C97BD0003CD31 /* ChooseAddressSearchView.m in Sources */,
 				7AFAE4AB205A0F5C00B14406 /* ShipperOrderDetailViewController.m in Sources */,
 				7AFD2205205F821B009DB138 /* MessageViewController.m in Sources */,
 				42F10B68206C7A1900C9C8EC /* TADotView.m in Sources */,
@@ -2246,6 +2290,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = XM54CYU6S2;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/BaseProject",
+				);
 				GCC_PREFIX_HEADER = BaseProject/Main/Header.pch;
 				INFOPLIST_FILE = BaseProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -2263,6 +2311,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = XM54CYU6S2;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/BaseProject",
+				);
 				GCC_PREFIX_HEADER = BaseProject/Main/Header.pch;
 				INFOPLIST_FILE = BaseProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

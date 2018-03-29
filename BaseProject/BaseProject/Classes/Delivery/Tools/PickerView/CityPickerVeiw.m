@@ -472,9 +472,17 @@
         } else {
             //县
             district *model3 =section3[row];
-            districtStr=model3.name;
+            districtStr = model3.name;
         }
-        resultsStr=[NSString stringWithFormat:@"%@-%@-%@",provinceStr,cityStr,districtStr];
+        resultsStr = [NSString stringWithFormat:@"%@",provinceStr];
+                      
+        if (self.col == 2) {
+            resultsStr = [resultsStr stringByAppendingFormat:@"-%@",cityStr];
+        }else if (self.col == 3) {
+             resultsStr = [resultsStr stringByAppendingFormat:@"-%@",cityStr];
+             resultsStr = [resultsStr stringByAppendingFormat:@"-%@",districtStr];
+        }
+        
     }
    
 }
