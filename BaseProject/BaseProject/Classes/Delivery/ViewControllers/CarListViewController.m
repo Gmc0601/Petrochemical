@@ -233,6 +233,10 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
 }
 - (void)gotoChooseAddressVC{
     ChooseAddressListViewController * chooseAddressVC = [[ChooseAddressListViewController alloc]init];
+    chooseAddressVC.ChooseAddressBlock = ^(NSString *name) {
+        self.emptyLocation = name;
+        [self.CC_table reloadData];
+    };
     [self.navigationController pushViewController:chooseAddressVC animated:YES];
     
 }

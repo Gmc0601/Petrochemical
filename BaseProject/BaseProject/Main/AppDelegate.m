@@ -35,6 +35,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
 //    TBNavigationController *na = [[TBNavigationController alloc] initWithRootViewController:[ViewController new]];
 //    na.navigationBar.hidden = YES;
+    [self configureAPIKey];
     self.window.rootViewController = [ViewController new];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
