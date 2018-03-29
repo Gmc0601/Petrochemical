@@ -26,6 +26,11 @@
 }
 - (void)setupImg:(NSString *)imgName withTitle:(NSString *)title withTextFeild:(NSString *)content withPlaceholder:(NSString *)placeholder{
     self.iconImgV.image = [UIImage imageNamed:imgName];
+//    if (imgName.length > 0) {
+//        self.iconImgV.hidden = NO;
+//    }else{
+//        self.iconImgV.hidden = YES;
+//    }
     self.titleLabel.text = title;
     self.textfeild.text = content;
     self.textfeild.placeholder =  placeholder;
