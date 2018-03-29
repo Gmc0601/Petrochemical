@@ -124,7 +124,7 @@
     NSMutableArray * array = [NSMutableArray array];
     NSInteger days = [self howManyDaysInThisYear:years  withMonth:month ];
     for (NSInteger i = 1; i<= days; i++) {
-        [array addObject:[NSString stringWithFormat:@"%ld日",i]];
+        [array addObject:[NSString stringWithFormat:@"%ld",i]];
     }
     return array;
  
@@ -132,7 +132,7 @@
 - (NSArray *)getHours{
     NSMutableArray * array = [NSMutableArray array];
     for (NSInteger i = 1; i<=24; i++) {
-        [array addObject:[NSString stringWithFormat:@"%ld点",i]];
+        [array addObject:[NSString stringWithFormat:@"%ld",i]];
     }
     return array;
 }
@@ -271,10 +271,11 @@
                 [cityPickerView selectRow:index3 inComponent:2 animated:NO];
             }
         
-           provinceStr =[NSString stringWithFormat:@"%@月",[section1 objectAtIndex:index1]];
+           provinceStr =[NSString stringWithFormat:@"%@",[section1 objectAtIndex:index1]];
            cityStr =[section2 objectAtIndex:index2];
            districtStr =[section3 objectAtIndex:index3];
-           resultsStr=[NSString stringWithFormat:@"%@%@%@",provinceStr,cityStr,districtStr];
+        
+           resultsStr = [NSString stringWithFormat:@"%ld-%@-%@ %@:00:00",[self getCurrentYear],provinceStr,cityStr,districtStr];
       
     }
     
@@ -369,10 +370,10 @@
             
         }
         else if (component== 1){
-             title = section2[row];
+             title =  [NSString stringWithFormat:@"%@日",section2[row]];
         }
         else if (component== 2){
-            title = section3[row];
+            title = [NSString stringWithFormat:@"%@点",section3[row]];
         }
     }else if (self.pickerType == PickerViewType_city){
         if (component ==0 ) {
@@ -440,7 +441,7 @@
     if (self.pickerType == PickerViewType_timer) {
         
         if (component == 0) {
-            provinceStr =[NSString stringWithFormat:@"%@月",section1[row]];
+            provinceStr = section1[row];
            
         } else if (component==1) {
             cityStr = section2[row];
@@ -448,7 +449,8 @@
         } else {
             districtStr =section3[row];
         }
-        resultsStr=[NSString stringWithFormat:@"%@%@%@",provinceStr,cityStr,districtStr];
+        resultsStr = [NSString stringWithFormat:@"%ld-%@-%@ %@:00:00",[self getCurrentYear],provinceStr,cityStr,districtStr];
+        
     }else if (self.pickerType == PickerViewType_city){
         if (component == 0) {
             province *Prmodel =section1[row];

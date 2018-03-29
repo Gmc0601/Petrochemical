@@ -45,7 +45,7 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
     self.CC_table.bounces = NO;
     [self setupBottomView];
   
-    [self openLocation];
+   
     
 }
 - (BOOL)addRefreshHeader{
@@ -208,10 +208,10 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
                           @"origin":self.startLocation,
                           @"destination":self.endLocation,
                           @"empty":self.emptyLocation,
-                          @"lon":@(self.lon),
-                          @"lat":@(self.lat),
+                          @"lon":[NSString stringWithFormat:@"%f",self.lon],
+                          @"lat":[NSString stringWithFormat:@"%f",self.lat],
                           @"loading_time":self.loadingTime,
-                          @"load":self.maxLoad,
+//                          @"load":self.maxLoad,
                           @"issue_type":@"1",//发布车源1  发布货源2
                           };
     
@@ -224,7 +224,7 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
         if (errorint == 0 ) {
             UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"发布车源成功" preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *okAction1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-              [weakself.navigationController popViewControllerAnimated:YES];
+              [weakself backAction];
             }];
             [alertVC addAction:okAction1];
             [self presentViewController:alertVC animated:YES completion:nil];
@@ -270,7 +270,7 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
     cityView.showSelectedCityNameStr =@"" ;
     [cityView setCityBlock:^(NSString * value) {
         NSLog(@"%@===",value);
-        self.endLocation = value;
+        self.endLocation =  [value stringByReplacingOccurrencesOfString:@"-" withString:@""];
         [self.CC_table reloadData];
     }];
 }
@@ -426,7 +426,7 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
             self.startLocation   =[NSString stringWithFormat:@"%@%@%@",placemark.locality,placemark.subLocality, placemark.name];
             //系统会一直更新数据，直到选择停止更新，因为我们只需要获得一次经纬度即可，所以获取之后就停止更新
             [manager stopUpdatingLocation];
-            
+            [self.CC_table reloadData];
             
         };
     }];
