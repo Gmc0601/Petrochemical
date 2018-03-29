@@ -8,6 +8,12 @@
 
 #import "BaseViewController.h"
 
+@interface Tagmodel : NSObject
+
+@property (nonatomic, copy) NSString *id, *type;
+
+@end
+
 @interface HomePageViewController : BaseViewController
 
 @end

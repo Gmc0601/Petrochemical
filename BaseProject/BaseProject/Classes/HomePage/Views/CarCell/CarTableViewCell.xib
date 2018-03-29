@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="81" id="KGk-i7-Jjw" customClass="CarTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="374" height="81"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="KCarSection1CellID" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="374" height="80.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GwX-3Z-Vt0">
+                        <rect key="frame" x="20" y="11.5" width="58" height="57.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="GwX-3Z-Vt0" secondAttribute="height" multiplier="1:1" id="tqU-j4-X7w"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="山东济南" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ab1-Ey-vU2">
+                        <rect key="frame" x="109" y="12" width="249" height="13"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.3921198844909668" green="0.39218056201934814" blue="0.39210665225982666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用车时间：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="evj-cg-fC9">
+                        <rect key="frame" x="109" y="55" width="249" height="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="0.44701725244522095" green="0.44708538055419922" blue="0.44700241088867188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="weizhi" translatesAutoresizingMaskIntoConstraints="NO" id="aRZ-Qo-Kbp">
+                        <rect key="frame" x="109" y="33" width="9.5" height="13"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="aRZ-Qo-Kbp" secondAttribute="height" multiplier="9:13" id="Afs-ZK-vYS"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="丁豪广场" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cW2-GF-lbX">
+                        <rect key="frame" x="126" y="31" width="146" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="川A1111" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzF-La-b41">
+                        <rect key="frame" x="285" y="31.5" width="73" height="17"/>
+                        <color key="backgroundColor" red="0.91369956731796265" green="0.80177611112594604" blue="0.17024531960487366" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="aRZ-Qo-Kbp" firstAttribute="leading" secondItem="ab1-Ey-vU2" secondAttribute="leading" id="1kp-or-JRx"/>
+                    <constraint firstItem="evj-cg-fC9" firstAttribute="leading" secondItem="ab1-Ey-vU2" secondAttribute="leading" id="3ya-3e-9a4"/>
+                    <constraint firstAttribute="trailing" secondItem="yzF-La-b41" secondAttribute="trailing" constant="16" id="4K2-QG-MZX"/>
+                    <constraint firstItem="ab1-Ey-vU2" firstAttribute="top" secondItem="GwX-3Z-Vt0" secondAttribute="top" id="4M8-TG-qr5"/>
+                    <constraint firstItem="aRZ-Qo-Kbp" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="13:80" id="CQk-Uf-73K"/>
+                    <constraint firstItem="cW2-GF-lbX" firstAttribute="leading" secondItem="aRZ-Qo-Kbp" secondAttribute="trailing" constant="7" id="HqW-Ae-4E0"/>
+                    <constraint firstItem="GwX-3Z-Vt0" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="K6E-oD-ACm"/>
+                    <constraint firstItem="ab1-Ey-vU2" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="13:80" id="PWl-U0-I2d"/>
+                    <constraint firstItem="ab1-Ey-vU2" firstAttribute="leading" secondItem="GwX-3Z-Vt0" secondAttribute="trailing" constant="31" id="Pkb-JO-rmV"/>
+                    <constraint firstItem="yzF-La-b41" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="73:375" id="TO9-cp-IWm"/>
+                    <constraint firstItem="evj-cg-fC9" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="135:375" constant="114.36000000000001" id="VmR-XA-EPx"/>
+                    <constraint firstItem="cW2-GF-lbX" firstAttribute="centerY" secondItem="aRZ-Qo-Kbp" secondAttribute="centerY" id="Y4C-Vr-4Z3"/>
+                    <constraint firstItem="evj-cg-fC9" firstAttribute="bottom" secondItem="GwX-3Z-Vt0" secondAttribute="bottom" id="e4X-lg-iAt"/>
+                    <constraint firstItem="GwX-3Z-Vt0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="k7h-1n-sBb"/>
+                    <constraint firstItem="ab1-Ey-vU2" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="51:375" constant="198.136" id="kHI-q9-BKl"/>
+                    <constraint firstItem="aRZ-Qo-Kbp" firstAttribute="centerY" secondItem="GwX-3Z-Vt0" secondAttribute="centerY" id="meJ-AV-cX8"/>
+                    <constraint firstItem="GwX-3Z-Vt0" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="60:84" id="trE-8L-JHS"/>
+                    <constraint firstItem="cW2-GF-lbX" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="80:375" constant="66.213333333333324" id="uFl-6c-7Hj"/>
+                    <constraint firstItem="yzF-La-b41" firstAttribute="centerY" secondItem="cW2-GF-lbX" secondAttribute="centerY" id="xK5-OY-B8j"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="carNumberLabel" destination="yzF-La-b41" id="nTu-Sy-mXZ"/>
+                <outlet property="currentPlaceLabel" destination="cW2-GF-lbX" id="8mD-VI-cs0"/>
+                <outlet property="headImageView" destination="GwX-3Z-Vt0" id="rE6-pe-wWP"/>
+                <outlet property="startPlaceLabel" destination="ab1-Ey-vU2" id="9X6-GU-Mv3"/>
+                <outlet property="useCarTimeLaber" destination="evj-cg-fC9" id="y9E-8x-FFZ"/>
+            </connections>
+            <point key="canvasLocation" x="-233" y="192.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="weizhi" width="10" height="12"/>
+    </resources>
+</document>

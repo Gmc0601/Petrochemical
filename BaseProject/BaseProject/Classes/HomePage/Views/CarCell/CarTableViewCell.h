@@ -1,0 +1,16 @@
+//
+//  CarTableViewCell.h
+//  BaseProject
+//
+//  Created by Jason on 2018/3/21.
+//  Copyright © 2018年 cc. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "HomeCarModel.h"
+
+@interface CarTableViewCell : UITableViewCell
+
+@property (nonatomic, strong) HomeCarModel *model;
+
+@end
