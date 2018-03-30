@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "CCWebViewViewController.h"
 #import <YYKit.h>
+#import "ViewController.h"
 @interface LoginViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *phoneText;
@@ -163,11 +164,11 @@
         }
         NSDictionary *datadic = responseObject;
         if ([datadic[@"error"] intValue] == 0) {
-            NSDictionary *data = datadic[@"data"];
+            NSDictionary *data = datadic[@"info"];
             NSString *user_token = data[@"userToken"];
             [ConfigModel saveBoolObject:YES forKey:IsLogin];
             [ConfigModel saveString:user_token forKey:UserToken];
-            [weak dismissViewControllerAnimated:YES completion:nil];
+            [self presentViewController:[ViewController new] animated:YES completion:nil];
         }else {
             NSString *str = datadic[@"info"];
             [ConfigModel mbProgressHUD:str andView:nil];

@@ -60,7 +60,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="TTT-UW-V09"/>
                     </constraints>
-                    <nil key="textColor"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                     <connections>
@@ -72,7 +72,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="Oo9-k6-S2i"/>
                     </constraints>
-                    <nil key="textColor"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                     <connections>

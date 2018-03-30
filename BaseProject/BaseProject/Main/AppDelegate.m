@@ -11,6 +11,7 @@
 #import "TBNavigationController.h"
 #import <AMapFoundationKit/AMapFoundationKit.h>
 #import "APIKey.h"
+#import "LoginViewController.h"
 @interface AppDelegate ()
 @end
 
@@ -33,10 +34,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-//    TBNavigationController *na = [[TBNavigationController alloc] initWithRootViewController:[ViewController new]];
-//    na.navigationBar.hidden = YES;
+    
     [self configureAPIKey];
-    self.window.rootViewController = [ViewController new];
+    if (![ConfigModel getBoolObjectforKey:IsLogin]) {
+        self.window.rootViewController = [LoginViewController new];
+    }else {
+       self.window.rootViewController = [ViewController new];
+    }
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
