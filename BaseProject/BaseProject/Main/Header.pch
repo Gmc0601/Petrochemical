@@ -41,6 +41,8 @@
 
 #define DefaultImage ([UIImage imageNamed:@"xingkuang"])
 
+#define UnloginReturn if (![ConfigModel haveLogin:self]) {return;}
+
 /**
  * 设备判断
  */

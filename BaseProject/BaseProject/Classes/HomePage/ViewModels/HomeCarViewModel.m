@@ -19,7 +19,7 @@
                 NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
                 [dic setValue:@(self.page) forKey:@"page"];
                 [dic setValue:self.data forKey:@"data"];
-                [dic setValue:@"10" forKey:@"size"];
+                [dic setValue:@"20" forKey:@"size"];
                 if (self.page == 1) {
                     self.haveMore = YES;
                     [self.dataArr removeAllObjects];
@@ -45,7 +45,7 @@
                     if ([datadic[@"error"] intValue] == 0) {
                         NSArray *infoArr = datadic[@"info"];
                         [self.dataArr addObjectsFromArray:[HomeCarModel mj_objectArrayWithKeyValuesArray:infoArr]];
-                        if (infoArr.count == 10) {
+                        if (infoArr.count == 20) {
                             self.page ++;
                         }else {
                             self.haveMore = NO;

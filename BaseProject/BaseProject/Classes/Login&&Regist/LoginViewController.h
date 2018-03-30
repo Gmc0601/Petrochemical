@@ -6,9 +6,8 @@
 //  Copyright © 2017年 cc. All rights reserved.
 //
 
-#import "BaseViewController.h"
 
-@interface LoginViewController : BaseViewController
+@interface LoginViewController : UIViewController
 
 @property (nonatomic, copy) void(^homeBlocl)();
 
