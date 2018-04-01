@@ -168,6 +168,22 @@
 		8211DC532062014900A747A4 /* UIImage+MyProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 8211DC522062014900A747A4 /* UIImage+MyProperty.m */; };
 		8211DC57206205D100A747A4 /* CustomSeletedPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8211DC56206205D100A747A4 /* CustomSeletedPickView.m */; };
 		8211DC59206205DD00A747A4 /* CustomSeletedPickView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8211DC58206205DD00A747A4 /* CustomSeletedPickView.xib */; };
+		8298E2B6206C94BF006284F2 /* MyPublishListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8298E2B4206C94BF006284F2 /* MyPublishListViewController.m */; };
+		8298E2B7206C94BF006284F2 /* MyPublishListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8298E2B5206C94BF006284F2 /* MyPublishListViewController.xib */; };
+		8298E2BC206C97E5006284F2 /* MyPublishCargoListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8298E2BA206C97E5006284F2 /* MyPublishCargoListTableViewCell.m */; };
+		8298E2BD206C97E5006284F2 /* MyPublishCargoListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8298E2BB206C97E5006284F2 /* MyPublishCargoListTableViewCell.xib */; };
+		8298E2C2206CA72A006284F2 /* MyPublishCargoDetailInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8298E2C0206CA72A006284F2 /* MyPublishCargoDetailInfoViewController.m */; };
+		8298E2C3206CA72A006284F2 /* MyPublishCargoDetailInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8298E2C1206CA72A006284F2 /* MyPublishCargoDetailInfoViewController.xib */; };
+		8298E2C7206CB1E0006284F2 /* MyPublishCargoDetailXiehuoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8298E2C6206CB1E0006284F2 /* MyPublishCargoDetailXiehuoView.m */; };
+		8298E2C9206CB1ED006284F2 /* MyPublishCargoDetailXiehuoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8298E2C8206CB1ED006284F2 /* MyPublishCargoDetailXiehuoView.xib */; };
+		8298E2CE206CBF4A006284F2 /* MyPublishCarListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8298E2CC206CBF4A006284F2 /* MyPublishCarListViewController.m */; };
+		8298E2CF206CBF4A006284F2 /* MyPublishCarListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8298E2CD206CBF4A006284F2 /* MyPublishCarListViewController.xib */; };
+		8298E2D4206E01D1006284F2 /* MyPublishCarListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8298E2D2206E01D1006284F2 /* MyPublishCarListTableViewCell.m */; };
+		8298E2D5206E01D1006284F2 /* MyPublishCarListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8298E2D3206E01D1006284F2 /* MyPublishCarListTableViewCell.xib */; };
+		8298E2DA206E0B66006284F2 /* MyGrabOrderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8298E2D8206E0B66006284F2 /* MyGrabOrderListViewController.m */; };
+		8298E2DB206E0B66006284F2 /* MyGrabOrderListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8298E2D9206E0B66006284F2 /* MyGrabOrderListViewController.xib */; };
+		8298E2E1206E1312006284F2 /* MyCenterUserGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8298E2DF206E1312006284F2 /* MyCenterUserGuideViewController.m */; };
+		8298E2E2206E1312006284F2 /* MyCenterUserGuideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8298E2E0206E1312006284F2 /* MyCenterUserGuideViewController.xib */; };
 		82B6D29F205F4EE400C65CA4 /* LeasCustomAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B6D29D205F4EE400C65CA4 /* LeasCustomAlbum.m */; };
 		82B6D2C5205F4F5900C65CA4 /* IQTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B6D2A2205F4F5900C65CA4 /* IQTextView.m */; };
 		82B6D2C6205F4F5900C65CA4 /* IQToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B6D2A6205F4F5900C65CA4 /* IQToolbar.m */; };
@@ -524,6 +540,30 @@
 		8211DC55206205D100A747A4 /* CustomSeletedPickView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomSeletedPickView.h; sourceTree = "<group>"; };
 		8211DC56206205D100A747A4 /* CustomSeletedPickView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomSeletedPickView.m; sourceTree = "<group>"; };
 		8211DC58206205DD00A747A4 /* CustomSeletedPickView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomSeletedPickView.xib; sourceTree = "<group>"; };
+		8298E2B3206C94BF006284F2 /* MyPublishListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyPublishListViewController.h; sourceTree = "<group>"; };
+		8298E2B4206C94BF006284F2 /* MyPublishListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyPublishListViewController.m; sourceTree = "<group>"; };
+		8298E2B5206C94BF006284F2 /* MyPublishListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPublishListViewController.xib; sourceTree = "<group>"; };
+		8298E2B9206C97E5006284F2 /* MyPublishCargoListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyPublishCargoListTableViewCell.h; sourceTree = "<group>"; };
+		8298E2BA206C97E5006284F2 /* MyPublishCargoListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyPublishCargoListTableViewCell.m; sourceTree = "<group>"; };
+		8298E2BB206C97E5006284F2 /* MyPublishCargoListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPublishCargoListTableViewCell.xib; sourceTree = "<group>"; };
+		8298E2BF206CA72A006284F2 /* MyPublishCargoDetailInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyPublishCargoDetailInfoViewController.h; sourceTree = "<group>"; };
+		8298E2C0206CA72A006284F2 /* MyPublishCargoDetailInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyPublishCargoDetailInfoViewController.m; sourceTree = "<group>"; };
+		8298E2C1206CA72A006284F2 /* MyPublishCargoDetailInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPublishCargoDetailInfoViewController.xib; sourceTree = "<group>"; };
+		8298E2C5206CB1E0006284F2 /* MyPublishCargoDetailXiehuoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyPublishCargoDetailXiehuoView.h; sourceTree = "<group>"; };
+		8298E2C6206CB1E0006284F2 /* MyPublishCargoDetailXiehuoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyPublishCargoDetailXiehuoView.m; sourceTree = "<group>"; };
+		8298E2C8206CB1ED006284F2 /* MyPublishCargoDetailXiehuoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPublishCargoDetailXiehuoView.xib; sourceTree = "<group>"; };
+		8298E2CB206CBF4A006284F2 /* MyPublishCarListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyPublishCarListViewController.h; sourceTree = "<group>"; };
+		8298E2CC206CBF4A006284F2 /* MyPublishCarListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyPublishCarListViewController.m; sourceTree = "<group>"; };
+		8298E2CD206CBF4A006284F2 /* MyPublishCarListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPublishCarListViewController.xib; sourceTree = "<group>"; };
+		8298E2D1206E01D1006284F2 /* MyPublishCarListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyPublishCarListTableViewCell.h; sourceTree = "<group>"; };
+		8298E2D2206E01D1006284F2 /* MyPublishCarListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyPublishCarListTableViewCell.m; sourceTree = "<group>"; };
+		8298E2D3206E01D1006284F2 /* MyPublishCarListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPublishCarListTableViewCell.xib; sourceTree = "<group>"; };
+		8298E2D7206E0B66006284F2 /* MyGrabOrderListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyGrabOrderListViewController.h; sourceTree = "<group>"; };
+		8298E2D8206E0B66006284F2 /* MyGrabOrderListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyGrabOrderListViewController.m; sourceTree = "<group>"; };
+		8298E2D9206E0B66006284F2 /* MyGrabOrderListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyGrabOrderListViewController.xib; sourceTree = "<group>"; };
+		8298E2DE206E1312006284F2 /* MyCenterUserGuideViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCenterUserGuideViewController.h; sourceTree = "<group>"; };
+		8298E2DF206E1312006284F2 /* MyCenterUserGuideViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCenterUserGuideViewController.m; sourceTree = "<group>"; };
+		8298E2E0206E1312006284F2 /* MyCenterUserGuideViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCenterUserGuideViewController.xib; sourceTree = "<group>"; };
 		82B6D29D205F4EE400C65CA4 /* LeasCustomAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeasCustomAlbum.m; sourceTree = "<group>"; };
 		82B6D29E205F4EE400C65CA4 /* LeasCustomAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeasCustomAlbum.h; sourceTree = "<group>"; };
 		82B6D2A2205F4F5900C65CA4 /* IQTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQTextView.m; sourceTree = "<group>"; };
@@ -1223,6 +1263,10 @@
 		42F795A21F00C84600A11A69 /* MyCenter */ = {
 			isa = PBXGroup;
 			children = (
+				8298E2DD206E12F8006284F2 /* UserGuide */,
+				8298E2D6206E0B53006284F2 /* MyGrabOrder */,
+				8298E2CA206CBF29006284F2 /* MyPublishCar */,
+				8298E2B2206C9494006284F2 /* MyPublishCargo */,
 				82B6D2E1205F4FB400C65CA4 /* MyCargoInformation */,
 				82B6D2DD205F4FB400C65CA4 /* MyCarInformation */,
 				82B6D2D6205F4FB400C65CA4 /* UserInformation */,
@@ -1549,6 +1593,90 @@
 			path = MyCarDetailInfomation;
 			sourceTree = "<group>";
 		};
+		8298E2B2206C9494006284F2 /* MyPublishCargo */ = {
+			isa = PBXGroup;
+			children = (
+				8298E2BE206CA6F7006284F2 /* PublishCargoDetailInfomation */,
+				8298E2B8206C97B5006284F2 /* view */,
+				8298E2B3206C94BF006284F2 /* MyPublishListViewController.h */,
+				8298E2B4206C94BF006284F2 /* MyPublishListViewController.m */,
+				8298E2B5206C94BF006284F2 /* MyPublishListViewController.xib */,
+			);
+			path = MyPublishCargo;
+			sourceTree = "<group>";
+		};
+		8298E2B8206C97B5006284F2 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				8298E2B9206C97E5006284F2 /* MyPublishCargoListTableViewCell.h */,
+				8298E2BA206C97E5006284F2 /* MyPublishCargoListTableViewCell.m */,
+				8298E2BB206C97E5006284F2 /* MyPublishCargoListTableViewCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		8298E2BE206CA6F7006284F2 /* PublishCargoDetailInfomation */ = {
+			isa = PBXGroup;
+			children = (
+				8298E2C4206CB1B7006284F2 /* view */,
+				8298E2BF206CA72A006284F2 /* MyPublishCargoDetailInfoViewController.h */,
+				8298E2C0206CA72A006284F2 /* MyPublishCargoDetailInfoViewController.m */,
+				8298E2C1206CA72A006284F2 /* MyPublishCargoDetailInfoViewController.xib */,
+			);
+			path = PublishCargoDetailInfomation;
+			sourceTree = "<group>";
+		};
+		8298E2C4206CB1B7006284F2 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				8298E2C5206CB1E0006284F2 /* MyPublishCargoDetailXiehuoView.h */,
+				8298E2C6206CB1E0006284F2 /* MyPublishCargoDetailXiehuoView.m */,
+				8298E2C8206CB1ED006284F2 /* MyPublishCargoDetailXiehuoView.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		8298E2CA206CBF29006284F2 /* MyPublishCar */ = {
+			isa = PBXGroup;
+			children = (
+				8298E2D0206E01A6006284F2 /* view */,
+				8298E2CB206CBF4A006284F2 /* MyPublishCarListViewController.h */,
+				8298E2CC206CBF4A006284F2 /* MyPublishCarListViewController.m */,
+				8298E2CD206CBF4A006284F2 /* MyPublishCarListViewController.xib */,
+			);
+			path = MyPublishCar;
+			sourceTree = "<group>";
+		};
+		8298E2D0206E01A6006284F2 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				8298E2D1206E01D1006284F2 /* MyPublishCarListTableViewCell.h */,
+				8298E2D2206E01D1006284F2 /* MyPublishCarListTableViewCell.m */,
+				8298E2D3206E01D1006284F2 /* MyPublishCarListTableViewCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		8298E2D6206E0B53006284F2 /* MyGrabOrder */ = {
+			isa = PBXGroup;
+			children = (
+				8298E2D7206E0B66006284F2 /* MyGrabOrderListViewController.h */,
+				8298E2D8206E0B66006284F2 /* MyGrabOrderListViewController.m */,
+				8298E2D9206E0B66006284F2 /* MyGrabOrderListViewController.xib */,
+			);
+			path = MyGrabOrder;
+			sourceTree = "<group>";
+		};
+		8298E2DD206E12F8006284F2 /* UserGuide */ = {
+			isa = PBXGroup;
+			children = (
+				8298E2DE206E1312006284F2 /* MyCenterUserGuideViewController.h */,
+				8298E2DF206E1312006284F2 /* MyCenterUserGuideViewController.m */,
+				8298E2E0206E1312006284F2 /* MyCenterUserGuideViewController.xib */,
+			);
+			path = UserGuide;
+			sourceTree = "<group>";
+		};
 		82B6D29C205F4EE400C65CA4 /* CustomAlbum */ = {
 			isa = PBXGroup;
 			children = (
@@ -1826,6 +1954,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8298E2BD206C97E5006284F2 /* MyPublishCargoListTableViewCell.xib in Resources */,
 				7A328DCC205BA58700BF9DAC /* InformationImageTableViewCell.xib in Resources */,
 				7A80267A20609E4300D1FDEF /* RobbingOrdersViewController.xib in Resources */,
 				82B6D2F2205F4FB400C65CA4 /* CargoidentificationFirstViewController.xib in Resources */,
@@ -1836,12 +1965,16 @@
 				7AFAE4FC205A3D8400B14406 /* LogisticsDetailsViewController.xib in Resources */,
 				82B6D2F8205F53F000C65CA4 /* MyCarInformationTableViewCell.xib in Resources */,
 				82B6D2D5205F4FA000C65CA4 /* MyCenterViewController.xib in Resources */,
+				8298E2E2206E1312006284F2 /* MyCenterUserGuideViewController.xib in Resources */,
 				035A23F6206C7F6D0003CD31 /* CarFooterView.xib in Resources */,
 				82B6D2ED205F4FB400C65CA4 /* MyCarInformationListViewController.xib in Resources */,
 				42F795D91F00CC3E00A11A69 /* arrowup@2x.png in Resources */,
 				422F20292047F7B6009481CC /* LoginViewController.xib in Resources */,
+				8298E2DB206E0B66006284F2 /* MyGrabOrderListViewController.xib in Resources */,
 				7AFAE525205A3FCE00B14406 /* README.md in Resources */,
 				7AFD2210205F86DD009DB138 /* TransportDynamicsViewController.xib in Resources */,
+				8298E2C3206CA72A006284F2 /* MyPublishCargoDetailInfoViewController.xib in Resources */,
+				8298E2D5206E01D1006284F2 /* MyPublishCarListTableViewCell.xib in Resources */,
 				7AFAE4B6205A115900B14406 /* ShipperOrderDetailCarListTableViewCell.xib in Resources */,
 				42A444431EF133E000F90791 /* LaunchScreen.storyboard in Resources */,
 				035A23E3206C7F4A0003CD31 /* province_data.json in Resources */,
@@ -1853,6 +1986,7 @@
 				42F10B4E206C7A1900C9C8EC /* citydatas.xml in Resources */,
 				7A328DD6205BB07500BF9DAC /* InformationDetailViewController.xib in Resources */,
 				035A23F0206C7F6D0003CD31 /* CarCell.xib in Resources */,
+				8298E2CF206CBF4A006284F2 /* MyPublishCarListViewController.xib in Resources */,
 				8211DC59206205DD00A747A4 /* CustomSeletedPickView.xib in Resources */,
 				42F10B56206C7A1900C9C8EC /* GoodsTableViewCell.xib in Resources */,
 				7AFD220B205F86C9009DB138 /* SystemMessageViewController.xib in Resources */,
@@ -1863,10 +1997,12 @@
 				42F10B5B206C7A1900C9C8EC /* SureFooterCollectionReusableView.xib in Resources */,
 				42F10B53206C7A1900C9C8EC /* CarTableViewCell.xib in Resources */,
 				82B6D2FE205F63B100C65CA4 /* AddMyCarInformationFristViewController.xib in Resources */,
+				8298E2B7206C94BF006284F2 /* MyPublishListViewController.xib in Resources */,
 				82B6D2CB205F4F5900C65CA4 /* IQKeyboardManager.bundle in Resources */,
 				82B6D2E9205F4FB400C65CA4 /* SettingNickNameViewController.xib in Resources */,
 				82B6D303205F63CE00C65CA4 /* AddMyCarInformationSecondViewController.xib in Resources */,
 				42A4443B1EF133E000F90791 /* Main.storyboard in Resources */,
+				8298E2C9206CB1ED006284F2 /* MyPublishCargoDetailXiehuoView.xib in Resources */,
 				7AFD221A205F87C4009DB138 /* TransportDynamicsTableViewCell.xib in Resources */,
 				42F10B59206C7A1900C9C8EC /* SureHeaderCollectionReusableView.xib in Resources */,
 				42F10B5F206C7A1900C9C8EC /* SureConditionCollectionViewCell.xib in Resources */,
@@ -1955,6 +2091,7 @@
 				035A23F7206C7F6D0003CD31 /* DeliveryTypeView.m in Sources */,
 				7AFAE520205A3FCE00B14406 /* NSArray+MASAdditions.m in Sources */,
 				42F10B6B206C7A1900C9C8EC /* TAAbstractDotView.m in Sources */,
+				8298E2D4206E01D1006284F2 /* MyPublishCarListTableViewCell.m in Sources */,
 				035A2400206C7F830003CD31 /* CarListViewController.m in Sources */,
 				7AFD2214205F87B0009DB138 /* SystemMessageTableViewCell.m in Sources */,
 				42F10B6A206C7A1900C9C8EC /* TAAnimatedDotView.m in Sources */,
@@ -1983,6 +2120,7 @@
 				82B6D2EF205F4FB400C65CA4 /* CargoidentificationSecondViewController.m in Sources */,
 				7AFAE51E205A3FCE00B14406 /* MASConstraintMaker.m in Sources */,
 				7AFAE4F5205A236600B14406 /* MJRefreshBackFooter.m in Sources */,
+				8298E2C2206CA72A006284F2 /* MyPublishCargoDetailInfoViewController.m in Sources */,
 				82B6D2CC205F4F5900C65CA4 /* IQKeyboardManager.m in Sources */,
 				422F20282047F7B6009481CC /* LoginViewController.m in Sources */,
 				82B6D2C7205F4F5900C65CA4 /* IQTitleBarButtonItem.m in Sources */,
@@ -1996,8 +2134,10 @@
 				82B6D2EC205F4FB400C65CA4 /* SettingNickNameViewController.m in Sources */,
 				82B6D2D1205F4F5900C65CA4 /* IQUIView+Hierarchy.m in Sources */,
 				42E6175B2058F14100B01D6D /* OrderViewController.m in Sources */,
+				8298E2E1206E1312006284F2 /* MyCenterUserGuideViewController.m in Sources */,
 				035A23F1206C7F6D0003CD31 /* EmptyCarCell.m in Sources */,
 				42F10B62206C7A1900C9C8EC /* TYCyclePagerView.m in Sources */,
+				8298E2DA206E0B66006284F2 /* MyGrabOrderListViewController.m in Sources */,
 				7AFAE4A7205A0C5E00B14406 /* Passport.m in Sources */,
 				420D18262057A71300E1D8E1 /* UILabel+Width.m in Sources */,
 				7AFAE51B205A3FCE00B14406 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
@@ -2027,10 +2167,13 @@
 				42F10B5D206C7A1900C9C8EC /* SureMultipleSelectedWindow.m in Sources */,
 				42F795DC1F00CC3E00A11A69 /* UIScrollView+TBRefresh.m in Sources */,
 				42F795C01F00C8B200A11A69 /* UINavigationBar+Awesome.m in Sources */,
+				8298E2CE206CBF4A006284F2 /* MyPublishCarListViewController.m in Sources */,
 				42C84EAF1EF2DB060008189D /* ViewController.m in Sources */,
 				422F202C2047F848009481CC /* UIWebView+TS_JavaScriptContext.m in Sources */,
+				8298E2B6206C94BF006284F2 /* MyPublishListViewController.m in Sources */,
 				42C84EB91EF2DCD90008189D /* MainApi.m in Sources */,
 				42C84F1D1EF2EB650008189D /* NSString+SBJSON.m in Sources */,
+				8298E2C7206CB1E0006284F2 /* MyPublishCargoDetailXiehuoView.m in Sources */,
 				42F10B4A206C7A1900C9C8EC /* BannerModel.m in Sources */,
 				82B6D302205F63CE00C65CA4 /* AddMyCarInformationSecondViewController.m in Sources */,
 				42F10B49206C7A1900C9C8EC /* CityModel.m in Sources */,
@@ -2054,6 +2197,7 @@
 				7A328DD0205BA62D00BF9DAC /* InformationVideoTableViewCell.m in Sources */,
 				82B6D2C5205F4F5900C65CA4 /* IQTextView.m in Sources */,
 				7A80268A2062033500D1FDEF /* UIButton+message.m in Sources */,
+				8298E2BC206C97E5006284F2 /* MyPublishCargoListTableViewCell.m in Sources */,
 				7AFAE4AB205A0F5C00B14406 /* ShipperOrderDetailViewController.m in Sources */,
 				7AFD2205205F821B009DB138 /* MessageViewController.m in Sources */,
 				42F10B68206C7A1900C9C8EC /* TADotView.m in Sources */,

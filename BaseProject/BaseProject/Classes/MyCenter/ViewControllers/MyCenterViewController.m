@@ -11,6 +11,10 @@
 
 #import "MyCarInformationListViewController.h"
 #import "CargoidentificationFirstViewController.h"
+#import "MyPublishListViewController.h"
+#import "MyPublishCarListViewController.h"
+#import "MyGrabOrderListViewController.h"
+#import "MyCenterUserGuideViewController.h"
 
 @interface MyCenterViewController ()
 
@@ -21,6 +25,8 @@
 
 @property (nonatomic, strong) UITableView *noUseTableView;
 @property (nonatomic, assign) int user_status;
+
+@property (strong, nonatomic) NSMutableArray *linkPlatformArray;
 @end
 
 @implementation MyCenterViewController
@@ -83,16 +89,49 @@
     [self.navigationController pushViewController:CargoidentificationVC1 animated:YES];
 }
 - (IBAction)myPublishCargoAction:(id)sender {
+    MyPublishListViewController *publishVC = [MyPublishListViewController new];
+    [self.navigationController pushViewController:publishVC animated:YES];
 }
 - (IBAction)myPublishCarAction:(id)sender {
+    MyPublishCarListViewController *publishVC = [MyPublishCarListViewController new];
+    [self.navigationController pushViewController:publishVC animated:YES];
 }
 - (IBAction)myRobOrderAction:(id)sender {
+    MyGrabOrderListViewController *robOrderVC = [MyGrabOrderListViewController new];
+    [self.navigationController pushViewController:robOrderVC animated:YES];
 }
 - (IBAction)linkPlatformAction:(id)sender {
+    [HttpRequest postPath:@"_hot_line_001" params:nil resultBlock:^(id responseObject, NSError *error) {
+        NSDictionary *dic = responseObject;
+        int errorint = [dic[@"error"] intValue];
+        if (errorint == 0 ) {
+            NSArray *info = dic[@"info"];
+            if ([info isKindOfClass:[NSArray class]]) {
+                self.linkPlatformArray = info.mutableCopy;
+            }
+        }else {
+            NSString *errorStr = dic[@"info"];
+            [ConfigModel mbProgressHUD:errorStr andView:nil];
+        }
+    }];
 }
 - (IBAction)UserGuideAction:(id)sender {
+    [HttpRequest postPath:@"_operating_guide_001" params:nil resultBlock:^(id responseObject, NSError *error) {
+        NSDictionary *dic = responseObject;
+        int errorint = [dic[@"error"] intValue];
+        if (errorint == 0 ) {
+            NSString *info = dic[@"info"];
+            MyCenterUserGuideViewController *VC = [MyCenterUserGuideViewController new];
+            VC.urlStr = info;
+            [self.navigationController pushViewController:VC animated:YES];
+        }else {
+            NSString *errorStr = dic[@"info"];
+            [ConfigModel mbProgressHUD:errorStr andView:nil];
+        }
+    }];
 }
 - (IBAction)invitefriendsinviteFriendsAction:(id)sender {
+    
 }
 
 #pragma mark -- setter
@@ -115,4 +154,24 @@
             break;
     }
 }
+
+- (void) setLinkPlatformArray:(NSMutableArray *)linkPlatformArray{
+    _linkPlatformArray = linkPlatformArray;
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [cancelAction setValue:UIColorFromHex(0x666666) forKey:@"_titleTextColor"];
+    [alertVC addAction:cancelAction];
+    for (NSDictionary *info in linkPlatformArray) {
+        NSString *title = [NSString stringWithFormat:@"%@: %@",info[@"name"],info[@"mobile"]];
+        UIAlertAction *okAction1 = [UIAlertAction actionWithTitle:title style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"tel:%@",info[@"mobile"]];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+        }];
+        [okAction1 setValue:UIColorFromHex(0x333333) forKey:@"_titleTextColor"];
+        [alertVC addAction:okAction1];
+    }
+    [self presentViewController:alertVC animated:YES completion:nil];
+}
+
 @end
