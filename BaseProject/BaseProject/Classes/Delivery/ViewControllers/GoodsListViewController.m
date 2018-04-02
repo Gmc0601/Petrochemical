@@ -12,11 +12,13 @@
 #import "ZSAnalysisClass.h"  // 数据转模型类
 #import "AddUnloadCell.h"
 #import "GoodsUnloadingCell.h"
-
+#import "GoodsInfoCell.h"
+#import "GoodsNoteCell.h"
 
 NSString * const GoodsUnloadingCellIdentifier = @"GoodsUnloadingCellIdentifier";
 NSString * const AddUnloadCellIdentifier = @"AddUnloadCellIdentifier";
-
+NSString * const GoodsInfoCellIdentifier = @"GoodsInfoCellIdentifier";
+NSString * const GoodsNoteCellIdentifier = @"AddUnloadCellIdentifier";
 @interface GoodsListViewController ()
 @property(nonatomic, strong) UIView * bottomView;
 @property(nonatomic, assign) NSInteger  unlodingNum;
