@@ -29,6 +29,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setCustomerTitle:@"我的抢单"];
     menuIndex = 0;
     [self setupUI];
     [self setupDataSource];

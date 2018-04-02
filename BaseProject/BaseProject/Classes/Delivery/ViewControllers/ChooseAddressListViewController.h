@@ -8,7 +8,14 @@
 
 #import "BaseTableView.h"
 
-
+typedef NS_ENUM(NSInteger, ChooseAddressType){
+     ChooseAddressType_nomarl = 0,
+     ChooseAddressType_loading   ,
+     ChooseAddressType_unLoading
+};
 @interface ChooseAddressListViewController : BaseTableView
+@property(nonatomic, assign) ChooseAddressType chooseType;
+@property(nonatomic, assign) NSInteger chooseIndex;
+@property(nonatomic, copy) void(^chooseAddressInfoBlock)(NSDictionary *addressInfo,NSInteger index);
 @property(nonatomic, copy) void(^ChooseAddressBlock)(NSString *name);
 @end

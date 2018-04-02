@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseViewController.h"
-@interface GoodsListViewController : BaseViewController
+#import "BaseTableView.h"
+@interface GoodsListViewController : BaseTableView
 
 @end

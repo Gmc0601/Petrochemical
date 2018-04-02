@@ -43,6 +43,10 @@
 
 #define UnloginReturn if (![ConfigModel haveLogin:self]) {return;}
 
+#define StatusBar [ConfigModel getStringforKey:@"_statusbarHeight"]
+#define NavbarHeight [ConfigModel getStringforKey:@"_navbarHeight"]
+#define TabBarHeight [ConfigModel getStringforKey:@"_tabbarHeight"]
+
 /**
  * 设备判断
  */

@@ -492,6 +492,7 @@
     self.frame=[UIScreen mainScreen].bounds;
     [[UIApplication sharedApplication].keyWindow addSubview:self];
     [UIView animateWithDuration:0.3 animations:^{
+        
         self.bageView.top=SCREEN.height-self.bageView.height;
     }];
 }

@@ -9,6 +9,7 @@
 #import "CarsDetialViewController.h"
 #import "CarDetialviewmodel.h"
 #import "CarDetailModel.h"
+#import <YYKit.h>
 
 @interface CarsDetialViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -28,6 +29,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+     self.edgesForExtendedLayout=UIRectEdgeNone;
     [self navitation];
     [self.view addSubview:self.noUseTableView];
     [self.view addSubview:self.commitBtn];
@@ -105,7 +107,7 @@
 }
 - (UITableView *)noUseTableView {
     if (!_noUseTableView) {
-        _noUseTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenW, kScreenH - 50) style:UITableViewStylePlain];
+        _noUseTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenW, kScreenH - 50 - [StatusBar floatValue] - [NavbarHeight floatValue]) style:UITableViewStylePlain];
         _noUseTableView.backgroundColor = [UIColor whiteColor];
         _noUseTableView.delegate = self;
         _noUseTableView.dataSource = self;
@@ -169,7 +171,7 @@
 
 - (UIButton *)commitBtn {
     if (!_commitBtn) {
-        _commitBtn = [[UIButton alloc] initWithFrame:FRAME(0, kScreenH - 50, kScreenW , 50)];
+        _commitBtn = [[UIButton alloc] initWithFrame:FRAME(0, self.noUseTableView.bottom, kScreenW , 50)];
         _commitBtn.backgroundColor = ThemeBlue;
         _commitBtn.titleLabel.font = [UIFont systemFontOfSize:17];
         [_commitBtn addTarget:self action:@selector(commitClick:) forControlEvents:UIControlEventTouchUpInside];

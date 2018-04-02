@@ -133,7 +133,11 @@ NSString * UITableViewCellIdentifier = @"UITableViewCellIdentifier";
             
             for (AMapGeoFencePOIRegion *region in regions) {
                 NSLog(@"==%@==",region.POIItem.name);
-                [self.addressArray addObject:region.POIItem.name];
+                 CGFloat  latitude = region.POIItem.location.latitude;
+                CGFloat  longitude =region.POIItem.location.longitude;
+                 NSString * name = region.POIItem.name;
+                NSDictionary * region =  @{@"latitude":@(latitude),@"longitude":@(longitude),@"name":name                   };
+                [self.addressArray addObject:region];
               
             }
             if ([self.addressArray count] >0) {
@@ -163,14 +167,18 @@ NSString * UITableViewCellIdentifier = @"UITableViewCellIdentifier";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     // 写这个方法防止报警告，只要子类中覆盖这个方法就不会影响显示
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:UITableViewCellIdentifier];
-    cell.textLabel.text = self.addressArray[indexPath.row];
+    cell.textLabel.text = self.addressArray[indexPath.row][@"name"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if (self.ChooseAddressBlock) {
-        self.ChooseAddressBlock(self.addressArray[indexPath.row]);
+        self.ChooseAddressBlock(self.addressArray[indexPath.row][@"name"]);
+    }
+    
+    if (self.chooseAddressInfoBlock) {
+        self.chooseAddressInfoBlock(self.addressArray[indexPath.row],self.chooseIndex);
     }
     [self.navigationController popViewControllerAnimated:YES];
 }
