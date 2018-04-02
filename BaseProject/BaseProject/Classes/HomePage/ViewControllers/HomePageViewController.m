@@ -513,6 +513,10 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
     _navbarHeight = self.navigationController.navigationBar.frame.size.height;
     _tabbarHeight = self.tabBarController.tabBar.frame.size.height;
     NSLog(@"Heiht = %f,%f,%f",_statusbarHeight,_navbarHeight,_tabbarHeight);
+    [ConfigModel saveString:[NSString stringWithFormat:@"%f", _statusbarHeight] forKey:@"_statusbarHeight"];
+    [ConfigModel saveString:[NSString stringWithFormat:@"%f", _navbarHeight] forKey:@"_navbarHeight"];
+    [ConfigModel saveString:[NSString stringWithFormat:@"%f", _tabbarHeight] forKey:@"_tabbarHeight"];
+    
 }
 
 - (void)creatToolsWithToolNames:(NSArray *)names andContainer:(NSInteger)buttonsNumber andPositionX:(CGFloat)x subView:(UIView *)view{
