@@ -14,11 +14,12 @@
 #import "GoodsUnloadingCell.h"
 #import "GoodsInfoCell.h"
 #import "GoodsNoteCell.h"
+#import "ChooseAddressListViewController.h"
 
 NSString * const GoodsUnloadingCellIdentifier = @"GoodsUnloadingCellIdentifier";
 NSString * const AddUnloadCellIdentifier = @"AddUnloadCellIdentifier";
 NSString * const GoodsInfoCellIdentifier = @"GoodsInfoCellIdentifier";
-NSString * const GoodsNoteCellIdentifier = @"AddUnloadCellIdentifier";
+NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
 @interface GoodsListViewController ()
 @property(nonatomic, strong) UIView * bottomView;
 @property(nonatomic, assign) NSInteger  unlodingNum;
@@ -219,7 +220,14 @@ NSString * const GoodsNoteCellIdentifier = @"AddUnloadCellIdentifier";
  
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-   
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            [self  gotoStartLoaction];
+        }else if (indexPath.row < 2-1 +self.unlodingNum){
+            [self gotoUnloadLoaction:indexPath];
+        }
+        
+    }
 }
 
 - (UIView *)bottomView{
@@ -336,6 +344,19 @@ NSString * const GoodsNoteCellIdentifier = @"AddUnloadCellIdentifier";
  
 
 
+- (void)gotoStartLoaction{
+    
+    ChooseAddressListViewController * addressVC = [[ChooseAddressListViewController alloc]init];
+     addressVC.chooseType = ChooseAddressType_loading;
+    [self.navigationController pushViewController:addressVC animated:YES];
+}
+- (void)gotoUnloadLoaction:(NSIndexPath *)indexPath{
+    
+    ChooseAddressListViewController * addressVC = [[ChooseAddressListViewController alloc]init];
+    addressVC.chooseIndex = indexPath.row;
+    addressVC.chooseType = ChooseAddressType_unLoading;
+    [self.navigationController pushViewController:addressVC animated:YES];
+}
 /*
 #pragma mark - Navigation
 

@@ -17,6 +17,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.tf.enabled = NO;
 }
 - (void)setupTitle:(NSString *)title withTextFeild:(NSString *)content withPlaceholder:(NSString *)placeholder{
     self.titleLabel.text = title;
