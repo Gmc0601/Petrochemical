@@ -146,7 +146,7 @@ NSString * const GoodsChooseCellIdentifier = @"GoodsChooseCellIdentifier";
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(SCREEN.width, 44);
+    return CGSizeMake(SCREEN.width/4, 44);
 }
 
 
