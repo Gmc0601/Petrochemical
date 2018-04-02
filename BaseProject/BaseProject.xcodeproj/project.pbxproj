@@ -34,6 +34,10 @@
 		035A2414206CC6E70003CD31 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 035A2413206CC6E70003CD31 /* libz.tbd */; };
 		035A2416206CC6EF0003CD31 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 035A2415206CC6EF0003CD31 /* libstdc++.6.0.9.tbd */; };
 		035A2419206CC7780003CD31 /* AMapFoundationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035A2418206CC7770003CD31 /* AMapFoundationKit.framework */; };
+		0396E6842071D2CD00B7EFDA /* GoodsUnloadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0396E6822071D2CD00B7EFDA /* GoodsUnloadingCell.m */; };
+		0396E6852071D2CD00B7EFDA /* GoodsUnloadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0396E6832071D2CD00B7EFDA /* GoodsUnloadingCell.xib */; };
+		0396E6892071D50B00B7EFDA /* AddUnloadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0396E6872071D50B00B7EFDA /* AddUnloadCell.m */; };
+		0396E68A2071D50B00B7EFDA /* AddUnloadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0396E6882071D50B00B7EFDA /* AddUnloadCell.xib */; };
 		420D18262057A71300E1D8E1 /* UILabel+Width.m in Sources */ = {isa = PBXBuildFile; fileRef = 420D18242057A71300E1D8E1 /* UILabel+Width.m */; };
 		420D18462057AA9100E1D8E1 /* MyCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420D18452057AA9100E1D8E1 /* MyCenterViewController.m */; };
 		422F1FFC2047E858009481CC /* UIViewController+BarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 422F1FFA2047E858009481CC /* UIViewController+BarButton.m */; };
@@ -292,6 +296,12 @@
 		035A2415206CC6EF0003CD31 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
 		035A2417206CC7300003CD31 /* APIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIKey.h; sourceTree = "<group>"; };
 		035A2418206CC7770003CD31 /* AMapFoundationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapFoundationKit.framework; sourceTree = "<group>"; };
+		0396E6812071D2CD00B7EFDA /* GoodsUnloadingCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsUnloadingCell.h; sourceTree = "<group>"; };
+		0396E6822071D2CD00B7EFDA /* GoodsUnloadingCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsUnloadingCell.m; sourceTree = "<group>"; };
+		0396E6832071D2CD00B7EFDA /* GoodsUnloadingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoodsUnloadingCell.xib; sourceTree = "<group>"; };
+		0396E6862071D50B00B7EFDA /* AddUnloadCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddUnloadCell.h; sourceTree = "<group>"; };
+		0396E6872071D50B00B7EFDA /* AddUnloadCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddUnloadCell.m; sourceTree = "<group>"; };
+		0396E6882071D50B00B7EFDA /* AddUnloadCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddUnloadCell.xib; sourceTree = "<group>"; };
 		420D18242057A71300E1D8E1 /* UILabel+Width.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Width.m"; sourceTree = "<group>"; };
 		420D18252057A71300E1D8E1 /* UILabel+Width.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Width.h"; sourceTree = "<group>"; };
 		420D18442057AA9100E1D8E1 /* MyCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCenterViewController.h; sourceTree = "<group>"; };
@@ -735,6 +745,7 @@
 				035A2404206C97BD0003CD31 /* ChooseAddressSearchView.h */,
 				035A2405206C97BD0003CD31 /* ChooseAddressSearchView.m */,
 				035A2407206C97C90003CD31 /* ChooseAddressSearchView.xib */,
+				0396E6802071CFB800B7EFDA /* GoodsView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -761,6 +772,19 @@
 				035A23D7206C7F480003CD31 /* ZSAnalysisClass.m */,
 			);
 			path = PickerView;
+			sourceTree = "<group>";
+		};
+		0396E6802071CFB800B7EFDA /* GoodsView */ = {
+			isa = PBXGroup;
+			children = (
+				0396E6812071D2CD00B7EFDA /* GoodsUnloadingCell.h */,
+				0396E6822071D2CD00B7EFDA /* GoodsUnloadingCell.m */,
+				0396E6832071D2CD00B7EFDA /* GoodsUnloadingCell.xib */,
+				0396E6862071D50B00B7EFDA /* AddUnloadCell.h */,
+				0396E6872071D50B00B7EFDA /* AddUnloadCell.m */,
+				0396E6882071D50B00B7EFDA /* AddUnloadCell.xib */,
+			);
+			path = GoodsView;
 			sourceTree = "<group>";
 		};
 		420D18472057CF7500E1D8E1 /* Information */ = {
@@ -1969,8 +1993,10 @@
 				42F10C4E206E331700C9C8EC /* SureHeaderCollectionReusableView.xib in Resources */,
 				42F10C40206E331700C9C8EC /* productDetail_delete_enabled@2x.png in Resources */,
 				7AFAE4FC205A3D8400B14406 /* LogisticsDetailsViewController.xib in Resources */,
+				0396E68A2071D50B00B7EFDA /* AddUnloadCell.xib in Resources */,
 				82B6D2F8205F53F000C65CA4 /* MyCarInformationTableViewCell.xib in Resources */,
 				42F10C4B206E331700C9C8EC /* GoodsTableViewCell.xib in Resources */,
+				0396E6852071D2CD00B7EFDA /* GoodsUnloadingCell.xib in Resources */,
 				82B6D2D5205F4FA000C65CA4 /* MyCenterViewController.xib in Resources */,
 				42F10C37206E331700C9C8EC /* citydatas.xml in Resources */,
 				42F10C44206E331700C9C8EC /* productDetail_delete_clicked@2x.png in Resources */,
@@ -2122,6 +2148,7 @@
 				7AFAE4F5205A236600B14406 /* MJRefreshBackFooter.m in Sources */,
 				82B6D2CC205F4F5900C65CA4 /* IQKeyboardManager.m in Sources */,
 				422F20282047F7B6009481CC /* LoginViewController.m in Sources */,
+				0396E6842071D2CD00B7EFDA /* GoodsUnloadingCell.m in Sources */,
 				82B6D2C7205F4F5900C65CA4 /* IQTitleBarButtonItem.m in Sources */,
 				42F795BB1F00C8B200A11A69 /* BaseTableView.m in Sources */,
 				7AFAE4E8205A236600B14406 /* UIScrollView+MJExtension.m in Sources */,
@@ -2190,6 +2217,7 @@
 				42F10C2A206E331700C9C8EC /* CarDetialviewmodel.m in Sources */,
 				42A4443E1EF133E000F90791 /* BaseProject.xcdatamodeld in Sources */,
 				42F795DA1F00CC3E00A11A69 /* TBRefreshFootView.m in Sources */,
+				0396E6892071D50B00B7EFDA /* AddUnloadCell.m in Sources */,
 				422F202F2047F882009481CC /* CCWebViewViewController.m in Sources */,
 				42F10C4F206E331800C9C8EC /* SureConditionCollectionViewCell.m in Sources */,
 				7A75D3C02059213A00C6860A /* ShipperOrderTableViewCell.m in Sources */,

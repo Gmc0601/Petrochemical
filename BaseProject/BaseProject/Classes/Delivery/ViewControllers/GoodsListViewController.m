@@ -7,9 +7,19 @@
 //
 
 #import "GoodsListViewController.h"
+#import "CityPickerVeiw.h"
+#import "CityNameModel.h" //省市区模型
+#import "ZSAnalysisClass.h"  // 数据转模型类
+#import "AddUnloadCell.h"
+#import "GoodsUnloadingCell.h"
+
+
+NSString * const GoodsUnloadingCellIdentifier = @"GoodsUnloadingCellIdentifier";
+NSString * const AddUnloadCellIdentifier = @"AddUnloadCellIdentifier";
 
 @interface GoodsListViewController ()
-
+@property(nonatomic, strong) UIView * bottomView;
+@property(nonatomic, assign) NSInteger  unlodingNum;
 @end
 
 @implementation GoodsListViewController
@@ -19,14 +29,246 @@
     // Do any additional setup after loading the view.
      [self setCustomerTitle:@"发布货源"];
      [self addLeftBarButtonWithImage:[UIImage imageNamed:@"zz"] action:@selector(backAction)];
+    [self registerCell];
+    self.unlodingNum = 1;
+    self.CC_table.bounces = NO;
+    [self setupBottomView];
+    
 }
 - (void)backAction{
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (BOOL)addRefreshHeader{
+    return NO;
+}
+-(CGRect)getTableFrame{
+    return CGRectMake(0, 64, kScreenW, kScreenH - 64 - 49);
+}
+- (UITableViewStyle )getStyle{
+    return UITableViewStyleGrouped;
+}
+- (void)registerCell{
+    [self.CC_table registerNib:[UINib nibWithNibName:NSStringFromClass([GoodsUnloadingCell class]) bundle:nil] forCellReuseIdentifier:GoodsUnloadingCellIdentifier];
+     [self.CC_table registerNib:[UINib nibWithNibName:NSStringFromClass([AddUnloadCell class]) bundle:nil] forCellReuseIdentifier:AddUnloadCellIdentifier];
+    
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSInteger  row = 0;
+    if (section == 0) {
+        row = 2 +  self.unlodingNum;
+    }else{
+        row = 7;
+    }
+    return row;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    CGFloat height = 50;
+    if (indexPath.section == 1 && indexPath.row == 6) {
+        height = 200;
+    }
+    return height;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 0.0001;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 10;
+}
+- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    
+    UIView *header = [[UIView alloc] init];
+    header.frame = CGRectMake(0, 0, self.view.frame.size.width, 0);
+    header.backgroundColor = [UIColor clearColor];
+    return header;
+}
+- (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    UIView * footerView = [UIView new];
+    footerView.frame = CGRectMake(0, 0, self.view.frame.size.width, 10);
+    return footerView;
+}
+
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    // 写这个方法防止报警告，只要子类中覆盖这个方法就不会影响显示
+    UITableViewCell * cell = nil;
+    if (indexPath.section == 0) {
+        if (indexPath.row < self.unlodingNum + 2 -1) {
+            GoodsUnloadingCell * tempCell = [tableView dequeueReusableCellWithIdentifier:GoodsUnloadingCellIdentifier];
+            
+            [self configCell:tempCell withIndexPath:indexPath];
+            cell = tempCell;
+        }else{
+            AddUnloadCell * tempCell = [tableView dequeueReusableCellWithIdentifier:AddUnloadCellIdentifier];
+            tempCell.addUnloadingBlock = ^{
+                self.unlodingNum ++;
+                [self.CC_table insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.unlodingNum inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+            };
+            cell = tempCell;
+            
+        }
+    
+
+    }else if (indexPath.section == 1){
+        
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    return cell;
+}
+
+- (void)configCell:(GoodsUnloadingCell *)cell withIndexPath:(NSIndexPath *)indexPath{
+    BOOL  isHidden = NO;
+    NSString * title = @"";
+    NSString * content = @"";
+    NSString * placeholder = @"";
+    if (indexPath.row == 0) {
+        title = @"装货点";
+        placeholder = @"请选择装货点";
+        content = @"";
+        isHidden = YES;
+    }else if(indexPath.row < 2+ self.self.unlodingNum -1&& indexPath.row >0){
+       
+        if (indexPath.row == 1) {
+            isHidden = YES;
+        }else{
+            isHidden = NO;
+            cell.indexPath = indexPath;
+            cell.delUnloadingBlock = ^(NSIndexPath *indexPath) {
+                self.unlodingNum--;
+                // 删除对应的数据 indexPath.row
+                
+                [self.CC_table reloadData];
+            };
+        }
+        title = @"卸货点";
+        placeholder = @"请选择卸货点";
+        content = @"";
+    }
+     [cell setupDelHidden:isHidden];
+    [cell setupTitle:title withTextFeild:content withPlaceholder:placeholder];
+ 
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+   
+}
+
+- (UIView *)bottomView{
+    if (!_bottomView) {
+        _bottomView = [[UIView alloc]init];
+    }
+    return _bottomView;
+}
+- (void)setupBottomView{
+    UIButton * button = [UIButton  buttonWithType:UIButtonTypeCustom];
+    [button setBackgroundColor:UIColorFromHex(0x028BF3)];
+    [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    NSString * buttonTitle = @"立即发布";
+    [button setTitle:buttonTitle forState:UIControlStateNormal];
+    [self.bottomView addSubview:button];
+    [self.view addSubview:self.bottomView];
+    [self.bottomView setFrame:CGRectMake(0, CGRectGetMaxY(self.CC_table.frame), kScreenW, 49)];
+    [button setFrame:CGRectMake(0, 2, kScreenW, 45)];
+    
+    
+}
+- (void)buttonAction:(id)sender{
+    [self sendCarInfo];
+}
+
+
+- (void)sendCarInfo{
+    NSDictionary *dic = nil;
+//    if (self.car_id && self.startLocation&&self.endLocation&&self.emptyLocation&&self.lon&&self.lat&& self.loadingTime) {
+//        dic = @{
+//                @"userToken":@"02c8f878c1d5463b5bea89e893cde184",
+//                @"car_id":self.car_id,
+//                @"origin":self.startLocation,
+//                @"destination":self.endLocation,
+//                @"empty":self.emptyLocation,
+//                @"lon":[NSString stringWithFormat:@"%f",self.lon],
+//                @"lat":[NSString stringWithFormat:@"%f",self.lat],
+//                @"loading_time":self.loadingTime,
+//                //                          @"load":self.maxLoad,
+//                @"issue_type":@"1",//发布车源1  发布货源2
+//                };
+//
+//
+//    }
+//    if (!dic) {
+//        return;
+//    }
+//    WeakSelf(weakself);
+//    [HttpRequest postPath:@"_issue_car_001" params:dic resultBlock:^(id responseObject, NSError *error) {
+//
+//        NSDictionary *dic = responseObject;
+//
+//        int errorint = [dic[@"error"] intValue];
+//        if (errorint == 0 ) {
+//            UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"发布车源成功" preferredStyle:UIAlertControllerStyleAlert];
+//            UIAlertAction *okAction1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//                [weakself backAction];
+//            }];
+//            [alertVC addAction:okAction1];
+//            [self presentViewController:alertVC animated:YES completion:nil];
+//        }else {
+//            NSString *errorStr = dic[@"info"];
+//            NSLog(@"%@", errorStr);
+//            [ConfigModel mbProgressHUD:errorStr andView:nil];
+//        }
+//
+//    }];
+}
+- (void)gotoEmptyCarVC{
+   
+}
+- (void)gotoChooseAddressVC{
+//    ChooseAddressListViewController * chooseAddressVC = [[ChooseAddressListViewController alloc]init];
+//    chooseAddressVC.ChooseAddressBlock = ^(NSString *name) {
+//        self.emptyLocation = name;
+//        [self.CC_table reloadData];
+//    };
+//    [self.navigationController pushViewController:chooseAddressVC animated:YES];
+//    
+}
+- (void)selectedCar:(NSDictionary *)carInfo{
+//    self.carNum = carInfo[@"license"];
+//    self.car_id = carInfo[@"id"];
+//    self.maxLoad =  carInfo[@"load"];
+    [self.CC_table reloadData];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (void)showCityPicker  {
+    CityPickerVeiw * cityView = [[CityPickerVeiw alloc] initWithFrame:CGRectZero withType:PickerViewType_city];
+    cityView.col = 3;
+    [cityView show];
+    cityView.showSelectedCityNameStr =@"" ;
+    [cityView setCityBlock:^(NSString * value) {
+        NSLog(@"%@===",value);
+//        self.endLocation =  [value stringByReplacingOccurrencesOfString:@"-" withString:@""];
+        [self.CC_table reloadData];
+    }];
+}
+
+- (void)showTimerPicker  {
+    CityPickerVeiw * cityView = [[CityPickerVeiw alloc] initWithFrame:CGRectZero withType:PickerViewType_timer];
+    cityView.col = 3;
+    [cityView show];
+    cityView.showSelectedCityNameStr =@"" ;
+    [cityView setCityBlock:^(NSString * value) {
+        NSLog(@"%@===",value);
+//        self.loadingTime = value;
+        [self.CC_table reloadData];
+    }];
+}
+ 
+
 
 /*
 #pragma mark - Navigation
