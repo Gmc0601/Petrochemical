@@ -9,7 +9,11 @@
 //
 
 #import "GoodsNoteCell.h"
+@interface GoodsNoteCell()
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UITextView *tv;
 
+@end
 @implementation GoodsNoteCell
 
 - (void)awakeFromNib {

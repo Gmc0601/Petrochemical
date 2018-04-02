@@ -8,6 +8,8 @@
 
 #import "GoodsInfoCell.h"
 @interface GoodsInfoCell()
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UITextField *tf;
 
 @end
 @implementation GoodsInfoCell
@@ -16,7 +18,11 @@
     [super awakeFromNib];
     // Initialization code
 }
-
+- (void)setupTitle:(NSString *)title withTextFeild:(NSString *)content withPlaceholder:(NSString *)placeholder{
+    self.titleLabel.text = title;
+    self.tf.text = content;
+    self.tf.placeholder =  placeholder;
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

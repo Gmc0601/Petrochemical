@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface GoodsInfoCell : UITableViewCell
-
+- (void)setupTitle:(NSString *)title withTextFeild:(NSString *)content withPlaceholder:(NSString *)placeholder;
 @end

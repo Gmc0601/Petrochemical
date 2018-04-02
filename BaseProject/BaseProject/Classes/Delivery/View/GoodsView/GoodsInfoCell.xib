@@ -51,6 +51,10 @@
                 <constraint firstItem="5hz-XQ-Bmg" firstAttribute="centerY" secondItem="KGk-i7-Jjw" secondAttribute="centerY" id="aBX-ha-WF9"/>
                 <constraint firstItem="aaN-OF-ZPN" firstAttribute="leading" secondItem="KGk-i7-Jjw" secondAttribute="leading" id="kUM-Ol-0z0"/>
             </constraints>
+            <connections>
+                <outlet property="tf" destination="2X5-Y9-wNH" id="3TP-R6-jyr"/>
+                <outlet property="titleLabel" destination="5hz-XQ-Bmg" id="3bG-tb-OPr"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

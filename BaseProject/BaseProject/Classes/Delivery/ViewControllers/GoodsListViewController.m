@@ -52,11 +52,12 @@ NSString * const GoodsNoteCellIdentifier = @"AddUnloadCellIdentifier";
 - (void)registerCell{
     [self.CC_table registerNib:[UINib nibWithNibName:NSStringFromClass([GoodsUnloadingCell class]) bundle:nil] forCellReuseIdentifier:GoodsUnloadingCellIdentifier];
      [self.CC_table registerNib:[UINib nibWithNibName:NSStringFromClass([AddUnloadCell class]) bundle:nil] forCellReuseIdentifier:AddUnloadCellIdentifier];
-    
+    [self.CC_table registerNib:[UINib nibWithNibName:NSStringFromClass([GoodsInfoCell class]) bundle:nil] forCellReuseIdentifier:GoodsInfoCellIdentifier];
+    [self.CC_table registerNib:[UINib nibWithNibName:NSStringFromClass([GoodsNoteCell class]) bundle:nil] forCellReuseIdentifier:GoodsNoteCellIdentifier];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+    return 2;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSInteger  row = 0;
@@ -117,11 +118,74 @@ NSString * const GoodsNoteCellIdentifier = @"AddUnloadCellIdentifier";
 
     }else if (indexPath.section == 1){
         
+        if (indexPath.row == 6) {
+            GoodsNoteCell * tempCell = [tableView dequeueReusableCellWithIdentifier:GoodsNoteCellIdentifier];
+            
+            cell = tempCell;
+        }else{
+            GoodsInfoCell * tempCell = [tableView dequeueReusableCellWithIdentifier:GoodsInfoCellIdentifier];
+            [self configInfoCell:tempCell withIndexPath:indexPath];
+            cell = tempCell;
+        }
+        
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
-
+- (void)configInfoCell:(GoodsInfoCell *)cell withIndexPath:(NSIndexPath *)indexPath{
+    
+    NSString * title = @"";
+    NSString * content = @"";
+    NSString * placeholder = @"";
+    switch (indexPath.row) {
+        case 0:
+        {
+            title = @"预计车程";
+            placeholder = @"";
+            content = @"0公里/0小时";
+        }
+            break;
+        case 1:
+        {
+            title = @"用车时间";
+            placeholder = @"请选择用车时间";
+            content = @"";
+        }
+            break;
+        case 2:
+        {
+            title = @"货物名称";
+            placeholder = @"请选择货物类型";
+            content = @"";
+        }
+            break;
+        case 3:
+        {
+            title = @"货物重量（吨）";
+            placeholder = @"请选择货物重量";
+            content = @"";
+        }
+            break;
+        case 4:
+        {
+            title = @"运输单价（元/吨）";
+            placeholder = @"请填写运输单价";
+            content = @"";
+        }
+            break;
+        case 5:
+        {
+            title = @"结算方式";
+            placeholder = @"";
+            content = @"线下结算";
+        }
+            break;
+      
+        default:
+            break;
+    } 
+    [cell setupTitle:title withTextFeild:content withPlaceholder:placeholder];
+}
 - (void)configCell:(GoodsUnloadingCell *)cell withIndexPath:(NSIndexPath *)indexPath{
     BOOL  isHidden = NO;
     NSString * title = @"";

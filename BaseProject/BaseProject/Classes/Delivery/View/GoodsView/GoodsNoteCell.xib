@@ -43,6 +43,10 @@
                 <constraint firstAttribute="bottom" secondItem="DNt-Nc-aeu" secondAttribute="bottom" constant="19" id="Rjk-EC-DUS"/>
                 <constraint firstAttribute="trailing" secondItem="DNt-Nc-aeu" secondAttribute="trailing" constant="10" id="un5-zf-wY9"/>
             </constraints>
+            <connections>
+                <outlet property="titleLabel" destination="D9u-wi-EaJ" id="kik-2T-gmX"/>
+                <outlet property="tv" destination="DNt-Nc-aeu" id="RDC-cc-es7"/>
+            </connections>
             <point key="canvasLocation" x="32.5" y="156"/>
         </tableViewCell>
     </objects>
