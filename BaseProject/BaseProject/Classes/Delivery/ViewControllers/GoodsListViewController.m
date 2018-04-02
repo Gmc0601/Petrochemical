@@ -27,6 +27,8 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
 @property(nonatomic, strong) NSNumber * startLatitude;
 @property(nonatomic, strong) NSNumber * startLongitude;
 @property(nonatomic, strong) NSMutableArray * unloadingArray;
+@property(nonatomic, assign) CGFloat totalDistance;
+
 @end
 
 @implementation GoodsListViewController
@@ -38,6 +40,7 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
      [self addLeftBarButtonWithImage:[UIImage imageNamed:@"zz"] action:@selector(backAction)];
     [self registerCell];
     self.unlodingNum = 1;
+    [self.unloadingArray addObject:@{}];
     self.CC_table.bounces = NO;
     [self setupBottomView];
     
@@ -113,13 +116,13 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
     if (indexPath.section == 0) {
         if (indexPath.row < self.unlodingNum + 2 -1) {
             GoodsUnloadingCell * tempCell = [tableView dequeueReusableCellWithIdentifier:GoodsUnloadingCellIdentifier];
-            
             [self configCell:tempCell withIndexPath:indexPath];
             cell = tempCell;
         }else{
             AddUnloadCell * tempCell = [tableView dequeueReusableCellWithIdentifier:AddUnloadCellIdentifier];
             tempCell.addUnloadingBlock = ^{
                 self.unlodingNum ++;
+                [self.unloadingArray addObject:@{}];
                 [self.CC_table insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.unlodingNum inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
             };
             cell = tempCell;
@@ -153,7 +156,10 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
         {
             title = @"预计车程";
             placeholder = @"";
-            content = @"0公里/0小时";
+            if (self.totalDistance >0) {
+                content = [NSString stringWithFormat:@"%0.2f公里/%0.1f小时",self.totalDistance,self.totalDistance/60];
+            }else
+                content = @"0公里/0小时";
         }
             break;
         case 1:
@@ -221,12 +227,21 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
             cell.delUnloadingBlock = ^(NSIndexPath *indexPath) {
                 self.unlodingNum--;
                 // 删除对应的数据 indexPath.row
+                [self.unloadingArray removeObjectAtIndex:indexPath.row-1];
+                [self expecteDrive];
                 [self.CC_table reloadData];
             };
         }
         title = @"卸货点";
         placeholder = @"请选择卸货点";
-        content = @"";
+        if ([self.unloadingArray count] >0) {
+           
+            NSDictionary * info = self.unloadingArray[indexPath.row-1];
+            if (info) {
+              content = info[@"name"];
+            }
+        }else
+            content = @"";
     }
      [cell setupDelHidden:isHidden];
     [cell setupTitle:title withTextFeild:content withPlaceholder:placeholder];
@@ -377,7 +392,7 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
     addressVC.chooseType = ChooseAddressType_unLoading;
     addressVC.chooseAddressInfoBlock = ^(NSDictionary *addressInfo,NSInteger chooseIndex) {
        
-        if (self.unloadingArray[chooseIndex-1]) {
+        if ([self.unloadingArray count] >= chooseIndex &&self.unloadingArray[chooseIndex-1]) {
             [self.unloadingArray replaceObjectAtIndex:chooseIndex-1 withObject:addressInfo];
         }else{
             [self.unloadingArray addObject:addressInfo];
@@ -389,10 +404,20 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
 }
 //预计车程
 - (void)expecteDrive{
-    MAMapPoint point1 = MAMapPointForCoordinate(CLLocationCoordinate2DMake(39.989612,116.480972));
-    MAMapPoint point2 = MAMapPointForCoordinate(CLLocationCoordinate2DMake(39.990347,116.480441));
-    //2.计算距离
-    CLLocationDistance distance = MAMetersBetweenMapPoints(point1,point2);
+    
+    MAMapPoint point1 = MAMapPointForCoordinate(CLLocationCoordinate2DMake([self.startLatitude floatValue],[self.startLongitude floatValue]));
+    MAMapPoint point2;
+    CLLocationDistance distance  = 0;
+    for (NSDictionary * info in self.unloadingArray) {
+         NSNumber * latitude =info[@"latitude"];
+         NSNumber * longitude = info[@"longitude"];
+        point2 = MAMapPointForCoordinate(CLLocationCoordinate2DMake([latitude floatValue],[longitude floatValue]));
+        //2.计算总距离
+        distance = distance + MAMetersBetweenMapPoints(point1,point2);
+        point1 = point2;
+    }
+    self.totalDistance = distance/1000;
+    
     
 }
 /*
