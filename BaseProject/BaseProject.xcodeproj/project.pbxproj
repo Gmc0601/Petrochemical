@@ -44,6 +44,9 @@
 		0396E6942071DF7500B7EFDA /* GoodsNoteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0396E6922071DF7500B7EFDA /* GoodsNoteCell.xib */; };
 		0396E69620720D3500B7EFDA /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0396E69520720D3500B7EFDA /* MAMapKit.framework */; };
 		0396E69820720DD000B7EFDA /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0396E69720720DD000B7EFDA /* GLKit.framework */; };
+		0396E69C207224B000B7EFDA /* GoodsChooseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0396E69B207224B000B7EFDA /* GoodsChooseView.m */; };
+		0396E6A02072299300B7EFDA /* GoodsChooseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0396E69E2072299300B7EFDA /* GoodsChooseCell.m */; };
+		0396E6A12072299300B7EFDA /* GoodsChooseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0396E69F2072299300B7EFDA /* GoodsChooseCell.xib */; };
 		420D18262057A71300E1D8E1 /* UILabel+Width.m in Sources */ = {isa = PBXBuildFile; fileRef = 420D18242057A71300E1D8E1 /* UILabel+Width.m */; };
 		420D18462057AA9100E1D8E1 /* MyCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420D18452057AA9100E1D8E1 /* MyCenterViewController.m */; };
 		422F1FFC2047E858009481CC /* UIViewController+BarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 422F1FFA2047E858009481CC /* UIViewController+BarButton.m */; };
@@ -316,6 +319,11 @@
 		0396E6922071DF7500B7EFDA /* GoodsNoteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoodsNoteCell.xib; sourceTree = "<group>"; };
 		0396E69520720D3500B7EFDA /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
 		0396E69720720DD000B7EFDA /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		0396E69A207224B000B7EFDA /* GoodsChooseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsChooseView.h; sourceTree = "<group>"; };
+		0396E69B207224B000B7EFDA /* GoodsChooseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsChooseView.m; sourceTree = "<group>"; };
+		0396E69D2072299300B7EFDA /* GoodsChooseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsChooseCell.h; sourceTree = "<group>"; };
+		0396E69E2072299300B7EFDA /* GoodsChooseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsChooseCell.m; sourceTree = "<group>"; };
+		0396E69F2072299300B7EFDA /* GoodsChooseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoodsChooseCell.xib; sourceTree = "<group>"; };
 		420D18242057A71300E1D8E1 /* UILabel+Width.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Width.m"; sourceTree = "<group>"; };
 		420D18252057A71300E1D8E1 /* UILabel+Width.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Width.h"; sourceTree = "<group>"; };
 		420D18442057AA9100E1D8E1 /* MyCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCenterViewController.h; sourceTree = "<group>"; };
@@ -793,6 +801,7 @@
 		0396E6802071CFB800B7EFDA /* GoodsView */ = {
 			isa = PBXGroup;
 			children = (
+				0396E6992072247200B7EFDA /* GoodsChooseView */,
 				0396E6812071D2CD00B7EFDA /* GoodsUnloadingCell.h */,
 				0396E6822071D2CD00B7EFDA /* GoodsUnloadingCell.m */,
 				0396E6832071D2CD00B7EFDA /* GoodsUnloadingCell.xib */,
@@ -807,6 +816,18 @@
 				0396E6922071DF7500B7EFDA /* GoodsNoteCell.xib */,
 			);
 			path = GoodsView;
+			sourceTree = "<group>";
+		};
+		0396E6992072247200B7EFDA /* GoodsChooseView */ = {
+			isa = PBXGroup;
+			children = (
+				0396E69A207224B000B7EFDA /* GoodsChooseView.h */,
+				0396E69B207224B000B7EFDA /* GoodsChooseView.m */,
+				0396E69D2072299300B7EFDA /* GoodsChooseCell.h */,
+				0396E69E2072299300B7EFDA /* GoodsChooseCell.m */,
+				0396E69F2072299300B7EFDA /* GoodsChooseCell.xib */,
+			);
+			path = GoodsChooseView;
 			sourceTree = "<group>";
 		};
 		420D18472057CF7500E1D8E1 /* Information */ = {
@@ -2035,6 +2056,7 @@
 				7AFAE4B6205A115900B14406 /* ShipperOrderDetailCarListTableViewCell.xib in Resources */,
 				42A444431EF133E000F90791 /* LaunchScreen.storyboard in Resources */,
 				035A23E3206C7F4A0003CD31 /* province_data.json in Resources */,
+				0396E6A12072299300B7EFDA /* GoodsChooseCell.xib in Resources */,
 				42F10C45206E331700C9C8EC /* productDetail_add_clicked@2x.png in Resources */,
 				035A2408206C97C90003CD31 /* ChooseAddressSearchView.xib in Resources */,
 				7AFAE51A205A3FCE00B14406 /* LICENSE in Resources */,
@@ -2170,6 +2192,7 @@
 				42F10C3D206E331700C9C8EC /* GoodsDetialViewController.m in Sources */,
 				7AFAE4F0205A236600B14406 /* MJRefreshNormalHeader.m in Sources */,
 				7AFD2219205F87C4009DB138 /* TransportDynamicsTableViewCell.m in Sources */,
+				0396E69C207224B000B7EFDA /* GoodsChooseView.m in Sources */,
 				82B6D2EF205F4FB400C65CA4 /* CargoidentificationSecondViewController.m in Sources */,
 				7AFAE51E205A3FCE00B14406 /* MASConstraintMaker.m in Sources */,
 				7AFAE4F5205A236600B14406 /* MJRefreshBackFooter.m in Sources */,
@@ -2234,6 +2257,7 @@
 				82B6D302205F63CE00C65CA4 /* AddMyCarInformationSecondViewController.m in Sources */,
 				42C84ECB1EF2DD1A0008189D /* NSString+MD5.m in Sources */,
 				42C84F1C1EF2EB650008189D /* NSObject+SBJSON.m in Sources */,
+				0396E6A02072299300B7EFDA /* GoodsChooseCell.m in Sources */,
 				7AFAE51D205A3FCE00B14406 /* MASCompositeConstraint.m in Sources */,
 				7AFAE4F7205A236600B14406 /* MJRefreshComponent.m in Sources */,
 				42F10C57206E331800C9C8EC /* TYCyclePagerView.m in Sources */,

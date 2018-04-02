@@ -16,6 +16,8 @@
 #import "GoodsNoteCell.h"
 #import "ChooseAddressListViewController.h"
 #import <MAMapKit/MAMapKit.h>
+#import "GoodsChooseView.h"
+
 NSString * const GoodsUnloadingCellIdentifier = @"GoodsUnloadingCellIdentifier";
 NSString * const AddUnloadCellIdentifier = @"AddUnloadCellIdentifier";
 NSString * const GoodsInfoCellIdentifier = @"GoodsInfoCellIdentifier";
@@ -28,7 +30,7 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
 @property(nonatomic, strong) NSNumber * startLongitude;
 @property(nonatomic, strong) NSMutableArray * unloadingArray;
 @property(nonatomic, assign) CGFloat totalDistance;
-
+@property(nonatomic, copy) NSString *loadingTime;
 @end
 
 @implementation GoodsListViewController
@@ -166,7 +168,10 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
         {
             title = @"用车时间";
             placeholder = @"请选择用车时间";
-            content = @"";
+            if (self.loadingTime) {
+                content = self.loadingTime;
+            }
+            
         }
             break;
         case 2:
@@ -200,7 +205,12 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
       
         default:
             break;
-    } 
+    }
+    if (indexPath.row == 3||indexPath.row == 4) {
+        [cell setupTFEnabled:YES];
+    }else{
+        [cell setupTFEnabled:NO];
+    }
     [cell setupTitle:title withTextFeild:content withPlaceholder:placeholder];
 }
 - (void)configCell:(GoodsUnloadingCell *)cell withIndexPath:(NSIndexPath *)indexPath{
@@ -253,6 +263,13 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
             [self  gotoStartLoaction];
         }else if (indexPath.row < 2-1 +self.unlodingNum){
             [self gotoUnloadLoaction:indexPath];
+        }
+        
+    }else if(indexPath.section == 1){
+        if (indexPath.row == 1) {
+            [self showTimerPicker];
+        }else if (indexPath.row == 2){
+            [self gotoShowGoodsType];
         }
         
     }
@@ -324,39 +341,14 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
 //
 //    }];
 }
-- (void)gotoEmptyCarVC{
-   
-}
-- (void)gotoChooseAddressVC{
-//    ChooseAddressListViewController * chooseAddressVC = [[ChooseAddressListViewController alloc]init];
-//    chooseAddressVC.ChooseAddressBlock = ^(NSString *name) {
-//        self.emptyLocation = name;
-//        [self.CC_table reloadData];
-//    };
-//    [self.navigationController pushViewController:chooseAddressVC animated:YES];
-//    
-}
-- (void)selectedCar:(NSDictionary *)carInfo{
-//    self.carNum = carInfo[@"license"];
-//    self.car_id = carInfo[@"id"];
-//    self.maxLoad =  carInfo[@"load"];
-    [self.CC_table reloadData];
-}
+
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (void)showCityPicker  {
-    CityPickerVeiw * cityView = [[CityPickerVeiw alloc] initWithFrame:CGRectZero withType:PickerViewType_city];
-    cityView.col = 3;
-    [cityView show];
-    cityView.showSelectedCityNameStr =@"" ;
-    [cityView setCityBlock:^(NSString * value) {
-        NSLog(@"%@===",value);
-//        self.endLocation =  [value stringByReplacingOccurrencesOfString:@"-" withString:@""];
-        [self.CC_table reloadData];
-    }];
-}
+
 
 - (void)showTimerPicker  {
     CityPickerVeiw * cityView = [[CityPickerVeiw alloc] initWithFrame:CGRectZero withType:PickerViewType_timer];
@@ -365,7 +357,7 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
     cityView.showSelectedCityNameStr =@"" ;
     [cityView setCityBlock:^(NSString * value) {
         NSLog(@"%@===",value);
-//        self.loadingTime = value;
+        self.loadingTime = value;
         [self.CC_table reloadData];
     }];
 }
@@ -418,6 +410,36 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
     }
     self.totalDistance = distance/1000;
     
+    
+}
+
+//选择货物
+- (void)gotoShowGoodsType{
+    NSDictionary * dic = @{};
+    WeakSelf(weakself);
+    [HttpRequest postPath:@"_classify_001" params:dic resultBlock:^(id responseObject, NSError *error) {
+        
+        NSDictionary *dic = responseObject;
+        
+        int errorint = [dic[@"error"] intValue];
+        if (errorint == 0 ) {
+            [weakself showGoodsChooseView:dic[@"info"]];
+        }else {
+            NSString *errorStr = dic[@"info"];
+            NSLog(@"%@", errorStr);
+            [ConfigModel mbProgressHUD:errorStr andView:nil];
+        }
+        
+    }];
+
+}
+
+- (void)showGoodsChooseView:(NSArray *)goodsArray{
+    GoodsChooseView * goodsView = [[GoodsChooseView alloc]initWithFrame:CGRectZero withArray:goodsArray];
+    goodsView.chooseBlock = ^(NSArray *selectedArray) {
+        
+    };
+    [goodsView show];
     
 }
 /*

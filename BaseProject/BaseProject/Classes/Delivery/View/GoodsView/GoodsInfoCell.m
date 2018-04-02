@@ -19,6 +19,9 @@
     // Initialization code
     self.tf.enabled = NO;
 }
+- (void)setupTFEnabled:(BOOL)enabled{
+    self.tf.enabled = enabled;
+}
 - (void)setupTitle:(NSString *)title withTextFeild:(NSString *)content withPlaceholder:(NSString *)placeholder{
     self.titleLabel.text = title;
     self.tf.text = content;
