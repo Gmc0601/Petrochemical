@@ -21,6 +21,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.carNum.backgroundColor = UIColorFromHex(0xE0C123);
 }
 - (void)setupName:(NSString *)name  withCarNum:(NSString *)carNum withMaxLoding:(NSString *)max withSelected:(BOOL )isSelected{
     

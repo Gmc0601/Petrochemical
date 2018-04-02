@@ -10,9 +10,12 @@
 #import "CityNameModel.h"
 #import "ZSAnalysisClass.h"  // 数据转模型类
 #import "UIView+GoodView.h"
+
 #define SCREEN [UIScreen mainScreen].bounds.size
 
-
+@interface CityPickerVeiw()
+@property(nonatomic, assign)PickerViewType  pickerType;
+@end
 @implementation CityPickerVeiw
 {
     CityNameModel * sourceModel;
@@ -26,16 +29,23 @@
     UIPickerView * cityPickerView;
 
 }
--(instancetype)initWithFrame:(CGRect)frame {
+- (instancetype)initWithFrame:(CGRect)frame withType:(PickerViewType )pickerType {
     self=[super initWithFrame:frame];
     if (self) {
+        self.pickerType = pickerType;
         self.backgroundColor=[[UIColor blackColor] colorWithAlphaComponent:0.6];
-        [self dataConfiguer];
+        if (self.pickerType == PickerViewType_city) {
+            [self dataCityConfiguer];
+           
+        }else if (self.pickerType == PickerViewType_timer){
+            [self dataTimerConfiguer];
+        }
         [self uiConfiguer];
     }
     return self;
 }
-- (void)dataConfiguer {
+- (void)dataCityConfiguer {
+    
     //获取总资源
     sourceModel=  [self getModel];
     //全部的省数组
@@ -59,70 +69,216 @@
     resultsStr=[NSString stringWithFormat:@"%@-%@-%@",provinceStr,cityStr,districtStr];
 
 }
+
+- (void)dataTimerConfiguer{
+
+    section1 =[self getMonth];
+    section2 = [self getDaysAtMonth:1 atYears:[self getCurrentYear]];
+    section3 =[self  getHours];
+    
+    
+}
+- (NSArray *)getMonth{
+    NSMutableArray * array = [NSMutableArray array];
+    for (NSInteger i = 1; i<=12; i++) {
+        [array addObject:[NSString stringWithFormat:@"%ld",i]];
+    }
+    return array;
+}
+- (NSInteger)getCurrentYear{
+    NSCalendar *gregorian = [[NSCalendar alloc]
+                             initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    // 获取当前日期
+    NSDate* dt = [NSDate date];
+    // 定义一个时间字段的旗标，指定将会获取指定年、月、日、时、分、秒的信息
+    unsigned unitFlags = NSCalendarUnitYear |
+    NSCalendarUnitMonth |  NSCalendarUnitDay |
+    NSCalendarUnitHour |  NSCalendarUnitMinute |
+    NSCalendarUnitSecond | NSCalendarUnitWeekday;
+    // 获取不同时间字段的信息
+    NSDateComponents* comp = [gregorian components: unitFlags
+                                          fromDate:dt];
+    // 获取各时间字段的数值
+ 
+    return comp.year;
+}
+
+- (NSInteger)getCurrentMonth{
+    NSCalendar *gregorian = [[NSCalendar alloc]
+                             initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    // 获取当前日期
+    NSDate* dt = [NSDate date];
+    // 定义一个时间字段的旗标，指定将会获取指定年、月、日、时、分、秒的信息
+    unsigned unitFlags = NSCalendarUnitYear |
+    NSCalendarUnitMonth |  NSCalendarUnitDay |
+    NSCalendarUnitHour |  NSCalendarUnitMinute |
+    NSCalendarUnitSecond | NSCalendarUnitWeekday;
+    // 获取不同时间字段的信息
+    NSDateComponents* comp = [gregorian components: unitFlags
+                                          fromDate:dt];
+    // 获取各时间字段的数值
+ 
+    return comp.month;
+}
+- (NSArray *)getDaysAtMonth:(NSInteger )month atYears:(NSInteger)years{
+    NSMutableArray * array = [NSMutableArray array];
+    NSInteger days = [self howManyDaysInThisYear:years  withMonth:month ];
+    for (NSInteger i = 1; i<= days; i++) {
+        [array addObject:[NSString stringWithFormat:@"%ld",i]];
+    }
+    return array;
+ 
+}
+- (NSArray *)getHours{
+    NSMutableArray * array = [NSMutableArray array];
+    for (NSInteger i = 1; i<=24; i++) {
+        [array addObject:[NSString stringWithFormat:@"%ld",i]];
+    }
+    return array;
+}
+
+- (NSInteger)howManyDaysInThisYear:(NSInteger)year withMonth:(NSInteger)month{
+    if((month == 1) || (month == 3) || (month == 5) || (month == 7) || (month == 8) || (month == 10) || (month == 12))
+        return 31 ;
+    
+    if((month == 4) || (month == 6) || (month == 9) || (month == 11))
+        return 30;
+    
+    if((year % 4 == 1) || (year % 4 == 2) || (year % 4 == 3))
+    {
+        return 28;
+    }
+    
+    if(year % 400 == 0)
+        return 29;
+    
+    if(year % 100 == 0)
+        return 28;
+    
+    return 29;
+}
 #pragma mark 显示已选择的
 - (void)setShowSelectedCityNameStr:(NSString *)showSelectedCityNameStr {
     _showSelectedCityNameStr=showSelectedCityNameStr;
+    
+    
     NSUInteger index1=0;
     NSUInteger index2=0;
     NSUInteger index3=0;
-    NSArray * nameArray = [_showSelectedCityNameStr componentsSeparatedByString:@"-"];
     
-    if (nameArray.count==3) {
-       NSString * name1 = nameArray.firstObject;
-        NSUInteger index=0;
-        for (province *model in section1) {
-            if ([model.name isEqualToString:name1]) {
-                index= [section1 indexOfObject:model];
-                break;
+    if (self.pickerType == PickerViewType_city) {
+        NSArray * nameArray = [_showSelectedCityNameStr componentsSeparatedByString:@"-"];
+        
+        if (nameArray.count==3) {
+            NSString * name1 = nameArray.firstObject;
+            NSUInteger index=0;
+            for (province *model in section1) {
+                if ([model.name isEqualToString:name1]) {
+                    index= [section1 indexOfObject:model];
+                    break;
+                }
             }
-        }
-        index1=index;
-         NSString * name2 = nameArray[1];
-        //第二个区
-        province * section1Model =section1[index];
-        section2 =section1Model.city;
-        for (city * xianModel in section2) {
-            if ([xianModel.name isEqualToString:name2]) {
-                index= [section2 indexOfObject:xianModel];
-                break;
+            index1=index;
+            NSString * name2 = nameArray[1];
+            //第二个区
+            province * section1Model =section1[index];
+            section2 =section1Model.city;
+            for (city * xianModel in section2) {
+                if ([xianModel.name isEqualToString:name2]) {
+                    index= [section2 indexOfObject:xianModel];
+                    break;
+                }
             }
-        }
-         index2=index;
-        NSString * name3 = nameArray.lastObject;
-        //第三个区
-        city * cityModel =section2[index];
-        section3 =cityModel.district;
-        for (district * districtModel in section3) {
-            if ([districtModel.name isEqualToString:name3]) {
-                index= [section3 indexOfObject:districtModel];
-                break;
+            index2=index;
+            NSString * name3 = nameArray.lastObject;
+            //第三个区
+            city * cityModel =section2[index];
+            section3 =cityModel.district;
+            for (district * districtModel in section3) {
+                if ([districtModel.name isEqualToString:name3]) {
+                    index= [section3 indexOfObject:districtModel];
+                    break;
+                }
             }
+            index3=index;
+            [cityPickerView reloadAllComponents];
         }
-         index3=index;
-        [cityPickerView reloadAllComponents];
-    }
-    
-    [cityPickerView selectRow:index1 inComponent:0 animated:NO];
-    if (self.col == 2) {
-      [cityPickerView selectRow:index2 inComponent:1 animated:NO];
-    }
-    if (self.col==3) {
-       [cityPickerView selectRow:index3 inComponent:2 animated:NO];
-    }
-    
+        
+        [cityPickerView selectRow:index1 inComponent:0 animated:NO];
+        if (self.col == 2) {
+            [cityPickerView selectRow:index2 inComponent:1 animated:NO];
+        }
+        if (self.col==3) {
+            [cityPickerView selectRow:index3 inComponent:2 animated:NO];
+        }
+        
+        
+        
+        province *sheng=[section1 objectAtIndex:index1];
+        provinceStr=sheng.name;
+        
+        city *shi=[section2 objectAtIndex:index2];
+        cityStr=shi.name;
+        
+        district *xian=[section3 objectAtIndex:index3];
+        districtStr=xian.name;
+        
+        resultsStr=[NSString stringWithFormat:@"%@-%@-%@",provinceStr,cityStr,districtStr];
+    }else if (self.pickerType == PickerViewType_timer){
  
+//            NSArray * nameArray = [_showSelectedCityNameStr componentsSeparatedByString:@"-"];
+//
+//            if (nameArray.count==3) {
+//                NSString * name1 = nameArray.firstObject;
+//                NSUInteger index=0;
+//                for (province *model in section1) {
+//                    if ([model.name isEqualToString:name1]) {
+//                        index= [section1 indexOfObject:model];
+//                        break;
+//                    }
+//                }
+//                index1=index;
+//                NSString * name2 = nameArray[1];
+//                //第二个区
+//                province * section1Model =section1[index];
+//                section2 =section1Model.city;
+//                for (city * xianModel in section2) {
+//                    if ([xianModel.name isEqualToString:name2]) {
+//                        index= [section2 indexOfObject:xianModel];
+//                        break;
+//                    }
+//                }
+//                index2=index;
+//                NSString * name3 = nameArray.lastObject;
+//                //第三个区
+//                city * cityModel =section2[index];
+//                section3 =cityModel.district;
+//                for (district * districtModel in section3) {
+//                    if ([districtModel.name isEqualToString:name3]) {
+//                        index= [section3 indexOfObject:districtModel];
+//                        break;
+//                    }
+//                }
+//                index3=index;
+//                [cityPickerView reloadAllComponents];
+//            }
+        
+            [cityPickerView selectRow:index1 inComponent:0 animated:NO];
+            if (self.col == 2) {
+                [cityPickerView selectRow:index2 inComponent:1 animated:NO];
+            }
+            if (self.col==3) {
+                [cityPickerView selectRow:index3 inComponent:2 animated:NO];
+            }
+        
+           provinceStr =[NSString stringWithFormat:@"%@",[section1 objectAtIndex:index1]];
+           cityStr =[section2 objectAtIndex:index2];
+           districtStr =[section3 objectAtIndex:index3];
+        
+           resultsStr = [NSString stringWithFormat:@"%ld-%@-%@ %@:00:00",[self getCurrentYear],provinceStr,cityStr,districtStr];
+      
+    }
     
-    province *sheng=[section1 objectAtIndex:index1];
-    provinceStr=sheng.name;
-    
-    city *shi=[section2 objectAtIndex:index2];
-    cityStr=shi.name;
-    
-    district *xian=[section3 objectAtIndex:index3];
-    districtStr=xian.name;
-    
-    resultsStr=[NSString stringWithFormat:@"%@-%@-%@",provinceStr,cityStr,districtStr];
-
 
 }
 - (CityNameModel *)getModel {
@@ -207,85 +363,130 @@
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
     NSString * title = nil;
+    if (self.pickerType == PickerViewType_timer) {
+        if (component ==0 ) {
+           
+            title = [NSString stringWithFormat:@"%@月",section1[row]];
+            
+        }
+        else if (component== 1){
+             title =  [NSString stringWithFormat:@"%@日",section2[row]];
+        }
+        else if (component== 2){
+            title = [NSString stringWithFormat:@"%@点",section3[row]];
+        }
+    }else if (self.pickerType == PickerViewType_city){
+        if (component ==0 ) {
+            province * prModel = section1[row];
+            title = prModel.name;
+            
+        }
+        else if (component== 1){
+            city * cModel = section2[row];
+            title = cModel.name;
+            
+        }
+        else if (component== 2){
+            district * disModel = section3[row];
+            title = disModel.name;
+        }
+    }
     
-    if (component ==0 ) {
-        province * prModel = section1[row];
-        title = prModel.name;
-
-    }
-    else if (component== 1){
-        city * cModel = section2[row];
-        title = cModel.name;
-    
-    }
-    else if (component== 2){
-        district * disModel = section3[row];
-        title = disModel.name;
-    }
-
     return title;
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
-    //滚动一区的时候
-    if (component==0) {
-        province *Prmodel =sourceModel.province[row];
-        section2=Prmodel.city;
-        if (self.col == 2 || self.col == 3) {
+    if (self.pickerType == PickerViewType_timer) {
+        //滚动一区的时候
+        if (component==0) {
+            NSInteger month = [section1[row] integerValue];
+            section2= [self getDaysAtMonth:month atYears:[self getCurrentYear]];
             [pickerView reloadComponent:1];
             [pickerView selectRow:0 inComponent:1 animated:YES];
         }
-    
-        if (self.col == 3) {
-            city * ciModel = section2[0];
+        
+    }else if (self.pickerType == PickerViewType_city){
+        //滚动一区的时候
+        if (component==0) {
+            province *Prmodel =sourceModel.province[row];
+            section2=Prmodel.city;
+            [pickerView reloadComponent:1];
+            [pickerView selectRow:0 inComponent:1 animated:YES];
+            if (self.col == 3) {
+                city * ciModel = section2[0];
+                section3=ciModel.district;
+                [pickerView reloadComponent:2];
+                [pickerView selectRow:0 inComponent:2 animated:YES];
+                
+            }
+            //滚动二区的时候
+        } else if (component==1) {
+            city * ciModel = section2[row];
             section3=ciModel.district;
-            [pickerView reloadComponent:2];
-            [pickerView selectRow:0 inComponent:2 animated:YES];
-
+            if (self.col == 3) {
+                [pickerView reloadComponent:2];
+                [pickerView selectRow:0 inComponent:2 animated:YES];
+                
+            }
+            
         }
-
-        
-      //滚动二区的时候
-    } else if (component==1) {
-        city * ciModel = section2[row];
-        section3=ciModel.district;
-        if (self.col == 3) {
-            [pickerView reloadComponent:2];
-            [pickerView selectRow:0 inComponent:2 animated:YES];
-
-        }
-        
+       
     }
-    [self setModelComponent:component Row:row];
-    
+  
+     [self setModelComponent:component Row:row];
     
 }
 - (void)setModelComponent:(NSInteger)component Row:(NSInteger)row {
-    if (component == 0) {
-        province *Prmodel =section1[row];
-        city * ciModel = Prmodel.city.firstObject;
-        //省
-        provinceStr =Prmodel.name;
-        //市
-        cityStr=ciModel.name;
-        //xian
-        district *model3 =ciModel.district.firstObject;
-        districtStr=model3.name;
-    } else if (component==1) {
+    
+    if (self.pickerType == PickerViewType_timer) {
         
-        city * ciModel = section2[row];
-        //市
-        cityStr=ciModel.name;
-        //县
-        district *model3 =ciModel.district.firstObject;
-        districtStr=model3.name;
-
-    } else {
-        //县
-        district *model3 =section3[row];
-        districtStr=model3.name;
+        if (component == 0) {
+            provinceStr = section1[row];
+           
+        } else if (component==1) {
+            cityStr = section2[row];
+          
+        } else {
+            districtStr =section3[row];
+        }
+        resultsStr = [NSString stringWithFormat:@"%ld-%@-%@ %@:00:00",[self getCurrentYear],provinceStr,cityStr,districtStr];
+        
+    }else if (self.pickerType == PickerViewType_city){
+        if (component == 0) {
+            province *Prmodel =section1[row];
+            city * ciModel = Prmodel.city.firstObject;
+            //省
+            provinceStr =Prmodel.name;
+            //市
+            cityStr=ciModel.name;
+            //xian
+            district *model3 =ciModel.district.firstObject;
+            districtStr=model3.name;
+        } else if (component==1) {
+            
+            city * ciModel = section2[row];
+            //市
+            cityStr=ciModel.name;
+            //县
+            district *model3 =ciModel.district.firstObject;
+            districtStr=model3.name;
+            
+        } else {
+            //县
+            district *model3 =section3[row];
+            districtStr = model3.name;
+        }
+        resultsStr = [NSString stringWithFormat:@"%@",provinceStr];
+                      
+        if (self.col == 2) {
+            resultsStr = [resultsStr stringByAppendingFormat:@"-%@",cityStr];
+        }else if (self.col == 3) {
+             resultsStr = [resultsStr stringByAppendingFormat:@"-%@",cityStr];
+             resultsStr = [resultsStr stringByAppendingFormat:@"-%@",districtStr];
+        }
+        
     }
-    resultsStr=[NSString stringWithFormat:@"%@-%@-%@",provinceStr,cityStr,districtStr];
+   
 }
 - (void)show {
     self.frame=[UIScreen mainScreen].bounds;

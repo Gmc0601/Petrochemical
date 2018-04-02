@@ -10,6 +10,7 @@
 #import "WJItemsControlView.h"
 #import "MJRefresh.h"
 #import "MyPublishCarListTableViewCell.h"
+#import "CarsDetialViewController.h"
 
 
 @interface MyPublishCarListViewController ()
@@ -133,9 +134,9 @@
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    NSDictionary *data = _dataSource[indexPath.row];
-//    MyPublishCargoDetailInfoViewController *detailVC = [MyPublishCargoDetailInfoViewController new];
-//    detailVC.infoDic = data;
-//    [self.navigationController pushViewController:detailVC animated:YES];
+    CarsDetialViewController *VC = [CarsDetialViewController new];
+    VC.type = MycarsDetial;
+    VC.idStr = validString(_dataSource[indexPath.row][@"id"]);
+    [self.navigationController pushViewController:VC animated:YES];
 }
 @end

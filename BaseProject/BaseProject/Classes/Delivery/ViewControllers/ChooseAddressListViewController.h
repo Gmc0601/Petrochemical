@@ -8,6 +8,7 @@
 
 #import "BaseTableView.h"
 
-@interface ChooseAddressListViewController : BaseTableView
 
+@interface ChooseAddressListViewController : BaseTableView
+@property(nonatomic, copy) void(^ChooseAddressBlock)(NSString *name);
 @end

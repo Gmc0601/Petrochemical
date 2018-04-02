@@ -27,7 +27,9 @@
 #import "HomeCarModel.h"
 #import "HomeGoodsViewModel.h"
 #import "HomeGoodsModel.h"
-
+#import "CarsDetialViewController.h"
+#import "GoodsDetialViewController.h"
+#import "LoginViewController.h"
 
 static NSString *KCarSection1CellID = @"KCarSection1CellID";//车源section1 CellID
 static NSString *KCarSection2CellID = @"KCarSection2CellID";//车源section2 CellID
@@ -43,6 +45,7 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
     CGFloat _navbarHeight;
     CGFloat _tabbarHeight;
     CGFloat _statusbarHeight;
+    int page;  //   scrollview  显示页面
 }
 
 @property (nonatomic, strong)LLSegmentedControl *TopSegmentedControl;// 导航栏顶部选择器 车源，货源
@@ -140,8 +143,6 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
 }
 
 -(void)requestList{
-    [ConfigModel saveString:@"cb97a780c081a49154bed3aa50842ff4" forKey:UserToken];
-    [ConfigModel saveBoolObject:YES forKey:IsLogin];
     [ConfigModel showHud:self];
     
     dispatch_group_t group = dispatch_group_create();
@@ -162,6 +163,14 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
             [self.GoodsTableView reloadData];
             dispatch_group_leave(group);
         }];
+    });
+    
+    dispatch_group_enter(group);
+    dispatch_async(queue, ^{
+        [HttpRequest postPath:@"_userinfo_001" params:nil resultBlock:^(id responseObject, NSError *error) {
+            NSLog(@"<><>%@<><>", responseObject);
+        }];
+        dispatch_group_leave(group);
     });
     
     dispatch_group_enter(group);
@@ -226,9 +235,6 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
         }
     });
 }
-- (void)viewWillLayoutSubviews {
-    [super viewWillLayoutSubviews];
-}
 
 - (void)setNavigation {
     //  rightBtn
@@ -239,6 +245,8 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
 
 - (void)rightBarClick {
     
+    UnloginReturn
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -251,6 +259,7 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     if (scrollView == _segmentBoardScrollView) {
         NSInteger const kPageIndex = scrollView.contentOffset.x / kScreenWidth;
+        page = (int)kPageIndex;
         [self.TopSegmentedControl segmentedControlSetSelectedIndex:kPageIndex];
     }
 }
@@ -301,6 +310,7 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
                 cell = [[[NSBundle mainBundle]loadNibNamed:@"CarTableViewCell" owner:self options:nil]lastObject];
             }
             cell.model = self.CarListDatas[indexPath.row];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
             return cell;
         }
         
@@ -310,6 +320,7 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
                 cell = [[[NSBundle mainBundle]loadNibNamed:@"GoodsTableViewCell" owner:self options:nil]lastObject];
             }
             cell.model = self.GoodsListDatas[indexPath.row];
+            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
             return cell;
         }
         return nil;
@@ -341,7 +352,25 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
     return headerView;
 }
 
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        
+    }else {
+        if (tableView == self.CarTableView) {
+            HomeCarModel *model = self.CarListDatas[indexPath.row];
+            CarsDetialViewController *vc = [[CarsDetialViewController alloc] init];
+            vc.idStr = model.id;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        if (tableView == self.GoodsTableView) {
+            HomeGoodsModel *model = self.GoodsListDatas[indexPath.row];
+            GoodsDetialViewController *vc = [[GoodsDetialViewController alloc] init];
+            vc.idStr = model.id;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }
+    
+}
 
 
 #pragma Mark - Response
@@ -479,6 +508,7 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
 
 #pragma Mark - Prvite Method
 - (void)setXXBarHeight{
+    page = 0;
     _statusbarHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
     _navbarHeight = self.navigationController.navigationBar.frame.size.height;
     _tabbarHeight = self.tabBarController.tabBar.frame.size.height;
@@ -534,6 +564,11 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
 }
 
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+     [self.TopSegmentedControl segmentedControlSetSelectedIndex:page];
+}
+
 #pragma Mark - Setter Getter
 - (LLSegmentedControl *)TopSegmentedControl{// 导航栏顶部 segment
     if (!_TopSegmentedControl) {
@@ -556,7 +591,6 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
         // 则不需要设置 titleWidth 属性
         _TopSegmentedControl.titleSpacing = 40;
         _TopSegmentedControl.defaultSelectedIndex = 0;
-        //self.navigationItem.titleView = _TopSegmentedControl;
         
         CGFloat const kScrollViewHeight = kScreenH;
         UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScrollViewHeight)];
@@ -574,7 +608,7 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
             [scrollView addSubview:backgroundView];
         }
         [_TopSegmentedControl segmentedControlSelectedWithBlock:^(LLSegmentedControl *segmentedControl, NSInteger selectedIndex) {
-            NSLog(@"selectedIndex : %zd", selectedIndex);
+            page = (int)selectedIndex;
             [scrollView setContentOffset:CGPointMake(selectedIndex * kScreenWidth, 0) animated:YES];
         }];
     }

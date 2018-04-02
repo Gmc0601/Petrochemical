@@ -15,21 +15,33 @@ NSString * const EmptyCarCellIdentifier = @"EmptyCarCellIdentifier";
 @property(nonatomic, strong) UIView * bottomView;
 @property(nonatomic, assign) NSInteger   selectedIndx;
 @property(nonatomic, strong) NSArray * emptyCars;
- @property(nonatomic, strong) UILabel * emptyLabel;
+@property(nonatomic, strong) UILabel * emptyLabel;
+ @property(nonatomic, copy) NSString  * carId;
 @end
 
 @implementation EmptyCarListViewController
-
+- (instancetype)initChooseCarId:(NSString *)id{
+    self =[super init];
+    if(self){
+        
+        self.carId = id;
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setCustomerTitle:@"选择空车"];
     [self registerCell];
+
     self.CC_table.bounces = NO;
-    self.selectedIndx = -1;
+    if(!self.carId){
+        self.selectedIndx = -1;
+    }
     [self setupBottomView];
     [self.view addSubview:self.emptyLabel];
     [self requestEmpty];
+    
     
 }
 
@@ -48,7 +60,7 @@ NSString * const EmptyCarCellIdentifier = @"EmptyCarCellIdentifier";
 - (void)requestEmpty{
     
     NSDictionary *dic = @{
-                          @"userToken":@"e56d19bd376625cc2bc7aa6ae40e385a",
+                          
                           };
     
      WeakSelf(weakself);
@@ -60,6 +72,12 @@ NSString * const EmptyCarCellIdentifier = @"EmptyCarCellIdentifier";
         if (errorint == 0 ) {
             NSArray *infoDic = dic[@"info"];
             weakself.emptyCars = infoDic;
+            for (NSInteger i =0; i< [infoDic count]; i++) {
+                if (infoDic[i][@"id"] == weakself.carId) {
+                    weakself.selectedIndx = i;
+                }
+            }
+          
             
         }else {
             NSString *errorStr = dic[@"info"];
@@ -75,6 +93,7 @@ NSString * const EmptyCarCellIdentifier = @"EmptyCarCellIdentifier";
              weakself.emptyLabel.hidden = NO;
              weakself.CC_table.frame = CGRectMake(0, 64, kScreenW, kScreenH - 64 );
         }
+        [weakself.CC_table reloadData];
     }];
 }
 - (BOOL)addRefreshHeader{
@@ -99,18 +118,26 @@ NSString * const EmptyCarCellIdentifier = @"EmptyCarCellIdentifier";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 60;
 }
-- (CGFloat)tableView:(UITableView *)tableView HeightForHeaderInSection:(NSInteger)section {
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 10;
 }
-
-- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    return [UIView new];
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView *header = [[UIView alloc] init];
+    header.frame = CGRectMake(0, 0, self.view.frame.size.width, 10);
+    header.backgroundColor = [UIColor clearColor];
+    return header;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0.01;//注意这里！如果你不需要footerView，这里不能返回0，否则间距还是有问题
+}
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    return [[UIView alloc] initWithFrame:CGRectZero];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     // 写这个方法防止报警告，只要子类中覆盖这个方法就不会影响显示
     UITableViewCell * cell = nil;
     EmptyCarCell * tempCell = [tableView dequeueReusableCellWithIdentifier:EmptyCarCellIdentifier];
-    
+  
     [self configCell:tempCell withIndexPath:indexPath];
     cell = tempCell;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;

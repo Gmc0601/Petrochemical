@@ -10,12 +10,16 @@
 #import "CarCell.h"
 #import "CarFooterView.h"
 #import "EmptyCarListViewController.h"
-
+#import "ChooseAddressListViewController.h"
 #import "CityPickerVeiw.h"
 #import "CityNameModel.h" //省市区模型
 #import "ZSAnalysisClass.h"  // 数据转模型类
+
+#import <CoreLocation/CoreLocation.h>
+#import <AddressBookUI/AddressBookUI.h>
+#import <Contacts/Contacts.h>
 NSString * const CarCellIdentifier = @"CarCellIdentifier";
-@interface CarListViewController ()
+@interface CarListViewController ()<CLLocationManagerDelegate>
 @property(nonatomic, strong) UIView * bottomView;
 @property(nonatomic, copy) NSString * carNum;//车牌号
 @property(nonatomic, copy) NSString * startLocation;//开始位置
@@ -23,9 +27,11 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
 @property(nonatomic, copy) NSString * emptyLocation;//空车位置
 @property(nonatomic, copy) NSString * loadingTime;//装车时间
 @property(nonatomic, copy) NSString * car_id;//
-@property(nonatomic, copy) NSString * lon;//空车位置经度
-@property(nonatomic, copy) NSString * lat;//空车位置纬度
+@property(nonatomic, assign) CGFloat lon;//空车位置经度
+@property(nonatomic, assign) CGFloat  lat;//空车位置纬度
 @property(nonatomic, copy) NSString * maxLoad;//最大载重
+@property(nonatomic, strong) CLLocationManager *locationManager;
+@property(nonatomic, assign) NSInteger isOpenLocation;
 @end
 
 @implementation CarListViewController
@@ -38,6 +44,9 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
     [self registerCell];
     self.CC_table.bounces = NO;
     [self setupBottomView];
+  
+   
+    
 }
 - (BOOL)addRefreshHeader{
     return NO;
@@ -63,14 +72,27 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 50;
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 0.0001;
+}
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 80;
+}
+- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    
+    UIView *header = [[UIView alloc] init];
+    header.frame = CGRectMake(0, 0, self.view.frame.size.width, 10);
+    header.backgroundColor = [UIColor clearColor];
+    return header;
 }
 - (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     CarFooterView * footerView = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass([CarFooterView class]) owner:nil options:nil].firstObject;
     footerView.frame = CGRectMake(0, 0, self.view.frame.size.width, 80);
     return footerView;
 }
+
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     // 写这个方法防止报警告，只要子类中覆盖这个方法就不会影响显示
     UITableViewCell * cell = nil;
@@ -140,9 +162,17 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
         [self gotoEmptyCarVC];
-    }else if (indexPath.row == 2){
+    }else if (indexPath.row == 1){
+        
+        [self getStartLoction];
+    } else if (indexPath.row == 2){
         
         [self showCityPicker ];
+    }else if (indexPath.row == 3){
+        
+        [self gotoChooseAddressVC];
+    }else if (indexPath.row == 4){
+        [self showTimerPicker];
     }
 }
 
@@ -173,15 +203,15 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
 - (void)sendCarInfo{
     
     NSDictionary *dic = @{
-                          @"userToken":@"e56d19bd376625cc2bc7aa6ae40e385a",
+                          @"userToken":@"02c8f878c1d5463b5bea89e893cde184",
                           @"car_id":self.car_id,
                           @"origin":self.startLocation,
                           @"destination":self.endLocation,
                           @"empty":self.emptyLocation,
-                          @"lon":self.lon,
-                          @"lat":self.lat,
+                          @"lon":[NSString stringWithFormat:@"%f",self.lon],
+                          @"lat":[NSString stringWithFormat:@"%f",self.lat],
                           @"loading_time":self.loadingTime,
-                          @"load":self.maxLoad,
+//                          @"load":self.maxLoad,
                           @"issue_type":@"1",//发布车源1  发布货源2
                           };
     
@@ -194,7 +224,7 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
         if (errorint == 0 ) {
             UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"发布车源成功" preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *okAction1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-              [weakself.navigationController popViewControllerAnimated:YES];
+              [weakself backAction];
             }];
             [alertVC addAction:okAction1];
             [self presentViewController:alertVC animated:YES completion:nil];
@@ -207,12 +237,21 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
     }];
 }
 - (void)gotoEmptyCarVC{
-    EmptyCarListViewController * emptyVC = [[EmptyCarListViewController alloc]init];
+    EmptyCarListViewController * emptyVC = [[EmptyCarListViewController alloc]initChooseCarId:self.car_id];
     WeakSelf(weakSelf);
     emptyVC.emptyCarBlock = ^(NSDictionary *carInfo) {
         [weakSelf  selectedCar:carInfo];
     };
     [self.navigationController pushViewController:emptyVC animated:YES];
+}
+- (void)gotoChooseAddressVC{
+    ChooseAddressListViewController * chooseAddressVC = [[ChooseAddressListViewController alloc]init];
+    chooseAddressVC.ChooseAddressBlock = ^(NSString *name) {
+        self.emptyLocation = name;
+        [self.CC_table reloadData];
+    };
+    [self.navigationController pushViewController:chooseAddressVC animated:YES];
+    
 }
 - (void)selectedCar:(NSDictionary *)carInfo{
     self.carNum = carInfo[@"license"];
@@ -225,15 +264,181 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
     // Dispose of any resources that can be recreated.
 }
 - (void)showCityPicker  {
-    CityPickerVeiw * cityView = [[CityPickerVeiw alloc] init];
+    CityPickerVeiw * cityView = [[CityPickerVeiw alloc] initWithFrame:CGRectZero withType:PickerViewType_city];
     cityView.col = 3;
     [cityView show];
     cityView.showSelectedCityNameStr =@"" ;
     [cityView setCityBlock:^(NSString * value) {
         NSLog(@"%@===",value);
-        self.endLocation = value;
+        self.endLocation =  [value stringByReplacingOccurrencesOfString:@"-" withString:@""];
         [self.CC_table reloadData];
     }];
+}
+
+- (void)showTimerPicker  {
+    CityPickerVeiw * cityView = [[CityPickerVeiw alloc] initWithFrame:CGRectZero withType:PickerViewType_timer];
+    cityView.col = 3;
+    [cityView show];
+    cityView.showSelectedCityNameStr =@"" ;
+    [cityView setCityBlock:^(NSString * value) {
+        NSLog(@"%@===",value);
+        self.loadingTime = value;
+        [self.CC_table reloadData];
+    }];
+}
+- (void)getStartLoction{
+    if (self.isOpenLocation) {
+        [self.CC_table reloadData];
+    }else{
+        [self openLocation];
+    }
+    
+}
+
+
+
+
+- (void)openLocation
+{
+    
+    if ([CLLocationManager locationServicesEnabled])  //确定用户的位置服务启用
+    {
+        self.locationManager = [[CLLocationManager alloc] init];
+        
+        // 2.想用户请求授权(iOS8之后方法)   必须要配置info.plist文件
+        if ([UIDevice currentDevice].systemVersion.floatValue >= 8.0) {
+            // 以下方法选择其中一个
+            // 请求始终授权   无论app在前台或者后台都会定位
+            //  [locationManager requestAlwaysAuthorization];
+            // 当app使用期间授权    只有app在前台时候才可以授权
+            [self.locationManager requestWhenInUseAuthorization];
+        }
+        // 距离筛选器   单位:米   100米:用户移动了100米后会调用对应的代理方法didUpdateLocations
+        // kCLDistanceFilterNone  使用这个值得话只要用户位置改动就会调用定位
+        self.locationManager.distanceFilter = 100.0;
+        // 期望精度  单位:米   100米:表示将100米范围内看做一个位置 导航使用kCLLocationAccuracyBestForNavigation
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+        
+        // 3.设置代理
+        self.locationManager.delegate = self;
+        
+        // 4.开始定位 (更新位置)
+        [self.locationManager startUpdatingLocation];
+        
+        //        if ([UIDevice currentDevice].systemVersion.floatValue >= 9.0) {
+        // 5.临时开启后台定位  iOS9新增方法  必须要配置info.plist文件 后台定位不然直接崩溃
+        //            self.locationManager.allowsBackgroundLocationUpdates = YES;
+        //        }
+        if (self.isOpenLocation) {
+              [self.CC_table reloadData];
+        }
+          self.isOpenLocation = YES;
+        NSLog(@"start gps");
+        
+    }else{
+         self.isOpenLocation = NO;
+        [self showNoLocationAlert];
+        
+        
+        //        if (IOS8) {
+        //            NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+        //            if ([[UIApplication sharedApplication] canOpenURL:url]) {
+        //                [[UIApplication sharedApplication] openURL:url];
+        //            }
+        //        } else {
+        //            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=LOCATION_SERVICES"]];
+        //        }
+        
+        
+    }
+}
+
+- (void)showNoLocationAlert{
+    
+    NSString * title = @"提示";
+    NSString * content = @"无法获取您的位置信息。请到手机系统的[设置]->[隐私]->[定位服务]中打开定位服务，并允许此app使用定位服务。";
+    UIAlertController * alertC = [UIAlertController alertControllerWithTitle:title message:content preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction * action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+    [alertC addAction:action];
+    [self presentViewController:alertC animated:YES completion:nil];
+}
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
+{
+    switch (status) {
+        case kCLAuthorizationStatusNotDetermined:
+            if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
+                [self.locationManager requestAlwaysAuthorization];
+            }
+            break;
+        default:
+            break;
+            
+            
+    }
+}
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation {
+    
+    
+}
+- (void)locationManager:(CLLocationManager *)manager
+     didUpdateLocations:(NSArray *)locations
+{
+    
+    // 1.获取用户位置的对象
+    CLLocation *location = [locations lastObject];
+    //    CLLocation *location = newLocation;
+    CLLocationCoordinate2D coordinate = location.coordinate;
+    NSLog(@"纬度:%f 经度:%f===", coordinate.latitude, coordinate.longitude);
+    self.lat =  coordinate.latitude;
+    self.lon = coordinate.longitude;
+    // 获取当前所在的城市名
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    //根据经纬度反向地理编译出地址信息
+    [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+        if (placemarks.count > 0){
+            CLPlacemark * placemark = placemarks[0];
+            
+            NSString *city = placemark.locality;
+            if (!city) {
+                //四大直辖市的城市信息无法通过locality获得，只能通过获取省份的方法来获得（如果city为空，则可知为直辖市）
+                city = placemark.administrativeArea;
+            }
+            //            NSString * state =  [placemark.addressDictionary objectForKey:@"State"];
+            // 省
+            //            NSLog(@"state,%@",state);
+            //            // 位置名
+            //            NSLog(@"name,%@",placemark.name);
+            //            // 街道
+            //            NSLog(@"thoroughfare,%@",placemark.thoroughfare);
+            //            // 子街道
+            //            NSLog(@"subThoroughfare,%@",placemark.subThoroughfare);
+            //            // 市
+            //            NSLog(@"locality,%@",placemark.locality);
+            //            // 区
+            //            NSLog(@"subLocality,%@",placemark.subLocality);
+            //            // 国家
+            //            NSLog(@"country,%@",placemark.country);
+            //            self.cityName = city;
+            //            self.provinceName = state;
+            
+            //            self.subLocality =placemark.subLocality;
+            self.startLocation   =[NSString stringWithFormat:@"%@%@%@",placemark.locality,placemark.subLocality, placemark.name];
+            //系统会一直更新数据，直到选择停止更新，因为我们只需要获得一次经纬度即可，所以获取之后就停止更新
+            [manager stopUpdatingLocation];
+            [self.CC_table reloadData];
+            
+        };
+    }];
+    
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+       didFailWithError:(NSError *)error
+{
+    if (error.code == kCLErrorDenied) {
+        // 提示用户出错原因，可按住Option键点击 KCLErrorDenied的查看更多出错信息，可打印error.code值查找原因所在
+    }
 }
 /*
 #pragma mark - Navigation

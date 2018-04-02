@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="温馨提示：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cAQ-b3-EAy">
-                    <rect key="frame" x="16" y="6" width="76.5" height="18"/>
+                    <rect key="frame" x="20" y="6" width="76.5" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="0.14117647058823529" green="0.14117647058823529" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -31,7 +31,7 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="jiH-15-izg" secondAttribute="trailing" constant="16" id="HZZ-si-Ybe"/>
-                <constraint firstItem="cAQ-b3-EAy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="Usn-JE-oDd"/>
+                <constraint firstItem="cAQ-b3-EAy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="Usn-JE-oDd"/>
                 <constraint firstItem="jiH-15-izg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="41" id="n8o-EE-fdF"/>
                 <constraint firstItem="cAQ-b3-EAy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="6" id="nNd-mB-qeU"/>
                 <constraint firstItem="jiH-15-izg" firstAttribute="top" secondItem="cAQ-b3-EAy" secondAttribute="bottom" constant="3" id="opp-t5-oal"/>

@@ -8,7 +8,7 @@
 
 #import "MyGrabOrderListViewController.h"
 #import "WJItemsControlView.h"
-#import "MyPublishCargoListTableViewCell.h"
+#import "MyGrabOrderListTableViewCell.h"
 #import "MJRefresh.h"
 #import "MyPublishCargoDetailInfoViewController.h"
 
@@ -24,6 +24,7 @@
 
 @implementation MyGrabOrderListViewController{
     __block NSInteger menuIndex;
+    NSString *_searchStr;
 }
 
 - (void)viewDidLoad {
@@ -37,7 +38,7 @@
     //头部控制的segMent
     NSArray *titleArr = @[@"审核中",@"已通过",@"已拒绝"];
     WJItemsConfig *config = [[WJItemsConfig alloc]init];
-    config.itemWidth = kScreenW/4.0;
+    config.itemWidth = kScreenW/3.0;
     config.selectedColor = UIColorFromHex(0x028BF3);
     config.linePercent = 0.3;
     self.topItemsView = [[WJItemsControlView alloc]initWithFrame:CGRectMake(0, 64, kScreenW, 44)];
@@ -69,6 +70,7 @@
     [param setValue:TokenKey forKey:@"userToken"];
     [param setValue:@"1" forKey:@"page"];
     [param setValue:@"2000" forKey:@"size"];
+    [param setValue:_searchStr forKey:@"content"];
     [param setValue:@(menuIndex+1) forKey:@"status"];
     [HttpRequest postPath:@"_user_goods_001" params:param resultBlock:^(id responseObject, NSError *error) {
         NSDictionary *dic = responseObject;
@@ -91,6 +93,8 @@
 
 #pragma mark -- method
 - (IBAction)searchButtonAction:(id)sender {
+    _searchStr = self.searchTextField.text;
+    [self setupDataSource];
 }
 
 #pragma mark -- <UITableViewDelegate,UITableViewDataSource>
@@ -99,6 +103,12 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return nil;
+    MyGrabOrderListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyGrabOrderListTableViewCellid"];
+    if (!cell) {
+        cell = [[NSBundle mainBundle] loadNibNamed:@"MyGrabOrderListTableViewCell" owner:self options:nil].firstObject;
+    }
+    cell.dic = _dataSource[indexPath.row];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    return cell;
 }
 @end

@@ -13,6 +13,15 @@
 
 @implementation ConfigModel
 
++ (BOOL)haveLogin:(UIViewController *)vc {
+    if (![ConfigModel getBoolObjectforKey:IsLogin]) {
+        [vc presentViewController:[LoginViewController new] animated:YES completion:nil];
+        return NO;
+    }else {
+        return YES;
+    }
+}
+
 + (void)jumpLogin:(UIViewController *)vc {
     
     //  登录 返回 

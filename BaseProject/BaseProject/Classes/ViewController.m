@@ -12,7 +12,9 @@
 #import "CarListViewController.h"
 #import "GoodsListViewController.h"
 #import "TBNavigationController.h"
+#import "LoginViewController.h"
 @interface ViewController ()
+
 
 @end
 
@@ -20,6 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deliveryAction) name:@"MidelTabbarItem_Noti"   object:nil];
     TBTabBarController *tab = [[TBTabBarController alloc] init];
     [self addChildViewController:tab];

@@ -10,5 +10,6 @@
 
 typedef void(^SelectedEmptyCarBlock)(NSDictionary * carInfo);
 @interface EmptyCarListViewController : BaseTableView
+- (instancetype)initChooseCarId:(NSString *)id;
 @property(nonatomic, copy) SelectedEmptyCarBlock emptyCarBlock;
 @end
