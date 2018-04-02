@@ -15,7 +15,7 @@
 #import "GoodsInfoCell.h"
 #import "GoodsNoteCell.h"
 #import "ChooseAddressListViewController.h"
-
+#import <MAMapKit/MAMapKit.h>
 NSString * const GoodsUnloadingCellIdentifier = @"GoodsUnloadingCellIdentifier";
 NSString * const AddUnloadCellIdentifier = @"AddUnloadCellIdentifier";
 NSString * const GoodsInfoCellIdentifier = @"GoodsInfoCellIdentifier";
@@ -23,6 +23,10 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
 @interface GoodsListViewController ()
 @property(nonatomic, strong) UIView * bottomView;
 @property(nonatomic, assign) NSInteger  unlodingNum;
+@property(nonatomic, copy) NSString * startLoaction;
+@property(nonatomic, strong) NSNumber * startLatitude;
+@property(nonatomic, strong) NSNumber * startLongitude;
+@property(nonatomic, strong) NSMutableArray * unloadingArray;
 @end
 
 @implementation GoodsListViewController
@@ -37,6 +41,12 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
     self.CC_table.bounces = NO;
     [self setupBottomView];
     
+}
+- (NSMutableArray *)unloadingArray{
+    if (!_unloadingArray) {
+        _unloadingArray = [[NSMutableArray alloc]init];
+    }
+    return _unloadingArray;
 }
 - (void)backAction{
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -195,7 +205,10 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
     if (indexPath.row == 0) {
         title = @"装货点";
         placeholder = @"请选择装货点";
-        content = @"";
+        if (self.startLoaction) {
+            content = self.startLoaction;
+        }
+   
         isHidden = YES;
     }else if(indexPath.row < 2+ self.self.unlodingNum -1&& indexPath.row >0){
        
@@ -204,10 +217,10 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
         }else{
             isHidden = NO;
             cell.indexPath = indexPath;
+            
             cell.delUnloadingBlock = ^(NSIndexPath *indexPath) {
                 self.unlodingNum--;
                 // 删除对应的数据 indexPath.row
-                
                 [self.CC_table reloadData];
             };
         }
@@ -347,7 +360,14 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
 - (void)gotoStartLoaction{
     
     ChooseAddressListViewController * addressVC = [[ChooseAddressListViewController alloc]init];
-     addressVC.chooseType = ChooseAddressType_loading;
+    addressVC.chooseType = ChooseAddressType_loading;
+    WeakSelf(weakSelf);
+    addressVC.chooseAddressInfoBlock = ^(NSDictionary *addressInfo,NSInteger chooseIndex) {
+        weakSelf.startLoaction = addressInfo[@"name"];
+        weakSelf.startLatitude = addressInfo[@"latitude"];
+        weakSelf.startLongitude = addressInfo[@"longitude"];
+        [weakSelf.CC_table reloadData];
+    };
     [self.navigationController pushViewController:addressVC animated:YES];
 }
 - (void)gotoUnloadLoaction:(NSIndexPath *)indexPath{
@@ -355,7 +375,25 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
     ChooseAddressListViewController * addressVC = [[ChooseAddressListViewController alloc]init];
     addressVC.chooseIndex = indexPath.row;
     addressVC.chooseType = ChooseAddressType_unLoading;
+    addressVC.chooseAddressInfoBlock = ^(NSDictionary *addressInfo,NSInteger chooseIndex) {
+       
+        if (self.unloadingArray[chooseIndex-1]) {
+            [self.unloadingArray replaceObjectAtIndex:chooseIndex-1 withObject:addressInfo];
+        }else{
+            [self.unloadingArray addObject:addressInfo];
+        }
+        [self expecteDrive];
+        [self.CC_table reloadData];
+    };
     [self.navigationController pushViewController:addressVC animated:YES];
+}
+//预计车程
+- (void)expecteDrive{
+    MAMapPoint point1 = MAMapPointForCoordinate(CLLocationCoordinate2DMake(39.989612,116.480972));
+    MAMapPoint point2 = MAMapPointForCoordinate(CLLocationCoordinate2DMake(39.990347,116.480441));
+    //2.计算距离
+    CLLocationDistance distance = MAMetersBetweenMapPoints(point1,point2);
+    
 }
 /*
 #pragma mark - Navigation

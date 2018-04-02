@@ -136,7 +136,7 @@ NSString * UITableViewCellIdentifier = @"UITableViewCellIdentifier";
                  CGFloat  latitude = region.POIItem.location.latitude;
                 CGFloat  longitude =region.POIItem.location.longitude;
                  NSString * name = region.POIItem.name;
-                NSDictionary * region =  @{@"latitude":@(latitude),@"location":@(longitude),@"name":name                   };
+                NSDictionary * region =  @{@"latitude":@(latitude),@"longitude":@(longitude),@"name":name                   };
                 [self.addressArray addObject:region];
               
             }
@@ -177,6 +177,9 @@ NSString * UITableViewCellIdentifier = @"UITableViewCellIdentifier";
         self.ChooseAddressBlock(self.addressArray[indexPath.row][@"name"]);
     }
     
+    if (self.chooseAddressInfoBlock) {
+        self.chooseAddressInfoBlock(self.addressArray[indexPath.row],self.chooseIndex);
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)didReceiveMemoryWarning {

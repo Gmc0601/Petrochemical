@@ -16,6 +16,6 @@ typedef NS_ENUM(NSInteger, ChooseAddressType){
 @interface ChooseAddressListViewController : BaseTableView
 @property(nonatomic, assign) ChooseAddressType chooseType;
 @property(nonatomic, assign) NSInteger chooseIndex;
-@property(nonatomic, copy) void(^chooseAddressInfoBlock)(NSArray *addressArray);
+@property(nonatomic, copy) void(^chooseAddressInfoBlock)(NSDictionary *addressInfo,NSInteger index);
 @property(nonatomic, copy) void(^ChooseAddressBlock)(NSString *name);
 @end

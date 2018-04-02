@@ -42,6 +42,8 @@
 		0396E68F2071DF1800B7EFDA /* GoodsInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0396E68D2071DF1800B7EFDA /* GoodsInfoCell.xib */; };
 		0396E6932071DF7500B7EFDA /* GoodsNoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0396E6912071DF7500B7EFDA /* GoodsNoteCell.m */; };
 		0396E6942071DF7500B7EFDA /* GoodsNoteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0396E6922071DF7500B7EFDA /* GoodsNoteCell.xib */; };
+		0396E69620720D3500B7EFDA /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0396E69520720D3500B7EFDA /* MAMapKit.framework */; };
+		0396E69820720DD000B7EFDA /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0396E69720720DD000B7EFDA /* GLKit.framework */; };
 		420D18262057A71300E1D8E1 /* UILabel+Width.m in Sources */ = {isa = PBXBuildFile; fileRef = 420D18242057A71300E1D8E1 /* UILabel+Width.m */; };
 		420D18462057AA9100E1D8E1 /* MyCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420D18452057AA9100E1D8E1 /* MyCenterViewController.m */; };
 		422F1FFC2047E858009481CC /* UIViewController+BarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 422F1FFA2047E858009481CC /* UIViewController+BarButton.m */; };
@@ -312,6 +314,8 @@
 		0396E6902071DF7500B7EFDA /* GoodsNoteCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsNoteCell.h; sourceTree = "<group>"; };
 		0396E6912071DF7500B7EFDA /* GoodsNoteCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsNoteCell.m; sourceTree = "<group>"; };
 		0396E6922071DF7500B7EFDA /* GoodsNoteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoodsNoteCell.xib; sourceTree = "<group>"; };
+		0396E69520720D3500B7EFDA /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
+		0396E69720720DD000B7EFDA /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		420D18242057A71300E1D8E1 /* UILabel+Width.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Width.m"; sourceTree = "<group>"; };
 		420D18252057A71300E1D8E1 /* UILabel+Width.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Width.h"; sourceTree = "<group>"; };
 		420D18442057AA9100E1D8E1 /* MyCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCenterViewController.h; sourceTree = "<group>"; };
@@ -683,10 +687,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0396E69820720DD000B7EFDA /* GLKit.framework in Frameworks */,
 				035A2416206CC6EF0003CD31 /* libstdc++.6.0.9.tbd in Frameworks */,
 				035A2419206CC7780003CD31 /* AMapFoundationKit.framework in Frameworks */,
 				035A2414206CC6E70003CD31 /* libz.tbd in Frameworks */,
 				035A2412206CC6DC0003CD31 /* Security.framework in Frameworks */,
+				0396E69620720D3500B7EFDA /* MAMapKit.framework in Frameworks */,
 				035A2410206CC6D50003CD31 /* SystemConfiguration.framework in Frameworks */,
 				035A240E206CC6CE0003CD31 /* CoreTelephony.framework in Frameworks */,
 				035A240C206CC6C40003CD31 /* libc++.tbd in Frameworks */,
@@ -928,6 +934,7 @@
 		42A4442F1EF133E000F90791 /* BaseProject */ = {
 			isa = PBXGroup;
 			children = (
+				0396E69520720D3500B7EFDA /* MAMapKit.framework */,
 				035A2418206CC7770003CD31 /* AMapFoundationKit.framework */,
 				035A2409206CC69C0003CD31 /* AMapLocationKit.framework */,
 				42C84EB31EF2DC7B0008189D /* Header.pch */,
@@ -1692,6 +1699,7 @@
 		7F5FE81AF3930B1D8AB68F96 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0396E69720720DD000B7EFDA /* GLKit.framework */,
 				035A2415206CC6EF0003CD31 /* libstdc++.6.0.9.tbd */,
 				035A2413206CC6E70003CD31 /* libz.tbd */,
 				035A2411206CC6DC0003CD31 /* Security.framework */,
