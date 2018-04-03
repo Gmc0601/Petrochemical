@@ -32,15 +32,13 @@
      [self.phoneText setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
     [self.codeText setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
     
+    
+    
     [self.phoneText addTarget:self action:@selector(textchange) forControlEvents:UIControlEventEditingChanged];
     [self.codeText addTarget:self action:@selector(textchange) forControlEvents:UIControlEventEditingChanged];
     
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-
-    
-}
 
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string

@@ -31,7 +31,7 @@
     [self setupSalemanDataSource];
 }
 - (void) setupSalemanDataSource{
-    [HttpRequest postPath:@"_professionallist_001" params:@{@"userToken":TokenKey} resultBlock:^(id responseObject, NSError *error) {
+    [HttpRequest postPath:@"_professionallist_001" params:nil resultBlock:^(id responseObject, NSError *error) {
         NSDictionary *dic = responseObject;
         if ([dic[@"error"] intValue] == 0) {
             self.salemanValues = [dic[@"info"] mutableCopy];

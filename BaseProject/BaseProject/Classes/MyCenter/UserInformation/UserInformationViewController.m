@@ -50,20 +50,21 @@
     NSDictionary *dic = @{
                           @"userToken":TokenKey
                           };
-    [HttpRequest postPath:@"_logout_001" params:dic resultBlock:^(id responseObject, NSError *error) {
+    [HttpRequest postPath:@"_logout_001" params:nil resultBlock:^(id responseObject, NSError *error) {
         NSDictionary *dic = responseObject;
         int errorint = [dic[@"error"] intValue];
         NSString *errorStr = dic[@"info"];
         [ConfigModel mbProgressHUD:errorStr andView:nil];
         if (errorint == 0 ) {
-            [ConfigModel jumpLogin:self];
+            [ConfigModel saveBoolObject:NO forKey:IsLogin];
+            UnloginReturn
         }
     }];
 }
 
 - (void) updateNickName:(NSString *) nickName{
     NSDictionary *dic = @{
-                          @"userToken":TokenKey,
+//                          @"userToken":TokenKey,
                           @"nickname":nickName
                           };
     [HttpRequest postPath:@"_update_userinfo_001" params:dic resultBlock:^(id responseObject, NSError *error) {
@@ -79,7 +80,7 @@
 }
 - (void) updateHeaderImage:(NSString *) base64{
     NSDictionary *dic = @{
-                          @"userToken":TokenKey,
+//                          @"userToken":TokenKey,
                           @"avatar_url":base64
                           };
     [HttpRequest postPath:@"_upload_001" params:dic resultBlock:^(id responseObject, NSError *error) {

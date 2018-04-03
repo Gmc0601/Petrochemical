@@ -68,7 +68,7 @@
 
 - (void) setupDataSource{
     NSMutableDictionary *param = @{}.mutableCopy;
-    [param setValue:TokenKey forKey:@"userToken"];
+//    [param setValue:TokenKey forKey:@"userToken"];
     [param setValue:@"1" forKey:@"page"];
     [param setValue:@"2000" forKey:@"size"];
     [param setValue:_searchStr forKey:@"content"];

@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *currentPlaceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *useCarTimeLaber;
 @property (weak, nonatomic) IBOutlet UILabel *carNumberLabel;
+@property (weak, nonatomic) IBOutlet UILabel *addlab;
 
 @end
 @implementation CarTableViewCell
@@ -29,6 +30,14 @@
 }
 
 - (void)setModel:(HomeCarModel *)model {
+    self.headImageView.layer.masksToBounds =  YES;
+    self.headImageView.layer.cornerRadius = 30;
+    self.headImageView.backgroundColor = RGBColor(239, 240, 241);
+    self.headImageView.layer.borderWidth =  1;
+    self.headImageView.layer.borderColor = [[UIColor grayColor] CGColor];
+    self.addlab.layer.masksToBounds = YES;
+    self.addlab.layer.cornerRadius = 25;
+    self.addlab.backgroundColor =UIColorFromHex(0x1cad10);
     self.currentPlaceLabel.text = model.empty;
     self.startPlaceLabel.text = [NSString stringWithFormat:@"%@→%@", model.origin, model.destination];
     self.useCarTimeLaber.text = [NSString stringWithFormat:@"用车时间：%@", model.loading_time];

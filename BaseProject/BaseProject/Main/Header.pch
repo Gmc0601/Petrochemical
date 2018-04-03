@@ -46,6 +46,7 @@
 #define StatusBar [ConfigModel getStringforKey:@"_statusbarHeight"]
 #define NavbarHeight [ConfigModel getStringforKey:@"_navbarHeight"]
 #define TabBarHeight [ConfigModel getStringforKey:@"_tabbarHeight"]
+#define IsNULL(_ref)   (((_ref) == nil) || ([(_ref) isEqual:[NSNull null]]) || ([(_ref) isKindOfClass:[NSNull class]]) )
 
 /**
  * 设备判断

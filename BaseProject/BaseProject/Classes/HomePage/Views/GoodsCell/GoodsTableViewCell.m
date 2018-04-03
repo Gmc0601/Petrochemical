@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *useCarTimeLaber;
 
 @property (weak, nonatomic) IBOutlet UIImageView *goodsImageView;
+@property (weak, nonatomic) IBOutlet UILabel *addLab;
 
 @end
 @implementation GoodsTableViewCell
@@ -28,10 +29,20 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
+
+    
     // Configure the view for the selected state
 }
 
 - (void)setModel:(HomeGoodsModel *)model {
+    self.addLab.layer.masksToBounds = YES;
+    self.addLab.layer.cornerRadius = 25;
+    self.headImageView.layer.masksToBounds =  YES;
+    self.headImageView.layer.cornerRadius = 30;
+    self.headImageView.backgroundColor = RGBColor(239, 240, 241);
+    self.headImageView.layer.borderWidth =  1;
+    self.headImageView.layer.borderColor = [[UIColor grayColor] CGColor];
+    self.addLab.backgroundColor = UIColorFromHex(0xff2640);
     [self.headImageView sd_setImageWithURL:[NSURL URLWithString:model.avatar_url] placeholderImage:nil];
     self.startPlaceLabel.text = [NSString stringWithFormat:@"%@→%@", model.loading, model.unload];
     self.goodsInfoLabel.text = model.type;

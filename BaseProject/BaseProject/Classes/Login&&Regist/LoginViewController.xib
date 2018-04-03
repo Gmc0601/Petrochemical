@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -80,10 +80,11 @@
                     </connections>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QmR-6Q-cOb">
-                    <rect key="frame" x="271" y="290" width="72" height="30"/>
+                    <rect key="frame" x="256" y="290" width="89" height="30"/>
                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="CpD-C7-LNj"/>
+                        <constraint firstAttribute="width" constant="89" id="UMT-gs-7xs"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <state key="normal" title="获取验证码">
@@ -172,7 +173,7 @@
                 <constraint firstItem="RzX-P3-Ykb" firstAttribute="centerX" secondItem="c7o-UQ-drN" secondAttribute="centerX" id="96V-9m-4a6"/>
                 <constraint firstItem="c7o-UQ-drN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="9Rs-ND-rbl"/>
                 <constraint firstAttribute="trailing" secondItem="jDq-Ch-GuW" secondAttribute="trailing" constant="30" id="B3g-Vj-KVI"/>
-                <constraint firstAttribute="trailing" secondItem="QmR-6Q-cOb" secondAttribute="trailing" constant="32" id="Bep-S3-lWX"/>
+                <constraint firstAttribute="trailing" secondItem="QmR-6Q-cOb" secondAttribute="trailing" constant="30" id="Bep-S3-lWX"/>
                 <constraint firstItem="Jae-Oy-YUL" firstAttribute="top" secondItem="UkX-rn-3ru" secondAttribute="bottom" constant="9" id="BsE-ik-EQM"/>
                 <constraint firstItem="bpq-R9-uTU" firstAttribute="top" secondItem="RzX-P3-Ykb" secondAttribute="bottom" constant="81" id="HBD-UA-Ndm"/>
                 <constraint firstItem="jDq-Ch-GuW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="J8B-fr-Rd6"/>

@@ -60,7 +60,7 @@
 
 - (void) cargoOwnerPlan {
     //[user_status] => 1  认证进度 1待审核 2已通过 3认证失败
-    [HttpRequest postPath:@"_progress_001" params:@{@"userToken":TokenKey} resultBlock:^(id responseObject, NSError *error) {
+    [HttpRequest postPath:@"_progress_001" params:nil resultBlock:^(id responseObject, NSError *error) {
         NSDictionary *dic = responseObject;
         int errorint = [dic[@"error"] intValue];
         if (errorint == 0 ) {

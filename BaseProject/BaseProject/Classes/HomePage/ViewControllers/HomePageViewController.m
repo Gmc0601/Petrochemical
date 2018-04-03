@@ -168,7 +168,13 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
     dispatch_group_enter(group);
     dispatch_async(queue, ^{
         [HttpRequest postPath:@"_userinfo_001" params:nil resultBlock:^(id responseObject, NSError *error) {
-            NSLog(@"<><>%@<><>", responseObject);
+            NSDictionary *datadic = responseObject;
+            if ([datadic[@"error"] intValue] == 0) {
+            
+            }else {
+                NSString *str = datadic[@"info"];
+                [ConfigModel mbProgressHUD:str andView:nil];
+            }
         }];
         dispatch_group_leave(group);
     });
@@ -176,11 +182,8 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
     dispatch_group_enter(group);
     dispatch_async(queue, ^{
         NSMutableArray *datas = [NSMutableArray array];
-        NSDictionary *dic = @{
-                              @"userToken":@"cb97a780c081a49154bed3aa50842ff4",
-                              };
         
-        [HttpRequest postPath:@"_banner_001" params:dic resultBlock:^(id responseObject, NSError *error) {
+        [HttpRequest postPath:@"_banner_001" params:nil resultBlock:^(id responseObject, NSError *error) {
             NSDictionary *dic = responseObject;
             int errorint = [dic[@"error"] intValue];
             if (errorint == 0 ) {
@@ -330,7 +333,7 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
 #pragma mark - tableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return indexPath.section ? SizeHeight(84): 180;
+    return indexPath.section ? 80: 180;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

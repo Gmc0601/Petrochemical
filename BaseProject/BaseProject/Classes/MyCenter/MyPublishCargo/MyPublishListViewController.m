@@ -77,7 +77,7 @@
 
 - (void) setupDataSource{
     NSMutableDictionary *param = @{}.mutableCopy;
-    [param setValue:TokenKey forKey:@"userToken"];
+//    [param setValue:TokenKey forKey:@"userToken"];
     [HttpRequest postPath:@"_user_goods_001" params:param resultBlock:^(id responseObject, NSError *error) {
         NSDictionary *dic = responseObject;
         

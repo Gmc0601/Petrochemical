@@ -87,7 +87,7 @@
     }
     
     NSDictionary *param = @{}.mutableCopy;
-    [param setValue:TokenKey forKey:@"userToken"];
+//    [param setValue:TokenKey forKey:@"userToken"];
     [param setValue:self.nickNameStr forKey:@"car_name"];
     [param setValue:self.phoneStr forKey:@"car_mobile"];
     [param setValue:self.codeStr forKey:@"code"];

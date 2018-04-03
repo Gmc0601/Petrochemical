@@ -39,6 +39,38 @@
 - (void)raccommad {
     [[self.viewmodel.carDetialCommand execute:@"cardetial"] subscribeNext:^(CarDetailModel * model) {
         self.model = model;
+//        if (IsNULL(self.model.linkname)) {
+//            self.model.linkname =  nil;
+//        }
+//        
+//        if (IsNULL(self.model.license)) {
+//            self.model.license =  nil;
+//        }
+//        
+//        if (IsNULL(self.model.origin)) {
+//            self.model.origin =  nil;
+//        }
+//        
+//        if (IsNULL(self.model.destination)) {
+//            self.model.destination =  nil;
+//        }
+//        
+//        if (IsNULL(self.model.empty)) {
+//            self.model.empty =  nil;
+//        }
+//        
+//        if (IsNULL(self.model.loading_time)) {
+//            self.model.loading_time =  nil;
+//        }
+//        
+//        if (IsNULL(self.model.type)) {
+//            self.model.type =  nil;
+//        }
+//        
+//        if (IsNULL(self.model.load)) {
+//            self.model.load =  nil;
+//        }
+        
         self.detailArr = @[self.model.linkname,
                            self.model.license,
                            self.model.origin,
