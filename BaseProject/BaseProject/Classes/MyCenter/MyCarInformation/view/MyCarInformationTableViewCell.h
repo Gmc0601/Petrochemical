@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface MyCarInformationTableViewCell : UITableViewCell
+@property (strong, nonatomic) NSDictionary *dic;
 
 @end

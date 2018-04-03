@@ -8,7 +8,7 @@
 
 #import "MyCenterUserGuideViewController.h"
 
-@interface MyCenterUserGuideViewController ()
+@interface MyCenterUserGuideViewController ()<UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @end
@@ -38,5 +38,11 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (void)webViewDidStartLoad:(UIWebView *)webView{
+    [ConfigModel showHud:self];
+}
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    [ConfigModel hideHud:self];
+}
 
 @end

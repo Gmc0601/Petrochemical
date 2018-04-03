@@ -26,7 +26,7 @@ static LeasCustomAlbum *model = nil;
     return model;
 }
 
-+ (void)getImageValue:(ReturnImage)images{
++ (void) getImageWith:(UIViewController *) controller Value:(ReturnImage) images{
     
     [LeasCustomAlbum sharedModel].value = images;
     UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"请选择头像来源" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
@@ -41,7 +41,7 @@ static LeasCustomAlbum *model = nil;
             [imgPickerVC setAllowsEditing:YES];
             //显示Image Picker
             
-            [[FactorySet keyPresentingViewController] presentViewController:imgPickerVC animated:YES completion:nil];
+            [controller presentViewController:imgPickerVC animated:YES completion:nil];
             
         }else {
             
@@ -58,7 +58,7 @@ static LeasCustomAlbum *model = nil;
             cameraVC.videoQuality=UIImagePickerControllerQualityTypeLow;
             [cameraVC setAllowsEditing:YES];
             //显示Camera VC
-            [[FactorySet keyPresentingViewController] presentViewController:cameraVC animated:YES completion:nil];
+            [controller presentViewController:cameraVC animated:YES completion:nil];
             
         }else {
             
@@ -73,7 +73,7 @@ static LeasCustomAlbum *model = nil;
     [alertVC addAction:okAction1];
     [alertVC addAction:okAction2];
     [alertVC addAction:cancelAction];
-    [[FactorySet keyPresentingViewController] presentViewController:alertVC animated:YES completion:nil];
+    [controller presentViewController:alertVC animated:YES completion:nil];
 }
 
 #pragma mark -- UIImagePickerControllerDelegate,UINavigationControllerDelegate

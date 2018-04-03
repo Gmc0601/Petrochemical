@@ -10,6 +10,6 @@
 
 typedef void(^ReturnImage)(UIImage *images);
 @interface LeasCustomAlbum : NSObject
-+ (void) getImageValue:(ReturnImage) images;
++ (void) getImageWith:(UIViewController *) controller Value:(ReturnImage) images;
 
 @end

@@ -9,6 +9,7 @@
 #import "MyCarInformationListViewController.h"
 #import "MyCarInformationTableViewCell.h"
 #import "AddMyCarInformationFristViewController.h"
+#import "MyCarDetailInfomationViewController.h"
 
 @interface MyCarInformationListViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -19,11 +20,15 @@
 
 @implementation MyCarInformationListViewController
 
+- (void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self setupDataSource];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     _dataSource = @[].mutableCopy;
     [self setupUI];
-    [self setupDataSource];
 }
 
 - (void) setupUI{
@@ -43,7 +48,9 @@
 }
 
 - (void) setupDataSource{
+    [ConfigModel showHud:self];
     [HttpRequest postPath:@"_user_car_001" params:nil resultBlock:^(id responseObject, NSError *error) {
+        [ConfigModel hideHud:self];
         NSDictionary *dic = responseObject;
         int errorint = [dic[@"error"] intValue];
         if (errorint == 0 ) {
@@ -69,9 +76,15 @@
         cell = [[NSBundle mainBundle] loadNibNamed:@"MyCarInformationTableViewCell" owner:self options:nil].firstObject;
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.dic = _dataSource[indexPath.row];
     return cell;
 }
-
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSDictionary *dic = _dataSource[indexPath.row];
+    MyCarDetailInfomationViewController *detailVC = [MyCarDetailInfomationViewController new];
+    detailVC.carId = validString(dic[@"id"]);
+    [self.navigationController pushViewController:detailVC animated:YES];
+}
 
 #pragma mark -- method
 - (void) rightButtonAction{

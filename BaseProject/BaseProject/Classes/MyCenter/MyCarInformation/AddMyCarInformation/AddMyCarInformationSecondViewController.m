@@ -10,6 +10,7 @@
 #import "CustomSeletedPickView.h"
 #import "LeasCustomAlbum.h"
 #import "UIImage+MyProperty.h"
+#import "MyCarInformationListViewController.h"
 
 @interface AddMyCarInformationSecondViewController ()
 
@@ -56,14 +57,14 @@
 
 - (IBAction)addDrivingLicenceImageViewAction:(id)sender {
     __weak typeof(self) weakself = self;
-    [LeasCustomAlbum getImageValue:^(UIImage *images) {
+    [LeasCustomAlbum getImageWith:self Value:^(UIImage *images) {
         weakself.drivingLicenceImageValue = images;
     }];
     
 }
 - (IBAction)addOtherImageViewAction:(id)sender {
     __weak typeof(self) weakself = self;
-    [LeasCustomAlbum getImageValue:^(UIImage *images) {
+    [LeasCustomAlbum getImageWith:self Value:^(UIImage *images) {
         weakself.otherImageValue = images;
     }];
 }
@@ -77,6 +78,10 @@
         [ConfigModel mbProgressHUD:@"请选择车辆类型" andView:nil];
         return;
     }
+    if ([validString(self.maxLoadTextField.text) doubleValue] == 0) {
+        [ConfigModel mbProgressHUD:@"请填写车辆的载重" andView:nil];
+        return;
+    }
     if (self.drivingLicenceImageValue == nil) {
         [ConfigModel mbProgressHUD:@"请先添加驾驶证图片" andView:nil];
         return;
@@ -87,7 +92,6 @@
     }
     
     NSDictionary *param = @{}.mutableCopy;
-//    [param setValue:TokenKey forKey:@"userToken"];
     [param setValue:self.nickNameStr forKey:@"car_name"];
     [param setValue:self.phoneStr forKey:@"car_mobile"];
     [param setValue:self.codeStr forKey:@"code"];
@@ -96,11 +100,27 @@
     [param setValue:self.maxLoadTextField.text forKey:@"load"];
     [param setValue:self.drivingLicenceImageValue.base64String forKey:@"drive_img"];
     [param setValue:self.otherImageValue.base64String forKey:@"run_img"];
+    [ConfigModel showHud:self];
     [HttpRequest postPath:@"_add_usercar_001" params:param resultBlock:^(id responseObject, NSError *error) {
-        
+        [ConfigModel hideHud:self];
+        NSDictionary *dic = responseObject;
+        int errorint = [dic[@"error"] intValue];
+        if (errorint == 0 ) {
+            [ConfigModel mbProgressHUD:@"添加成功" andView:nil];
+            [self CustompopVC];
+        }else {
+            NSString *errorStr = dic[@"info"];
+            [ConfigModel mbProgressHUD:errorStr andView:nil];
+        }
     }];
 }
-
+- (void) CustompopVC{
+    for (UIViewController *VC in self.navigationController.viewControllers) {
+        if ([VC isKindOfClass:[MyCarInformationListViewController class]]) {
+            [self.navigationController popToViewController:VC animated:YES];
+        }
+    }
+}
 #pragma mark -- setter
 - (void) setCarTypeValue:(NSMutableDictionary *)carTypeValue{
     _carTypeValue = carTypeValue;

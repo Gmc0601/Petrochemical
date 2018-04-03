@@ -10,6 +10,7 @@
 #import "CustomSeletedPickView.h"
 #import "LeasCustomAlbum.h"
 #import "UIImage+MyProperty.h"
+#import "MyCenterViewController.h"
 
 @interface CargoidentificationSecondViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *salesmanNameLabel;
@@ -49,7 +50,7 @@
 }
 - (IBAction)selectedCompanyImageViewAction:(id)sender {
     __weak typeof(self) weakseaf = self;
-    [LeasCustomAlbum getImageValue:^(UIImage *images) {
+    [LeasCustomAlbum getImageWith:self Value:^(UIImage *images) {
         weakseaf.companyImageValue = images;
     }];
 }
@@ -62,13 +63,28 @@
     [param setValue:self.companyNameTextField.text forKey:@"company_name"];
     [param setValue:self.companyImageValue.base64String forKey:@"permit"];
     [param setValue:[NSString stringWithFormat:@"%@",self.selectedSalemanValue[@"mobile"]] forKey:@"profession_mobile"];
-    
+    [ConfigModel showHud:self];
     [HttpRequest postPath:@"_goods_enter_001" params:param resultBlock:^(id responseObject, NSError *error) {
-        NSLog(@">>>>>>>>>>>>>>>>");
-        NSLog(@"....%@",responseObject);
+        [ConfigModel hideHud:self];
+        NSDictionary *dic = responseObject;
+        int errorint = [dic[@"error"] intValue];
+        if (errorint == 0 ) {
+            [ConfigModel mbProgressHUD:@"提交成功" andView:nil];
+            [self customPopVC];
+        }else {
+            NSString *errorStr = dic[@"info"];
+            [ConfigModel mbProgressHUD:errorStr andView:nil];
+        }
     }];
 }
 
+- (void) customPopVC{
+    for (UIViewController *VC in self.navigationController.viewControllers) {
+        if ([VC isKindOfClass:[MyCenterViewController class]]) {
+            [self.navigationController popToViewController:VC animated:YES];
+        }
+    }
+}
 #pragma mark -- setter
 - (void) setCompanyImageValue:(UIImage *)companyImageValue{
     _companyImageValue = companyImageValue;
@@ -77,7 +93,5 @@
 - (void) setSelectedSalemanValue:(NSDictionary *)selectedSalemanValue{
     _selectedSalemanValue = selectedSalemanValue;
     self.salesmanNameLabel.text = [NSString stringWithFormat:@"%@",selectedSalemanValue[@"linkname"]];
-
-    
 }
 @end

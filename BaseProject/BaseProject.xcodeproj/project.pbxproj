@@ -210,6 +210,10 @@
 		8211DC532062014900A747A4 /* UIImage+MyProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 8211DC522062014900A747A4 /* UIImage+MyProperty.m */; };
 		8211DC57206205D100A747A4 /* CustomSeletedPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8211DC56206205D100A747A4 /* CustomSeletedPickView.m */; };
 		8211DC59206205DD00A747A4 /* CustomSeletedPickView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8211DC58206205DD00A747A4 /* CustomSeletedPickView.xib */; };
+		829762832073515300F1F003 /* MyCarDetailInfomationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829762812073515300F1F003 /* MyCarDetailInfomationViewController.m */; };
+		829762842073515300F1F003 /* MyCarDetailInfomationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 829762822073515300F1F003 /* MyCarDetailInfomationViewController.xib */; };
+		829762892073642300F1F003 /* CargoidentificationProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829762872073642300F1F003 /* CargoidentificationProgressViewController.m */; };
+		8297628A2073642300F1F003 /* CargoidentificationProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 829762882073642300F1F003 /* CargoidentificationProgressViewController.xib */; };
 		8298E2B6206C94BF006284F2 /* MyPublishListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8298E2B4206C94BF006284F2 /* MyPublishListViewController.m */; };
 		8298E2B7206C94BF006284F2 /* MyPublishListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8298E2B5206C94BF006284F2 /* MyPublishListViewController.xib */; };
 		8298E2BC206C97E5006284F2 /* MyPublishCargoListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8298E2BA206C97E5006284F2 /* MyPublishCargoListTableViewCell.m */; };
@@ -646,6 +650,12 @@
 		8211DC55206205D100A747A4 /* CustomSeletedPickView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomSeletedPickView.h; sourceTree = "<group>"; };
 		8211DC56206205D100A747A4 /* CustomSeletedPickView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomSeletedPickView.m; sourceTree = "<group>"; };
 		8211DC58206205DD00A747A4 /* CustomSeletedPickView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomSeletedPickView.xib; sourceTree = "<group>"; };
+		829762802073515300F1F003 /* MyCarDetailInfomationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCarDetailInfomationViewController.h; sourceTree = "<group>"; };
+		829762812073515300F1F003 /* MyCarDetailInfomationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCarDetailInfomationViewController.m; sourceTree = "<group>"; };
+		829762822073515300F1F003 /* MyCarDetailInfomationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCarDetailInfomationViewController.xib; sourceTree = "<group>"; };
+		829762862073642300F1F003 /* CargoidentificationProgressViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CargoidentificationProgressViewController.h; sourceTree = "<group>"; };
+		829762872073642300F1F003 /* CargoidentificationProgressViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CargoidentificationProgressViewController.m; sourceTree = "<group>"; };
+		829762882073642300F1F003 /* CargoidentificationProgressViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CargoidentificationProgressViewController.xib; sourceTree = "<group>"; };
 		8298E2B3206C94BF006284F2 /* MyPublishListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyPublishListViewController.h; sourceTree = "<group>"; };
 		8298E2B4206C94BF006284F2 /* MyPublishListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyPublishListViewController.m; sourceTree = "<group>"; };
 		8298E2B5206C94BF006284F2 /* MyPublishListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPublishListViewController.xib; sourceTree = "<group>"; };
@@ -1794,8 +1804,21 @@
 		822A271C20677B210093F5C9 /* MyCarDetailInfomation */ = {
 			isa = PBXGroup;
 			children = (
+				829762802073515300F1F003 /* MyCarDetailInfomationViewController.h */,
+				829762812073515300F1F003 /* MyCarDetailInfomationViewController.m */,
+				829762822073515300F1F003 /* MyCarDetailInfomationViewController.xib */,
 			);
 			path = MyCarDetailInfomation;
+			sourceTree = "<group>";
+		};
+		82976285207363FC00F1F003 /* progress */ = {
+			isa = PBXGroup;
+			children = (
+				829762862073642300F1F003 /* CargoidentificationProgressViewController.h */,
+				829762872073642300F1F003 /* CargoidentificationProgressViewController.m */,
+				829762882073642300F1F003 /* CargoidentificationProgressViewController.xib */,
+			);
+			path = progress;
 			sourceTree = "<group>";
 		};
 		8298E2B2206C9494006284F2 /* MyPublishCargo */ = {
@@ -1999,6 +2022,7 @@
 		82B6D2E1205F4FB400C65CA4 /* MyCargoInformation */ = {
 			isa = PBXGroup;
 			children = (
+				82976285207363FC00F1F003 /* progress */,
 				82B6D2E2205F4FB400C65CA4 /* Cargoidentification */,
 			);
 			path = MyCargoInformation;
@@ -2178,6 +2202,7 @@
 				0396E6942071DF7500B7EFDA /* GoodsNoteCell.xib in Resources */,
 				42F10C41206E331700C9C8EC /* productDetail_add_disabled@2x.png in Resources */,
 				7AFD2215205F87B0009DB138 /* SystemMessageTableViewCell.xib in Resources */,
+				8297628A2073642300F1F003 /* CargoidentificationProgressViewController.xib in Resources */,
 				035A23F2206C7F6D0003CD31 /* EmptyCarCell.xib in Resources */,
 				82B6D2F0205F4FB400C65CA4 /* CargoidentificationSecondViewController.xib in Resources */,
 				42F795D81F00CC3E00A11A69 /* arrowdown@2x.png in Resources */,
@@ -2189,6 +2214,7 @@
 				42F10C4B206E331700C9C8EC /* GoodsTableViewCell.xib in Resources */,
 				0396E6852071D2CD00B7EFDA /* GoodsUnloadingCell.xib in Resources */,
 				82B6D2D5205F4FA000C65CA4 /* MyCenterViewController.xib in Resources */,
+				829762842073515300F1F003 /* MyCarDetailInfomationViewController.xib in Resources */,
 				8298E2E2206E1312006284F2 /* MyCenterUserGuideViewController.xib in Resources */,
 				42F10C37206E331700C9C8EC /* citydatas.xml in Resources */,
 				42F10C44206E331700C9C8EC /* productDetail_delete_clicked@2x.png in Resources */,
@@ -2377,6 +2403,7 @@
 				42F10C28206E331700C9C8EC /* RotOrderviewmodel.m in Sources */,
 				7AFAE51B205A3FCE00B14406 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				42F10C56206E331800C9C8EC /* TYPageControl.m in Sources */,
+				829762892073642300F1F003 /* CargoidentificationProgressViewController.m in Sources */,
 				8211DC532062014900A747A4 /* UIImage+MyProperty.m in Sources */,
 				42F795DB1F00CC3E00A11A69 /* TBRefreshHeadView.m in Sources */,
 				82B6D29F205F4EE400C65CA4 /* LeasCustomAlbum.m in Sources */,
@@ -2393,6 +2420,7 @@
 				82FCF93E2070C2E50050140D /* MyGrabOrderListTableViewCell.m in Sources */,
 				42F10C5C206E331800C9C8EC /* SDCollectionViewCell.m in Sources */,
 				82B6D2C9205F4F5900C65CA4 /* IQUIView+IQKeyboardToolbar.m in Sources */,
+				829762832073515300F1F003 /* MyCarDetailInfomationViewController.m in Sources */,
 				42F10C3E206E331700C9C8EC /* CDZPicker.m in Sources */,
 				42F10C32206E331700C9C8EC /* HomeGoodsModel.m in Sources */,
 				035A2403206C7F830003CD31 /* GoodsListViewController.m in Sources */,

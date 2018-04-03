@@ -24,14 +24,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setCustomerTitle:@"个人资料"];
+    [self setupDataSource];
     self.automaticallyAdjustsScrollViewInsets = YES;
 }
 
+- (void) setupDataSource{
+    self.nickNameLabel.text = validString(self.userinfo[@"nickname"]);
+    [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:validString(self.userinfo[@"avatar_url"])] placeholderImage:DefaultImage];
+}
 #pragma mark -- method
 
 - (IBAction)settingHeaderImageAction:(id)sender {
     __weak typeof(self) weakself = self;
-    [LeasCustomAlbum getImageValue:^(UIImage *images) {
+    [LeasCustomAlbum getImageWith:self Value:^(UIImage *images) {
         weakself.headerImageValue = images;
     }];
     
@@ -47,9 +52,6 @@
 }
 
 - (IBAction)logoutAction:(id)sender {
-    NSDictionary *dic = @{
-                          @"userToken":TokenKey
-                          };
     [HttpRequest postPath:@"_logout_001" params:nil resultBlock:^(id responseObject, NSError *error) {
         NSDictionary *dic = responseObject;
         int errorint = [dic[@"error"] intValue];
@@ -63,11 +65,12 @@
 }
 
 - (void) updateNickName:(NSString *) nickName{
+    [ConfigModel showHud:self];
     NSDictionary *dic = @{
-//                          @"userToken":TokenKey,
                           @"nickname":nickName
                           };
     [HttpRequest postPath:@"_update_userinfo_001" params:dic resultBlock:^(id responseObject, NSError *error) {
+        [ConfigModel hideHud:self];
         NSDictionary *dic = responseObject;
         int errorint = [dic[@"error"] intValue];
         if (errorint == 0 ) {
@@ -79,11 +82,12 @@
     }];
 }
 - (void) updateHeaderImage:(NSString *) base64{
+    [ConfigModel showHud:self];
     NSDictionary *dic = @{
-//                          @"userToken":TokenKey,
                           @"avatar_url":base64
                           };
     [HttpRequest postPath:@"_upload_001" params:dic resultBlock:^(id responseObject, NSError *error) {
+        [ConfigModel hideHud:self];
         NSDictionary *dic = responseObject;
         int errorint = [dic[@"error"] intValue];
         NSString *errorStr = dic[@"info"];
@@ -91,6 +95,7 @@
         if (errorint == 0 ) {
             self.headerImageView.image = self.headerImageValue;
         }
+        
     }];
 }
 #pragma mark -- setter

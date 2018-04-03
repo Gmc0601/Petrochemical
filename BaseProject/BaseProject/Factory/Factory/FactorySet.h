@@ -24,6 +24,5 @@
 + (UILabel*) createThemeLabel;
 
 + (UIImage *)patternImageWithColor:(UIColor *)color;
-+ (UIViewController *)keyPresentingViewController;
 
 @end

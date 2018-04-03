@@ -11,6 +11,7 @@
 
 #import "MyCarInformationListViewController.h"
 #import "CargoidentificationFirstViewController.h"
+#import "CargoidentificationProgressViewController.h"
 #import "MyPublishListViewController.h"
 #import "MyPublishCarListViewController.h"
 #import "MyGrabOrderListViewController.h"
@@ -24,6 +25,7 @@
 
 
 @property (nonatomic, strong) UITableView *noUseTableView;
+@property (strong, nonatomic) NSMutableDictionary *userInfo;
 @property (nonatomic, assign) int user_status;
 
 @property (strong, nonatomic) NSMutableArray *linkPlatformArray;
@@ -60,13 +62,13 @@
 
 - (void) cargoOwnerPlan {
     //[user_status] => 1  认证进度 1待审核 2已通过 3认证失败
-    [HttpRequest postPath:@"_progress_001" params:nil resultBlock:^(id responseObject, NSError *error) {
+    [HttpRequest postPath:@"_userinfo_001" params:nil resultBlock:^(id responseObject, NSError *error) {
         NSDictionary *dic = responseObject;
         int errorint = [dic[@"error"] intValue];
         if (errorint == 0 ) {
             NSDictionary *info = dic[@"info"];
             if ([info isKindOfClass:[NSDictionary class]]) {
-                self.user_status = [[NSString stringWithFormat:@"%@",info[@"user_status"]] intValue];
+                self.userInfo = info.mutableCopy;
             }
         }else {
             NSString *errorStr = dic[@"info"];
@@ -78,6 +80,7 @@
 
 - (IBAction)settingUserInfoAction:(id)sender {
     UserInformationViewController *userInfoVC = [UserInformationViewController new];
+    userInfoVC.userinfo = self.userInfo;
     [self.navigationController pushViewController:userInfoVC animated:YES];
 }
 - (IBAction)myCarInfoAction:(id)sender {
@@ -85,8 +88,16 @@
     [self.navigationController pushViewController:carInfoVC animated:YES];
 }
 - (IBAction)myCargoInfoAction:(id)sender {
-    CargoidentificationFirstViewController *CargoidentificationVC1 = [CargoidentificationFirstViewController new];
-    [self.navigationController pushViewController:CargoidentificationVC1 animated:YES];
+    if (self.user_status == 2) {
+        return;
+    }
+    if (self.user_status == 4) {
+        CargoidentificationFirstViewController *CargoidentificationVC1 = [CargoidentificationFirstViewController new];
+        [self.navigationController pushViewController:CargoidentificationVC1 animated:YES];
+    }else{
+        CargoidentificationProgressViewController *progressVC = [CargoidentificationProgressViewController new];
+        [self.navigationController pushViewController:progressVC animated:YES];
+    }
 }
 - (IBAction)myPublishCargoAction:(id)sender {
     MyPublishListViewController *publishVC = [MyPublishListViewController new];
@@ -135,6 +146,12 @@
 }
 
 #pragma mark -- setter
+- (void) setUserInfo:(NSMutableDictionary *)userInfo{
+    _userInfo = userInfo;
+    self.user_status = [[NSString stringWithFormat:@"%@",userInfo[@"approve"]] intValue];
+    [self.userHeaderImageView sd_setImageWithURL:[NSURL URLWithString:validString(userInfo[@"avatar_url"])] placeholderImage:DefaultImage];
+    self.userNickNameLabel.text = validString(userInfo[@"nickname"]);
+}
 - (void) setUser_status:(int)user_status{
     _user_status = user_status;
     switch (user_status) {

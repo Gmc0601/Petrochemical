@@ -30,7 +30,7 @@
 
 - (IBAction)seletedImageAction:(id)sender {
     __weak typeof(self) weakself = self;
-    [LeasCustomAlbum getImageValue:^(UIImage *images) {
+    [LeasCustomAlbum getImageWith:self Value:^(UIImage *images) {
         weakself.idCardImageValue = images;
     }];
 }
