@@ -44,5 +44,11 @@
 
 #define UserToken @"userTOken"
 
+#define Shipper_Certification  @"Shipper_Certification"  //   货主认证
+
+#define Car_Certification @"Car_Certification"      //    车主认证
+
+#define Amapkey @"47884e7c3c495b95c4303de711d07123"
+
 
 #endif /* CCUrl_h */

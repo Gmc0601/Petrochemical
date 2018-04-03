@@ -26,14 +26,12 @@
 		035A2403206C7F830003CD31 /* GoodsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 035A23FE206C7F830003CD31 /* GoodsListViewController.m */; };
 		035A2406206C97BD0003CD31 /* ChooseAddressSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 035A2405206C97BD0003CD31 /* ChooseAddressSearchView.m */; };
 		035A2408206C97C90003CD31 /* ChooseAddressSearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 035A2407206C97C90003CD31 /* ChooseAddressSearchView.xib */; };
-		035A240A206CC69C0003CD31 /* AMapLocationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035A2409206CC69C0003CD31 /* AMapLocationKit.framework */; };
 		035A240C206CC6C40003CD31 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 035A240B206CC6C40003CD31 /* libc++.tbd */; };
 		035A240E206CC6CE0003CD31 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035A240D206CC6CE0003CD31 /* CoreTelephony.framework */; };
 		035A2410206CC6D50003CD31 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035A240F206CC6D50003CD31 /* SystemConfiguration.framework */; };
 		035A2412206CC6DC0003CD31 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035A2411206CC6DC0003CD31 /* Security.framework */; };
 		035A2414206CC6E70003CD31 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 035A2413206CC6E70003CD31 /* libz.tbd */; };
 		035A2416206CC6EF0003CD31 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 035A2415206CC6EF0003CD31 /* libstdc++.6.0.9.tbd */; };
-		035A2419206CC7780003CD31 /* AMapFoundationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035A2418206CC7770003CD31 /* AMapFoundationKit.framework */; };
 		0396E6842071D2CD00B7EFDA /* GoodsUnloadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0396E6822071D2CD00B7EFDA /* GoodsUnloadingCell.m */; };
 		0396E6852071D2CD00B7EFDA /* GoodsUnloadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0396E6832071D2CD00B7EFDA /* GoodsUnloadingCell.xib */; };
 		0396E6892071D50B00B7EFDA /* AddUnloadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0396E6872071D50B00B7EFDA /* AddUnloadCell.m */; };
@@ -42,7 +40,6 @@
 		0396E68F2071DF1800B7EFDA /* GoodsInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0396E68D2071DF1800B7EFDA /* GoodsInfoCell.xib */; };
 		0396E6932071DF7500B7EFDA /* GoodsNoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0396E6912071DF7500B7EFDA /* GoodsNoteCell.m */; };
 		0396E6942071DF7500B7EFDA /* GoodsNoteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0396E6922071DF7500B7EFDA /* GoodsNoteCell.xib */; };
-		0396E69620720D3500B7EFDA /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0396E69520720D3500B7EFDA /* MAMapKit.framework */; };
 		0396E69820720DD000B7EFDA /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0396E69720720DD000B7EFDA /* GLKit.framework */; };
 		0396E69C207224B000B7EFDA /* GoodsChooseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0396E69B207224B000B7EFDA /* GoodsChooseView.m */; };
 		0396E6A02072299300B7EFDA /* GoodsChooseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0396E69E2072299300B7EFDA /* GoodsChooseCell.m */; };
@@ -318,7 +315,6 @@
 		035A2404206C97BD0003CD31 /* ChooseAddressSearchView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChooseAddressSearchView.h; sourceTree = "<group>"; };
 		035A2405206C97BD0003CD31 /* ChooseAddressSearchView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChooseAddressSearchView.m; sourceTree = "<group>"; };
 		035A2407206C97C90003CD31 /* ChooseAddressSearchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseAddressSearchView.xib; sourceTree = "<group>"; };
-		035A2409206CC69C0003CD31 /* AMapLocationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapLocationKit.framework; sourceTree = "<group>"; };
 		035A240B206CC6C40003CD31 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		035A240D206CC6CE0003CD31 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		035A240F206CC6D50003CD31 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -326,7 +322,6 @@
 		035A2413206CC6E70003CD31 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		035A2415206CC6EF0003CD31 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
 		035A2417206CC7300003CD31 /* APIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIKey.h; sourceTree = "<group>"; };
-		035A2418206CC7770003CD31 /* AMapFoundationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapFoundationKit.framework; sourceTree = "<group>"; };
 		0396E6812071D2CD00B7EFDA /* GoodsUnloadingCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsUnloadingCell.h; sourceTree = "<group>"; };
 		0396E6822071D2CD00B7EFDA /* GoodsUnloadingCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsUnloadingCell.m; sourceTree = "<group>"; };
 		0396E6832071D2CD00B7EFDA /* GoodsUnloadingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoodsUnloadingCell.xib; sourceTree = "<group>"; };
@@ -339,7 +334,6 @@
 		0396E6902071DF7500B7EFDA /* GoodsNoteCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsNoteCell.h; sourceTree = "<group>"; };
 		0396E6912071DF7500B7EFDA /* GoodsNoteCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsNoteCell.m; sourceTree = "<group>"; };
 		0396E6922071DF7500B7EFDA /* GoodsNoteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoodsNoteCell.xib; sourceTree = "<group>"; };
-		0396E69520720D3500B7EFDA /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
 		0396E69720720DD000B7EFDA /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		0396E69A207224B000B7EFDA /* GoodsChooseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsChooseView.h; sourceTree = "<group>"; };
 		0396E69B207224B000B7EFDA /* GoodsChooseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsChooseView.m; sourceTree = "<group>"; };
@@ -752,15 +746,12 @@
 			files = (
 				0396E69820720DD000B7EFDA /* GLKit.framework in Frameworks */,
 				035A2416206CC6EF0003CD31 /* libstdc++.6.0.9.tbd in Frameworks */,
-				035A2419206CC7780003CD31 /* AMapFoundationKit.framework in Frameworks */,
 				035A2414206CC6E70003CD31 /* libz.tbd in Frameworks */,
 				035A2412206CC6DC0003CD31 /* Security.framework in Frameworks */,
-				0396E69620720D3500B7EFDA /* MAMapKit.framework in Frameworks */,
 				035A2410206CC6D50003CD31 /* SystemConfiguration.framework in Frameworks */,
 				035A240E206CC6CE0003CD31 /* CoreTelephony.framework in Frameworks */,
 				035A240C206CC6C40003CD31 /* libc++.tbd in Frameworks */,
 				B79A5CFD6299881CB3643ACB /* libPods-BaseProject.a in Frameworks */,
-				035A240A206CC69C0003CD31 /* AMapLocationKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1010,9 +1001,6 @@
 		42A4442F1EF133E000F90791 /* BaseProject */ = {
 			isa = PBXGroup;
 			children = (
-				0396E69520720D3500B7EFDA /* MAMapKit.framework */,
-				035A2418206CC7770003CD31 /* AMapFoundationKit.framework */,
-				035A2409206CC69C0003CD31 /* AMapLocationKit.framework */,
 				42C84EB31EF2DC7B0008189D /* Header.pch */,
 				035A2417206CC7300003CD31 /* APIKey.h */,
 				42C84EB21EF2DC7B0008189D /* CCUrl.h */,
@@ -1303,11 +1291,11 @@
 				42F10BD7206E331700C9C8EC /* MapViewController.m */,
 				42F10BD8206E331700C9C8EC /* GoodsDetialViewController.h */,
 				42F10BD9206E331700C9C8EC /* CarsDetialViewController.m */,
+				42F10BDE206E331700C9C8EC /* HomePageViewController.h */,
 				42F10BDA206E331700C9C8EC /* HomePageViewController.m */,
 				42F10BDB206E331700C9C8EC /* RobOrderViewController.h */,
 				42F10BDC206E331700C9C8EC /* GoodsDetialViewController.m */,
 				42F10BDD206E331700C9C8EC /* MapViewController.h */,
-				42F10BDE206E331700C9C8EC /* HomePageViewController.h */,
 				42F10BDF206E331700C9C8EC /* CarsDetialViewController.h */,
 			);
 			path = ViewControllers;
@@ -2306,9 +2294,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BaseProject/Pods-BaseProject-resources.sh",
+				"${PODS_ROOT}/AMap3DMap/MAMapKit.framework/AMap.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

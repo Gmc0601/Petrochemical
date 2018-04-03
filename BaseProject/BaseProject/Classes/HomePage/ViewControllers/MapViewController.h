@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface MapViewController : UIViewController
+@interface MapViewController : BaseViewController
+
+@property (nonatomic, copy) NSString *longitude, *latitude;
 
 @end
