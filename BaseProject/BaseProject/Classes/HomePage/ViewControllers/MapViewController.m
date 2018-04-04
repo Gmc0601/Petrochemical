@@ -27,7 +27,6 @@
     [self addRightBarButtonItemWithTitle:@"导航" action:@selector(right)];
     [AMapServices sharedServices].apiKey = @"c566d3a7bcf00f73ba43f1d82b20b6cf";
     MAPointAnnotation *pointAnnotation = [[MAPointAnnotation alloc] init];
-    NSLog(@">>>>%f,%f", [self.latitude floatValue], [self.longitude floatValue]);
     pointAnnotation.coordinate = CLLocationCoordinate2DMake([self.latitude floatValue], [self.longitude floatValue]);
     [self.mapView addAnnotation:pointAnnotation];
     [self mapViewinit];

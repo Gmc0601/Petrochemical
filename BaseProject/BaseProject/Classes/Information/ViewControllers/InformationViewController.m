@@ -14,6 +14,7 @@
 #import "InformationDetailViewController.h"
 #import "MessageViewController.h"
 #import "UIButton+message.h"
+
 @interface InformationViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UIButton *messageButton;
@@ -35,8 +36,6 @@
     [super viewDidLoad];
     [self setCustomerTitle:@"咨询"];
 
-    
-    
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenW, kScreenH-64-49) style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;

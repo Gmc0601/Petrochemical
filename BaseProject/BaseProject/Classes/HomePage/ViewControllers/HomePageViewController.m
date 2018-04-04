@@ -30,6 +30,7 @@
 #import "CarsDetialViewController.h"
 #import "GoodsDetialViewController.h"
 #import "LoginViewController.h"
+#import "CCWebViewViewController.h"
 
 static NSString *KCarSection1CellID = @"KCarSection1CellID";//车源section1 CellID
 static NSString *KCarSection2CellID = @"KCarSection2CellID";//车源section2 CellID
@@ -66,9 +67,7 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
 @property (nonatomic, copy) NSArray *GoodsToolsButtons;
 @property (nonatomic, strong)UIWindow *coverWindow;
 @property (nonatomic, strong)UIView *alertView;
-
 @property (nonatomic, strong)NSArray *citys;//
-
 #pragma mark--  tommy
 @property (nonatomic, strong) HomeCarViewModel *carviewModel;
 @property (nonatomic, strong) HomeGoodsViewModel *goodsviewModel;
@@ -196,6 +195,7 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
         
         [HttpRequest postPath:@"_banner_001" params:nil resultBlock:^(id responseObject, NSError *error) {
             NSDictionary *dic = responseObject;
+            NSLog(@"<><><>%@", responseObject);
             int errorint = [dic[@"error"] intValue];
             if (errorint == 0 ) {
                 NSArray *bannerDatas = dic[@"info"];
@@ -334,7 +334,11 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
         NSMutableArray * imageUrlArr = [[NSMutableArray alloc] initWithArray:arr];
         [cell setContent:imageUrlArr];
         cell.clickViewBlock = ^(NSInteger index) {
-            
+            CCWebViewViewController *vc = [[CCWebViewViewController alloc] init];
+             BannerModel *model = _CarCyclePageDatas[index];
+            vc.UrlStr = model.content;
+            vc.titlestr = @"详情";
+            [self.navigationController pushViewController:vc animated:YES];
         };
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         return cell;

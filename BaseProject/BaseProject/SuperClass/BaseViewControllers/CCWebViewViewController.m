@@ -41,29 +41,12 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.webView];
 }
-//- (void)viewWillDisappear:(BOOL)animated {
-//    if (self.titlestr) {
-//        self.leftBar.hidden = NO;
-//    }else {
-//      self.leftBar.hidden = YES;
-//    }
-//    
-//    self.navigationController.navigationBar.hidden = YES;
-//    //    [UIApplication sharedApplication].statusBarStyle =UIStatusBarStyleLightContent;
-//    
-//}
 
 - (void)loadWebView {
     
-    if ([ConfigModel getBoolObjectforKey:IsLogin] && [self.UrlStr rangeOfString:@"user_token"].location == NSNotFound ) {
-        self.UrlStr = [NSString stringWithFormat:@"%@/user_token/%@", self.UrlStr, [ConfigModel getStringforKey:UserToken]];
-    }
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.UrlStr]];
-//    UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"" message:self.UrlStr delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
-//    [view show];
-    [self.webView loadRequest:request];
+     [self.webView loadHTMLString:validString(self.UrlStr) baseURL:nil];
     [self.webView reload];
+    
 }
 
 
@@ -100,10 +83,10 @@
     //    if ([str1 hasSuffix:@"jifen.html"]) {
     ////        链接以什么结尾
     //    }
-        if ([ConfigModel getBoolObjectforKey:IsLogin] && [requestString rangeOfString:@"user_token"].location == NSNotFound ) {
-    //        不包含某段字符串
-            return NO;
-        }
+//        if ([ConfigModel getBoolObjectforKey:IsLogin] && [requestString rangeOfString:@"user_token"].location == NSNotFound ) {
+//    //        不包含某段字符串
+//            return NO;
+//        }
     
     //    if ([str1 containsString:@"shop"]) {
     ////        iOS8以后判断是否包含某段字符串

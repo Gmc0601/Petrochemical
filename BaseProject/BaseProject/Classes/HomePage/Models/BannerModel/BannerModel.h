@@ -13,4 +13,5 @@
 @property (nonatomic, strong)NSString *ID;
 @property (nonatomic, strong)NSString *img;
 @property (nonatomic, strong)NSString *sort;
+@property (nonatomic, copy) NSString *content;
 @end
