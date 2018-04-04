@@ -7,4 +7,7 @@ pod 'SDWebImage'
 pod 'MBProgressHUD'
 pod 'ReactiveObjC'
 pod 'MJExtension'
+pod ‘AMap3DMap’
+pod ‘AMapLocation’
+
 end
