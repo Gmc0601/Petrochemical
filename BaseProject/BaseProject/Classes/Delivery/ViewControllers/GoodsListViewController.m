@@ -25,7 +25,7 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
 @interface GoodsListViewController ()
 @property(nonatomic, strong) UIView * bottomView;
 @property(nonatomic, assign) NSInteger  unlodingNum;
-@property(nonatomic, copy) NSString * startLoaction;
+@property(nonatomic, copy) NSString * startLocation;
 @property(nonatomic, strong) NSNumber * startLatitude;
 @property(nonatomic, strong) NSNumber * startLongitude;
 @property(nonatomic, strong) NSMutableArray * unloadingArray;
@@ -37,6 +37,7 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
 @property(nonatomic, copy) NSString *goodsId;//货物的id
 @property(nonatomic, copy) NSString *goodsName;//货物的名字
 @property(nonatomic, strong) NSArray *selectedGoodsIndexs;
+@property(nonatomic, copy) NSString *noteStr;//备注
 @end
 
 @implementation GoodsListViewController
@@ -143,7 +144,9 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
         
         if (indexPath.row == 6) {
             GoodsNoteCell * tempCell = [tableView dequeueReusableCellWithIdentifier:GoodsNoteCellIdentifier];
-            
+            tempCell.inputBlock = ^(NSString *inputText) {
+                self.noteStr = inputText;
+            };
             cell = tempCell;
         }else{
             GoodsInfoCell * tempCell = [tableView dequeueReusableCellWithIdentifier:GoodsInfoCellIdentifier];
@@ -246,8 +249,8 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
     if (indexPath.row == 0) {
         title = @"装货点";
         placeholder = @"请选择装货点";
-        if (self.startLoaction) {
-            content = self.startLoaction;
+        if (self.startLocation) {
+            content = self.startLocation;
         }
         
         isHidden = YES;
@@ -322,52 +325,9 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
     
 }
 - (void)buttonAction:(id)sender{
-    [self sendCarInfo];
+    [self sendGoodsInfo];
 }
 
-
-- (void)sendCarInfo{
-    NSDictionary *dic = nil;
-    //    if (self.car_id && self.startLocation&&self.endLocation&&self.emptyLocation&&self.lon&&self.lat&& self.loadingTime) {
-    //        dic = @{
-    //                @"userToken":@"02c8f878c1d5463b5bea89e893cde184",
-    //                @"car_id":self.car_id,
-    //                @"origin":self.startLocation,
-    //                @"destination":self.endLocation,
-    //                @"empty":self.emptyLocation,
-    //                @"lon":[NSString stringWithFormat:@"%f",self.lon],
-    //                @"lat":[NSString stringWithFormat:@"%f",self.lat],
-    //                @"loading_time":self.loadingTime,
-    //                //                          @"load":self.maxLoad,
-    //                @"issue_type":@"1",//发布车源1  发布货源2
-    //                };
-    //
-    //
-    //    }
-    //    if (!dic) {
-    //        return;
-    //    }
-    //    WeakSelf(weakself);
-    //    [HttpRequest postPath:@"_issue_car_001" params:dic resultBlock:^(id responseObject, NSError *error) {
-    //
-    //        NSDictionary *dic = responseObject;
-    //
-    //        int errorint = [dic[@"error"] intValue];
-    //        if (errorint == 0 ) {
-    //            UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"发布车源成功" preferredStyle:UIAlertControllerStyleAlert];
-    //            UIAlertAction *okAction1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-    //                [weakself backAction];
-    //            }];
-    //            [alertVC addAction:okAction1];
-    //            [self presentViewController:alertVC animated:YES completion:nil];
-    //        }else {
-    //            NSString *errorStr = dic[@"info"];
-    //            NSLog(@"%@", errorStr);
-    //            [ConfigModel mbProgressHUD:errorStr andView:nil];
-    //        }
-    //
-    //    }];
-}
 
 
 
@@ -397,7 +357,7 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
     addressVC.chooseType = ChooseAddressType_loading;
     WeakSelf(weakSelf);
     addressVC.chooseAddressInfoBlock = ^(NSDictionary *addressInfo,NSInteger chooseIndex) {
-        weakSelf.startLoaction = addressInfo[@"name"];
+        weakSelf.startLocation = addressInfo[@"name"];
         weakSelf.startLatitude = addressInfo[@"latitude"];
         weakSelf.startLongitude = addressInfo[@"longitude"];
         [weakSelf.CC_table reloadData];
@@ -481,6 +441,52 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
     [goodsView show];
     
 }
+
+#pragma mark  ---
+- (void)sendGoodsInfo{
+    NSDictionary *dic = nil;
+        if ( self.startLocation &&self.endLocation&&self.emptyLocation&&self.lon&&self.lat&& self.loadingTime) {
+            dic = @{
+                   
+                   
+                    @"loading":self.startLocation,
+                    @"destination":self.endLocation,
+                    @"empty":self.emptyLocation,
+                    @"lon":[NSString stringWithFormat:@"%f",self.lon],
+                    @"lat":[NSString stringWithFormat:@"%f",self.lat],
+                    @"loading_time":self.loadingTime,
+                    //                          @"load":self.maxLoad,
+                    @"issue_type":@"2",//发布车源1  发布货源2
+                    };
+    
+    
+        }
+        if (!dic) {
+            return;
+        }
+        WeakSelf(weakself);
+        [HttpRequest postPath:@"_issue_car_001" params:dic resultBlock:^(id responseObject, NSError *error) {
+    
+            NSDictionary *dic = responseObject;
+    
+            int errorint = [dic[@"error"] intValue];
+            if (errorint == 0 ) {
+                UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"发布车源成功" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *okAction1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    [weakself backAction];
+                }];
+                [alertVC addAction:okAction1];
+                [self presentViewController:alertVC animated:YES completion:nil];
+            }else {
+                NSString *errorStr = dic[@"info"];
+                NSLog(@"%@", errorStr);
+                [ConfigModel mbProgressHUD:errorStr andView:nil];
+            }
+    
+        }];
+}
+
+
 /*
  #pragma mark - Navigation
  
