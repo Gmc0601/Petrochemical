@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface GoodsInfoCell : UITableViewCell
-- (void)setupTFEnabled:(BOOL)enabled;
+@property(nonatomic, assign) NSInteger row;
+@property(nonatomic, copy) void(^inputTextBlock)(NSString *inputText,NSInteger row);
+- (void)setupTFEnabled:(BOOL)enabled withKeyboardType:(UIKeyboardType)type;
 - (void)setupTitle:(NSString *)title withTextFeild:(NSString *)content withPlaceholder:(NSString *)placeholder;
 @end
