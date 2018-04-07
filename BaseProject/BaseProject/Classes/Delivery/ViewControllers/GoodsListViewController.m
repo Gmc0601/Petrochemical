@@ -444,46 +444,46 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
 
 #pragma mark  ---
 - (void)sendGoodsInfo{
-    NSDictionary *dic = nil;
-        if ( self.startLocation &&self.endLocation&&self.emptyLocation&&self.lon&&self.lat&& self.loadingTime) {
-            dic = @{
-                   
-                   
-                    @"loading":self.startLocation,
-                    @"destination":self.endLocation,
-                    @"empty":self.emptyLocation,
-                    @"lon":[NSString stringWithFormat:@"%f",self.lon],
-                    @"lat":[NSString stringWithFormat:@"%f",self.lat],
-                    @"loading_time":self.loadingTime,
-                    //                          @"load":self.maxLoad,
-                    @"issue_type":@"2",//发布车源1  发布货源2
-                    };
-    
-    
-        }
-        if (!dic) {
-            return;
-        }
-        WeakSelf(weakself);
-        [HttpRequest postPath:@"_issue_car_001" params:dic resultBlock:^(id responseObject, NSError *error) {
-    
-            NSDictionary *dic = responseObject;
-    
-            int errorint = [dic[@"error"] intValue];
-            if (errorint == 0 ) {
-                UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"发布车源成功" preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction *okAction1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    [weakself backAction];
-                }];
-                [alertVC addAction:okAction1];
-                [self presentViewController:alertVC animated:YES completion:nil];
-            }else {
-                NSString *errorStr = dic[@"info"];
-                NSLog(@"%@", errorStr);
-                [ConfigModel mbProgressHUD:errorStr andView:nil];
-            }
-    
-        }];
+//    NSDictionary *dic = nil;
+//        if ( self.startLocation &&self.endLocation&&self.emptyLocation&&self.lon&&self.lat&& self.loadingTime) {
+//            dic = @{
+//                   
+//                   
+//                    @"loading":self.startLocation,
+//                    @"destination":self.endLocation,
+//                    @"empty":self.emptyLocation,
+//                    @"lon":[NSString stringWithFormat:@"%f",self.lon],
+//                    @"lat":[NSString stringWithFormat:@"%f",self.lat],
+//                    @"loading_time":self.loadingTime,
+//                    //                          @"load":self.maxLoad,
+//                    @"issue_type":@"2",//发布车源1  发布货源2
+//                    };
+//    
+//    
+//        }
+//        if (!dic) {
+//            return;
+//        }
+//        WeakSelf(weakself);
+//        [HttpRequest postPath:@"_issue_car_001" params:dic resultBlock:^(id responseObject, NSError *error) {
+//    
+//            NSDictionary *dic = responseObject;
+//    
+//            int errorint = [dic[@"error"] intValue];
+//            if (errorint == 0 ) {
+//                UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"发布车源成功" preferredStyle:UIAlertControllerStyleAlert];
+//                UIAlertAction *okAction1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//                    [weakself backAction];
+//                }];
+//                [alertVC addAction:okAction1];
+//                [self presentViewController:alertVC animated:YES completion:nil];
+//            }else {
+//                NSString *errorStr = dic[@"info"];
+//                NSLog(@"%@", errorStr);
+//                [ConfigModel mbProgressHUD:errorStr andView:nil];
+//            }
+//    
+//        }];
 }
 
 
