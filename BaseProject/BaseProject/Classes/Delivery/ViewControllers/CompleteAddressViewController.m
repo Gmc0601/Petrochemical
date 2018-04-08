@@ -60,9 +60,9 @@ NSString * const CompleteAddressCellIdentifier = @"CompleteAddressCellIdentifier
     if (self.completeAddressInfoBlock && self.address && self.detail_Address && self.lat && self.lon && self.mobile) {
         NSDictionary * info = @{@"address":self.address,@"detail":self.detail_Address,@"lat":self.lat,@"lon":self.lon,@"mobile":self.mobile};
         self.completeAddressInfoBlock( info, self.chooseIndex);
-        
+         [self.navigationController popViewControllerAnimated:YES];
     }
-  [self.navigationController popViewControllerAnimated:YES];
+ 
 }
 - (BOOL)addRefreshHeader{
     return NO;
@@ -140,6 +140,7 @@ NSString * const CompleteAddressCellIdentifier = @"CompleteAddressCellIdentifier
            content = self.detail_Address;
         }
          placeholder = @"请填写具体单元号、楼层等";
+        enabled = YES;
     }
     if (indexPath.row == 2) {
         title = @"联系电话";
@@ -148,6 +149,7 @@ NSString * const CompleteAddressCellIdentifier = @"CompleteAddressCellIdentifier
         }
         type  = UIKeyboardTypeNumberPad;
         placeholder = @"请填写联系电话";
+         enabled = YES;
     }
     cell.row = indexPath.row ;
     cell.inputTextBlock = ^(NSString *inputText, NSInteger row) {
@@ -156,7 +158,7 @@ NSString * const CompleteAddressCellIdentifier = @"CompleteAddressCellIdentifier
         }else  if (indexPath.row == 2) {
             self.mobile = inputText ;
         }
-        [self.CC_table reloadData];
+  
     };
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell setupTFEnabled:enabled withKeyboardType:type];

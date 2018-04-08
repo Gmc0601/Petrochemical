@@ -377,8 +377,8 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
     addressVC.chooseType = CompleteAddressType_loading;
     WeakSelf(weakSelf);
     addressVC.completeAddressInfoBlock = ^(NSDictionary *addressInfo,NSInteger chooseIndex) {
-        weakSelf.startLocation_detail = addressInfo[@"address"];
-        weakSelf.startLocation = addressInfo[@"detail"];
+        weakSelf.startLocation_detail = addressInfo[@"detail"];
+        weakSelf.startLocation = addressInfo[@"address"];
         weakSelf.startLatitude =[NSString stringWithFormat:@"%@",addressInfo[@"lat"]];
         weakSelf.startLongitude = [NSString stringWithFormat:@"%@",addressInfo[@"lon"]];
         [weakSelf.CC_table reloadData];
@@ -401,6 +401,7 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
     
     CompleteAddressViewController * addressVC = [[CompleteAddressViewController alloc]init];
     addressVC.chooseType = CompleteAddressType_unLoading;
+    addressVC.chooseIndex = indexPath.row;
     WeakSelf(weakSelf);
     addressVC.completeAddressInfoBlock = ^(NSDictionary *addressInfo,NSInteger chooseIndex) {
         if ([weakSelf.unloadingArray count] >= chooseIndex &&self.unloadingArray[chooseIndex-1]) {
@@ -436,8 +437,8 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
     MAMapPoint point2;
     CLLocationDistance distance  = 0;
     for (NSDictionary * info in self.unloadingArray) {
-        NSNumber * latitude =info[@"latitude"];
-        NSNumber * longitude = info[@"longitude"];
+        NSNumber * latitude =info[@"lat"];
+        NSNumber * longitude = info[@"lon"];
         point2 = MAMapPointForCoordinate(CLLocationCoordinate2DMake([latitude floatValue],[longitude floatValue]));
         //2.计算总距离
         distance = distance + MAMetersBetweenMapPoints(point1,point2);
@@ -494,22 +495,24 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
 - (void)sendGoodsInfo{
     NSDictionary *dic = nil;
     for (NSDictionary * dic  in self.unloadingArray) {
-       NSString *lat = [NSString stringWithFormat:@"%@",dic[@"lat"]];
-       NSString * lon = [NSString stringWithFormat:@"%@", dic[@"lon"]];
-       NSString * unload_address = dic[@"address"];
-       NSString * unload =dic[@"detail"];
-        NSString * take_mobile = dic[@"mobile"];
-        NSDictionary * tempDic = @{@"lat":lat,@"lon":lon,@"unload":unload,@"unload_address":unload_address,@"take_mobile":take_mobile};
-        [self.jsonUnloadArray addObject:tempDic];
+        if (dic) {
+            NSString *lat = [NSString stringWithFormat:@"%@",dic[@"lat"]];
+            NSString * lon = [NSString stringWithFormat:@"%@", dic[@"lon"]];
+            NSString * unload_address = dic[@"detail"];
+            NSString * unload =dic[@"address"];
+            NSString * take_mobile = dic[@"mobile"];
+            NSDictionary * tempDic = @{@"lat":lat,@"lon":lon,@"unload":unload,@"unload_address":unload_address,@"take_mobile":take_mobile};
+            [self.jsonUnloadArray addObject:tempDic];
+        }
+      
     }
     if ( self.startLocation && self.startLocation_detail && self.price && self.startLatitude
         && self.weight && self.loadingTime && self.startLongitude && self.noteStr  && self.goodsId && [self.unloadingArray count] > 0) {
-        
-  
-        
         NSString * mileage = @"";
         if (self.totalDistance >0) {
             mileage = [NSString stringWithFormat:@"%0.2f公里/%0.1f小时",self.totalDistance,self.totalDistance/60];
+        }else{
+            mileage =@"0公里/0小时";
         }
         dic = @{
                 
@@ -518,7 +521,7 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
                 @"good_price":self.price,
                 @"account_type": self.paymentMethod,
                 @"weight":self.weight,
-                @"use_time":self.loadingTime,
+                @"use_time":@"2018-04-04 01:00:00",
                 @"lat":self.startLatitude,
                 @"lon":self.startLongitude,
                 @"remark":self.noteStr,
@@ -531,26 +534,26 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
     if (!dic) {
         return;
     }
-//        WeakSelf(weakself);
-//        [HttpRequest postPath:@"_issue_car_001" params:dic resultBlock:^(id responseObject, NSError *error) {
-//
-//            NSDictionary *dic = responseObject;
-//
-//            int errorint = [dic[@"error"] intValue];
-//            if (errorint == 0 ) {
-//                UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"发布车源成功" preferredStyle:UIAlertControllerStyleAlert];
-//                UIAlertAction *okAction1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//                    [weakself backAction];
-//                }];
-//                [alertVC addAction:okAction1];
-//                [self presentViewController:alertVC animated:YES completion:nil];
-//            }else {
-//                NSString *errorStr = dic[@"info"];
-//                NSLog(@"%@", errorStr);
-//                [ConfigModel mbProgressHUD:errorStr andView:nil];
-//            }
-//
-//        }];
+        WeakSelf(weakself);
+        [HttpRequest postPath:@"_issue_car_001" params:dic resultBlock:^(id responseObject, NSError *error) {
+
+            NSDictionary *dic = responseObject;
+
+            int errorint = [dic[@"error"] intValue];
+            if (errorint == 0 ) {
+                UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"发布货源成功" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *okAction1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    [weakself backAction];
+                }];
+                [alertVC addAction:okAction1];
+                [self presentViewController:alertVC animated:YES completion:nil];
+            }else {
+                NSString *errorStr = dic[@"info"];
+                NSLog(@"%@", errorStr);
+                [ConfigModel mbProgressHUD:errorStr andView:nil];
+            }
+
+        }];
 }
 
 
