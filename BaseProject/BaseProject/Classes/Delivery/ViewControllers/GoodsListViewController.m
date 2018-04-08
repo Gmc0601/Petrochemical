@@ -270,9 +270,7 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
         if (self.startLocation) {
             content = [content stringByAppendingString:self.startLocation];
         }
-        if (self.startLocation_detail) {
-            content = [content stringByAppendingString: self.startLocation_detail];
-        }
+    
         
         isHidden = YES;
     }else if(indexPath.row < 2+ self.self.unlodingNum -1&& indexPath.row >0){
@@ -297,12 +295,10 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
             
             NSDictionary * info = self.unloadingArray[indexPath.row-1];
             if (info) {
-                if (info[@"cityName"]) {
-                    content = [content stringByAppendingString:info[@"cityName"]];
+                if (info[@"address"]) {
+                    content = [content stringByAppendingString:info[@"address"]];
                 }
-                if (info[@"name"]) {
-                   content = [content stringByAppendingString:info[@"name"]];
-                }
+              
             }
         }else{
             content = @"";
@@ -381,10 +377,10 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
     addressVC.chooseType = CompleteAddressType_loading;
     WeakSelf(weakSelf);
     addressVC.completeAddressInfoBlock = ^(NSDictionary *addressInfo,NSInteger chooseIndex) {
-        weakSelf.startLocation_detail = addressInfo[@"name"];
-        weakSelf.startLocation = addressInfo[@"cityName"];
-        weakSelf.startLatitude =[NSString stringWithFormat:@"%@",addressInfo[@"latitude"]];
-        weakSelf.startLongitude = [NSString stringWithFormat:@"%@",addressInfo[@"longitude"]];
+        weakSelf.startLocation_detail = addressInfo[@"address"];
+        weakSelf.startLocation = addressInfo[@"detail"];
+        weakSelf.startLatitude =[NSString stringWithFormat:@"%@",addressInfo[@"lat"]];
+        weakSelf.startLongitude = [NSString stringWithFormat:@"%@",addressInfo[@"lon"]];
         [weakSelf.CC_table reloadData];
     };
 
@@ -498,11 +494,11 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
 - (void)sendGoodsInfo{
     NSDictionary *dic = nil;
     for (NSDictionary * dic  in self.unloadingArray) {
-       NSString *lat = [NSString stringWithFormat:@"%@",dic[@"latitude"]];
-       NSString * lon = [NSString stringWithFormat:@"%@", dic[@"longitude"]];
-       NSString * unload_address = dic[@"name"];
-       NSString * unload =dic[@"cityName"];
-        NSString * take_mobile = dic[@"take_mobile"];
+       NSString *lat = [NSString stringWithFormat:@"%@",dic[@"lat"]];
+       NSString * lon = [NSString stringWithFormat:@"%@", dic[@"lon"]];
+       NSString * unload_address = dic[@"address"];
+       NSString * unload =dic[@"detail"];
+        NSString * take_mobile = dic[@"mobile"];
         NSDictionary * tempDic = @{@"lat":lat,@"lon":lon,@"unload":unload,@"unload_address":unload_address,@"take_mobile":take_mobile};
         [self.jsonUnloadArray addObject:tempDic];
     }
