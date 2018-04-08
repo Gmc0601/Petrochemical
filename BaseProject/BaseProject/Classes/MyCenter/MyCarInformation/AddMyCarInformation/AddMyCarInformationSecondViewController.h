@@ -13,4 +13,6 @@
 @property (strong, nonatomic) NSString *phoneStr;
 @property (strong, nonatomic) NSString *codeStr;
 
+@property (strong, nonatomic) NSDictionary *carInfo;
+@property (strong, nonatomic) NSString *carId;
 @end

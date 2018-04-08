@@ -10,6 +10,9 @@
 #import "CarDetialviewmodel.h"
 #import "CarDetailModel.h"
 #import <YYKit.h>
+#import "MapViewController.h"
+#import "MyPublishCarListViewController.h"
+#import "CargoidentificationFirstViewController.h"
 
 @interface CarsDetialViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -39,38 +42,6 @@
 - (void)raccommad {
     [[self.viewmodel.carDetialCommand execute:@"cardetial"] subscribeNext:^(CarDetailModel * model) {
         self.model = model;
-//        if (IsNULL(self.model.linkname)) {
-//            self.model.linkname =  nil;
-//        }
-//        
-//        if (IsNULL(self.model.license)) {
-//            self.model.license =  nil;
-//        }
-//        
-//        if (IsNULL(self.model.origin)) {
-//            self.model.origin =  nil;
-//        }
-//        
-//        if (IsNULL(self.model.destination)) {
-//            self.model.destination =  nil;
-//        }
-//        
-//        if (IsNULL(self.model.empty)) {
-//            self.model.empty =  nil;
-//        }
-//        
-//        if (IsNULL(self.model.loading_time)) {
-//            self.model.loading_time =  nil;
-//        }
-//        
-//        if (IsNULL(self.model.type)) {
-//            self.model.type =  nil;
-//        }
-//        
-//        if (IsNULL(self.model.load)) {
-//            self.model.load =  nil;
-//        }
-        
         self.detailArr = @[self.model.linkname,
                            self.model.license,
                            self.model.origin,
@@ -136,6 +107,13 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    UITableViewCell *cell = [self.noUseTableView cellForRowAtIndexPath:indexPath];
+    if ([cell.textLabel.text isEqualToString:@"空车位置"]) {
+        MapViewController *vc = [[MapViewController alloc] init];
+        vc.latitude = self.model.lat;
+        vc.longitude = self.model.lon;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 - (UITableView *)noUseTableView {
     if (!_noUseTableView) {
@@ -183,6 +161,26 @@
 }
 
 - (void)commitClick:(UIButton *)sender {
+    
+    if (![ConfigModel getBoolObjectforKey:Shipper_Certification]) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"完成货主认证后,才能邀请司机" preferredStyle:UIAlertControllerStyleAlert];
+        
+        
+        UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"暂不" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        }];
+        UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"立即认证" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            //  跳转到货主认证
+            CargoidentificationFirstViewController *vc = [[CargoidentificationFirstViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+        
+        [alert addAction:action1];
+        [alert addAction:action2];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+        return;
+    }
+    
     if ([sender.titleLabel.text isEqualToString:@"立即邀请"]) {
         NSDictionary *dic = @{@"id": self.idStr};
         [HttpRequest postPath:@"_invite_car_001" params:dic resultBlock:^(id responseObject, NSError *error) {
@@ -197,6 +195,9 @@
         }];
     }
     if ([sender.titleLabel.text isEqualToString:@"管理我的车队"]) {
+        //  管理我的车队
+        MyPublishCarListViewController *vc = [[MyPublishCarListViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
         
     }
 }

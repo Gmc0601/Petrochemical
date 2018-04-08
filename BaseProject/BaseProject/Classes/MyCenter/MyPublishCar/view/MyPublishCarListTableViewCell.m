@@ -38,8 +38,8 @@
     _dicModel = dicModel;
     self.nameLabel.text = validString(dicModel[@"car_name"]);
     self.carNumberLabel.text = validString(dicModel[@"license"]);
-    [self.addressLabel setTitle:validString(dicModel[@"empty"]) forState:UIControlStateNormal];
-    [self.timeLabel setTitle:validString(dicModel[@"loading_time"]) forState:UIControlStateNormal];
+    [self.addressLabel setTitle:[NSString stringWithFormat:@" %@",validString(dicModel[@"empty"])] forState:UIControlStateNormal];
+    [self.timeLabel setTitle:[NSString stringWithFormat:@" %@",validString(dicModel[@"loading_time"])] forState:UIControlStateNormal];
     self.startLabel.text = validString(dicModel[@"origin"]);
     self.endLabel.text = validString(dicModel[@"destination"]);
 }

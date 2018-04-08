@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "TTextView.h"
 @interface GoodsNoteCell : UITableViewCell
-
+@property(nonatomic, copy) void (^inputBlock)(NSString * inputText);
 @end

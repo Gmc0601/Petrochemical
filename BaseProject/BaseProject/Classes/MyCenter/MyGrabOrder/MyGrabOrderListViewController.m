@@ -11,6 +11,7 @@
 #import "MyGrabOrderListTableViewCell.h"
 #import "MJRefresh.h"
 #import "MyPublishCargoDetailInfoViewController.h"
+#import "MyGrabOrderDetailViewController.h"
 
 @interface MyGrabOrderListViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)WJItemsControlView *topItemsView;
@@ -111,5 +112,11 @@
     cell.dic = _dataSource[indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+}
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSDictionary *data = _dataSource[indexPath.row];
+    MyGrabOrderDetailViewController *detailVC = [MyGrabOrderDetailViewController new];
+    detailVC.orderId = validString(data[@"id"]);
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 @end

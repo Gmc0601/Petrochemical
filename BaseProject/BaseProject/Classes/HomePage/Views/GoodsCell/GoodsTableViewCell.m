@@ -29,9 +29,6 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
-
-    
-    // Configure the view for the selected state
 }
 
 - (void)setModel:(HomeGoodsModel *)model {
@@ -45,7 +42,7 @@
     self.addLab.backgroundColor = UIColorFromHex(0xff2640);
     [self.headImageView sd_setImageWithURL:[NSURL URLWithString:model.avatar_url] placeholderImage:nil];
     self.startPlaceLabel.text = [NSString stringWithFormat:@"%@→%@", model.loading, model.unload];
-    self.goodsInfoLabel.text = model.type;
+    self.goodsInfoLabel.text = [NSString stringWithFormat:@"%@ 共%@吨,剩%@吨", model.type, model.weight, model.surplus_weight];
     self.useCarTimeLaber.text = [NSString stringWithFormat:@"用车时间：%@", model.use_time];
 }
 

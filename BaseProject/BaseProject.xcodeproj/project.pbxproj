@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		033C55252079B663001BFF07 /* CompleteAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 033C55242079B663001BFF07 /* CompleteAddressViewController.m */; };
+		033C55292079B77C001BFF07 /* CompleteAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 033C55272079B77C001BFF07 /* CompleteAddressCell.m */; };
+		033C552A2079B77C001BFF07 /* CompleteAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 033C55282079B77C001BFF07 /* CompleteAddressCell.xib */; };
 		035A23DF206C7F4A0003CD31 /* CityNameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 035A23D6206C7F480003CD31 /* CityNameModel.m */; };
 		035A23E0206C7F4A0003CD31 /* ZSAnalysisClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 035A23D7206C7F480003CD31 /* ZSAnalysisClass.m */; };
 		035A23E1206C7F4A0003CD31 /* CityPickerVeiw.m in Sources */ = {isa = PBXBuildFile; fileRef = 035A23DA206C7F490003CD31 /* CityPickerVeiw.m */; };
@@ -26,14 +29,12 @@
 		035A2403206C7F830003CD31 /* GoodsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 035A23FE206C7F830003CD31 /* GoodsListViewController.m */; };
 		035A2406206C97BD0003CD31 /* ChooseAddressSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 035A2405206C97BD0003CD31 /* ChooseAddressSearchView.m */; };
 		035A2408206C97C90003CD31 /* ChooseAddressSearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 035A2407206C97C90003CD31 /* ChooseAddressSearchView.xib */; };
-		035A240A206CC69C0003CD31 /* AMapLocationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035A2409206CC69C0003CD31 /* AMapLocationKit.framework */; };
 		035A240C206CC6C40003CD31 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 035A240B206CC6C40003CD31 /* libc++.tbd */; };
 		035A240E206CC6CE0003CD31 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035A240D206CC6CE0003CD31 /* CoreTelephony.framework */; };
 		035A2410206CC6D50003CD31 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035A240F206CC6D50003CD31 /* SystemConfiguration.framework */; };
 		035A2412206CC6DC0003CD31 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035A2411206CC6DC0003CD31 /* Security.framework */; };
 		035A2414206CC6E70003CD31 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 035A2413206CC6E70003CD31 /* libz.tbd */; };
 		035A2416206CC6EF0003CD31 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 035A2415206CC6EF0003CD31 /* libstdc++.6.0.9.tbd */; };
-		035A2419206CC7780003CD31 /* AMapFoundationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035A2418206CC7770003CD31 /* AMapFoundationKit.framework */; };
 		0396E6842071D2CD00B7EFDA /* GoodsUnloadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0396E6822071D2CD00B7EFDA /* GoodsUnloadingCell.m */; };
 		0396E6852071D2CD00B7EFDA /* GoodsUnloadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0396E6832071D2CD00B7EFDA /* GoodsUnloadingCell.xib */; };
 		0396E6892071D50B00B7EFDA /* AddUnloadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0396E6872071D50B00B7EFDA /* AddUnloadCell.m */; };
@@ -42,11 +43,11 @@
 		0396E68F2071DF1800B7EFDA /* GoodsInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0396E68D2071DF1800B7EFDA /* GoodsInfoCell.xib */; };
 		0396E6932071DF7500B7EFDA /* GoodsNoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0396E6912071DF7500B7EFDA /* GoodsNoteCell.m */; };
 		0396E6942071DF7500B7EFDA /* GoodsNoteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0396E6922071DF7500B7EFDA /* GoodsNoteCell.xib */; };
-		0396E69620720D3500B7EFDA /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0396E69520720D3500B7EFDA /* MAMapKit.framework */; };
 		0396E69820720DD000B7EFDA /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0396E69720720DD000B7EFDA /* GLKit.framework */; };
 		0396E69C207224B000B7EFDA /* GoodsChooseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0396E69B207224B000B7EFDA /* GoodsChooseView.m */; };
 		0396E6A02072299300B7EFDA /* GoodsChooseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0396E69E2072299300B7EFDA /* GoodsChooseCell.m */; };
 		0396E6A12072299300B7EFDA /* GoodsChooseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0396E69F2072299300B7EFDA /* GoodsChooseCell.xib */; };
+		03E7471E207904DE00E6B992 /* TTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E7471D207904DE00E6B992 /* TTextView.m */; };
 		420D18262057A71300E1D8E1 /* UILabel+Width.m in Sources */ = {isa = PBXBuildFile; fileRef = 420D18242057A71300E1D8E1 /* UILabel+Width.m */; };
 		420D18462057AA9100E1D8E1 /* MyCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420D18452057AA9100E1D8E1 /* MyCenterViewController.m */; };
 		422F1FFC2047E858009481CC /* UIViewController+BarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 422F1FFA2047E858009481CC /* UIViewController+BarButton.m */; };
@@ -210,6 +211,10 @@
 		8211DC532062014900A747A4 /* UIImage+MyProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 8211DC522062014900A747A4 /* UIImage+MyProperty.m */; };
 		8211DC57206205D100A747A4 /* CustomSeletedPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8211DC56206205D100A747A4 /* CustomSeletedPickView.m */; };
 		8211DC59206205DD00A747A4 /* CustomSeletedPickView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8211DC58206205DD00A747A4 /* CustomSeletedPickView.xib */; };
+		827CFED22079C0CA000564D9 /* MyCarDetailUpdatePhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 827CFED02079C0CA000564D9 /* MyCarDetailUpdatePhoneViewController.m */; };
+		827CFED32079C0CA000564D9 /* MyCarDetailUpdatePhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 827CFED12079C0CA000564D9 /* MyCarDetailUpdatePhoneViewController.xib */; };
+		827CFED82079D184000564D9 /* MyGrabOrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 827CFED62079D184000564D9 /* MyGrabOrderDetailViewController.m */; };
+		827CFED92079D184000564D9 /* MyGrabOrderDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 827CFED72079D184000564D9 /* MyGrabOrderDetailViewController.xib */; };
 		829762832073515300F1F003 /* MyCarDetailInfomationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829762812073515300F1F003 /* MyCarDetailInfomationViewController.m */; };
 		829762842073515300F1F003 /* MyCarDetailInfomationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 829762822073515300F1F003 /* MyCarDetailInfomationViewController.xib */; };
 		829762892073642300F1F003 /* CargoidentificationProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829762872073642300F1F003 /* CargoidentificationProgressViewController.m */; };
@@ -286,6 +291,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		033C55232079B663001BFF07 /* CompleteAddressViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompleteAddressViewController.h; sourceTree = "<group>"; };
+		033C55242079B663001BFF07 /* CompleteAddressViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompleteAddressViewController.m; sourceTree = "<group>"; };
+		033C55262079B77C001BFF07 /* CompleteAddressCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompleteAddressCell.h; sourceTree = "<group>"; };
+		033C55272079B77C001BFF07 /* CompleteAddressCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompleteAddressCell.m; sourceTree = "<group>"; };
+		033C55282079B77C001BFF07 /* CompleteAddressCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompleteAddressCell.xib; sourceTree = "<group>"; };
 		035A23D6206C7F480003CD31 /* CityNameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityNameModel.m; sourceTree = "<group>"; };
 		035A23D7206C7F480003CD31 /* ZSAnalysisClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSAnalysisClass.m; sourceTree = "<group>"; };
 		035A23D8206C7F480003CD31 /* UIView+GoodView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+GoodView.h"; sourceTree = "<group>"; };
@@ -318,7 +328,6 @@
 		035A2404206C97BD0003CD31 /* ChooseAddressSearchView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChooseAddressSearchView.h; sourceTree = "<group>"; };
 		035A2405206C97BD0003CD31 /* ChooseAddressSearchView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChooseAddressSearchView.m; sourceTree = "<group>"; };
 		035A2407206C97C90003CD31 /* ChooseAddressSearchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseAddressSearchView.xib; sourceTree = "<group>"; };
-		035A2409206CC69C0003CD31 /* AMapLocationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapLocationKit.framework; sourceTree = "<group>"; };
 		035A240B206CC6C40003CD31 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		035A240D206CC6CE0003CD31 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		035A240F206CC6D50003CD31 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -326,7 +335,6 @@
 		035A2413206CC6E70003CD31 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		035A2415206CC6EF0003CD31 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
 		035A2417206CC7300003CD31 /* APIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIKey.h; sourceTree = "<group>"; };
-		035A2418206CC7770003CD31 /* AMapFoundationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapFoundationKit.framework; sourceTree = "<group>"; };
 		0396E6812071D2CD00B7EFDA /* GoodsUnloadingCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsUnloadingCell.h; sourceTree = "<group>"; };
 		0396E6822071D2CD00B7EFDA /* GoodsUnloadingCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsUnloadingCell.m; sourceTree = "<group>"; };
 		0396E6832071D2CD00B7EFDA /* GoodsUnloadingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoodsUnloadingCell.xib; sourceTree = "<group>"; };
@@ -339,13 +347,14 @@
 		0396E6902071DF7500B7EFDA /* GoodsNoteCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsNoteCell.h; sourceTree = "<group>"; };
 		0396E6912071DF7500B7EFDA /* GoodsNoteCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsNoteCell.m; sourceTree = "<group>"; };
 		0396E6922071DF7500B7EFDA /* GoodsNoteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoodsNoteCell.xib; sourceTree = "<group>"; };
-		0396E69520720D3500B7EFDA /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
 		0396E69720720DD000B7EFDA /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		0396E69A207224B000B7EFDA /* GoodsChooseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsChooseView.h; sourceTree = "<group>"; };
 		0396E69B207224B000B7EFDA /* GoodsChooseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsChooseView.m; sourceTree = "<group>"; };
 		0396E69D2072299300B7EFDA /* GoodsChooseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsChooseCell.h; sourceTree = "<group>"; };
 		0396E69E2072299300B7EFDA /* GoodsChooseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsChooseCell.m; sourceTree = "<group>"; };
 		0396E69F2072299300B7EFDA /* GoodsChooseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoodsChooseCell.xib; sourceTree = "<group>"; };
+		03E7471C207904DD00E6B992 /* TTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTextView.h; sourceTree = "<group>"; };
+		03E7471D207904DE00E6B992 /* TTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTextView.m; sourceTree = "<group>"; };
 		420D18242057A71300E1D8E1 /* UILabel+Width.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Width.m"; sourceTree = "<group>"; };
 		420D18252057A71300E1D8E1 /* UILabel+Width.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Width.h"; sourceTree = "<group>"; };
 		420D18442057AA9100E1D8E1 /* MyCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCenterViewController.h; sourceTree = "<group>"; };
@@ -650,6 +659,12 @@
 		8211DC55206205D100A747A4 /* CustomSeletedPickView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomSeletedPickView.h; sourceTree = "<group>"; };
 		8211DC56206205D100A747A4 /* CustomSeletedPickView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomSeletedPickView.m; sourceTree = "<group>"; };
 		8211DC58206205DD00A747A4 /* CustomSeletedPickView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomSeletedPickView.xib; sourceTree = "<group>"; };
+		827CFECF2079C0CA000564D9 /* MyCarDetailUpdatePhoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCarDetailUpdatePhoneViewController.h; sourceTree = "<group>"; };
+		827CFED02079C0CA000564D9 /* MyCarDetailUpdatePhoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCarDetailUpdatePhoneViewController.m; sourceTree = "<group>"; };
+		827CFED12079C0CA000564D9 /* MyCarDetailUpdatePhoneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCarDetailUpdatePhoneViewController.xib; sourceTree = "<group>"; };
+		827CFED52079D184000564D9 /* MyGrabOrderDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyGrabOrderDetailViewController.h; sourceTree = "<group>"; };
+		827CFED62079D184000564D9 /* MyGrabOrderDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyGrabOrderDetailViewController.m; sourceTree = "<group>"; };
+		827CFED72079D184000564D9 /* MyGrabOrderDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyGrabOrderDetailViewController.xib; sourceTree = "<group>"; };
 		829762802073515300F1F003 /* MyCarDetailInfomationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCarDetailInfomationViewController.h; sourceTree = "<group>"; };
 		829762812073515300F1F003 /* MyCarDetailInfomationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCarDetailInfomationViewController.m; sourceTree = "<group>"; };
 		829762822073515300F1F003 /* MyCarDetailInfomationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCarDetailInfomationViewController.xib; sourceTree = "<group>"; };
@@ -752,15 +767,12 @@
 			files = (
 				0396E69820720DD000B7EFDA /* GLKit.framework in Frameworks */,
 				035A2416206CC6EF0003CD31 /* libstdc++.6.0.9.tbd in Frameworks */,
-				035A2419206CC7780003CD31 /* AMapFoundationKit.framework in Frameworks */,
 				035A2414206CC6E70003CD31 /* libz.tbd in Frameworks */,
 				035A2412206CC6DC0003CD31 /* Security.framework in Frameworks */,
-				0396E69620720D3500B7EFDA /* MAMapKit.framework in Frameworks */,
 				035A2410206CC6D50003CD31 /* SystemConfiguration.framework in Frameworks */,
 				035A240E206CC6CE0003CD31 /* CoreTelephony.framework in Frameworks */,
 				035A240C206CC6C40003CD31 /* libc++.tbd in Frameworks */,
 				B79A5CFD6299881CB3643ACB /* libPods-BaseProject.a in Frameworks */,
-				035A240A206CC69C0003CD31 /* AMapLocationKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -802,6 +814,8 @@
 				035A23FB206C7F820003CD31 /* EmptyCarListViewController.m */,
 				035A23F8206C7F810003CD31 /* GoodsListViewController.h */,
 				035A23FE206C7F830003CD31 /* GoodsListViewController.m */,
+				033C55232079B663001BFF07 /* CompleteAddressViewController.h */,
+				033C55242079B663001BFF07 /* CompleteAddressViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -832,6 +846,8 @@
 		035A23D4206C7F1C0003CD31 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				03E7471C207904DD00E6B992 /* TTextView.h */,
+				03E7471D207904DE00E6B992 /* TTextView.m */,
 				035A23D5206C7F3B0003CD31 /* PickerView */,
 			);
 			path = Tools;
@@ -869,6 +885,9 @@
 				0396E6902071DF7500B7EFDA /* GoodsNoteCell.h */,
 				0396E6912071DF7500B7EFDA /* GoodsNoteCell.m */,
 				0396E6922071DF7500B7EFDA /* GoodsNoteCell.xib */,
+				033C55262079B77C001BFF07 /* CompleteAddressCell.h */,
+				033C55272079B77C001BFF07 /* CompleteAddressCell.m */,
+				033C55282079B77C001BFF07 /* CompleteAddressCell.xib */,
 			);
 			path = GoodsView;
 			sourceTree = "<group>";
@@ -1010,9 +1029,6 @@
 		42A4442F1EF133E000F90791 /* BaseProject */ = {
 			isa = PBXGroup;
 			children = (
-				0396E69520720D3500B7EFDA /* MAMapKit.framework */,
-				035A2418206CC7770003CD31 /* AMapFoundationKit.framework */,
-				035A2409206CC69C0003CD31 /* AMapLocationKit.framework */,
 				42C84EB31EF2DC7B0008189D /* Header.pch */,
 				035A2417206CC7300003CD31 /* APIKey.h */,
 				42C84EB21EF2DC7B0008189D /* CCUrl.h */,
@@ -1303,11 +1319,11 @@
 				42F10BD7206E331700C9C8EC /* MapViewController.m */,
 				42F10BD8206E331700C9C8EC /* GoodsDetialViewController.h */,
 				42F10BD9206E331700C9C8EC /* CarsDetialViewController.m */,
+				42F10BDE206E331700C9C8EC /* HomePageViewController.h */,
 				42F10BDA206E331700C9C8EC /* HomePageViewController.m */,
 				42F10BDB206E331700C9C8EC /* RobOrderViewController.h */,
 				42F10BDC206E331700C9C8EC /* GoodsDetialViewController.m */,
 				42F10BDD206E331700C9C8EC /* MapViewController.h */,
-				42F10BDE206E331700C9C8EC /* HomePageViewController.h */,
 				42F10BDF206E331700C9C8EC /* CarsDetialViewController.h */,
 			);
 			path = ViewControllers;
@@ -1804,11 +1820,32 @@
 		822A271C20677B210093F5C9 /* MyCarDetailInfomation */ = {
 			isa = PBXGroup;
 			children = (
+				827CFECE2079C057000564D9 /* UpdatePhone */,
 				829762802073515300F1F003 /* MyCarDetailInfomationViewController.h */,
 				829762812073515300F1F003 /* MyCarDetailInfomationViewController.m */,
 				829762822073515300F1F003 /* MyCarDetailInfomationViewController.xib */,
 			);
 			path = MyCarDetailInfomation;
+			sourceTree = "<group>";
+		};
+		827CFECE2079C057000564D9 /* UpdatePhone */ = {
+			isa = PBXGroup;
+			children = (
+				827CFECF2079C0CA000564D9 /* MyCarDetailUpdatePhoneViewController.h */,
+				827CFED02079C0CA000564D9 /* MyCarDetailUpdatePhoneViewController.m */,
+				827CFED12079C0CA000564D9 /* MyCarDetailUpdatePhoneViewController.xib */,
+			);
+			path = UpdatePhone;
+			sourceTree = "<group>";
+		};
+		827CFED42079D166000564D9 /* MyGrabOrderDetail */ = {
+			isa = PBXGroup;
+			children = (
+				827CFED52079D184000564D9 /* MyGrabOrderDetailViewController.h */,
+				827CFED62079D184000564D9 /* MyGrabOrderDetailViewController.m */,
+				827CFED72079D184000564D9 /* MyGrabOrderDetailViewController.xib */,
+			);
+			path = MyGrabOrderDetail;
 			sourceTree = "<group>";
 		};
 		82976285207363FC00F1F003 /* progress */ = {
@@ -1888,6 +1925,7 @@
 		8298E2D6206E0B53006284F2 /* MyGrabOrder */ = {
 			isa = PBXGroup;
 			children = (
+				827CFED42079D166000564D9 /* MyGrabOrderDetail */,
 				82FCF93A2070C0EE0050140D /* view */,
 				8298E2D7206E0B66006284F2 /* MyGrabOrderListViewController.h */,
 				8298E2D8206E0B66006284F2 /* MyGrabOrderListViewController.m */,
@@ -2204,6 +2242,7 @@
 				7AFD2215205F87B0009DB138 /* SystemMessageTableViewCell.xib in Resources */,
 				8297628A2073642300F1F003 /* CargoidentificationProgressViewController.xib in Resources */,
 				035A23F2206C7F6D0003CD31 /* EmptyCarCell.xib in Resources */,
+				033C552A2079B77C001BFF07 /* CompleteAddressCell.xib in Resources */,
 				82B6D2F0205F4FB400C65CA4 /* CargoidentificationSecondViewController.xib in Resources */,
 				42F795D81F00CC3E00A11A69 /* arrowdown@2x.png in Resources */,
 				42F10C4E206E331700C9C8EC /* SureHeaderCollectionReusableView.xib in Resources */,
@@ -2215,6 +2254,7 @@
 				0396E6852071D2CD00B7EFDA /* GoodsUnloadingCell.xib in Resources */,
 				82B6D2D5205F4FA000C65CA4 /* MyCenterViewController.xib in Resources */,
 				829762842073515300F1F003 /* MyCarDetailInfomationViewController.xib in Resources */,
+				827CFED92079D184000564D9 /* MyGrabOrderDetailViewController.xib in Resources */,
 				8298E2E2206E1312006284F2 /* MyCenterUserGuideViewController.xib in Resources */,
 				42F10C37206E331700C9C8EC /* citydatas.xml in Resources */,
 				42F10C44206E331700C9C8EC /* productDetail_delete_clicked@2x.png in Resources */,
@@ -2235,6 +2275,7 @@
 				0396E6A12072299300B7EFDA /* GoodsChooseCell.xib in Resources */,
 				42F10C45206E331700C9C8EC /* productDetail_add_clicked@2x.png in Resources */,
 				035A2408206C97C90003CD31 /* ChooseAddressSearchView.xib in Resources */,
+				827CFED32079C0CA000564D9 /* MyCarDetailUpdatePhoneViewController.xib in Resources */,
 				7AFAE51A205A3FCE00B14406 /* LICENSE in Resources */,
 				42F10C50206E331800C9C8EC /* SureFooterCollectionReusableView.xib in Resources */,
 				7AFAE4AC205A0F5C00B14406 /* ShipperOrderDetailViewController.xib in Resources */,
@@ -2306,9 +2347,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BaseProject/Pods-BaseProject-resources.sh",
+				"${PODS_ROOT}/AMap3DMap/MAMapKit.framework/AMap.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2342,6 +2386,7 @@
 				7A80267920609E4300D1FDEF /* RobbingOrdersViewController.m in Sources */,
 				7AFAE4EE205A236600B14406 /* MJRefreshAutoGifFooter.m in Sources */,
 				035A2401206C7F830003CD31 /* EmptyCarListViewController.m in Sources */,
+				827CFED82079D184000564D9 /* MyGrabOrderDetailViewController.m in Sources */,
 				035A23F7206C7F6D0003CD31 /* DeliveryTypeView.m in Sources */,
 				7AFAE520205A3FCE00B14406 /* NSArray+MASAdditions.m in Sources */,
 				8298E2D4206E01D1006284F2 /* MyPublishCarListTableViewCell.m in Sources */,
@@ -2360,6 +2405,7 @@
 				7AFAE4EC205A236600B14406 /* MJRefreshBackNormalFooter.m in Sources */,
 				82B6D2F1205F4FB400C65CA4 /* CargoidentificationFirstViewController.m in Sources */,
 				42F10C55206E331800C9C8EC /* TYCyclePagerViewCell.m in Sources */,
+				033C55292079B77C001BFF07 /* CompleteAddressCell.m in Sources */,
 				42E6175E2058F16400B01D6D /* InformationViewController.m in Sources */,
 				82B6D2D2205F4F5900C65CA4 /* IQUIViewController+Additions.m in Sources */,
 				7A286F05205912D0006E4E0A /* WJItemsControlView.m in Sources */,
@@ -2404,8 +2450,10 @@
 				7AFAE51B205A3FCE00B14406 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				42F10C56206E331800C9C8EC /* TYPageControl.m in Sources */,
 				829762892073642300F1F003 /* CargoidentificationProgressViewController.m in Sources */,
+				827CFED22079C0CA000564D9 /* MyCarDetailUpdatePhoneViewController.m in Sources */,
 				8211DC532062014900A747A4 /* UIImage+MyProperty.m in Sources */,
 				42F795DB1F00CC3E00A11A69 /* TBRefreshHeadView.m in Sources */,
+				03E7471E207904DE00E6B992 /* TTextView.m in Sources */,
 				82B6D29F205F4EE400C65CA4 /* LeasCustomAlbum.m in Sources */,
 				42F10C4C206E331700C9C8EC /* GoodsTableViewCell.m in Sources */,
 				8211DC57206205D100A747A4 /* CustomSeletedPickView.m in Sources */,
@@ -2444,6 +2492,7 @@
 				42F10C2B206E331700C9C8EC /* HomeGoodsViewModel.m in Sources */,
 				42F10C49206E331700C9C8EC /* UIView+LLAdd.m in Sources */,
 				82B6D302205F63CE00C65CA4 /* AddMyCarInformationSecondViewController.m in Sources */,
+				033C55252079B663001BFF07 /* CompleteAddressViewController.m in Sources */,
 				42C84ECB1EF2DD1A0008189D /* NSString+MD5.m in Sources */,
 				42C84F1C1EF2EB650008189D /* NSObject+SBJSON.m in Sources */,
 				0396E6A02072299300B7EFDA /* GoodsChooseCell.m in Sources */,

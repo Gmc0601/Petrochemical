@@ -11,7 +11,7 @@
 #import "GoodsNoteCell.h"
 @interface GoodsNoteCell()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UITextView *tv;
+@property (weak, nonatomic) IBOutlet TTextView *tv;
 
 @end
 @implementation GoodsNoteCell
@@ -19,6 +19,15 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.tv.placeholderColor = UIColorFromHex(0xc3c3c3);
+    
+    WeakSelf(weakSelf)
+    [self.tv addTextDidChangeHandler:^(TTextView *textView) {
+        StrongSelf(strongSelf)
+        if (strongSelf.inputBlock) {
+            strongSelf.inputBlock(textView.text);
+        }
+    }];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

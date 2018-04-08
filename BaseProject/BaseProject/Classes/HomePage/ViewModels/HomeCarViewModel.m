@@ -38,7 +38,7 @@
                 }
                 
                 if(self.description) {
-                    [dic setValue:self.description forKey:@"description"];
+                    [dic setValue:self.destination forKey:@"destination"];
                 }
                 [HttpRequest postPath:@"_homepage_car_001" params:dic resultBlock:^(id responseObject, NSError *error) {
                     NSDictionary *datadic = responseObject;

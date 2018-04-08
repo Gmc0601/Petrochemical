@@ -14,4 +14,5 @@
 + (BOOL)stringIsNilOrEmpty:(NSString *)string;
 
 @property (readonly, assign) BOOL isPhoneNumber;
+@property (readonly, strong) UIImage *urlImage;
 @end

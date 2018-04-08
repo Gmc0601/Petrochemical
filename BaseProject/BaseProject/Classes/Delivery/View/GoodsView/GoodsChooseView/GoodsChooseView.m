@@ -46,13 +46,16 @@ NSString * const GoodsChooseCellIdentifier = @"GoodsChooseCellIdentifier";
     return collectionViewLayout;
     
 }
-- (instancetype)initWithFrame:(CGRect)frame withArray:(NSArray *)showArray {
+- (instancetype)initWithFrame:(CGRect)frame withArray:(NSArray *)showArray withSelectedGoodsIndex:(NSArray *)selectedGoodsIndexs{
     self=[super initWithFrame:frame];
     if (self) {
-
-       self.backgroundColor=[[UIColor blackColor] colorWithAlphaComponent:0.6];
+        
+        self.backgroundColor=[[UIColor blackColor] colorWithAlphaComponent:0.6];
+        if (selectedGoodsIndexs) {
+            [self.selectedArray addObjectsFromArray:selectedGoodsIndexs];
+        }
         self.showArray = showArray;
-       [self uiConfiguer];
+        [self uiConfiguer];
     }
     return self;
 }
@@ -80,10 +83,10 @@ NSString * const GoodsChooseCellIdentifier = @"GoodsChooseCellIdentifier";
     [completeBtn setTitle:@"完成" forState:UIControlStateNormal];
     [completeBtn setTitleColor:UIColorFromHex(0x4893F6) forState:UIControlStateNormal];
     [_bageView addSubview:completeBtn];
-     [self registerCell];
+    [self registerCell];
     self.collectionView.frame = CGRectMake(0, completeBtn.bottom+5, SCREEN.width, _bageView.height-completeBtn.bottom-5);
     [self.bageView addSubview:self.collectionView];
-   
+    
 }
 
 - (void)show {
@@ -134,6 +137,16 @@ NSString * const GoodsChooseCellIdentifier = @"GoodsChooseCellIdentifier";
     UICollectionViewCell *cell =nil;
     
     GoodsChooseCell * tempCell = [self.collectionView dequeueReusableCellWithReuseIdentifier:GoodsChooseCellIdentifier forIndexPath:indexPath];
+    
+    BOOL isSelected = NO;
+    if ([self.selectedArray containsObject:indexPath]) {
+        isSelected = YES;
+    }
+    [tempCell setupSelectedStete: isSelected];
+    tempCell.indexPath = indexPath;
+    tempCell.buttonBlock = ^(NSIndexPath *indexPath) {
+        [self changeGoodsState:indexPath];
+    };
     [tempCell setupGoodsInfo:self.showArray[indexPath.row]];
     cell = tempCell;
     cell.backgroundColor = [UIColor purpleColor];
@@ -184,58 +197,21 @@ NSString * const GoodsChooseCellIdentifier = @"GoodsChooseCellIdentifier";
 
 #pragma mark ---- UICollectionViewDelegate
 
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    return YES;
-}
-
-// 点击高亮
-- (void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    //    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-    //    cell.backgroundColor = [UIColor greenColor];
-}
-
 
 // 选中某item
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self changeGoodsState:indexPath];
+}
+- (void)changeGoodsState:(NSIndexPath *)indexPath {
     
-}
-
-
-// 长按某item，弹出copy和paste的菜单
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    return NO;
-}
-
-// 使copy和paste有效
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(nullable id)sender
-{
-    if ([NSStringFromSelector(action) isEqualToString:@"copy:"] || [NSStringFromSelector(action) isEqualToString:@"paste:"])
-    {
-        return YES;
+    if ([self.selectedArray containsObject:indexPath]) {
+        [self.selectedArray removeObject:indexPath];
+    }else{
+        [self.selectedArray addObject:indexPath];
     }
-    
-    return NO;
-}
-
-//
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(nullable id)sender
-{
-    if([NSStringFromSelector(action) isEqualToString:@"copy:"])
-    {
-        //        NSLog(@"-------------执行拷贝-------------");
-        [_collectionView performBatchUpdates:^{
-            
-            //         [_collectionView deleteItemsAtIndexPaths:@[indexPath]];
-        } completion:nil];
-    }
-    else if([NSStringFromSelector(action) isEqualToString:@"paste:"])
-    {
-        NSLog(@"-------------执行粘贴-------------");
-    }
+    [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
 }
 
 @end
+

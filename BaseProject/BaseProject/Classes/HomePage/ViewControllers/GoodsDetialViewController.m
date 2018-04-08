@@ -13,6 +13,8 @@
 #import <YYKit.h>
 #import "FeailView.h"
 #import "RobOrderViewController.h"
+#import "MyCarInformationListViewController.h"
+#import "MyPublishListViewController.h"
 
 @interface GoodsDetialViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -211,8 +213,29 @@
 }
 
 - (void)commitClick:(UIButton *)sender {
-    if ([sender.titleLabel.text isEqualToString:@"管理我的货源"]) {
+    
+    if (![ConfigModel getBoolObjectforKey:Car_Certification]) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"完成车辆认证后，才能邀请司机" preferredStyle:UIAlertControllerStyleAlert];
         
+        
+        UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"暂不" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        }];
+        UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"立即认证" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            //  跳转到车辆认证
+            MyCarInformationListViewController *vc = [[MyCarInformationListViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+        
+        [alert addAction:action1];
+        [alert addAction:action2];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+        return;
+    }
+    
+    if ([sender.titleLabel.text isEqualToString:@"管理我的货源"]) {
+        MyPublishListViewController *vc = [[MyPublishListViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
     }
     if ([sender.titleLabel.text isEqualToString:@"立即抢单"]) {
         FeailView *view = [[FeailView alloc] initWithFrame:FRAME(0, 0, kScreenW, kScreenH)];

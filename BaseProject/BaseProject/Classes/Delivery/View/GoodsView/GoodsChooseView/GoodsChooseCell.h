@@ -8,5 +8,9 @@
 
 #import <UIKit/UIKit.h>
 @interface GoodsChooseCell : UICollectionViewCell
+@property(nonatomic, strong)  NSIndexPath *indexPath;
+@property(nonatomic, copy) void(^buttonBlock)(NSIndexPath *indexPath);
 - (void)setupGoodsInfo:(NSDictionary *)info;
+- (void)setupSelectedStete:(BOOL)isSelected;
 @end
+
