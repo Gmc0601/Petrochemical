@@ -346,7 +346,14 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
     
 }
 - (void)buttonAction:(id)sender{
-    [self sendGoodsInfo];
+   
+    if ( [ConfigModel getBoolObjectforKey:Shipper_Certification]) {
+         [self sendGoodsInfo];
+    }else{
+          [ConfigModel mbProgressHUD:@"请先货主认证才能发布" andView:nil];
+    }
+    
+   
 }
 
 
@@ -545,6 +552,7 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
     }
     
     if (!dic) {
+           [ConfigModel mbProgressHUD:@"请填写信息" andView:nil];
         return;
     }
         WeakSelf(weakself);

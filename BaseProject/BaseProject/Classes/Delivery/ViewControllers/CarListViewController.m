@@ -219,6 +219,7 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
    
     }
     if (!dic) {
+          [ConfigModel mbProgressHUD:@"请填写信息" andView:nil];
         return;
     }
     WeakSelf(weakself);

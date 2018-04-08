@@ -57,6 +57,7 @@ NSString * const CompleteAddressCellIdentifier = @"CompleteAddressCellIdentifier
     
 }
 - (void)buttonAction:(id)sender{
+    
     if (self.completeAddressInfoBlock && self.address && self.detail_Address && self.lat && self.lon && self.mobile) {
         NSDictionary * info = @{@"address":self.address,@"detail":self.detail_Address,@"lat":self.lat,@"lon":self.lon,@"mobile":self.mobile};
         self.completeAddressInfoBlock( info, self.chooseIndex);
