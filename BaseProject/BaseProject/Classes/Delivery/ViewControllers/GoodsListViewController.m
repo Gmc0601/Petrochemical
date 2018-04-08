@@ -14,10 +14,10 @@
 #import "GoodsUnloadingCell.h"
 #import "GoodsInfoCell.h"
 #import "GoodsNoteCell.h"
-#import "ChooseAddressListViewController.h"
+
 #import <MAMapKit/MAMapKit.h>
 #import "GoodsChooseView.h"
-
+#import "CompleteAddressViewController.h"
 NSString * const GoodsUnloadingCellIdentifier = @"GoodsUnloadingCellIdentifier";
 NSString * const AddUnloadCellIdentifier = @"AddUnloadCellIdentifier";
 NSString * const GoodsInfoCellIdentifier = @"GoodsInfoCellIdentifier";
@@ -377,35 +377,61 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
 
 
 - (void)gotoStartLoaction{
-    
-    ChooseAddressListViewController * addressVC = [[ChooseAddressListViewController alloc]init];
-    addressVC.chooseType = ChooseAddressType_loading;
+    CompleteAddressViewController * addressVC = [[CompleteAddressViewController alloc]init];
+    addressVC.chooseType = CompleteAddressType_loading;
     WeakSelf(weakSelf);
-    addressVC.chooseAddressInfoBlock = ^(NSDictionary *addressInfo,NSInteger chooseIndex) {
+    addressVC.completeAddressInfoBlock = ^(NSDictionary *addressInfo,NSInteger chooseIndex) {
         weakSelf.startLocation_detail = addressInfo[@"name"];
         weakSelf.startLocation = addressInfo[@"cityName"];
         weakSelf.startLatitude =[NSString stringWithFormat:@"%@",addressInfo[@"latitude"]];
         weakSelf.startLongitude = [NSString stringWithFormat:@"%@",addressInfo[@"longitude"]];
         [weakSelf.CC_table reloadData];
     };
-    [self.navigationController pushViewController:addressVC animated:YES];
+
+     [self.navigationController pushViewController:addressVC animated:YES];
+//    ChooseAddressListViewController * addressVC = [[ChooseAddressListViewController alloc]init];
+//    addressVC.chooseType = ChooseAddressType_loading;
+//    WeakSelf(weakSelf);
+//    addressVC.chooseAddressInfoBlock = ^(NSDictionary *addressInfo,NSInteger chooseIndex) {
+//        weakSelf.startLocation_detail = addressInfo[@"name"];
+//        weakSelf.startLocation = addressInfo[@"cityName"];
+//        weakSelf.startLatitude =[NSString stringWithFormat:@"%@",addressInfo[@"latitude"]];
+//        weakSelf.startLongitude = [NSString stringWithFormat:@"%@",addressInfo[@"longitude"]];
+//        [weakSelf.CC_table reloadData];
+//    };
+//    [self.navigationController pushViewController:addressVC animated:YES];
 }
 - (void)gotoUnloadLoaction:(NSIndexPath *)indexPath{
     
-    ChooseAddressListViewController * addressVC = [[ChooseAddressListViewController alloc]init];
-    addressVC.chooseIndex = indexPath.row;
-    addressVC.chooseType = ChooseAddressType_unLoading;
-    addressVC.chooseAddressInfoBlock = ^(NSDictionary *addressInfo,NSInteger chooseIndex) {
-        
-        if ([self.unloadingArray count] >= chooseIndex &&self.unloadingArray[chooseIndex-1]) {
-            [self.unloadingArray replaceObjectAtIndex:chooseIndex-1 withObject:addressInfo];
+    CompleteAddressViewController * addressVC = [[CompleteAddressViewController alloc]init];
+    addressVC.chooseType = CompleteAddressType_unLoading;
+    WeakSelf(weakSelf);
+    addressVC.completeAddressInfoBlock = ^(NSDictionary *addressInfo,NSInteger chooseIndex) {
+        if ([weakSelf.unloadingArray count] >= chooseIndex &&self.unloadingArray[chooseIndex-1]) {
+            [weakSelf.unloadingArray replaceObjectAtIndex:chooseIndex-1 withObject:addressInfo];
         }else{
-            [self.unloadingArray addObject:addressInfo];
+            [weakSelf.unloadingArray addObject:addressInfo];
         }
         [self expecteDrive];
         [self.CC_table reloadData];
+
     };
+    
     [self.navigationController pushViewController:addressVC animated:YES];
+//    ChooseAddressListViewController * addressVC = [[ChooseAddressListViewController alloc]init];
+//    addressVC.chooseIndex = indexPath.row;
+//    addressVC.chooseType = ChooseAddressType_unLoading;
+//    addressVC.chooseAddressInfoBlock = ^(NSDictionary *addressInfo,NSInteger chooseIndex) {
+//
+//        if ([self.unloadingArray count] >= chooseIndex &&self.unloadingArray[chooseIndex-1]) {
+//            [self.unloadingArray replaceObjectAtIndex:chooseIndex-1 withObject:addressInfo];
+//        }else{
+//            [self.unloadingArray addObject:addressInfo];
+//        }
+//        [self expecteDrive];
+//        [self.CC_table reloadData];
+//    };
+//    [self.navigationController pushViewController:addressVC animated:YES];
 }
 //预计车程
 - (void)expecteDrive{
