@@ -8,6 +8,8 @@
 
 #import "MyCarDetailInfomationViewController.h"
 #import "Masonry.h"
+#import "MyCarDetailUpdatePhoneViewController.h"
+#import "AddMyCarInformationSecondViewController.h"
 
 @interface MyCarDetailInfomationViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *statusImageView;
@@ -27,11 +29,14 @@
 
 @implementation MyCarDetailInfomationViewController
 
+- (void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self setupDataSource];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = YES;
     [self setCustomerTitle:@"车辆详情"];
-    [self setupDataSource];
 }
 - (void) setupDataSource{
     [ConfigModel showHud:self];
@@ -82,10 +87,15 @@
     }];
 }
 - (IBAction)updatePhoneAction:(id)sender {
-    
+    MyCarDetailUpdatePhoneViewController *updatePhoneVC = [MyCarDetailUpdatePhoneViewController new];
+    updatePhoneVC.carId = self.carId;
+    [self.navigationController pushViewController:updatePhoneVC animated:YES];
 }
 - (void) updateCarInfoAction{
-    
+    AddMyCarInformationSecondViewController *updateInfoVC = [AddMyCarInformationSecondViewController new];
+    updateInfoVC.carInfo = self.dataSource;
+    updateInfoVC.carId = self.carId;
+    [self.navigationController pushViewController:updateInfoVC animated:YES];
 }
 #pragma mark -- setter
 - (void) setDataSource:(NSMutableDictionary *)dataSource{

@@ -211,6 +211,10 @@
 		8211DC532062014900A747A4 /* UIImage+MyProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 8211DC522062014900A747A4 /* UIImage+MyProperty.m */; };
 		8211DC57206205D100A747A4 /* CustomSeletedPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8211DC56206205D100A747A4 /* CustomSeletedPickView.m */; };
 		8211DC59206205DD00A747A4 /* CustomSeletedPickView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8211DC58206205DD00A747A4 /* CustomSeletedPickView.xib */; };
+		827CFED22079C0CA000564D9 /* MyCarDetailUpdatePhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 827CFED02079C0CA000564D9 /* MyCarDetailUpdatePhoneViewController.m */; };
+		827CFED32079C0CA000564D9 /* MyCarDetailUpdatePhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 827CFED12079C0CA000564D9 /* MyCarDetailUpdatePhoneViewController.xib */; };
+		827CFED82079D184000564D9 /* MyGrabOrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 827CFED62079D184000564D9 /* MyGrabOrderDetailViewController.m */; };
+		827CFED92079D184000564D9 /* MyGrabOrderDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 827CFED72079D184000564D9 /* MyGrabOrderDetailViewController.xib */; };
 		829762832073515300F1F003 /* MyCarDetailInfomationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829762812073515300F1F003 /* MyCarDetailInfomationViewController.m */; };
 		829762842073515300F1F003 /* MyCarDetailInfomationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 829762822073515300F1F003 /* MyCarDetailInfomationViewController.xib */; };
 		829762892073642300F1F003 /* CargoidentificationProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829762872073642300F1F003 /* CargoidentificationProgressViewController.m */; };
@@ -655,6 +659,12 @@
 		8211DC55206205D100A747A4 /* CustomSeletedPickView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomSeletedPickView.h; sourceTree = "<group>"; };
 		8211DC56206205D100A747A4 /* CustomSeletedPickView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomSeletedPickView.m; sourceTree = "<group>"; };
 		8211DC58206205DD00A747A4 /* CustomSeletedPickView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomSeletedPickView.xib; sourceTree = "<group>"; };
+		827CFECF2079C0CA000564D9 /* MyCarDetailUpdatePhoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCarDetailUpdatePhoneViewController.h; sourceTree = "<group>"; };
+		827CFED02079C0CA000564D9 /* MyCarDetailUpdatePhoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCarDetailUpdatePhoneViewController.m; sourceTree = "<group>"; };
+		827CFED12079C0CA000564D9 /* MyCarDetailUpdatePhoneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCarDetailUpdatePhoneViewController.xib; sourceTree = "<group>"; };
+		827CFED52079D184000564D9 /* MyGrabOrderDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyGrabOrderDetailViewController.h; sourceTree = "<group>"; };
+		827CFED62079D184000564D9 /* MyGrabOrderDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyGrabOrderDetailViewController.m; sourceTree = "<group>"; };
+		827CFED72079D184000564D9 /* MyGrabOrderDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyGrabOrderDetailViewController.xib; sourceTree = "<group>"; };
 		829762802073515300F1F003 /* MyCarDetailInfomationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCarDetailInfomationViewController.h; sourceTree = "<group>"; };
 		829762812073515300F1F003 /* MyCarDetailInfomationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCarDetailInfomationViewController.m; sourceTree = "<group>"; };
 		829762822073515300F1F003 /* MyCarDetailInfomationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCarDetailInfomationViewController.xib; sourceTree = "<group>"; };
@@ -1810,11 +1820,32 @@
 		822A271C20677B210093F5C9 /* MyCarDetailInfomation */ = {
 			isa = PBXGroup;
 			children = (
+				827CFECE2079C057000564D9 /* UpdatePhone */,
 				829762802073515300F1F003 /* MyCarDetailInfomationViewController.h */,
 				829762812073515300F1F003 /* MyCarDetailInfomationViewController.m */,
 				829762822073515300F1F003 /* MyCarDetailInfomationViewController.xib */,
 			);
 			path = MyCarDetailInfomation;
+			sourceTree = "<group>";
+		};
+		827CFECE2079C057000564D9 /* UpdatePhone */ = {
+			isa = PBXGroup;
+			children = (
+				827CFECF2079C0CA000564D9 /* MyCarDetailUpdatePhoneViewController.h */,
+				827CFED02079C0CA000564D9 /* MyCarDetailUpdatePhoneViewController.m */,
+				827CFED12079C0CA000564D9 /* MyCarDetailUpdatePhoneViewController.xib */,
+			);
+			path = UpdatePhone;
+			sourceTree = "<group>";
+		};
+		827CFED42079D166000564D9 /* MyGrabOrderDetail */ = {
+			isa = PBXGroup;
+			children = (
+				827CFED52079D184000564D9 /* MyGrabOrderDetailViewController.h */,
+				827CFED62079D184000564D9 /* MyGrabOrderDetailViewController.m */,
+				827CFED72079D184000564D9 /* MyGrabOrderDetailViewController.xib */,
+			);
+			path = MyGrabOrderDetail;
 			sourceTree = "<group>";
 		};
 		82976285207363FC00F1F003 /* progress */ = {
@@ -1894,6 +1925,7 @@
 		8298E2D6206E0B53006284F2 /* MyGrabOrder */ = {
 			isa = PBXGroup;
 			children = (
+				827CFED42079D166000564D9 /* MyGrabOrderDetail */,
 				82FCF93A2070C0EE0050140D /* view */,
 				8298E2D7206E0B66006284F2 /* MyGrabOrderListViewController.h */,
 				8298E2D8206E0B66006284F2 /* MyGrabOrderListViewController.m */,
@@ -2222,6 +2254,7 @@
 				0396E6852071D2CD00B7EFDA /* GoodsUnloadingCell.xib in Resources */,
 				82B6D2D5205F4FA000C65CA4 /* MyCenterViewController.xib in Resources */,
 				829762842073515300F1F003 /* MyCarDetailInfomationViewController.xib in Resources */,
+				827CFED92079D184000564D9 /* MyGrabOrderDetailViewController.xib in Resources */,
 				8298E2E2206E1312006284F2 /* MyCenterUserGuideViewController.xib in Resources */,
 				42F10C37206E331700C9C8EC /* citydatas.xml in Resources */,
 				42F10C44206E331700C9C8EC /* productDetail_delete_clicked@2x.png in Resources */,
@@ -2242,6 +2275,7 @@
 				0396E6A12072299300B7EFDA /* GoodsChooseCell.xib in Resources */,
 				42F10C45206E331700C9C8EC /* productDetail_add_clicked@2x.png in Resources */,
 				035A2408206C97C90003CD31 /* ChooseAddressSearchView.xib in Resources */,
+				827CFED32079C0CA000564D9 /* MyCarDetailUpdatePhoneViewController.xib in Resources */,
 				7AFAE51A205A3FCE00B14406 /* LICENSE in Resources */,
 				42F10C50206E331800C9C8EC /* SureFooterCollectionReusableView.xib in Resources */,
 				7AFAE4AC205A0F5C00B14406 /* ShipperOrderDetailViewController.xib in Resources */,
@@ -2352,6 +2386,7 @@
 				7A80267920609E4300D1FDEF /* RobbingOrdersViewController.m in Sources */,
 				7AFAE4EE205A236600B14406 /* MJRefreshAutoGifFooter.m in Sources */,
 				035A2401206C7F830003CD31 /* EmptyCarListViewController.m in Sources */,
+				827CFED82079D184000564D9 /* MyGrabOrderDetailViewController.m in Sources */,
 				035A23F7206C7F6D0003CD31 /* DeliveryTypeView.m in Sources */,
 				7AFAE520205A3FCE00B14406 /* NSArray+MASAdditions.m in Sources */,
 				8298E2D4206E01D1006284F2 /* MyPublishCarListTableViewCell.m in Sources */,
@@ -2415,6 +2450,7 @@
 				7AFAE51B205A3FCE00B14406 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				42F10C56206E331800C9C8EC /* TYPageControl.m in Sources */,
 				829762892073642300F1F003 /* CargoidentificationProgressViewController.m in Sources */,
+				827CFED22079C0CA000564D9 /* MyCarDetailUpdatePhoneViewController.m in Sources */,
 				8211DC532062014900A747A4 /* UIImage+MyProperty.m in Sources */,
 				42F795DB1F00CC3E00A11A69 /* TBRefreshHeadView.m in Sources */,
 				03E7471E207904DE00E6B992 /* TTextView.m in Sources */,

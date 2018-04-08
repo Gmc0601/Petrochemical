@@ -10,12 +10,16 @@
 #import "MyCarInformationTableViewCell.h"
 #import "AddMyCarInformationFristViewController.h"
 #import "MyCarDetailInfomationViewController.h"
+#import "CustomSeletedPickView.h"
+
 
 @interface MyCarInformationListViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) NSMutableArray *dataSource;
+@property (assign, nonatomic) BOOL isYewu;
+@property (strong, nonatomic) NSDictionary *selectedSalemanValue;
 @end
 
 @implementation MyCarInformationListViewController
@@ -29,6 +33,7 @@
     [super viewDidLoad];
     _dataSource = @[].mutableCopy;
     [self setupUI];
+    [self jiaoyanYewu];
 }
 
 - (void) setupUI{
@@ -46,7 +51,11 @@
     });
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
 }
-
+- (void) jiaoyanYewu{
+    [HttpRequest postPath:@"_yewu_001" params:nil resultBlock:^(id responseObject, NSError *error) {
+        
+    }];
+}
 - (void) setupDataSource{
     [ConfigModel showHud:self];
     [HttpRequest postPath:@"_user_car_001" params:nil resultBlock:^(id responseObject, NSError *error) {
@@ -88,7 +97,43 @@
 
 #pragma mark -- method
 - (void) rightButtonAction{
-    AddMyCarInformationFristViewController *addCarInfoVC = [AddMyCarInformationFristViewController new];
-    [self.navigationController pushViewController:addCarInfoVC animated:YES];
+    if (_isYewu == YES) {
+        AddMyCarInformationFristViewController *addCarInfoVC = [AddMyCarInformationFristViewController new];
+        [self.navigationController pushViewController:addCarInfoVC animated:YES];
+    }else{
+        [self addYewuAction];
+    }
+}
+- (void) addYewuAction{
+    __weak typeof(self) weakself = self;
+    [ConfigModel showHud:self];
+    [HttpRequest postPath:@"_professionallist_001" params:nil resultBlock:^(id responseObject, NSError *error) {
+        [ConfigModel hideHud:self];
+        NSDictionary *dic = responseObject;
+        if ([dic[@"error"] intValue] == 0) {
+            NSArray *info = dic[@"info"];
+            if ([info isKindOfClass:[NSArray class]]) {
+                [CustomSeletedPickView creatCustomSeletedPickViewWithTitle:@"请选择您的业务员" value:info block:^(NSDictionary *dic) {
+                    weakself.selectedSalemanValue = dic;
+                }];
+            }
+        }else{
+            [ConfigModel mbProgressHUD:[NSString stringWithFormat:@"%@",dic[@"info"]] andView:nil];
+        }
+    }];
+}
+- (void) setSelectedSalemanValue:(NSDictionary *)selectedSalemanValue{
+    _selectedSalemanValue = selectedSalemanValue;
+    [ConfigModel showHud:self];
+    [HttpRequest postPath:@"_addyewu_001" params:@{@"profession_mobile":validString(selectedSalemanValue[@"mobile"])} resultBlock:^(id responseObject, NSError *error) {
+        [ConfigModel hideHud:self];
+        NSDictionary *dic = responseObject;
+        if ([dic[@"error"] intValue] == 0) {
+            _isYewu = YES;
+            [ConfigModel mbProgressHUD:[NSString stringWithFormat:@"%@",@"绑定成功"] andView:nil];
+        }else{
+            [ConfigModel mbProgressHUD:[NSString stringWithFormat:@"%@",dic[@"info"]] andView:nil];
+        }
+    }];
 }
 @end

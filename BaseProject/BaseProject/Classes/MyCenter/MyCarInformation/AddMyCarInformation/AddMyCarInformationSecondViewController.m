@@ -11,6 +11,7 @@
 #import "LeasCustomAlbum.h"
 #import "UIImage+MyProperty.h"
 #import "MyCarInformationListViewController.h"
+#import "NSString+commom.h"
 
 @interface AddMyCarInformationSecondViewController ()
 
@@ -31,14 +32,38 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setCustomerTitle:@"添加车辆"];
     self.automaticallyAdjustsScrollViewInsets = YES;
-    [self setupAllCarTypeAction];
+    if (self.carInfo) {
+        __weak typeof(self) weakself = self;
+        [self setCustomerTitle:@"修改车辆信息"];
+        self.carNumberTextField.text = validString(self.carInfo[@"license"]);
+        self.carTypeTextField.text = validString(self.carInfo[@"type"]);
+        if ([self.carInfo[@"type"] isEqualToString:@"碳钢罐"]) {
+            self.carTypeValue = @{@"type":@"1",@"linkname":@"碳钢罐"}.mutableCopy;
+        }else if ([self.carInfo[@"type"] isEqualToString:@"不锈钢罐"]){
+            self.carTypeValue = @{@"type":@"2",@"linkname":@"不锈钢罐"}.mutableCopy;
+        }else if ([self.carInfo[@"type"] isEqualToString:@"锰钢罐"]){
+            self.carTypeValue = @{@"type":@"3",@"linkname":@"锰钢罐"}.mutableCopy;
+        }else if ([self.carInfo[@"type"] isEqualToString:@"铝罐"]){
+            self.carTypeValue = @{@"type":@"4",@"linkname":@"铝罐"}.mutableCopy;
+        }else if ([self.carInfo[@"type"] isEqualToString:@"钢衬塑"]){
+            self.carTypeValue = @{@"type":@"5",@"linkname":@"钢衬塑"}.mutableCopy;
+        }else{
+            self.carTypeValue = @{@"type":@"6",@"linkname":@"塑料罐"}.mutableCopy;
+        }
+        self.maxLoadTextField.text = validString(self.carInfo[@"load"]);
+        [self.drivingLicenceImageView sd_setImageWithURL:[NSURL URLWithString:validString(self.carInfo[@"drive_img"])] placeholderImage:DefaultImage];
+        [self.otherImageView sd_setImageWithURL:[NSURL URLWithString:validString(self.carInfo[@"run_img"])] placeholderImage:DefaultImage];
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            weakself.drivingLicenceImageValue = [NSString stringWithFormat:@"%@",self.carInfo[@"drive_img"]].urlImage;
+            weakself.otherImageValue = [NSString stringWithFormat:@"%@",self.carInfo[@"run_img"]].urlImage;
+        });
+    } else {
+        [self setCustomerTitle:@"添加车辆"];
+    }
 }
 
-- (void) setupAllCarTypeAction{
-    
-}
 #pragma mark -- method
 
 - (IBAction)selectedCarTypeAction:(id)sender {
@@ -100,19 +125,36 @@
     [param setValue:self.maxLoadTextField.text forKey:@"load"];
     [param setValue:self.drivingLicenceImageValue.base64String forKey:@"drive_img"];
     [param setValue:self.otherImageValue.base64String forKey:@"run_img"];
-    [ConfigModel showHud:self];
-    [HttpRequest postPath:@"_add_usercar_001" params:param resultBlock:^(id responseObject, NSError *error) {
-        [ConfigModel hideHud:self];
-        NSDictionary *dic = responseObject;
-        int errorint = [dic[@"error"] intValue];
-        if (errorint == 0 ) {
-            [ConfigModel mbProgressHUD:@"添加成功" andView:nil];
-            [self CustompopVC];
-        }else {
-            NSString *errorStr = dic[@"info"];
-            [ConfigModel mbProgressHUD:errorStr andView:nil];
-        }
-    }];
+    if (self.carInfo) {
+        [ConfigModel showHud:self];
+        [param setValue:self.carId forKey:@"id"];
+        [HttpRequest postPath:@"_amend_usercar_001" params:param resultBlock:^(id responseObject, NSError *error) {
+            [ConfigModel hideHud:self];
+            NSDictionary *dic = responseObject;
+            int errorint = [dic[@"error"] intValue];
+            if (errorint == 0 ) {
+                [ConfigModel mbProgressHUD:@"修改成功" andView:nil];
+                [self CustompopVC];
+            }else {
+                NSString *errorStr = dic[@"info"];
+                [ConfigModel mbProgressHUD:errorStr andView:nil];
+            }
+        }];
+    } else {
+        [ConfigModel showHud:self];
+        [HttpRequest postPath:@"_add_usercar_001" params:param resultBlock:^(id responseObject, NSError *error) {
+            [ConfigModel hideHud:self];
+            NSDictionary *dic = responseObject;
+            int errorint = [dic[@"error"] intValue];
+            if (errorint == 0 ) {
+                [ConfigModel mbProgressHUD:@"添加成功" andView:nil];
+                [self CustompopVC];
+            }else {
+                NSString *errorStr = dic[@"info"];
+                [ConfigModel mbProgressHUD:errorStr andView:nil];
+            }
+        }];
+    }
 }
 - (void) CustompopVC{
     for (UIViewController *VC in self.navigationController.viewControllers) {

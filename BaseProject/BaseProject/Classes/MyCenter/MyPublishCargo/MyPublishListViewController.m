@@ -11,6 +11,7 @@
 #import "MyPublishCargoListTableViewCell.h"
 #import "MJRefresh.h"
 #import "MyPublishCargoDetailInfoViewController.h"
+#import "GoodsDetialViewController.h"
 
 
 @interface MyPublishListViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -50,7 +51,7 @@
     [self.topItemsView setTapItemWithIndex:^(NSInteger index,BOOL animation){
         
         menuIndex = index;
-        [weakself updateList];
+        [weakself setupDataSource];
         [weakself.topItemsView moveToIndex:index];
         [weakself.topItemsView endMoveToIndex:index];
         
@@ -77,51 +78,28 @@
 
 - (void) setupDataSource{
     NSMutableDictionary *param = @{}.mutableCopy;
-//    [param setValue:TokenKey forKey:@"userToken"];
+    [param setValue:@"1" forKey:@"page"];
+    [param setValue:@"2000" forKey:@"size"];
+    [param setValue:@(menuIndex+1) forKey:@"status"];
     [HttpRequest postPath:@"_user_goods_001" params:param resultBlock:^(id responseObject, NSError *error) {
         NSDictionary *dic = responseObject;
-        
         int errorint = [dic[@"error"] intValue];
         if (errorint == 0 ) {
-            NSDictionary *infoDic = dic[@"info"];
-            if ([infoDic isKindOfClass:[NSDictionary class]]) {
-                self.infoDic = infoDic;
+            NSArray *info = dic[@"info"];
+            if ([info isKindOfClass:[NSArray class]]) {
+                self.dataSource = info.mutableCopy;
             }
-            [self updateList];
         }else {
             NSString *errorStr = dic[@"info"];
             [ConfigModel mbProgressHUD:errorStr andView:nil];
         }
+        [self.tableView reloadData];
         [self.tableView.mj_header endRefreshing];
         [self.tableView.mj_footer endRefreshing];
     }];
 }
 
 #pragma mark -- method
-- (void) updateList{
-    NSArray *array;
-    if (menuIndex==0) {
-        array = self.infoDic[@"qiangdan"];
-    }
-    else if (menuIndex==1) {
-        array = self.infoDic[@"shenhe"];
-    }
-    else if (menuIndex==2) {
-        array = self.infoDic[@"jiesu"];
-    }
-    else if (menuIndex==3) {
-        array = self.infoDic[@"jujue"];
-    }
-    
-    if ([array isKindOfClass:[NSArray class]]) {
-        self.dataSource = array.mutableCopy;
-    }
-    else{
-        self.dataSource = @[].mutableCopy;
-    }
-    [self.tableView reloadData];
-}
-
 - (void) rightButtonAction{
     
 }
@@ -142,9 +120,13 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSDictionary *data = _dataSource[indexPath.row];
-    MyPublishCargoDetailInfoViewController *detailVC = [MyPublishCargoDetailInfoViewController new];
-    detailVC.infoDic = data;
-    [self.navigationController pushViewController:detailVC animated:YES];
+//    MyPublishCargoDetailInfoViewController *detailVC = [MyPublishCargoDetailInfoViewController new];
+//    detailVC.infoDic = data;
+//    [self.navigationController pushViewController:detailVC animated:YES];
+    GoodsDetialViewController *goodsDetailVC = [GoodsDetialViewController new];
+    goodsDetailVC.type = MyGoodsDetial;
+    goodsDetailVC.idStr = validString(data[@"id"]);
+    [self.navigationController pushViewController:goodsDetailVC animated:YES];
 }
 
 @end

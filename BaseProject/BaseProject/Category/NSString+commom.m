@@ -43,4 +43,9 @@
     NSPredicate *regExPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", telRegex];
     return [regExPredicate evaluateWithObject:self];
 }
+
+- (UIImage *) urlImage{
+    NSString *tempStr = [NSString stringWithFormat:@"%@",self];
+    return [UIImage imageWithData:[NSData  dataWithContentsOfURL:[NSURL URLWithString:tempStr]]];
+}
 @end
