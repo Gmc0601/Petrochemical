@@ -7,7 +7,7 @@
 //
 
 #import "BaseTableView.h"
-typedef NS_ENUM(NSInteger, ChooseAddressType){
+typedef NS_ENUM(NSInteger,  CompleteAddressType){
     CompleteAddressType_nomarl = 0,
     CompleteAddressType_loading   ,
     CompleteAddressType_unLoading
@@ -15,7 +15,7 @@ typedef NS_ENUM(NSInteger, ChooseAddressType){
 
 
 @interface CompleteAddressViewController : BaseTableView
-@property(nonatomic, assign) ChooseAddressType chooseType;
+@property(nonatomic, assign) CompleteAddressType chooseType;
 @property(nonatomic, assign) NSInteger chooseIndex;
 @property(nonatomic, copy) void(^completeAddressInfoBlock)(NSDictionary *addressInfo,NSInteger index);
 

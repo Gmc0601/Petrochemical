@@ -8,6 +8,7 @@
 
 #import "CompleteAddressViewController.h"
 #import "CompleteAddressCell.h"
+#import "ChooseAddressListViewController.h"
 
 NSString * const CompleteAddressCellIdentifier = @"CompleteAddressCellIdentifier";
 @interface CompleteAddressViewController ()
@@ -56,10 +57,12 @@ NSString * const CompleteAddressCellIdentifier = @"CompleteAddressCellIdentifier
     
 }
 - (void)buttonAction:(id)sender{
-    if (self.completeAddressInfoBlock) {
-//        self.completeAddressInfoBlock(<#NSDictionary *addressInfo#>, <#NSInteger index#>)
+    if (self.completeAddressInfoBlock && self.address && self.detail_Address && self.lat && self.lon && self.mobile) {
+        NSDictionary * info = @{@"address":self.address,@"detail":self.detail_Address,@"lat":self.lat,@"lon":self.lon,@"mobile":self.mobile};
+        self.completeAddressInfoBlock( info, self.chooseIndex);
+        
     }
-    [self.navigationController popViewControllerAnimated:YES];
+  [self.navigationController popViewControllerAnimated:YES];
 }
 - (BOOL)addRefreshHeader{
     return NO;
@@ -125,7 +128,10 @@ NSString * const CompleteAddressCellIdentifier = @"CompleteAddressCellIdentifier
     UIKeyboardType  type  = UIKeyboardTypeDefault;
     if (indexPath.row == 0) {
        title = @"地点名称";
-       content = @"";
+        if (self.address) {
+            content = self.address;
+        }
+     
         placeholder = @"请选择地点名称";
     }
     if (indexPath.row == 1) {
@@ -140,6 +146,7 @@ NSString * const CompleteAddressCellIdentifier = @"CompleteAddressCellIdentifier
         if (self.mobile) {
             content = self.mobile;
         }
+        type  = UIKeyboardTypeNumberPad;
         placeholder = @"请填写联系电话";
     }
     cell.row = indexPath.row ;
@@ -151,8 +158,33 @@ NSString * const CompleteAddressCellIdentifier = @"CompleteAddressCellIdentifier
         }
         [self.CC_table reloadData];
     };
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell setupTFEnabled:enabled withKeyboardType:type];
     [cell setupTitle:title withTextFeild:content withPlaceholder:placeholder];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 0) {
+        [self gotoChooseAddress];
+    }
+    
+}
+- (void)gotoChooseAddress{
+    
+    ChooseAddressListViewController * addressVC = [[ChooseAddressListViewController alloc]init];
+
+    if (self.chooseType == CompleteAddressType_loading) {
+        addressVC.chooseType = ChooseAddressType_loading;
+    }else if (self.chooseType == CompleteAddressType_unLoading){
+        addressVC.chooseType = ChooseAddressType_unLoading;
+    }
+    addressVC.chooseAddressInfoBlock = ^(NSDictionary *addressInfo,NSInteger chooseIndex) {
+        self.address = addressInfo[@"name"];
+        self.lat  =[NSString stringWithFormat:@"%@",addressInfo[@"latitude"]];
+        self.lon = [NSString stringWithFormat:@"%@",addressInfo[@"longitude"]];
+        [self.CC_table reloadData];
+    };
+    [self.navigationController pushViewController:addressVC animated:YES];
+
 }
 @end
