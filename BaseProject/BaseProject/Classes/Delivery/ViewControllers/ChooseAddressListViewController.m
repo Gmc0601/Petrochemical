@@ -135,15 +135,15 @@ NSString * UITableViewCellIdentifier = @"UITableViewCellIdentifier";
                 NSLog(@"==%@==",region.POIItem.name);
                  CGFloat  latitude = region.POIItem.location.latitude;
                 CGFloat  longitude =region.POIItem.location.longitude;
-                 NSString * name = region.POIItem.name;
-                NSDictionary * region =  @{@"latitude":@(latitude),@"longitude":@(longitude),@"name":name                   };
+                NSString * name = region.POIItem.name;
+                NSString * cityName = self.cityName;
+                NSDictionary * region =  @{@"latitude":@(latitude),@"longitude":@(longitude),@"name":name,                   @"cityName":cityName};
                 [self.addressArray addObject:region];
               
             }
             if ([self.addressArray count] >0) {
                 [self.CC_table reloadData];
-                 self.emptyLabel.hidden = YES;
-                
+                self.emptyLabel.hidden = YES;
             }else{
                 self.emptyLabel.hidden = NO;
                 

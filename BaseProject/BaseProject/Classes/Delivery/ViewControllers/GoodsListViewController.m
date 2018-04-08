@@ -26,8 +26,9 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
 @property(nonatomic, strong) UIView * bottomView;
 @property(nonatomic, assign) NSInteger  unlodingNum;
 @property(nonatomic, copy) NSString * startLocation;
-@property(nonatomic, strong) NSNumber * startLatitude;
-@property(nonatomic, strong) NSNumber * startLongitude;
+@property(nonatomic, copy) NSString * startLocation_detail;
+@property(nonatomic, copy) NSString * startLatitude;
+@property(nonatomic, copy) NSString * startLongitude;
 @property(nonatomic, strong) NSMutableArray * unloadingArray;
 @property(nonatomic, assign) CGFloat totalDistance;
 @property(nonatomic, copy) NSString *loadingTime;
@@ -38,6 +39,7 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
 @property(nonatomic, copy) NSString *goodsName;//货物的名字
 @property(nonatomic, strong) NSArray *selectedGoodsIndexs;
 @property(nonatomic, copy) NSString *noteStr;//备注
+@property(nonatomic, strong) NSMutableArray * jsonUnloadArray;
 @end
 
 @implementation GoodsListViewController
@@ -60,6 +62,12 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
         _unloadingArray = [[NSMutableArray alloc]init];
     }
     return _unloadingArray;
+}
+-(NSMutableArray *)jsonUnloadArray{
+    if (!_jsonUnloadArray) {
+        _jsonUnloadArray = [NSMutableArray array];
+    }
+    return _jsonUnloadArray;
 }
 - (void)backAction{
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -199,7 +207,9 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
         {
             title = @"货物重量（吨）";
             placeholder = @"请选择货物重量";
-            content = @"";
+            if (self.weight) {
+                content = self.weight;
+            }
             keyType = UIKeyboardTypeNumberPad;
         }
             break;
@@ -207,7 +217,10 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
         {
             title = @"运输单价（元/吨）";
             placeholder = @"请填写运输单价";
-            content = @"";
+            if (self.price) {
+              content = self.price;
+            }
+            
             keyType = UIKeyboardTypeNumberPad;
         }
             break;
@@ -215,7 +228,12 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
         {
             title = @"结算方式";
             placeholder = @"";
-            content = @"线下结算";
+            if ( self.paymentMethod) {
+              content = self.paymentMethod;
+            }else{
+              content = @"线下结算";
+            }
+           
         }
             break;
             
@@ -250,7 +268,10 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
         title = @"装货点";
         placeholder = @"请选择装货点";
         if (self.startLocation) {
-            content = self.startLocation;
+            content = [content stringByAppendingString:self.startLocation];
+        }
+        if (self.startLocation_detail) {
+            content = [content stringByAppendingString: self.startLocation_detail];
         }
         
         isHidden = YES;
@@ -276,11 +297,15 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
             
             NSDictionary * info = self.unloadingArray[indexPath.row-1];
             if (info) {
-                content = info[@"name"];
+                if (info[@"cityName"]) {
+                    content = [content stringByAppendingString:info[@"cityName"]];
+                }
+                if (info[@"name"]) {
+                   content = [content stringByAppendingString:info[@"name"]];
+                }
             }
         }else{
             content = @"";
-            
         }
     }
     [cell setupDelHidden:isHidden];
@@ -357,9 +382,10 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
     addressVC.chooseType = ChooseAddressType_loading;
     WeakSelf(weakSelf);
     addressVC.chooseAddressInfoBlock = ^(NSDictionary *addressInfo,NSInteger chooseIndex) {
-        weakSelf.startLocation = addressInfo[@"name"];
-        weakSelf.startLatitude = addressInfo[@"latitude"];
-        weakSelf.startLongitude = addressInfo[@"longitude"];
+        weakSelf.startLocation_detail = addressInfo[@"name"];
+        weakSelf.startLocation = addressInfo[@"cityName"];
+        weakSelf.startLatitude =[NSString stringWithFormat:@"%@",addressInfo[@"latitude"]];
+        weakSelf.startLongitude = [NSString stringWithFormat:@"%@",addressInfo[@"longitude"]];
         [weakSelf.CC_table reloadData];
     };
     [self.navigationController pushViewController:addressVC animated:YES];
@@ -444,31 +470,50 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
 
 #pragma mark  ---
 - (void)sendGoodsInfo{
-//    NSDictionary *dic = nil;
-//        if ( self.startLocation &&self.endLocation&&self.emptyLocation&&self.lon&&self.lat&& self.loadingTime) {
-//            dic = @{
-//                   
-//                   
-//                    @"loading":self.startLocation,
-//                    @"destination":self.endLocation,
-//                    @"empty":self.emptyLocation,
-//                    @"lon":[NSString stringWithFormat:@"%f",self.lon],
-//                    @"lat":[NSString stringWithFormat:@"%f",self.lat],
-//                    @"loading_time":self.loadingTime,
-//                    //                          @"load":self.maxLoad,
-//                    @"issue_type":@"2",//发布车源1  发布货源2
-//                    };
-//    
-//    
-//        }
-//        if (!dic) {
-//            return;
-//        }
+    NSDictionary *dic = nil;
+    for (NSDictionary * dic  in self.unloadingArray) {
+       NSString *lat = [NSString stringWithFormat:@"%@",dic[@"latitude"]];
+       NSString * lon = [NSString stringWithFormat:@"%@", dic[@"longitude"]];
+       NSString * unload_address = dic[@"name"];
+       NSString * unload =dic[@"cityName"];
+        NSString * take_mobile = dic[@"take_mobile"];
+        NSDictionary * tempDic = @{@"lat":lat,@"lon":lon,@"unload":unload,@"unload_address":unload_address,@"take_mobile":take_mobile};
+        [self.jsonUnloadArray addObject:tempDic];
+    }
+    if ( self.startLocation && self.startLocation_detail && self.price && self.startLatitude
+        && self.weight && self.loadingTime && self.startLongitude && self.noteStr  && self.goodsId && [self.unloadingArray count] > 0) {
+        
+  
+        
+        NSString * mileage = @"";
+        if (self.totalDistance >0) {
+            mileage = [NSString stringWithFormat:@"%0.2f公里/%0.1f小时",self.totalDistance,self.totalDistance/60];
+        }
+        dic = @{
+                
+                @"loading":self.startLocation,
+                @"loading_address":self.startLocation_detail,
+                @"good_price":self.price,
+                @"account_type": self.paymentMethod,
+                @"weight":self.weight,
+                @"use_time":self.loadingTime,
+                @"lat":self.startLatitude,
+                @"lon":self.startLongitude,
+                @"remark":self.noteStr,
+                @"type":self.goodsId,
+                @"mileage":mileage,
+                @"json":self.jsonUnloadArray,
+                @"issue_type":@"2",//发布车源1  发布货源2
+                };
+    }
+    if (!dic) {
+        return;
+    }
 //        WeakSelf(weakself);
 //        [HttpRequest postPath:@"_issue_car_001" params:dic resultBlock:^(id responseObject, NSError *error) {
-//    
+//
 //            NSDictionary *dic = responseObject;
-//    
+//
 //            int errorint = [dic[@"error"] intValue];
 //            if (errorint == 0 ) {
 //                UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"发布车源成功" preferredStyle:UIAlertControllerStyleAlert];
@@ -482,7 +527,7 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
 //                NSLog(@"%@", errorStr);
 //                [ConfigModel mbProgressHUD:errorStr andView:nil];
 //            }
-//    
+//
 //        }];
 }
 

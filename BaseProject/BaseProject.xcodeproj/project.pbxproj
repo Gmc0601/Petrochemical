@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		033C55252079B663001BFF07 /* CompleteAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 033C55242079B663001BFF07 /* CompleteAddressViewController.m */; };
+		033C55292079B77C001BFF07 /* CompleteAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 033C55272079B77C001BFF07 /* CompleteAddressCell.m */; };
+		033C552A2079B77C001BFF07 /* CompleteAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 033C55282079B77C001BFF07 /* CompleteAddressCell.xib */; };
 		035A23DF206C7F4A0003CD31 /* CityNameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 035A23D6206C7F480003CD31 /* CityNameModel.m */; };
 		035A23E0206C7F4A0003CD31 /* ZSAnalysisClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 035A23D7206C7F480003CD31 /* ZSAnalysisClass.m */; };
 		035A23E1206C7F4A0003CD31 /* CityPickerVeiw.m in Sources */ = {isa = PBXBuildFile; fileRef = 035A23DA206C7F490003CD31 /* CityPickerVeiw.m */; };
@@ -284,6 +287,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		033C55232079B663001BFF07 /* CompleteAddressViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompleteAddressViewController.h; sourceTree = "<group>"; };
+		033C55242079B663001BFF07 /* CompleteAddressViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompleteAddressViewController.m; sourceTree = "<group>"; };
+		033C55262079B77C001BFF07 /* CompleteAddressCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompleteAddressCell.h; sourceTree = "<group>"; };
+		033C55272079B77C001BFF07 /* CompleteAddressCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompleteAddressCell.m; sourceTree = "<group>"; };
+		033C55282079B77C001BFF07 /* CompleteAddressCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompleteAddressCell.xib; sourceTree = "<group>"; };
 		035A23D6206C7F480003CD31 /* CityNameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityNameModel.m; sourceTree = "<group>"; };
 		035A23D7206C7F480003CD31 /* ZSAnalysisClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSAnalysisClass.m; sourceTree = "<group>"; };
 		035A23D8206C7F480003CD31 /* UIView+GoodView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+GoodView.h"; sourceTree = "<group>"; };
@@ -796,6 +804,8 @@
 				035A23FB206C7F820003CD31 /* EmptyCarListViewController.m */,
 				035A23F8206C7F810003CD31 /* GoodsListViewController.h */,
 				035A23FE206C7F830003CD31 /* GoodsListViewController.m */,
+				033C55232079B663001BFF07 /* CompleteAddressViewController.h */,
+				033C55242079B663001BFF07 /* CompleteAddressViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -865,6 +875,9 @@
 				0396E6902071DF7500B7EFDA /* GoodsNoteCell.h */,
 				0396E6912071DF7500B7EFDA /* GoodsNoteCell.m */,
 				0396E6922071DF7500B7EFDA /* GoodsNoteCell.xib */,
+				033C55262079B77C001BFF07 /* CompleteAddressCell.h */,
+				033C55272079B77C001BFF07 /* CompleteAddressCell.m */,
+				033C55282079B77C001BFF07 /* CompleteAddressCell.xib */,
 			);
 			path = GoodsView;
 			sourceTree = "<group>";
@@ -2197,6 +2210,7 @@
 				7AFD2215205F87B0009DB138 /* SystemMessageTableViewCell.xib in Resources */,
 				8297628A2073642300F1F003 /* CargoidentificationProgressViewController.xib in Resources */,
 				035A23F2206C7F6D0003CD31 /* EmptyCarCell.xib in Resources */,
+				033C552A2079B77C001BFF07 /* CompleteAddressCell.xib in Resources */,
 				82B6D2F0205F4FB400C65CA4 /* CargoidentificationSecondViewController.xib in Resources */,
 				42F795D81F00CC3E00A11A69 /* arrowdown@2x.png in Resources */,
 				42F10C4E206E331700C9C8EC /* SureHeaderCollectionReusableView.xib in Resources */,
@@ -2356,6 +2370,7 @@
 				7AFAE4EC205A236600B14406 /* MJRefreshBackNormalFooter.m in Sources */,
 				82B6D2F1205F4FB400C65CA4 /* CargoidentificationFirstViewController.m in Sources */,
 				42F10C55206E331800C9C8EC /* TYCyclePagerViewCell.m in Sources */,
+				033C55292079B77C001BFF07 /* CompleteAddressCell.m in Sources */,
 				42E6175E2058F16400B01D6D /* InformationViewController.m in Sources */,
 				82B6D2D2205F4F5900C65CA4 /* IQUIViewController+Additions.m in Sources */,
 				7A286F05205912D0006E4E0A /* WJItemsControlView.m in Sources */,
@@ -2441,6 +2456,7 @@
 				42F10C2B206E331700C9C8EC /* HomeGoodsViewModel.m in Sources */,
 				42F10C49206E331700C9C8EC /* UIView+LLAdd.m in Sources */,
 				82B6D302205F63CE00C65CA4 /* AddMyCarInformationSecondViewController.m in Sources */,
+				033C55252079B663001BFF07 /* CompleteAddressViewController.m in Sources */,
 				42C84ECB1EF2DD1A0008189D /* NSString+MD5.m in Sources */,
 				42C84F1C1EF2EB650008189D /* NSObject+SBJSON.m in Sources */,
 				0396E6A02072299300B7EFDA /* GoodsChooseCell.m in Sources */,
