@@ -51,6 +51,7 @@ NSString * UITableViewCellIdentifier = @"UITableViewCellIdentifier";
     self.CC_table.separatorStyle =  UITableViewCellSeparatorStyleSingleLine;
     self.CC_table.separatorColor = UIColorFromHex(0xE3E3E3);
     self.CC_table.bounces = NO;
+    [self.view addSubview:self.emptyLabel];
 }
 
 - (void)registerCell{
@@ -108,6 +109,9 @@ NSString * UITableViewCellIdentifier = @"UITableViewCellIdentifier";
 
 //添加POI关键词围栏按钮点击
 - (void)addGeoFencePOIKeywordRegion:(NSString *)keyword {
+    if (!keyword) {
+        return;
+    }
     if (!self.cityName||self.cityName.length == 0) {
         UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"请您选择城市" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction  *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
@@ -115,6 +119,7 @@ NSString * UITableViewCellIdentifier = @"UITableViewCellIdentifier";
         [self presentViewController:alert animated:YES completion:nil];
     }
     [self doClear];
+    [self.addressArray removeAllObjects];
     [self.geoFenceManager addKeywordPOIRegionForMonitoringWithKeyword:keyword POIType:@"" city:self.cityName  size:20 customID:@"poi_1"];
 }
 - (void)doClear {
@@ -128,6 +133,7 @@ NSString * UITableViewCellIdentifier = @"UITableViewCellIdentifier";
     if ([customID isEqualToString:@"poi_1"]) {
         if (error) {
             NSLog(@"======== poi1 error %@",error);
+          
             self.emptyLabel.hidden = NO;
         } else {
             
@@ -142,13 +148,16 @@ NSString * UITableViewCellIdentifier = @"UITableViewCellIdentifier";
               
             }
             if ([self.addressArray count] >0) {
-                [self.CC_table reloadData];
+               
                 self.emptyLabel.hidden = YES;
             }else{
+             
                 self.emptyLabel.hidden = NO;
                 
             }
         }
+        
+          [self.CC_table reloadData];
     }
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

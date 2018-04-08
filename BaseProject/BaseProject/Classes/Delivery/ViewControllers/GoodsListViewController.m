@@ -492,45 +492,58 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
 }
 
 #pragma mark  ---
+
+- (void)configJsonUnloadArray{
+    
+        for (NSDictionary * dic  in self.unloadingArray) {
+            if (dic) {
+                NSString *lat = [NSString stringWithFormat:@"%@",dic[@"lat"]];
+                NSString * lon = [NSString stringWithFormat:@"%@", dic[@"lon"]];
+                NSString * unload_address = dic[@"detail"];
+                NSString * unload =dic[@"address"];
+                NSString * take_mobile = dic[@"mobile"];
+                NSDictionary * tempDic = @{@"lat":lat,@"lon":lon,@"unload":unload,@"unload_address":unload_address,@"take_mobile":take_mobile};
+                [self.jsonUnloadArray addObject:tempDic];
+            }
+    
+        }
+}
 - (void)sendGoodsInfo{
     NSDictionary *dic = nil;
-    for (NSDictionary * dic  in self.unloadingArray) {
-        if (dic) {
-            NSString *lat = [NSString stringWithFormat:@"%@",dic[@"lat"]];
-            NSString * lon = [NSString stringWithFormat:@"%@", dic[@"lon"]];
-            NSString * unload_address = dic[@"detail"];
-            NSString * unload =dic[@"address"];
-            NSString * take_mobile = dic[@"mobile"];
-            NSDictionary * tempDic = @{@"lat":lat,@"lon":lon,@"unload":unload,@"unload_address":unload_address,@"take_mobile":take_mobile};
-            [self.jsonUnloadArray addObject:tempDic];
-        }
-      
-    }
+
     if ( self.startLocation && self.startLocation_detail && self.price && self.startLatitude
         && self.weight && self.loadingTime && self.startLongitude && self.noteStr  && self.goodsId && [self.unloadingArray count] > 0) {
+        [self  configJsonUnloadArray];
         NSString * mileage = @"";
         if (self.totalDistance >0) {
             mileage = [NSString stringWithFormat:@"%0.2f公里/%0.1f小时",self.totalDistance,self.totalDistance/60];
         }else{
             mileage =@"0公里/0小时";
         }
+        
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self.jsonUnloadArray
+                                                           options:kNilOptions
+                                                             error:nil];
+        NSString *jsonString = [[NSString alloc] initWithData:jsonData
+                                                     encoding:NSUTF8StringEncoding];
         dic = @{
-                
+
                 @"loading":self.startLocation,
                 @"loading_address":self.startLocation_detail,
                 @"good_price":self.price,
                 @"account_type": self.paymentMethod,
                 @"weight":self.weight,
-                @"use_time":@"2018-04-04 01:00:00",
+                @"use_time":self.loadingTime,
                 @"lat":self.startLatitude,
                 @"lon":self.startLongitude,
                 @"remark":self.noteStr,
                 @"type":self.goodsId,
                 @"mileage":mileage,
-                @"json":self.jsonUnloadArray,
+                @"json":jsonString,
                 @"issue_type":@"2",//发布车源1  发布货源2
                 };
     }
+    
     if (!dic) {
         return;
     }

@@ -8,6 +8,8 @@
 //
 
 #import "ChooseAddressSearchView.h"
+#import "IQKeyboardManager.h"
+#import "IQUIView+IQKeyboardToolbar.h"
 @interface ChooseAddressSearchView()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *btn;
 @property (weak, nonatomic) IBOutlet UITextField *textfeild;
@@ -20,8 +22,17 @@
     self.textfeild.delegate = self;
     self.textfeild.returnKeyType = UIReturnKeySearch;
     self.lineV.backgroundColor = UIColorFromHex(0xE3E3E3);
+    //自定义 完成按钮事件
+    [self.textfeild addDoneOnKeyboardWithTarget:self action:@selector(doneAction:) ];
 }
-
+- (void)doneAction:(id)sender{
+    if (self.inputText ) {
+        [self.textfeild resignFirstResponder];
+        
+        self.inputText(self.textfeild.text);
+    }
+ 
+}
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     BOOL flag = YES;
     if (self.inputText) {
