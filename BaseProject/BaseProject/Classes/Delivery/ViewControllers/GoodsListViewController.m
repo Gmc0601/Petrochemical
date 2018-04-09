@@ -26,6 +26,7 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
 @property(nonatomic, strong) UIView * bottomView;
 @property(nonatomic, assign) NSInteger  unlodingNum;
 @property(nonatomic, copy) NSString * startLocation;
+@property(nonatomic, copy) NSString * cityName;
 @property(nonatomic, copy) NSString * startLocation_detail;
 @property(nonatomic, copy) NSString * startLatitude;
 @property(nonatomic, copy) NSString * startLongitude;
@@ -386,6 +387,7 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
     addressVC.completeAddressInfoBlock = ^(NSDictionary *addressInfo,NSInteger chooseIndex) {
         weakSelf.startLocation_detail = addressInfo[@"detail"];
         weakSelf.startLocation = addressInfo[@"address"];
+        weakSelf.cityName = addressInfo[@"cityName"];
         weakSelf.startLatitude =[NSString stringWithFormat:@"%@",addressInfo[@"lat"]];
         weakSelf.startLongitude = [NSString stringWithFormat:@"%@",addressInfo[@"lon"]];
         [weakSelf.CC_table reloadData];
@@ -535,8 +537,8 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
                                                      encoding:NSUTF8StringEncoding];
         dic = @{
 
-                @"loading":self.startLocation,
-                @"loading_address":self.startLocation_detail,
+                @"loading":self.cityName,
+                @"loading_address":self.startLocation,
                 @"good_price":self.price,
                 @"account_type": self.paymentMethod,
                 @"weight":self.weight,

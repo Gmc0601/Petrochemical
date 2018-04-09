@@ -13,6 +13,7 @@
 NSString * const CompleteAddressCellIdentifier = @"CompleteAddressCellIdentifier";
 @interface CompleteAddressViewController ()
 @property(nonatomic, strong) UIView * bottomView;
+@property(nonatomic, copy) NSString * cityName;
 @property(nonatomic, copy) NSString * address;
 @property(nonatomic, copy) NSString * detail_Address;
 @property(nonatomic, copy) NSString * lat;
@@ -58,8 +59,9 @@ NSString * const CompleteAddressCellIdentifier = @"CompleteAddressCellIdentifier
 }
 - (void)buttonAction:(id)sender{
     
-    if (self.completeAddressInfoBlock && self.address && self.detail_Address && self.lat && self.lon && self.mobile) {
-        NSDictionary * info = @{@"address":self.address,@"detail":self.detail_Address,@"lat":self.lat,@"lon":self.lon,@"mobile":self.mobile};
+    if (self.completeAddressInfoBlock && self.address && self.detail_Address && self.lat && self.lon && self.mobile &&  self.cityName) {
+     
+        NSDictionary * info = @{@"address":self.address,@"detail":self.detail_Address,@"lat":self.lat,@"lon":self.lon,@"mobile":self.mobile,@"cityName": self.cityName};
         self.completeAddressInfoBlock( info, self.chooseIndex);
          [self.navigationController popViewControllerAnimated:YES];
     }
@@ -183,6 +185,7 @@ NSString * const CompleteAddressCellIdentifier = @"CompleteAddressCellIdentifier
     }
     addressVC.chooseAddressInfoBlock = ^(NSDictionary *addressInfo,NSInteger chooseIndex) {
         self.address = addressInfo[@"name"];
+        self.cityName =  addressInfo[@"cityName"];
         self.lat  =[NSString stringWithFormat:@"%@",addressInfo[@"latitude"]];
         self.lon = [NSString stringWithFormat:@"%@",addressInfo[@"longitude"]];
         [self.CC_table reloadData];

@@ -18,7 +18,8 @@ NSString * UITableViewCellIdentifier = @"UITableViewCellIdentifier";
 @property (nonatomic, strong) AMapGeoFenceManager *geoFenceManager;
 @property (nonatomic, strong) NSMutableArray *addressArray;
 @property (nonatomic, copy) NSString *cityName;
- @property(nonatomic, strong) UILabel * emptyLabel;
+@property(nonatomic, strong) UILabel * emptyLabel;
+@property (nonatomic, copy) NSString *area;
 @end
 
 @implementation ChooseAddressListViewController
@@ -97,6 +98,7 @@ NSString * UITableViewCellIdentifier = @"UITableViewCellIdentifier";
     [cityView setCityBlock:^(NSString * value) {
         NSLog(@"%@===",value);
           NSArray * array = [value componentsSeparatedByString:@"-"];
+        self.area = [value stringByReplacingOccurrencesOfString:@"-" withString:@""];
         if ([array count]>= 2) {
             NSString * areaStr = array[1];
             self.cityName = areaStr;
@@ -142,8 +144,8 @@ NSString * UITableViewCellIdentifier = @"UITableViewCellIdentifier";
                  CGFloat  latitude = region.POIItem.location.latitude;
                 CGFloat  longitude =region.POIItem.location.longitude;
                 NSString * name = region.POIItem.name;
-                NSString * cityName = self.cityName;
-                NSDictionary * region =  @{@"latitude":@(latitude),@"longitude":@(longitude),@"name":name,                   @"cityName":cityName};
+           
+                NSDictionary * region =  @{@"latitude":@(latitude),@"longitude":@(longitude),@"name":name,                   @"cityName": self.area};
                 [self.addressArray addObject:region];
               
             }

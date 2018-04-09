@@ -23,6 +23,7 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
 @property(nonatomic, strong) UIView * bottomView;
 @property(nonatomic, copy) NSString * carNum;//车牌号
 @property(nonatomic, copy) NSString * startLocation;//开始位置
+
 @property(nonatomic, copy) NSString * endLocation;//结束位置
 @property(nonatomic, copy) NSString * emptyLocation;//空车位置
 @property(nonatomic, copy) NSString * loadingTime;//装车时间
