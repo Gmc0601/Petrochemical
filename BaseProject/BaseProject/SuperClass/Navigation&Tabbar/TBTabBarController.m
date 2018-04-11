@@ -48,16 +48,16 @@
 - (void)setUpChildVC {
 
     HomePageViewController *homepage = [[HomePageViewController alloc] init];
-    [self setChildVC:homepage title:@"首页" image:@"tab-shouye" selectedImage:@"shouye"];
+    [self setChildVC:homepage title:@"首页" image:@"shouyehui" selectedImage:@"shouye"];
     
     OrderViewController *order = [[OrderViewController alloc] init];
-    [self setChildVC:order title:@"订单" image:@"dingdan" selectedImage:@"dingdan2"];
+    [self setChildVC:order title:@"订单" image:@"dingda" selectedImage:@"dingdandian"];
     
     InformationViewController *video = [[InformationViewController alloc] init];
-    [self setChildVC:video title:@"咨询" image:@"zixun" selectedImage:@"zixunlan"];
+    [self setChildVC:video title:@"咨询" image:@"zixun" selectedImage:@"zixundian"];
     
     MyCenterViewController *myVC = [[MyCenterViewController alloc] init];
-    [self setChildVC:myVC title:@"我的" image:@"WechatIMG1" selectedImage:@"wode"];
+    [self setChildVC:myVC title:@"我的" image:@"wode" selectedImage:@"wodedian"];
 
 }
 

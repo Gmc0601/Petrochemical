@@ -18,7 +18,8 @@ NSString * UITableViewCellIdentifier = @"UITableViewCellIdentifier";
 @property (nonatomic, strong) AMapGeoFenceManager *geoFenceManager;
 @property (nonatomic, strong) NSMutableArray *addressArray;
 @property (nonatomic, copy) NSString *cityName;
- @property(nonatomic, strong) UILabel * emptyLabel;
+@property(nonatomic, strong) UILabel * emptyLabel;
+@property (nonatomic, copy) NSString *area;
 @end
 
 @implementation ChooseAddressListViewController
@@ -51,6 +52,7 @@ NSString * UITableViewCellIdentifier = @"UITableViewCellIdentifier";
     self.CC_table.separatorStyle =  UITableViewCellSeparatorStyleSingleLine;
     self.CC_table.separatorColor = UIColorFromHex(0xE3E3E3);
     self.CC_table.bounces = NO;
+    [self.view addSubview:self.emptyLabel];
 }
 
 - (void)registerCell{
@@ -96,6 +98,7 @@ NSString * UITableViewCellIdentifier = @"UITableViewCellIdentifier";
     [cityView setCityBlock:^(NSString * value) {
         NSLog(@"%@===",value);
           NSArray * array = [value componentsSeparatedByString:@"-"];
+        self.area = [value stringByReplacingOccurrencesOfString:@"-" withString:@""];
         if ([array count]>= 2) {
             NSString * areaStr = array[1];
             self.cityName = areaStr;
@@ -108,6 +111,9 @@ NSString * UITableViewCellIdentifier = @"UITableViewCellIdentifier";
 
 //添加POI关键词围栏按钮点击
 - (void)addGeoFencePOIKeywordRegion:(NSString *)keyword {
+    if (!keyword) {
+        return;
+    }
     if (!self.cityName||self.cityName.length == 0) {
         UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"请您选择城市" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction  *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
@@ -115,6 +121,7 @@ NSString * UITableViewCellIdentifier = @"UITableViewCellIdentifier";
         [self presentViewController:alert animated:YES completion:nil];
     }
     [self doClear];
+    [self.addressArray removeAllObjects];
     [self.geoFenceManager addKeywordPOIRegionForMonitoringWithKeyword:keyword POIType:@"" city:self.cityName  size:20 customID:@"poi_1"];
 }
 - (void)doClear {
@@ -128,6 +135,7 @@ NSString * UITableViewCellIdentifier = @"UITableViewCellIdentifier";
     if ([customID isEqualToString:@"poi_1"]) {
         if (error) {
             NSLog(@"======== poi1 error %@",error);
+          
             self.emptyLabel.hidden = NO;
         } else {
             
@@ -136,19 +144,22 @@ NSString * UITableViewCellIdentifier = @"UITableViewCellIdentifier";
                  CGFloat  latitude = region.POIItem.location.latitude;
                 CGFloat  longitude =region.POIItem.location.longitude;
                 NSString * name = region.POIItem.name;
-                NSString * cityName = self.cityName;
-                NSDictionary * region =  @{@"latitude":@(latitude),@"longitude":@(longitude),@"name":name,                   @"cityName":cityName};
+           
+                NSDictionary * region =  @{@"latitude":@(latitude),@"longitude":@(longitude),@"name":name,                   @"cityName": self.area};
                 [self.addressArray addObject:region];
               
             }
             if ([self.addressArray count] >0) {
-                [self.CC_table reloadData];
+               
                 self.emptyLabel.hidden = YES;
             }else{
+             
                 self.emptyLabel.hidden = NO;
                 
             }
         }
+        
+          [self.CC_table reloadData];
     }
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

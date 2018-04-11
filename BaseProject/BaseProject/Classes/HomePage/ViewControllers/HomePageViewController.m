@@ -164,30 +164,32 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
         }];
     });
     
-    dispatch_group_enter(group);
-    dispatch_async(queue, ^{
-        [HttpRequest postPath:@"_userinfo_001" params:nil resultBlock:^(id responseObject, NSError *error) {
-            NSDictionary *datadic = responseObject;
-            if ([datadic[@"error"] intValue] == 0) {
-                NSDictionary *dic = datadic[@"info"];
-                if ([dic[@"approve"] intValue] == 2) {
-                    [ConfigModel saveBoolObject:YES forKey:Shipper_Certification];
-                }else {
-                     [ConfigModel saveBoolObject:NO forKey:Shipper_Certification];
-                }
-                if ([dic[@"carAuth"] intValue] == 1) {
-                    [ConfigModel saveBoolObject:YES forKey:Car_Certification];
-                }else {
-                    [ConfigModel saveBoolObject:NO forKey:Car_Certification];
-                }
-                
-            }else {
-                NSString *str = datadic[@"info"];
-                [ConfigModel mbProgressHUD:str andView:nil];
-            }
-        }];
-        dispatch_group_leave(group);
-    });
+//    dispatch_group_enter(group);
+//    dispatch_async(queue, ^{
+//        [HttpRequest postPath:@"_userinfo_001" params:nil resultBlock:^(id responseObject, NSError *error) {
+//            NSDictionary *datadic = responseObject;
+//            if ([datadic[@"error"] intValue] == 0) {
+//                NSDictionary *dic = datadic[@"info"];
+//                if ([dic[@"approve"] intValue] == 2) {
+//                    //  货主认证
+//                    [ConfigModel saveBoolObject:YES forKey:Shipper_Certification];
+//                }else {
+//                     [ConfigModel saveBoolObject:NO forKey:Shipper_Certification];
+//                }
+//                if ([dic[@"carAuth"] intValue] == 1) {
+//                    //  车主认证
+//                    [ConfigModel saveBoolObject:YES forKey:Car_Certification];
+//                }else {
+//                    [ConfigModel saveBoolObject:NO forKey:Car_Certification];
+//                }
+//
+//            }else {
+//                NSString *str = datadic[@"info"];
+//                [ConfigModel mbProgressHUD:str andView:nil];
+//            }
+//        }];
+//        dispatch_group_leave(group);
+//    });
     
     dispatch_group_enter(group);
     dispatch_async(queue, ^{
@@ -254,7 +256,7 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
     //  rightBtn
     [self addRightBarButtonWithFirstImage:[UIImage imageNamed:@"xin"] action:@selector(rightBarClick)];
     //  titleView
-    NSArray *dataArray = @[@"车源", @"货源"];
+    NSArray *dataArray = @[@"货源大厅", @"车源大厅"];
     CGFloat const kScrollViewHeight = kScreenH;
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScrollViewHeight)];
     scrollView.contentSize = CGSizeMake(kScreenWidth * dataArray.count, kScrollViewHeight);
@@ -610,8 +612,8 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
 #pragma Mark - Setter Getter
 - (LLSegmentedControl *)TopSegmentedControl{// 导航栏顶部 segment
     if (!_TopSegmentedControl) {
-        NSArray *dataArray = @[@"车源", @"货源"];
-        _TopSegmentedControl = [[LLSegmentedControl alloc] initWithFrame:CGRectMake(0, 0, 160, 44) titleArray:dataArray];
+        NSArray *dataArray = @[@"货源大厅", @"车源大厅"];
+        _TopSegmentedControl = [[LLSegmentedControl alloc] initWithFrame:CGRectMake(0, 0, 220, 44) titleArray:dataArray];
         _TopSegmentedControl.backgroundColor = [UIColor clearColor];
         _TopSegmentedControl.segmentedControlLineStyle = LLSegmentedControlStyleUnderline;
         _TopSegmentedControl.segmentedControlTitleSpacingStyle = LLSegmentedControlTitleSpacingStyleWidthAutoFit;
@@ -638,7 +640,7 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
 //车源list视图
 - (UITableView *)CarTableView{
     if (!_CarTableView) {
-        _CarTableView = [[UITableView alloc]initWithFrame:CGRectMake(0,0, kScreenW, kScreenH -  _statusbarHeight - _tabbarHeight - _navbarHeight) style:UITableViewStylePlain];
+        _CarTableView = [[UITableView alloc]initWithFrame:CGRectMake(kScreenW,0, kScreenW, kScreenH -  _statusbarHeight - _tabbarHeight - _navbarHeight) style:UITableViewStylePlain];
         _CarTableView.delegate = self;
         _CarTableView.dataSource = self;
         _GoodsTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -665,7 +667,7 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
 //货源list视图
 - (UITableView *)GoodsTableView{
     if (!_GoodsTableView) {
-        _GoodsTableView = [[UITableView alloc]initWithFrame:CGRectMake(kScreenW, 0, kScreenW, kScreenH -  _statusbarHeight - _tabbarHeight - _navbarHeight ) style:UITableViewStylePlain];
+        _GoodsTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kScreenW, kScreenH -  _statusbarHeight - _tabbarHeight - _navbarHeight ) style:UITableViewStylePlain];
         // 下拉刷新
         _GoodsTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
         _GoodsTableView.mj_header= [MJRefreshNormalHeader headerWithRefreshingBlock:^{

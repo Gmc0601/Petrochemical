@@ -214,38 +214,67 @@
 
 - (void)commitClick:(UIButton *)sender {
     
-    if (![ConfigModel getBoolObjectforKey:Car_Certification]) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"完成车辆认证后，才能邀请司机" preferredStyle:UIAlertControllerStyleAlert];
-        
-        
-        UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"暂不" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        }];
-        UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"立即认证" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            //  跳转到车辆认证
-            MyCarInformationListViewController *vc = [[MyCarInformationListViewController alloc] init];
-            [self.navigationController pushViewController:vc animated:YES];
-        }];
-        
-        [alert addAction:action1];
-        [alert addAction:action2];
-        
-        [self presentViewController:alert animated:YES completion:nil];
-        return;
-    }
+  
+    
+    
+    
     
     if ([sender.titleLabel.text isEqualToString:@"管理我的货源"]) {
         MyPublishListViewController *vc = [[MyPublishListViewController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }
     if ([sender.titleLabel.text isEqualToString:@"立即抢单"]) {
-        FeailView *view = [[FeailView alloc] initWithFrame:FRAME(0, 0, kScreenW, kScreenH)];
-        view.clickBlick = ^{
-            RobOrderViewController *vc = [[RobOrderViewController alloc] init];
-            vc.good_num = self.model.good_num;
-            vc.balance = self.model.surplus_weight;
-            [self.navigationController pushViewController:vc animated:YES];
-        };
-        [view pop];
+        
+        [HttpRequest postPath:@"_userinfo_001" params:nil resultBlock:^(id responseObject, NSError *error) {
+            NSDictionary *datadic = responseObject;
+            if ([datadic[@"error"] intValue] == 0) {
+                NSDictionary *dic = datadic[@"info"];
+                if ([dic[@"approve"] intValue] == 2) {
+                    //  货主认证
+                    [ConfigModel saveBoolObject:YES forKey:Shipper_Certification];
+                }else {
+                    [ConfigModel saveBoolObject:NO forKey:Shipper_Certification];
+                }
+                if ([dic[@"carAuth"] intValue] == 1) {
+                    //  车主认证
+                    [ConfigModel saveBoolObject:YES forKey:Car_Certification];
+                }else {
+                    [ConfigModel saveBoolObject:NO forKey:Car_Certification];
+                }
+                if (![ConfigModel getBoolObjectforKey:Car_Certification]) {
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"完成车辆认证后，才能邀请司机" preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    
+                    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"暂不" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                    }];
+                    UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"立即认证" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        //  跳转到车辆认证
+                        MyCarInformationListViewController *vc = [[MyCarInformationListViewController alloc] init];
+                        [self.navigationController pushViewController:vc animated:YES];
+                    }];
+                    
+                    [alert addAction:action1];
+                    [alert addAction:action2];
+                    
+                    [self presentViewController:alert animated:YES completion:nil];
+                    return;
+                }
+                FeailView *view = [[FeailView alloc] initWithFrame:FRAME(0, 0, kScreenW, kScreenH)];
+                view.clickBlick = ^{
+                    RobOrderViewController *vc = [[RobOrderViewController alloc] init];
+                    vc.good_num = self.model.good_num;
+                    vc.balance = self.model.surplus_weight;
+                    [self.navigationController pushViewController:vc animated:YES];
+                };
+                [view pop];
+                
+            }else {
+                NSString *str = datadic[@"info"];
+                [ConfigModel mbProgressHUD:str andView:nil];
+            }
+        }];
+        
+       
     }
     
 }

@@ -17,7 +17,7 @@
 - (void)awakeFromNib{
     [super awakeFromNib];
     self.bgView.backgroundColor = [UIColor whiteColor];
-    self.bgView.alpha = 0.9;
+    self.bgView.alpha = 0.6;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction)];
     [self.bgView addGestureRecognizer:tap];
 }
