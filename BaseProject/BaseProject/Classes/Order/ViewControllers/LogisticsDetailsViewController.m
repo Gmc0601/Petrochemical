@@ -40,10 +40,11 @@
 }
 
 -(void)requestDetail{
+    NSString *usertoken = [ConfigModel getStringforKey:UserToken];
     NSDictionary *dic = @{
                           @"car_id":self.carId,
                           @"good_num":self.orderId,
-                          @"userToken":@"cb97a780c081a49154bed3aa50842ff4",
+                          @"userToken":usertoken,
                           };
     
     [HttpRequest postPath:@"_transportation_details_001" params:dic resultBlock:^(id responseObject, NSError *error) {

@@ -84,8 +84,9 @@
 }
 
 -(void)requestCarList{
+    NSString *usertoken = [ConfigModel getStringforKey:UserToken];
     NSDictionary *dic = @{
-                          @"userToken":@"cb97a780c081a49154bed3aa50842ff4",
+                          @"userToken":usertoken,
                           @"good_num":self.orderId,
                           };
     
@@ -112,8 +113,9 @@
 
 
 -(void)requestDetail{
+    NSString *usertoken = [ConfigModel getStringforKey:UserToken];
     NSDictionary *dic = @{
-                          @"userToken":@"cb97a780c081a49154bed3aa50842ff4",
+                          @"userToken":usertoken,
                           @"good_num":self.orderId,
                           };
     

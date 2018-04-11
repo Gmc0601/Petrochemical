@@ -90,7 +90,7 @@
     [WXApi registerApp:@"wx6499f71fc4509030"];
 }
 - (BOOL) application:(UIApplication *)application handleOpenURL:(NSURL *)url{
-    if ([[url scheme] isEqualToString:@"1106747616APP"]) {
+    if ([[url scheme] isEqualToString:@"1106747618"]) {
         return [QQApiInterface handleOpenURL:url delegate:self];
     }else {
         return [WXApi handleOpenURL:url delegate:self];
@@ -98,7 +98,7 @@
     
 }
 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
-    if ([[url scheme] isEqualToString:@"1106747616APP"]) {
+    if ([[url scheme] isEqualToString:@"1106747618"]) {
         return [QQApiInterface handleOpenURL:url delegate:self];
     }else{
         return [WXApi handleOpenURL:url delegate:self];
@@ -116,7 +116,8 @@
 }
 
 - (void) selectedQQAction{
-    _tencentOAuth = [[TencentOAuth alloc] initWithAppId:@"1106747616APP" andDelegate:nil];
+   
+    _tencentOAuth = [[TencentOAuth alloc] initWithAppId:@"1106747618" andDelegate:nil];
 }
 
 @end

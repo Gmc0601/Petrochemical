@@ -35,8 +35,9 @@
 }
 
 -(void)requestDetail{
+    NSString *usertoken = [ConfigModel getStringforKey:UserToken];
     NSDictionary *dic = @{
-                          @"userToken":@"e56d19bd376625cc2bc7aa6ae40e385a",
+                          @"userToken":usertoken,
                           };
     
     [HttpRequest postPath:@"_shuliangs_001" params:dic resultBlock:^(id responseObject, NSError *error) {

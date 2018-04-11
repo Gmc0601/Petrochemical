@@ -17,8 +17,8 @@
                 <outlet property="orderNumberLabel" destination="gWY-Pa-tPY" id="g7U-qI-BSA"/>
                 <outlet property="remarksLabel" destination="Kyu-ye-bcj" id="TOA-5V-NUw"/>
                 <outlet property="scrollView" destination="cZZ-CP-2y3" id="Cpx-H7-XxC"/>
-                <outlet property="startAddressLabel" destination="4Rd-3s-FtB" id="dCd-bE-60v"/>
-                <outlet property="startAreaLabel" destination="Azx-DV-VmP" id="cMG-os-Zg4"/>
+                <outlet property="startAddressLabel" destination="Azx-DV-VmP" id="1sB-Zx-qSk"/>
+                <outlet property="startAreaLabel" destination="4Rd-3s-FtB" id="hAD-Zm-cec"/>
                 <outlet property="tableView" destination="vtB-es-UFw" id="7qw-l4-18M"/>
                 <outlet property="topView" destination="IPt-eI-aTM" id="yGq-CL-u8N"/>
                 <outlet property="unloadView" destination="hgi-XE-uMX" id="6v0-EV-TlI"/>
@@ -420,7 +420,7 @@
                 <constraint firstAttribute="bottom" secondItem="vtB-es-UFw" secondAttribute="bottom" id="spT-Bm-029"/>
                 <constraint firstAttribute="trailing" secondItem="IPt-eI-aTM" secondAttribute="trailing" id="xJ2-8V-CcE"/>
             </constraints>
-            <point key="canvasLocation" x="-229" y="45"/>
+            <point key="canvasLocation" x="-79" y="65"/>
         </view>
     </objects>
     <resources>

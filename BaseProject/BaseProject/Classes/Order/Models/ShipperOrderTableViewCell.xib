@@ -228,11 +228,11 @@
                 <outlet property="startAreaLabel" destination="jjy-YA-Qw4" id="0SQ-Ng-G7z"/>
                 <outlet property="typeLabel" destination="WsW-nN-jsm" id="vrT-3Q-dNg"/>
             </connections>
-            <point key="canvasLocation" x="-202" y="-29"/>
+            <point key="canvasLocation" x="-95" y="-28"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="baoguo" width="15" height="15"/>
+        <image name="baoguo" width="25" height="25"/>
         <image name="weizhi" width="10" height="12"/>
         <image name="youbianjiantou" width="8" height="13"/>
         <image name="yunshu" width="18" height="13"/>
