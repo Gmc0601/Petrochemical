@@ -16,6 +16,7 @@
 #import "MyPublishCarListViewController.h"
 #import "MyGrabOrderListViewController.h"
 #import "MyCenterUserGuideViewController.h"
+#import "InviteFrendViewController.h"
 
 @interface MyCenterViewController ()
 
@@ -29,6 +30,8 @@
 @property (nonatomic, assign) int user_status;
 
 @property (strong, nonatomic) NSMutableArray *linkPlatformArray;
+@property (strong, nonatomic) NSMutableDictionary *shareInfoDic;
+@property (assign, nonatomic) int  app_onoff;
 @end
 
 @implementation MyCenterViewController
@@ -42,6 +45,7 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     self.noUseTableView.scrollIndicatorInsets = self.noUseTableView.contentInset;
+    [self openShareAction];
 }
 
 
@@ -69,6 +73,21 @@
             NSDictionary *info = dic[@"info"];
             if ([info isKindOfClass:[NSDictionary class]]) {
                 self.userInfo = info.mutableCopy;
+            }
+        }else {
+            NSString *errorStr = dic[@"info"];
+            [ConfigModel mbProgressHUD:errorStr andView:nil];
+        }
+    }];
+}
+- (void) openShareAction{
+    [HttpRequest postPath:@"_share_001" params:nil resultBlock:^(id responseObject, NSError *error) {
+        NSDictionary *dic = responseObject;
+        int errorint = [dic[@"error"] intValue];
+        if (errorint == 0 ) {
+            NSDictionary *info = dic[@"info"];
+            if ([info isKindOfClass:[NSDictionary class]]) {
+                self.shareInfoDic = info.mutableCopy;
             }
         }else {
             NSString *errorStr = dic[@"info"];
@@ -142,7 +161,9 @@
     }];
 }
 - (IBAction)invitefriendsinviteFriendsAction:(id)sender {
-    
+    InviteFrendViewController *inviteFrendVC = [InviteFrendViewController new];
+    inviteFrendVC.info = self.shareInfoDic;
+    [self.navigationController pushViewController:inviteFrendVC animated:YES];
 }
 
 #pragma mark -- setter
@@ -190,5 +211,13 @@
     }
     [self presentViewController:alertVC animated:YES completion:nil];
 }
-
+- (void) setShareInfoDic:(NSMutableDictionary *)shareInfoDic{
+    _shareInfoDic = shareInfoDic;
+    _app_onoff = [validString(shareInfoDic[@"app_onoff"]) intValue];
+    if (_app_onoff == 2) {
+        
+    }else{
+        
+    }
+}
 @end

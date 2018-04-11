@@ -235,6 +235,11 @@
 		8298E2DB206E0B66006284F2 /* MyGrabOrderListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8298E2D9206E0B66006284F2 /* MyGrabOrderListViewController.xib */; };
 		8298E2E1206E1312006284F2 /* MyCenterUserGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8298E2DF206E1312006284F2 /* MyCenterUserGuideViewController.m */; };
 		8298E2E2206E1312006284F2 /* MyCenterUserGuideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8298E2E0206E1312006284F2 /* MyCenterUserGuideViewController.xib */; };
+		82A16F40207DC37A007B0008 /* InviteFrendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A16F3E207DC37A007B0008 /* InviteFrendViewController.m */; };
+		82A16F41207DC37A007B0008 /* InviteFrendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82A16F3F207DC37A007B0008 /* InviteFrendViewController.xib */; };
+		82A16F48207DCCFA007B0008 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 82A16F45207DCCFA007B0008 /* README.txt */; };
+		82A16F49207DCCFA007B0008 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82A16F47207DCCFA007B0008 /* libWeChatSDK.a */; };
+		82A16F4B207DCD72007B0008 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 82A16F4A207DCD72007B0008 /* libsqlite3.0.tbd */; };
 		82B6D29F205F4EE400C65CA4 /* LeasCustomAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B6D29D205F4EE400C65CA4 /* LeasCustomAlbum.m */; };
 		82B6D2C5205F4F5900C65CA4 /* IQTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B6D2A2205F4F5900C65CA4 /* IQTextView.m */; };
 		82B6D2C6205F4F5900C65CA4 /* IQToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B6D2A6205F4F5900C65CA4 /* IQToolbar.m */; };
@@ -268,6 +273,7 @@
 		82B6D2FE205F63B100C65CA4 /* AddMyCarInformationFristViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82B6D2FC205F63B100C65CA4 /* AddMyCarInformationFristViewController.xib */; };
 		82B6D302205F63CE00C65CA4 /* AddMyCarInformationSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B6D300205F63CE00C65CA4 /* AddMyCarInformationSecondViewController.m */; };
 		82B6D303205F63CE00C65CA4 /* AddMyCarInformationSecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82B6D301205F63CE00C65CA4 /* AddMyCarInformationSecondViewController.xib */; };
+		82DD2E03207E19DE00DD6C1C /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DD2E02207E19DE00DD6C1C /* TencentOpenAPI.framework */; };
 		82FCF93E2070C2E50050140D /* MyGrabOrderListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82FCF93C2070C2E50050140D /* MyGrabOrderListTableViewCell.m */; };
 		82FCF93F2070C2E50050140D /* MyGrabOrderListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82FCF93D2070C2E50050140D /* MyGrabOrderListTableViewCell.xib */; };
 		B79A5CFD6299881CB3643ACB /* libPods-BaseProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65EBE4FCE8758654A9B05419 /* libPods-BaseProject.a */; };
@@ -695,6 +701,15 @@
 		8298E2DE206E1312006284F2 /* MyCenterUserGuideViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCenterUserGuideViewController.h; sourceTree = "<group>"; };
 		8298E2DF206E1312006284F2 /* MyCenterUserGuideViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCenterUserGuideViewController.m; sourceTree = "<group>"; };
 		8298E2E0206E1312006284F2 /* MyCenterUserGuideViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCenterUserGuideViewController.xib; sourceTree = "<group>"; };
+		82A16F3D207DC37A007B0008 /* InviteFrendViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InviteFrendViewController.h; sourceTree = "<group>"; };
+		82A16F3E207DC37A007B0008 /* InviteFrendViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InviteFrendViewController.m; sourceTree = "<group>"; };
+		82A16F3F207DC37A007B0008 /* InviteFrendViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InviteFrendViewController.xib; sourceTree = "<group>"; };
+		82A16F43207DCCFA007B0008 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		82A16F44207DCCFA007B0008 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		82A16F45207DCCFA007B0008 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		82A16F46207DCCFA007B0008 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
+		82A16F47207DCCFA007B0008 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		82A16F4A207DCD72007B0008 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		82B6D29D205F4EE400C65CA4 /* LeasCustomAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeasCustomAlbum.m; sourceTree = "<group>"; };
 		82B6D29E205F4EE400C65CA4 /* LeasCustomAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeasCustomAlbum.h; sourceTree = "<group>"; };
 		82B6D2A2205F4F5900C65CA4 /* IQTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQTextView.m; sourceTree = "<group>"; };
@@ -753,6 +768,7 @@
 		82B6D2FF205F63CE00C65CA4 /* AddMyCarInformationSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddMyCarInformationSecondViewController.h; sourceTree = "<group>"; };
 		82B6D300205F63CE00C65CA4 /* AddMyCarInformationSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddMyCarInformationSecondViewController.m; sourceTree = "<group>"; };
 		82B6D301205F63CE00C65CA4 /* AddMyCarInformationSecondViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddMyCarInformationSecondViewController.xib; sourceTree = "<group>"; };
+		82DD2E02207E19DE00DD6C1C /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
 		82FCF93B2070C2E50050140D /* MyGrabOrderListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyGrabOrderListTableViewCell.h; sourceTree = "<group>"; };
 		82FCF93C2070C2E50050140D /* MyGrabOrderListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyGrabOrderListTableViewCell.m; sourceTree = "<group>"; };
 		82FCF93D2070C2E50050140D /* MyGrabOrderListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyGrabOrderListTableViewCell.xib; sourceTree = "<group>"; };
@@ -765,12 +781,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82A16F4B207DCD72007B0008 /* libsqlite3.0.tbd in Frameworks */,
 				0396E69820720DD000B7EFDA /* GLKit.framework in Frameworks */,
 				035A2416206CC6EF0003CD31 /* libstdc++.6.0.9.tbd in Frameworks */,
+				82A16F49207DCCFA007B0008 /* libWeChatSDK.a in Frameworks */,
 				035A2414206CC6E70003CD31 /* libz.tbd in Frameworks */,
 				035A2412206CC6DC0003CD31 /* Security.framework in Frameworks */,
 				035A2410206CC6D50003CD31 /* SystemConfiguration.framework in Frameworks */,
 				035A240E206CC6CE0003CD31 /* CoreTelephony.framework in Frameworks */,
+				82DD2E03207E19DE00DD6C1C /* TencentOpenAPI.framework in Frameworks */,
 				035A240C206CC6C40003CD31 /* libc++.tbd in Frameworks */,
 				B79A5CFD6299881CB3643ACB /* libPods-BaseProject.a in Frameworks */,
 			);
@@ -1143,6 +1162,8 @@
 		42C84EA91EF2DB060008189D /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				82DD2E01207E19CF00DD6C1C /* TencentQQ */,
+				82A16F42207DCCFA007B0008 /* WechatSDK1.8.2 */,
 				82B6D2A0205F4F5900C65CA4 /* IQKeyboardManager */,
 				7AFAE4FD205A3FCD00B14406 /* Masonry */,
 				7AFAE4B7205A236500B14406 /* MJRefreshNew */,
@@ -1487,6 +1508,7 @@
 		42F795A21F00C84600A11A69 /* MyCenter */ = {
 			isa = PBXGroup;
 			children = (
+				82A16F3C207DC367007B0008 /* inviteFrend */,
 				8298E2DD206E12F8006284F2 /* UserGuide */,
 				8298E2D6206E0B53006284F2 /* MyGrabOrder */,
 				8298E2CA206CBF29006284F2 /* MyPublishCar */,
@@ -1795,6 +1817,7 @@
 		7F5FE81AF3930B1D8AB68F96 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				82A16F4A207DCD72007B0008 /* libsqlite3.0.tbd */,
 				0396E69720720DD000B7EFDA /* GLKit.framework */,
 				035A2415206CC6EF0003CD31 /* libstdc++.6.0.9.tbd */,
 				035A2413206CC6E70003CD31 /* libz.tbd */,
@@ -1942,6 +1965,28 @@
 				8298E2E0206E1312006284F2 /* MyCenterUserGuideViewController.xib */,
 			);
 			path = UserGuide;
+			sourceTree = "<group>";
+		};
+		82A16F3C207DC367007B0008 /* inviteFrend */ = {
+			isa = PBXGroup;
+			children = (
+				82A16F3D207DC37A007B0008 /* InviteFrendViewController.h */,
+				82A16F3E207DC37A007B0008 /* InviteFrendViewController.m */,
+				82A16F3F207DC37A007B0008 /* InviteFrendViewController.xib */,
+			);
+			path = inviteFrend;
+			sourceTree = "<group>";
+		};
+		82A16F42207DCCFA007B0008 /* WechatSDK1.8.2 */ = {
+			isa = PBXGroup;
+			children = (
+				82A16F43207DCCFA007B0008 /* WXApi.h */,
+				82A16F44207DCCFA007B0008 /* WXApiObject.h */,
+				82A16F45207DCCFA007B0008 /* README.txt */,
+				82A16F46207DCCFA007B0008 /* WechatAuthSDK.h */,
+				82A16F47207DCCFA007B0008 /* libWeChatSDK.a */,
+			);
+			path = WechatSDK1.8.2;
 			sourceTree = "<group>";
 		};
 		82B6D29C205F4EE400C65CA4 /* CustomAlbum */ = {
@@ -2103,6 +2148,14 @@
 			path = AddMyCarInformation;
 			sourceTree = "<group>";
 		};
+		82DD2E01207E19CF00DD6C1C /* TencentQQ */ = {
+			isa = PBXGroup;
+			children = (
+				82DD2E02207E19DE00DD6C1C /* TencentOpenAPI.framework */,
+			);
+			path = TencentQQ;
+			sourceTree = "<group>";
+		};
 		82FCF93A2070C0EE0050140D /* view */ = {
 			isa = PBXGroup;
 			children = (
@@ -2192,7 +2245,7 @@
 				TargetAttributes = {
 					42A4442C1EF133E000F90791 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = PA574T6LR3;
+						DevelopmentTeam = XM54CYU6S2;
 						ProvisioningStyle = Automatic;
 					};
 					42A444481EF133E000F90791 = {
@@ -2267,6 +2320,7 @@
 				0396E68F2071DF1800B7EFDA /* GoodsInfoCell.xib in Resources */,
 				7AFAE525205A3FCE00B14406 /* README.md in Resources */,
 				7AFD2210205F86DD009DB138 /* TransportDynamicsViewController.xib in Resources */,
+				82A16F41207DC37A007B0008 /* InviteFrendViewController.xib in Resources */,
 				8298E2C3206CA72A006284F2 /* MyPublishCargoDetailInfoViewController.xib in Resources */,
 				8298E2D5206E01D1006284F2 /* MyPublishCarListTableViewCell.xib in Resources */,
 				7AFAE4B6205A115900B14406 /* ShipperOrderDetailCarListTableViewCell.xib in Resources */,
@@ -2277,6 +2331,7 @@
 				035A2408206C97C90003CD31 /* ChooseAddressSearchView.xib in Resources */,
 				827CFED32079C0CA000564D9 /* MyCarDetailUpdatePhoneViewController.xib in Resources */,
 				7AFAE51A205A3FCE00B14406 /* LICENSE in Resources */,
+				82A16F48207DCCFA007B0008 /* README.txt in Resources */,
 				42F10C50206E331800C9C8EC /* SureFooterCollectionReusableView.xib in Resources */,
 				7AFAE4AC205A0F5C00B14406 /* ShipperOrderDetailViewController.xib in Resources */,
 				7AFD2206205F821B009DB138 /* MessageViewController.xib in Resources */,
@@ -2448,6 +2503,7 @@
 				42F10C35206E331700C9C8EC /* HomeCarModel.m in Sources */,
 				42F10C28206E331700C9C8EC /* RotOrderviewmodel.m in Sources */,
 				7AFAE51B205A3FCE00B14406 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				82A16F40207DC37A007B0008 /* InviteFrendViewController.m in Sources */,
 				42F10C56206E331800C9C8EC /* TYPageControl.m in Sources */,
 				829762892073642300F1F003 /* CargoidentificationProgressViewController.m in Sources */,
 				827CFED22079C0CA000564D9 /* MyCarDetailUpdatePhoneViewController.m in Sources */,
@@ -2718,15 +2774,20 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PA574T6LR3;
+				DEVELOPMENT_TEAM = XM54CYU6S2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BaseProject",
+					"$(PROJECT_DIR)/BaseProject/Library/TencentQQ",
 				);
 				GCC_PREFIX_HEADER = BaseProject/Main/Header.pch;
 				INFOPLIST_FILE = BaseProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/BaseProject/Library/WechatSDK1.8.2",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "cc.petrochemical-Luming.app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2742,15 +2803,20 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PA574T6LR3;
+				DEVELOPMENT_TEAM = XM54CYU6S2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BaseProject",
+					"$(PROJECT_DIR)/BaseProject/Library/TencentQQ",
 				);
 				GCC_PREFIX_HEADER = BaseProject/Main/Header.pch;
 				INFOPLIST_FILE = BaseProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/BaseProject/Library/WechatSDK1.8.2",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "cc.petrochemical-Luming.app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -12,7 +12,13 @@
 #import <AMapFoundationKit/AMapFoundationKit.h>
 #import "APIKey.h"
 #import "LoginViewController.h"
-@interface AppDelegate ()
+#import "WXApi.h"
+#import <TencentOpenAPI/TencentOAuth.h>
+#import "TencentOpenAPI/QQApiInterface.h"
+
+
+@interface AppDelegate ()<WXApiDelegate>
+@property (strong, nonatomic) TencentOAuth* tencentOAuth;
 @end
 
 @implementation AppDelegate
@@ -33,6 +39,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    [self selectedWXApi];
+    [self selectedQQAction];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
     [self configureAPIKey];
@@ -77,5 +85,39 @@
     // Saves changes in the application's managed object context before the application terminates.
 }
 
+#pragma mark -- share
+- (void) selectedWXApi{
+    [WXApi registerApp:@"wx6499f71fc4509030"];
+}
+- (BOOL) application:(UIApplication *)application handleOpenURL:(NSURL *)url{
+    if ([[url scheme] isEqualToString:@"1106747616APP"]) {
+        return [TencentOAuth HandleOpenURL:url];
+    }else if ([[url scheme] isEqualToString:@"wx6499f71fc4509030"]){
+        return [WXApi handleOpenURL:url delegate:self];
+    }
+    return YES;
+}
+-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
+    if ([[url scheme] isEqualToString:@"1106747616APP"]) {
+        return [TencentOAuth HandleOpenURL:url];
+    }else if ([[url scheme] isEqualToString:@"wx6499f71fc4509030"]){
+        return [WXApi handleOpenURL:url delegate:self];
+    }
+    return YES;
+}
+-(void) onResp:(BaseResp*)resp{
+    NSString *str;
+    if (resp.errCode == 0) {
+        str = @"分享成功";
+    }else{
+        str = @"分享失败";
+    }
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:str delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    [alertView show];
+}
+
+- (void) selectedQQAction{
+    _tencentOAuth = [[TencentOAuth alloc] initWithAppId:@"1106747616APP" andDelegate:nil];
+}
 
 @end
