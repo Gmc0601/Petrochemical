@@ -11,6 +11,10 @@
 
 #import <AVKit/AVKit.h>
 #import "Masonry.h"
+#import "WXApi.h"
+#import <TencentOpenAPI/TencentOAuth.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+#import "NSString+commom.h"
 @interface InformationDetailViewController ()<UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
@@ -19,6 +23,7 @@
 @property (strong, nonatomic)  UIImageView *coverImageView;
 @property (nonatomic,strong) AVPlayerViewController *player;
 @property (strong, nonatomic)AVPlayerItem *item;
+@property (weak, nonatomic) IBOutlet UIView *shareView;
 
 @property (strong, nonatomic)NSDictionary *infoDic;
 @end
@@ -29,6 +34,17 @@
     [super viewDidLoad];
     if (self.type==0) {
         [self setCustomerTitle:@"资讯详情"];
+        
+//        UIButton *shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//        shareButton.frame = CGRectMake(0, 0, 44, 44);
+//        [shareButton setImage:[UIImage imageNamed:@"xin"] forState:UIControlStateNormal];
+//
+//        [shareButton addTarget:self action:@selector(rightBarClick) forControlEvents:UIControlEventTouchUpInside];
+//        shareButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+//        [shareButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 5 * kScreenWidth / 375.0)];
+//
+//        UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:messageButton];
+//        self.navigationItem.rightBarButtonItem = rightBarButtonItem;
     }
     else{
       [self setCustomerTitle:@"通知详情"];
@@ -149,6 +165,72 @@
     [self.videoView addSubview:_player.view];
     [_item addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
     [_player.player play];
+}
+
+- (IBAction)clickCloseShare:(id)sender {
+}
+#pragma mark -- methond
+- (IBAction)shareWXAction:(id)sender {
+    [self weixinShare:0];
+}
+- (IBAction)sharePYQAction:(id)sender {
+    [self weixinShare:1];
+}
+- (IBAction)shareQQAction:(id)sender {
+    NSString *utf8String = @"";
+    NSString *title = self.infoDic[@"title"];
+    NSString *description = self.infoDic[@"title"];
+
+    QQApiNewsObject *newsObj = [QQApiNewsObject
+                                objectWithURL:[NSURL URLWithString:utf8String]
+                                title:title
+                                description:description
+                                previewImageURL:nil];
+    SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:newsObj];
+    //将内容分享到qq
+    QQApiSendResultCode sent = [QQApiInterface sendReq:req];
+    //将内容分享到qzone
+}
+- (IBAction)shareKJAction:(id)sender {
+    
+}
+
+
+- (void) weixinShare:(int ) scene{
+    NSString *kLinkURL = @"";
+    
+    NSString *kLinkTitle = self.infoDic[@"title"];
+    NSString *kLinkDescription = self.infoDic[@"title"];
+    SendMessageToWXReq *req1 = [[SendMessageToWXReq alloc]init];
+    
+    // 是否是文档
+    req1.bText =  NO;
+    
+    //    WXSceneSession  = 0,        /**< 聊天界面    */
+    //    WXSceneTimeline = 1,        /**< 朋友圈      */
+    //    WXSceneFavorite = 2,
+    
+    if (scene == 0) {
+        req1.scene = WXSceneSession;
+    }else{
+        req1.scene = WXSceneTimeline;
+    }
+    
+    
+    //创建分享内容对象
+    WXMediaMessage *urlMessage = [WXMediaMessage message];
+    urlMessage.title = kLinkTitle;//分享标题
+    urlMessage.description = kLinkDescription;//分享描述
+    //创建多媒体对象
+    WXWebpageObject *webObj = [WXWebpageObject object];
+    webObj.webpageUrl = kLinkURL;//分享链接
+    
+    //完成发送对象实例
+    urlMessage.mediaObject = webObj;
+    req1.message = urlMessage;
+    
+    //发送分享信息
+    [WXApi sendReq:req1];
 }
 
 -(void)dealloc{
