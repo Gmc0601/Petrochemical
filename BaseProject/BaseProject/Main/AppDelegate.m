@@ -17,7 +17,7 @@
 #import "TencentOpenAPI/QQApiInterface.h"
 
 
-@interface AppDelegate ()<WXApiDelegate>
+@interface AppDelegate ()<WXApiDelegate,QQApiInterfaceDelegate>
 @property (strong, nonatomic) TencentOAuth* tencentOAuth;
 @end
 
@@ -91,19 +91,18 @@
 }
 - (BOOL) application:(UIApplication *)application handleOpenURL:(NSURL *)url{
     if ([[url scheme] isEqualToString:@"1106747616APP"]) {
-        return [TencentOAuth HandleOpenURL:url];
-    }else if ([[url scheme] isEqualToString:@"wx6499f71fc4509030"]){
+        return [QQApiInterface handleOpenURL:url delegate:self];
+    }else {
         return [WXApi handleOpenURL:url delegate:self];
     }
-    return YES;
+    
 }
 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
     if ([[url scheme] isEqualToString:@"1106747616APP"]) {
-        return [TencentOAuth HandleOpenURL:url];
-    }else if ([[url scheme] isEqualToString:@"wx6499f71fc4509030"]){
+        return [QQApiInterface handleOpenURL:url delegate:self];
+    }else{
         return [WXApi handleOpenURL:url delegate:self];
     }
-    return YES;
 }
 -(void) onResp:(BaseResp*)resp{
     NSString *str;

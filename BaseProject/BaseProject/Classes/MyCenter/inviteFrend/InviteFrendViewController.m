@@ -31,7 +31,7 @@
     NSString *urlString = validString(self.info[@"ios"]);
     self.prictureImageView.image = [self encodeQRImageWithContent:urlString size:self.prictureImageView.frame.size];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        weakslef.sharePic = [NSString stringWithFormat:@"%@",self.info[@""]].urlImage;
+        weakslef.sharePic = [NSString stringWithFormat:@"%@",self.info[@"img"]].urlImage;
     });
 }
 #pragma mark -- methond
@@ -45,12 +45,12 @@
     NSString *utf8String = @"http://www.163.com";
     NSString *title = @"新闻标题";
     NSString *description = @"新闻描述";
-    NSString *previewImageUrl = @"http://cdni.wired.co.uk/620x413/k_n/NewsForecast%20copy_620x413.jpg";
+    NSString *previewImageUrl = validString(self.info[@"img"]);
     QQApiNewsObject *newsObj = [QQApiNewsObject
                                 objectWithURL:[NSURL URLWithString:utf8String]
                                 title:title
                                 description:description
-                                previewImageURL:[NSURL URLWithString:previewImageUrl]];
+                                previewImageURL:nil];
     SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:newsObj];
     //将内容分享到qq
     QQApiSendResultCode sent = [QQApiInterface sendReq:req];
@@ -154,8 +154,12 @@
     //    WXSceneTimeline = 1,        /**< 朋友圈      */
     //    WXSceneFavorite = 2,
     
+    if (scene == 0) {
+        req1.scene = WXSceneSession;
+    }else{
+        req1.scene = WXSceneTimeline;
+    }
     
-    req1.scene = scene;
     
     //创建分享内容对象
     WXMediaMessage *urlMessage = [WXMediaMessage message];

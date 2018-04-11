@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>保存图片</string>
-	<key>LSApplicationCategoryType</key>
-	<string></string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>ch</string>
 	<key>CFBundleDisplayName</key>
@@ -29,7 +25,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>1106747616APP</string>
+				<string>1106747616</string>
 			</array>
 		</dict>
 		<dict>
@@ -43,6 +39,8 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>iosamap</string>
@@ -58,6 +56,8 @@
 	<string>相册</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>此app 需要您的同意才能使用定位服务</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>保存图片</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>相机</string>
 	<key>Photo Library Additions Usage Description</key>
