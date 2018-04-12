@@ -21,11 +21,15 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleURLName</key>
+			<string>QQ41f7a0e2</string>
+		</dict>
+		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>1106747616</string>
+				<string>tencent1106747618</string>
 			</array>
 		</dict>
 		<dict>
@@ -43,6 +47,13 @@
 	<string></string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>mqqopensdkfriend</string>
+		<string>mqqopensdkapiV2</string>
+		<string>mqzone</string>
+		<string>mqqapi</string>
+		<string>mqq</string>
+		<string>wechat</string>
+		<string>weixin</string>
 		<string>iosamap</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>

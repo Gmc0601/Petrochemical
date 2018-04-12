@@ -24,6 +24,8 @@
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,assign) NSInteger page;
 
+@property (nonatomic,strong) UILabel *noDataLabel;
+
 @end
 
 @implementation OrderViewController
@@ -36,7 +38,6 @@
     [super viewDidLoad];
     menuIndex = 0;
     [self setCustomerTitle:@"货主订单"];
-  
     [self setTopTypeInfo];
     
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 108, kScreenW, kScreenH-108-49) style:UITableViewStylePlain];
@@ -71,8 +72,9 @@
 }
 
 -(void)requestList{
+    NSString *usertoken = [ConfigModel getStringforKey:UserToken];
     NSDictionary *dic = @{
-                          @"userToken":@"cb97a780c081a49154bed3aa50842ff4",
+                          @"userToken":usertoken,
                           };
     
     [HttpRequest postPath:@"_owner_indent_001" params:dic resultBlock:^(id responseObject, NSError *error) {
@@ -146,6 +148,12 @@
     else{
         self.listArray = nil;
     }
+    if (self.listArray.count) {
+        self.noDataLabel.hidden = YES;
+    }
+    else{
+        self.noDataLabel.hidden = NO;
+    }
     [self.tableView reloadData];
 }
 
@@ -207,6 +215,18 @@
     [self.navigationController pushViewController:con animated:YES];
 }
 
+-(UILabel *)noDataLabel{
+    if (!_noDataLabel) {
+        _noDataLabel = [[UILabel alloc] init];
+        [self.view addSubview:_noDataLabel];
+        _noDataLabel.frame = self.tableView.frame;
+        _noDataLabel.text = @"暂无数据";
+        _noDataLabel.textColor = RGBColor(81, 81, 81);
+        _noDataLabel.textAlignment = NSTextAlignmentCenter;
+        //_noDataLabel.backgroundColor = [UIColor whiteColor];
+    }
+    return _noDataLabel;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
