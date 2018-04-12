@@ -177,4 +177,26 @@
     //发送分享信息
     [WXApi sendReq:req1];
 }
+
+- (void) shareQQMethod:(int) type{
+    NSString *utf8String = validString(self.info[@"ios"]);
+    NSString *title = validString(self.info[@"host_title"]);
+    NSString *description = validString(self.info[@"vice_title"]);
+    NSString *previewImageUrl = validString(self.info[@"img"]);
+    QQApiNewsObject *newsObj = [QQApiNewsObject
+                                objectWithURL:[NSURL URLWithString:utf8String]
+                                title:title
+                                description:description
+                                previewImageURL:[NSURL URLWithString:previewImageUrl]];
+    SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:newsObj];
+    //将内容分享到qq
+    if (type == 0) {
+        QQApiSendResultCode sent = [QQApiInterface sendReq:req];
+        NSLog(@"______%d",sent);
+    }else{
+        QQApiSendResultCode sent = [QQApiInterface SendReqToQZone:req];
+        NSLog(@"______%d",sent);
+    }
+    
+}
 @end

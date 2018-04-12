@@ -104,20 +104,37 @@
         return [WXApi handleOpenURL:url delegate:self];
     }
 }
--(void) onResp:(BaseResp*)resp{
+-(void) onResp:(id)resp{
     NSString *str;
-    if (resp.errCode == 0) {
-        str = @"分享成功";
-    }else{
-        str = @"分享失败";
+    if ([resp isKindOfClass:[SendMessageToWXResp class]]) {
+        SendMessageToWXResp * tmpResp = (SendMessageToWXResp *)resp;
+        if (tmpResp.errCode == WXSuccess) {
+             str = @"分享成功";
+        }else{
+            str = @"分享失败";
+        }
+        
+    }else if ([resp isKindOfClass:[SendMessageToQQResp class]]){
+        SendMessageToQQResp * tmpResp = (SendMessageToQQResp *)resp;
+        str = @"分享结果";
     }
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:str delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
     [alertView show];
 }
 
 - (void) selectedQQAction{
-   
     _tencentOAuth = [[TencentOAuth alloc] initWithAppId:@"1106747618" andDelegate:nil];
 }
-
+/**
+ 处理来至QQ的请求
+ */
+- (void)onReq:(QQBaseReq *)req{
+    
+}
+/**
+ 处理QQ在线状态的回调
+ */
+- (void)isOnlineResponse:(NSDictionary *)response{
+    
+}
 @end
