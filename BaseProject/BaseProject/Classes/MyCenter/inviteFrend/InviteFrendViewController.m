@@ -42,22 +42,10 @@
     [self weixinShare:1];
 }
 - (IBAction)shareQQAction:(id)sender {
-    NSString *utf8String = @"http://www.163.com";
-    NSString *title = @"新闻标题";
-    NSString *description = @"新闻描述";
-    NSString *previewImageUrl = validString(self.info[@"img"]);
-    QQApiNewsObject *newsObj = [QQApiNewsObject
-                                objectWithURL:[NSURL URLWithString:utf8String]
-                                title:title
-                                description:description
-                                previewImageURL:nil];
-    SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:newsObj];
-    //将内容分享到qq
-    QQApiSendResultCode sent = [QQApiInterface sendReq:req];
-    //将内容分享到qzone
+    [self shareQQMethod:0];
 }
 - (IBAction)shareKJAction:(id)sender {
-    
+    [self shareQQMethod:1];
 }
 
 - (IBAction)savePictureAction:(id)sender {
