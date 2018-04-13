@@ -52,7 +52,7 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" red="0.0078431372549019607" green="0.54509803921568623" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="1" green="0.50588235294117645" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="Sdb-pA-ihH" secondAttribute="bottom" id="1bI-ua-bnt"/>
                                 <constraint firstItem="dA8-iM-jwo" firstAttribute="leading" secondItem="0ff-9V-IIz" secondAttribute="leading" constant="20" id="Q7b-b8-ce7"/>
@@ -179,7 +179,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JLm-v0-YuA">
                                     <rect key="frame" x="0.0" y="110" width="375" height="54"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="huoyuan" translatesAutoresizingMaskIntoConstraints="NO" id="ici-C0-0gA">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wode_wofabudehuoyuan" translatesAutoresizingMaskIntoConstraints="NO" id="ici-C0-0gA">
                                             <rect key="frame" x="20" y="18" width="20" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="20" id="57K-2O-YkL"/>
@@ -544,9 +544,9 @@
     <resources>
         <image name="baoguo" width="25" height="25"/>
         <image name="cheyuan" width="25" height="25"/>
-        <image name="huoyuan" width="25" height="25"/>
         <image name="pingtai" width="25" height="25"/>
         <image name="qiangdan" width="25" height="25"/>
+        <image name="wode_wofabudehuoyuan" width="25" height="25"/>
         <image name="wodecheliang" width="25" height="25"/>
         <image name="yaoqing" width="25" height="25"/>
         <image name="youbianjiantou" width="8" height="13"/>

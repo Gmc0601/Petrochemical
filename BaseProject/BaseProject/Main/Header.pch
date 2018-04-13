@@ -21,7 +21,7 @@
 #define ios8 ([[UIDevice currentDevice].systemVersion doubleValue] >= 8.0)
 
 // 主色调
-#define ThemeBlue RGBColorAlpha(2, 139, 243, 1)
+#define ThemeBlue UIColorFromHex(0xf68118)
 
 /*
  通用

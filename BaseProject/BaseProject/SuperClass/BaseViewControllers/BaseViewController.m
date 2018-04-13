@@ -29,6 +29,7 @@
     }
     self.view.backgroundColor =[UIColor whiteColor];
 
+//    self.edgesForExtendedLayout=UIRectEdgeNone;
     NSArray *viewControllers = self.navigationController.viewControllers;
     if (viewControllers.count > 1){
         [self addLeftBarButtonWithImage:[UIImage imageNamed:@"zz"] action:@selector(backAction)];
@@ -40,6 +41,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleLightContent animated:YES];
 }
 
 - (void)backSweepGesture:(UISwipeGestureRecognizer*)gesture{
@@ -54,7 +56,7 @@
 -(void)setCustomerTitle:(NSString *)title{
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 44)];
     titleLabel.text = title;
-    titleLabel.textColor = [UIColor blackColor];
+    titleLabel.textColor = [UIColor whiteColor];
     titleLabel.font = [UIFont systemFontOfSize:18];
     self.navigationItem.titleView = titleLabel;
 }
