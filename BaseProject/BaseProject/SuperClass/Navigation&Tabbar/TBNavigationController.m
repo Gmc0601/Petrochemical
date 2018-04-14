@@ -17,10 +17,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 //     设置导航栏背景
-//    UIImage *bgImage = [[UIImage imageNamed:@"nab.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0) resizingMode:UIImageResizingModeStretch];
+    
+//    UIImage *bgImage = [[UIImage imageNamed:@"daohang-1"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0) resizingMode:UIImageResizingModeStretch];
 //    [[UINavigationBar appearance] setBackgroundImage:bgImage forBarMetrics:UIBarMetricsDefault];
 //    设置导航栏背景色
-    [self.navigationBar setBackgroundColor:[UIColor whiteColor]];
+    [self.navigationBar setBackgroundColor:ThemeBlue];
+    [self.navigationBar setTintColor:ThemeBlue];
 //     设置statusBar颜色
 //    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     self.interactivePopGestureRecognizer.delegate = self;

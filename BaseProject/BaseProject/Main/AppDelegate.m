@@ -24,6 +24,19 @@
 @implementation AppDelegate
 - (void)configureAPIKey
 {
+    
+    [[UITabBar appearance] setShadowImage:[[UIImage alloc]init]];
+    
+    [[UITabBar appearance] setBackgroundImage:[[UIImage alloc]init]];
+    
+    [[UITabBar appearance] setBackgroundColor:UIColorFromHex(0x454545)];
+    
+    UINavigationBar *navBar = [UINavigationBar appearance];
+    navBar.barTintColor = ThemeBlue;
+    NSDictionary *dict = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+    [navBar setTitleTextAttributes:dict];
+    
+    
     if ([APIKey length] == 0)
     {
         NSString *reason = [NSString stringWithFormat:@"apiKey为空，请检查key是否正确设置。"];

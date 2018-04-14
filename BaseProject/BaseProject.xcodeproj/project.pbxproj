@@ -57,6 +57,9 @@
 		422F20292047F7B6009481CC /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 422F20262047F7B6009481CC /* LoginViewController.xib */; };
 		422F202C2047F848009481CC /* UIWebView+TS_JavaScriptContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 422F202B2047F847009481CC /* UIWebView+TS_JavaScriptContext.m */; };
 		422F202F2047F882009481CC /* CCWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 422F202D2047F882009481CC /* CCWebViewViewController.m */; };
+		427176492080874900D8DF70 /* HomeCarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 427176482080874900D8DF70 /* HomeCarTableViewCell.m */; };
+		4271764C2080875E00D8DF70 /* HomeGoodsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4271764B2080875E00D8DF70 /* HomeGoodsTableViewCell.m */; };
+		4271764F2080A40F00D8DF70 /* TimeManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4271764E2080A40F00D8DF70 /* TimeManage.m */; };
 		42A4443B1EF133E000F90791 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42A444391EF133E000F90791 /* Main.storyboard */; };
 		42A4443E1EF133E000F90791 /* BaseProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 42A4443C1EF133E000F90791 /* BaseProject.xcdatamodeld */; };
 		42A444401EF133E000F90791 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42A4443F1EF133E000F90791 /* Assets.xcassets */; };
@@ -378,6 +381,12 @@
 		422F202B2047F847009481CC /* UIWebView+TS_JavaScriptContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+TS_JavaScriptContext.m"; sourceTree = "<group>"; };
 		422F202D2047F882009481CC /* CCWebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCWebViewViewController.m; sourceTree = "<group>"; };
 		422F202E2047F882009481CC /* CCWebViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCWebViewViewController.h; sourceTree = "<group>"; };
+		427176472080874900D8DF70 /* HomeCarTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeCarTableViewCell.h; sourceTree = "<group>"; };
+		427176482080874900D8DF70 /* HomeCarTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeCarTableViewCell.m; sourceTree = "<group>"; };
+		4271764A2080875E00D8DF70 /* HomeGoodsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeGoodsTableViewCell.h; sourceTree = "<group>"; };
+		4271764B2080875E00D8DF70 /* HomeGoodsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeGoodsTableViewCell.m; sourceTree = "<group>"; };
+		4271764D2080A40F00D8DF70 /* TimeManage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimeManage.h; sourceTree = "<group>"; };
+		4271764E2080A40F00D8DF70 /* TimeManage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimeManage.m; sourceTree = "<group>"; };
 		42A4442D1EF133E000F90791 /* BaseProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42A4443A1EF133E000F90791 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		42A4443D1EF133E000F90791 /* BaseProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BaseProject.xcdatamodel; sourceTree = "<group>"; };
@@ -1329,6 +1338,8 @@
 			children = (
 				42F10BD3206E331700C9C8EC /* XMLReader.h */,
 				42F10BD4206E331700C9C8EC /* XMLReader.m */,
+				4271764D2080A40F00D8DF70 /* TimeManage.h */,
+				4271764E2080A40F00D8DF70 /* TimeManage.m */,
 			);
 			path = HomePageTool;
 			sourceTree = "<group>";
@@ -1398,6 +1409,8 @@
 				42F10BEE206E331700C9C8EC /* CarTableViewCell.h */,
 				42F10BEF206E331700C9C8EC /* CarTableViewCell.m */,
 				42F10BF0206E331700C9C8EC /* CarTableViewCell.xib */,
+				427176472080874900D8DF70 /* HomeCarTableViewCell.h */,
+				427176482080874900D8DF70 /* HomeCarTableViewCell.m */,
 			);
 			path = CarCell;
 			sourceTree = "<group>";
@@ -1419,6 +1432,8 @@
 				42F10BF8206E331700C9C8EC /* GoodsTableViewCell.h */,
 				42F10BF9206E331700C9C8EC /* GoodsTableViewCell.xib */,
 				42F10BFA206E331700C9C8EC /* GoodsTableViewCell.m */,
+				4271764A2080875E00D8DF70 /* HomeGoodsTableViewCell.h */,
+				4271764B2080875E00D8DF70 /* HomeGoodsTableViewCell.m */,
 			);
 			path = GoodsCell;
 			sourceTree = "<group>";
@@ -2245,7 +2260,7 @@
 				TargetAttributes = {
 					42A4442C1EF133E000F90791 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = XM54CYU6S2;
+						DevelopmentTeam = PA574T6LR3;
 						ProvisioningStyle = Automatic;
 					};
 					42A444481EF133E000F90791 = {
@@ -2461,6 +2476,7 @@
 				82B6D2F1205F4FB400C65CA4 /* CargoidentificationFirstViewController.m in Sources */,
 				42F10C55206E331800C9C8EC /* TYCyclePagerViewCell.m in Sources */,
 				033C55292079B77C001BFF07 /* CompleteAddressCell.m in Sources */,
+				4271764F2080A40F00D8DF70 /* TimeManage.m in Sources */,
 				42E6175E2058F16400B01D6D /* InformationViewController.m in Sources */,
 				82B6D2D2205F4F5900C65CA4 /* IQUIViewController+Additions.m in Sources */,
 				7A286F05205912D0006E4E0A /* WJItemsControlView.m in Sources */,
@@ -2509,6 +2525,7 @@
 				827CFED22079C0CA000564D9 /* MyCarDetailUpdatePhoneViewController.m in Sources */,
 				8211DC532062014900A747A4 /* UIImage+MyProperty.m in Sources */,
 				42F795DB1F00CC3E00A11A69 /* TBRefreshHeadView.m in Sources */,
+				427176492080874900D8DF70 /* HomeCarTableViewCell.m in Sources */,
 				03E7471E207904DE00E6B992 /* TTextView.m in Sources */,
 				82B6D29F205F4EE400C65CA4 /* LeasCustomAlbum.m in Sources */,
 				42F10C4C206E331700C9C8EC /* GoodsTableViewCell.m in Sources */,
@@ -2524,6 +2541,7 @@
 				82FCF93E2070C2E50050140D /* MyGrabOrderListTableViewCell.m in Sources */,
 				42F10C5C206E331800C9C8EC /* SDCollectionViewCell.m in Sources */,
 				82B6D2C9205F4F5900C65CA4 /* IQUIView+IQKeyboardToolbar.m in Sources */,
+				4271764C2080875E00D8DF70 /* HomeGoodsTableViewCell.m in Sources */,
 				829762832073515300F1F003 /* MyCarDetailInfomationViewController.m in Sources */,
 				42F10C3E206E331700C9C8EC /* CDZPicker.m in Sources */,
 				42F10C32206E331700C9C8EC /* HomeGoodsModel.m in Sources */,
@@ -2774,7 +2792,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XM54CYU6S2;
+				DEVELOPMENT_TEAM = PA574T6LR3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BaseProject",
@@ -2803,7 +2821,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XM54CYU6S2;
+				DEVELOPMENT_TEAM = PA574T6LR3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BaseProject",
