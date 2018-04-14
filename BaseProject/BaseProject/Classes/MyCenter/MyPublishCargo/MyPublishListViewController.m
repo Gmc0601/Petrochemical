@@ -13,6 +13,8 @@
 #import "MyPublishCargoDetailInfoViewController.h"
 #import "GoodsDetialViewController.h"
 
+#import "TBNavigationController.h"
+#import "GoodsListViewController.h"
 
 @interface MyPublishListViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)WJItemsControlView *topItemsView;
@@ -26,13 +28,16 @@
     __block NSInteger menuIndex;
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self setupDataSource];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = YES;
     [self setCustomerTitle:@"我发布的货源"];
     _dataSource = @[].mutableCopy;
     [self setupUI];
-    [self setupDataSource];
 }
 
 - (void) setupUI{
@@ -101,7 +106,9 @@
 
 #pragma mark -- method
 - (void) rightButtonAction{
-    
+    GoodsListViewController * goodsListVC = [[GoodsListViewController alloc]init];
+    TBNavigationController *nav = [[TBNavigationController alloc] initWithRootViewController:goodsListVC];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 #pragma mark -- <UITableViewDelegate,UITableViewDataSource>

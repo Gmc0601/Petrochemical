@@ -11,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyCenterViewController">
             <connections>
+                <outlet property="shareMainView" destination="BJy-y8-Jl5" id="mlK-3W-VY9"/>
+                <outlet property="shareMainViewH" destination="jia-uh-QCB" id="Bld-4f-HD9"/>
                 <outlet property="userHeaderImageView" destination="dA8-iM-jwo" id="J0w-Cg-UUI"/>
                 <outlet property="userNickNameLabel" destination="Jyn-dH-F9I" id="UNx-d2-arD"/>
                 <outlet property="user_statusLabel" destination="7A6-re-wmj" id="P7Y-1L-SrS"/>
@@ -440,7 +442,7 @@
                                         <constraint firstItem="z6j-mF-OFv" firstAttribute="top" secondItem="Hbw-DH-ib4" secondAttribute="top" id="jk0-Bs-4bm"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BJy-y8-Jl5">
+                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BJy-y8-Jl5">
                                     <rect key="frame" x="0.0" y="55" width="375" height="54"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yaoqing" translatesAutoresizingMaskIntoConstraints="NO" id="COf-9r-52F">
@@ -493,9 +495,9 @@
                                 <constraint firstItem="Hbw-DH-ib4" firstAttribute="leading" secondItem="W0W-sG-Kw0" secondAttribute="leading" id="7TG-nd-Rh4"/>
                                 <constraint firstItem="BJy-y8-Jl5" firstAttribute="top" secondItem="Hbw-DH-ib4" secondAttribute="bottom" constant="1" id="Ggi-Zt-bTN"/>
                                 <constraint firstAttribute="trailing" secondItem="Hbw-DH-ib4" secondAttribute="trailing" id="MWn-hw-gMl"/>
-                                <constraint firstAttribute="height" constant="109" id="OFY-JH-Exr"/>
                                 <constraint firstItem="Hbw-DH-ib4" firstAttribute="top" secondItem="W0W-sG-Kw0" secondAttribute="top" id="auz-Kh-eB6"/>
                                 <constraint firstItem="BJy-y8-Jl5" firstAttribute="leading" secondItem="W0W-sG-Kw0" secondAttribute="leading" id="heb-7l-8kc"/>
+                                <constraint firstAttribute="bottom" secondItem="BJy-y8-Jl5" secondAttribute="bottom" id="ywy-qC-T3Y"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3zV-lJ-nzx">

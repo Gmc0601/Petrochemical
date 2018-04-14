@@ -74,7 +74,7 @@
     [param setValue:@"2000" forKey:@"size"];
     [param setValue:_searchStr forKey:@"content"];
     [param setValue:@(menuIndex+1) forKey:@"status"];
-    [HttpRequest postPath:@"_user_goods_001" params:param resultBlock:^(id responseObject, NSError *error) {
+    [HttpRequest postPath:@"_userindent_001" params:param resultBlock:^(id responseObject, NSError *error) {
         NSDictionary *dic = responseObject;
         
         int errorint = [dic[@"error"] intValue];

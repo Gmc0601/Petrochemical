@@ -10,9 +10,6 @@
 
 @interface MyPublishCargoDetailXiehuoView()
 
-@property (weak, nonatomic) IBOutlet UILabel *unload_address;
-@property (weak, nonatomic) IBOutlet UILabel *unload;
-
 @end
 
 @implementation MyPublishCargoDetailXiehuoView

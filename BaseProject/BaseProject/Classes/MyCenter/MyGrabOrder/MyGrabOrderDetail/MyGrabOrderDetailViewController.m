@@ -7,6 +7,7 @@
 //
 
 #import "MyGrabOrderDetailViewController.h"
+#import "MyPublishCargoDetailXiehuoView.h"
 
 @interface MyGrabOrderDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *statusImageView;
@@ -56,6 +57,12 @@
         }
     }];
 }
+
+- (IBAction)callPhoneAction:(id)sender {
+    NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"tel:%@",validString(self.dataSource[@"car_mobile"])];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+}
+
 - (void) setDataSource:(NSDictionary *)dataSource{
     _dataSource = dataSource;
     int indent_status = [validString(dataSource[@"indent_status"]) intValue];
@@ -99,5 +106,19 @@
     self.costLabel.text = [NSString stringWithFormat:@"%@元",dataSource[@"transportation"]];
     self.otherLabel.text = validString(dataSource[@"remark"]);
     self.otherTimeLabel.text = validString(dataSource[@"create_time"]);
+    NSArray *unload = dataSource[@"unload"];
+    NSArray *unload_address = dataSource[@"unload_address"];
+    if ([unload isKindOfClass:[NSArray class]] && [unload_address isKindOfClass:[NSArray class]]) {
+        NSInteger temp = unload.count < unload_address.count ?: unload_address.count;
+        self.endViewH.constant = temp*54.0;
+        for (int index = 0; index < temp; index ++) {
+            MyPublishCargoDetailXiehuoView *end = [[NSBundle mainBundle] loadNibNamed:@"MyPublishCargoDetailXiehuoView" owner:self options:nil].firstObject;
+            end.frame = CGRectMake(0, index*54, kScreenW, 54);
+            //end.dataDic = xiehuo[index];
+            end.unload_address.text = validString(unload_address[index]);
+            end.unload.text = validString(unload[index]);
+            [self.endView addSubview:end];
+        }
+    }
 }
 @end

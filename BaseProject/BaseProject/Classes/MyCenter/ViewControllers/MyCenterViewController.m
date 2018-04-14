@@ -24,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *userNickNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *user_statusLabel;
 
+@property (weak, nonatomic) IBOutlet UIView *shareMainView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *shareMainViewH;
 
 @property (nonatomic, strong) UITableView *noUseTableView;
 @property (strong, nonatomic) NSMutableDictionary *userInfo;
@@ -215,9 +217,9 @@
     _shareInfoDic = shareInfoDic;
     _app_onoff = [validString(shareInfoDic[@"app_onoff"]) intValue];
     if (_app_onoff == 2) {
-        
+        self.shareMainViewH.constant = 54;
     }else{
-        
+        self.shareMainViewH.constant = 0;
     }
 }
 @end

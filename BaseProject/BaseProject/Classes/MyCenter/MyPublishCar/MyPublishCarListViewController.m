@@ -12,6 +12,9 @@
 #import "MyPublishCarListTableViewCell.h"
 #import "CarsDetialViewController.h"
 
+#import "CarListViewController.h"
+#import "TBNavigationController.h"
+
 
 @interface MyPublishCarListViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)WJItemsControlView *topItemsView;
@@ -25,12 +28,15 @@
     __block NSInteger menuIndex;
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self setupDataSource];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     _dataSource = @[].mutableCopy;
     [self setCustomerTitle:@"我发布的车源"];
     [self setupUI];
-    [self setupDataSource];
 }
 - (void) setupUI{
     //头部控制的segMent
@@ -98,7 +104,9 @@
 
 #pragma mark -- method
 - (void) rightButtonAction{
-    
+    CarListViewController * carListVC = [[CarListViewController alloc]init];
+    TBNavigationController *nav = [[TBNavigationController alloc] initWithRootViewController:carListVC];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 

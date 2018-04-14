@@ -10,4 +10,6 @@
 
 @interface MyPublishCargoDetailXiehuoView : UIView
 @property (strong, nonatomic) NSDictionary *dataDic;
+@property (weak, nonatomic) IBOutlet UILabel *unload_address;
+@property (weak, nonatomic) IBOutlet UILabel *unload;
 @end

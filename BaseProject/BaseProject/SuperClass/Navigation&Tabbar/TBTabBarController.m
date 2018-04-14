@@ -57,7 +57,7 @@
     [self setChildVC:video title:@"咨询" image:@"zixun" selectedImage:@"zixundian"];
     
     MyCenterViewController *myVC = [[MyCenterViewController alloc] init];
-    [self setChildVC:myVC title:@"我的" image:@"wode" selectedImage:@"wodedian"];
+    [self setChildVC:myVC title:@"我的" image:@"unwode" selectedImage:@"wodedian"];
 
 }
 
