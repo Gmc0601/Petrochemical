@@ -48,6 +48,7 @@
     }
     self.noUseTableView.scrollIndicatorInsets = self.noUseTableView.contentInset;
     [self openShareAction];
+    [self creatCarType];
 }
 
 
@@ -221,5 +222,29 @@
     }else{
         self.shareMainViewH.constant = 0;
     }
+}
+
+- (void) creatCarType{
+    [HttpRequest postPath:@"_tanklist_001" params:nil resultBlock:^(id responseObject, NSError *error) {
+        NSDictionary *dic = responseObject;
+        int errorint = [dic[@"error"] intValue];
+        if (errorint == 0 ) {
+            NSArray *info = dic[@"info"];
+            if ([info isKindOfClass:[NSArray class]]) {
+                NSMutableArray *tempArray = @[].mutableCopy;
+                for (NSDictionary *dic in info) {
+                    if ([dic isKindOfClass:[NSDictionary class]]) {
+                        NSMutableDictionary *tempDic = @{}.mutableCopy;
+                        [tempDic setValue:dic[@"id"] forKey:@"type"];
+                        [tempDic setValue:dic[@"type"] forKey:@"linkname"];
+                        [tempArray addObject:tempDic];
+                    }
+                }
+                [[NSUserDefaults standardUserDefaults] setValue:tempArray forKey:@"creatCarTypeArray"];
+            }
+        }else {
+            
+        }
+    }];
 }
 @end

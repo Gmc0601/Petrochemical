@@ -26,6 +26,8 @@
 @property (strong, nonatomic) NSMutableDictionary *carTypeValue;
 @property (strong, nonatomic) UIImage *drivingLicenceImageValue;
 @property (strong, nonatomic) UIImage *otherImageValue;
+@property (strong, nonatomic) NSMutableArray *carType;
+
 @end
 
 @implementation AddMyCarInformationSecondViewController
@@ -33,23 +35,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = YES;
+    self.carType = @[].mutableCopy;
+    NSArray *creatCarTypeArray = [[NSUserDefaults standardUserDefaults] valueForKey:@"creatCarTypeArray"];
+    if ([creatCarTypeArray isKindOfClass:[NSArray class]]) {
+        self.carType = creatCarTypeArray.mutableCopy;
+    }
+    
     if (self.carInfo) {
         __weak typeof(self) weakself = self;
         [self setCustomerTitle:@"修改车辆信息"];
         self.carNumberTextField.text = validString(self.carInfo[@"license"]);
         self.carTypeTextField.text = validString(self.carInfo[@"type"]);
-        if ([self.carInfo[@"type"] isEqualToString:@"碳钢罐"]) {
-            self.carTypeValue = @{@"type":@"1",@"linkname":@"碳钢罐"}.mutableCopy;
-        }else if ([self.carInfo[@"type"] isEqualToString:@"不锈钢罐"]){
-            self.carTypeValue = @{@"type":@"2",@"linkname":@"不锈钢罐"}.mutableCopy;
-        }else if ([self.carInfo[@"type"] isEqualToString:@"锰钢罐"]){
-            self.carTypeValue = @{@"type":@"3",@"linkname":@"锰钢罐"}.mutableCopy;
-        }else if ([self.carInfo[@"type"] isEqualToString:@"铝罐"]){
-            self.carTypeValue = @{@"type":@"4",@"linkname":@"铝罐"}.mutableCopy;
-        }else if ([self.carInfo[@"type"] isEqualToString:@"钢衬塑"]){
-            self.carTypeValue = @{@"type":@"5",@"linkname":@"钢衬塑"}.mutableCopy;
-        }else{
-            self.carTypeValue = @{@"type":@"6",@"linkname":@"塑料罐"}.mutableCopy;
+        for (NSDictionary *dic in self.carType) {
+            if ([dic isKindOfClass:[NSDictionary class]]) {
+                if ([self.carInfo[@"type"] isEqual:dic[@"linkname"]]) {
+                    self.carTypeValue = dic.mutableCopy;
+                }
+            }
         }
         self.maxLoadTextField.text = validString(self.carInfo[@"load"]);
         [self.drivingLicenceImageView sd_setImageWithURL:[NSURL URLWithString:validString(self.carInfo[@"drive_img"])] placeholderImage:DefaultImage];
@@ -63,19 +65,12 @@
         [self setCustomerTitle:@"添加车辆"];
     }
 }
-
 #pragma mark -- method
 
 - (IBAction)selectedCarTypeAction:(id)sender {
     //1碳钢罐2不锈钢罐3锰钢罐4铝罐5钢衬塑6塑料罐
     __weak typeof(self) weakself = self;
-    NSArray *carType = @[@{@"type":@"1",@"linkname":@"碳钢罐"},
-                         @{@"type":@"2",@"linkname":@"不锈钢罐"},
-                         @{@"type":@"3",@"linkname":@"锰钢罐"},
-                         @{@"type":@"4",@"linkname":@"铝罐"},
-                         @{@"type":@"5",@"linkname":@"钢衬塑"},
-                         @{@"type":@"6",@"linkname":@"塑料罐"}];
-    [CustomSeletedPickView creatCustomSeletedPickViewWithTitle:@"请选择车辆类型" value:carType block:^(NSDictionary *dic) {
+    [CustomSeletedPickView creatCustomSeletedPickViewWithTitle:@"请选择车辆类型" value:self.carType block:^(NSDictionary *dic) {
         weakself.carTypeValue = dic.mutableCopy;
     }];
 }
