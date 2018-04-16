@@ -58,6 +58,33 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
     [self setupBottomView];
     
 }
+
+- (void)getRequestUserinfo{
+    
+    [HttpRequest postPath:@"_userinfo_001" params:nil resultBlock:^(id responseObject, NSError *error) {
+        NSDictionary *datadic = responseObject;
+        if ([datadic[@"error"] intValue] == 0) {
+            NSDictionary *dic = datadic[@"info"];
+            if ([dic[@"approve"] intValue] == 2) {
+                //  货主认证
+                [ConfigModel saveBoolObject:YES forKey:Shipper_Certification];
+                [self sendGoodsInfo];
+            }else {
+                [ConfigModel saveBoolObject:NO forKey:Shipper_Certification];
+            }
+            if ([dic[@"carAuth"] intValue] == 1) {
+                //  车主认证
+                [ConfigModel saveBoolObject:YES forKey:Car_Certification];
+            }else {
+                [ConfigModel saveBoolObject:NO forKey:Car_Certification];
+            }
+            
+        }else {
+            NSString *str = datadic[@"info"];
+            [ConfigModel mbProgressHUD:str andView:nil];
+        }
+    }];
+}
 - (NSMutableArray *)unloadingArray{
     if (!_unloadingArray) {
         _unloadingArray = [[NSMutableArray alloc]init];
@@ -348,12 +375,8 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
 }
 - (void)buttonAction:(id)sender{
    
-    if ( [ConfigModel getBoolObjectforKey:Shipper_Certification]) {
-         [self sendGoodsInfo];
-    }else{
-          [ConfigModel mbProgressHUD:@"请先货主认证才能发布" andView:nil];
-    }
-    
+    [self getRequestUserinfo];
+ 
    
 }
 

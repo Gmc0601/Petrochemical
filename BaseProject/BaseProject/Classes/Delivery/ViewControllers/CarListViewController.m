@@ -197,7 +197,32 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
   
 }
 - (void)buttonAction:(id)sender{
-    [self sendCarInfo];
+    
+    [HttpRequest postPath:@"_userinfo_001" params:nil resultBlock:^(id responseObject, NSError *error) {
+        NSDictionary *datadic = responseObject;
+        if ([datadic[@"error"] intValue] == 0) {
+            NSDictionary *dic = datadic[@"info"];
+            if ([dic[@"approve"] intValue] == 2) {
+                //  货主认证
+                [ConfigModel saveBoolObject:YES forKey:Shipper_Certification];
+              
+            }else {
+                [ConfigModel saveBoolObject:NO forKey:Shipper_Certification];
+            }
+            if ([dic[@"carAuth"] intValue] == 1) {
+                //  车主认证
+                [ConfigModel saveBoolObject:YES forKey:Car_Certification];
+                [self sendCarInfo];
+            }else {
+                [ConfigModel saveBoolObject:NO forKey:Car_Certification];
+            }
+            
+        }else {
+            NSString *str = datadic[@"info"];
+            [ConfigModel mbProgressHUD:str andView:nil];
+        }
+    }];
+
 }
 
 
