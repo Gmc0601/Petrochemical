@@ -210,12 +210,14 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
     NSString * title = @"";
     NSString * content = @"";
     NSString * placeholder = @"";
+    NSString * iconName = @"";
     UIKeyboardType keyType = UIKeyboardTypeDefault;
     switch (indexPath.row) {
         case 0:
         {
             title = @"预计车程";
             placeholder = @"";
+            iconName = @"btn_time";
             if (self.totalDistance >0) {
                 content = [NSString stringWithFormat:@"%0.2f公里/%0.1f小时",self.totalDistance,self.totalDistance/60];
             }else
@@ -229,7 +231,7 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
             if (self.loadingTime) {
                 content = self.loadingTime;
             }
-            
+             iconName = @"btn_yongcheshijian";
         }
             break;
         case 2:
@@ -239,7 +241,7 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
             if (self.goodsName) {
                 content = self.goodsName;
             }
-            
+             iconName = @"baoguo";
         }
             break;
         case 3:
@@ -250,12 +252,14 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
                 content = self.weight;
             }
             keyType = UIKeyboardTypeNumberPad;
+             iconName = @"btn_huowuzhongliang";
         }
             break;
         case 4:
         {
             title = @"运输单价（元/吨）";
             placeholder = @"请填写运输单价";
+             iconName = @"btn_danjia";
             if (self.price) {
               content = self.price;
             }
@@ -267,6 +271,7 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
         {
             title = @"结算方式";
             placeholder = @"";
+             iconName = @"btn_jiesuan";
             if ( self.paymentMethod) {
               content = self.paymentMethod;
             }else{
@@ -296,7 +301,7 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
     }else{
         [cell setupTFEnabled:NO withKeyboardType:keyType];
     }
-    [cell setupTitle:title withTextFeild:content withPlaceholder:placeholder];
+    [cell setupTitle:title withTextFeild:content withPlaceholder:placeholder withIcon:iconName];
 }
 - (void)configCell:(GoodsUnloadingCell *)cell withIndexPath:(NSIndexPath *)indexPath{
     BOOL  isHidden = NO;

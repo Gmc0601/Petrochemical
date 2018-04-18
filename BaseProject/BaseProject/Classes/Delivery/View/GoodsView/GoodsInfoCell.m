@@ -10,6 +10,7 @@
 @interface GoodsInfoCell()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UITextField *tf;
+@property (weak, nonatomic) IBOutlet UIImageView *iconImgV;
 
 @end
 @implementation GoodsInfoCell
@@ -31,10 +32,11 @@
     self.tf.enabled = enabled;
     self.tf.keyboardType = type;
 }
-- (void)setupTitle:(NSString *)title withTextFeild:(NSString *)content withPlaceholder:(NSString *)placeholder{
+- (void)setupTitle:(NSString *)title withTextFeild:(NSString *)content withPlaceholder:(NSString *)placeholder withIcon:(NSString *)iconName{
     self.titleLabel.text = title;
     self.tf.text = content;
     self.tf.placeholder =  placeholder;
+    self.iconImgV.image = [UIImage imageNamed:iconName];
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

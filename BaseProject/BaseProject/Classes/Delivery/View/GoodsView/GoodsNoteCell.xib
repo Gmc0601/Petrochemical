@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,14 +18,21 @@
                 <rect key="frame" x="0.0" y="0.0" width="319" height="147.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_beizhu" translatesAutoresizingMaskIntoConstraints="NO" id="7Od-01-4Yj">
+                        <rect key="frame" x="16" y="18" width="21" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="22" id="Yb2-lJ-Pzc"/>
+                            <constraint firstAttribute="width" constant="21" id="eFw-dp-ss6"/>
+                        </constraints>
+                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="货主备注" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D9u-wi-EaJ">
-                        <rect key="frame" x="16" y="18" width="57.5" height="17"/>
+                        <rect key="frame" x="43" y="18" width="57.5" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="DNt-Nc-aeu" customClass="TTextView">
-                        <rect key="frame" x="16" y="43" width="0.0" height="86"/>
+                        <rect key="frame" x="43" y="43" width="266" height="86"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -36,12 +43,14 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="DNt-Nc-aeu" firstAttribute="leading" secondItem="D9u-wi-EaJ" secondAttribute="leading" id="BN0-FQ-VFJ"/>
+                    <constraint firstItem="7Od-01-4Yj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="DAP-2j-7AJ"/>
+                    <constraint firstItem="D9u-wi-EaJ" firstAttribute="leading" secondItem="7Od-01-4Yj" secondAttribute="trailing" constant="6" id="ZNN-nO-nka"/>
+                    <constraint firstItem="7Od-01-4Yj" firstAttribute="top" secondItem="D9u-wi-EaJ" secondAttribute="top" id="Zp4-ug-O4u"/>
                     <constraint firstItem="DNt-Nc-aeu" firstAttribute="top" secondItem="D9u-wi-EaJ" secondAttribute="bottom" constant="8" id="aQQ-9f-Yro"/>
                     <constraint firstItem="D9u-wi-EaJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="18" id="z4p-hm-G2i"/>
                 </constraints>
             </tableViewCellContentView>
             <constraints>
-                <constraint firstItem="D9u-wi-EaJ" firstAttribute="leading" secondItem="KGk-i7-Jjw" secondAttribute="leading" constant="16" id="3pI-v6-D6W"/>
                 <constraint firstAttribute="bottom" secondItem="DNt-Nc-aeu" secondAttribute="bottom" constant="19" id="Rjk-EC-DUS"/>
                 <constraint firstAttribute="trailing" secondItem="DNt-Nc-aeu" secondAttribute="trailing" constant="10" id="un5-zf-wY9"/>
             </constraints>
@@ -52,4 +61,7 @@
             <point key="canvasLocation" x="32.5" y="156"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="btn_beizhu" width="17" height="17"/>
+    </resources>
 </document>
