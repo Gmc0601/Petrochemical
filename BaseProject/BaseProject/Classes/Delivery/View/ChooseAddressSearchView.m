@@ -19,6 +19,7 @@
 @implementation ChooseAddressSearchView
 - (void)awakeFromNib{
     [super awakeFromNib];
+  
     self.textfeild.delegate = self;
     self.textfeild.returnKeyType = UIReturnKeySearch;
     self.lineV.backgroundColor = UIColorFromHex(0xE3E3E3);

@@ -10,6 +10,8 @@
 #import "DeliveryTypeView.h"
 @interface DeliveryTypeView ()
 @property (weak, nonatomic) IBOutlet UIView *bgView;
+@property (weak, nonatomic) IBOutlet UIButton *goodsBtn;
+@property (weak, nonatomic) IBOutlet UIButton *carBtn;
 
 @end
 
@@ -20,6 +22,23 @@
     self.bgView.alpha = 0.6;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction)];
     [self.bgView addGestureRecognizer:tap];
+    
+    [self addAnimation:self.carBtn];
+    [self addAnimation:self.goodsBtn];
+  
+}
+
+- (void)addAnimation:(UIButton *)btn{
+    
+    CABasicAnimation*pulse = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    pulse.timingFunction= [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    pulse.duration = 0.2;
+    pulse.repeatCount= 1;
+    pulse.autoreverses= YES;
+    pulse.fromValue= [NSNumber numberWithFloat:0.7];
+    pulse.toValue= [NSNumber numberWithFloat:1.3];
+    [btn.layer
+     addAnimation:pulse forKey:nil];
 }
 - (void)tapAction {
     [self closeAction:nil];

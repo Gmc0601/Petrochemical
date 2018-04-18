@@ -18,6 +18,8 @@
 #import <MAMapKit/MAMapKit.h>
 #import "GoodsChooseView.h"
 #import "CompleteAddressViewController.h"
+#import "ChooseAddressListViewController.h"
+
 NSString * const GoodsUnloadingCellIdentifier = @"GoodsUnloadingCellIdentifier";
 NSString * const AddUnloadCellIdentifier = @"AddUnloadCellIdentifier";
 NSString * const GoodsInfoCellIdentifier = @"GoodsInfoCellIdentifier";
@@ -71,13 +73,15 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
                 [self sendGoodsInfo];
             }else {
                 [ConfigModel saveBoolObject:NO forKey:Shipper_Certification];
+                [ConfigModel mbProgressHUD:@"货主认证后，才能发布货源" andView:nil];
             }
-            if ([dic[@"carAuth"] intValue] == 1) {
-                //  车主认证
-                [ConfigModel saveBoolObject:YES forKey:Car_Certification];
-            }else {
-                [ConfigModel saveBoolObject:NO forKey:Car_Certification];
-            }
+//            if ([dic[@"carAuth"] intValue] == 1) {
+//                //  车主认证
+//                [ConfigModel saveBoolObject:YES forKey:Car_Certification];
+//            }else {
+//                [ConfigModel saveBoolObject:NO forKey:Car_Certification];
+//                  [ConfigModel mbProgressHUD:@"车主认证后，才能发布车源" andView:nil];
+//            }
             
         }else {
             NSString *str = datadic[@"info"];
@@ -167,9 +171,16 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
         }else{
             AddUnloadCell * tempCell = [tableView dequeueReusableCellWithIdentifier:AddUnloadCellIdentifier];
             tempCell.addUnloadingBlock = ^{
-                self.unlodingNum ++;
-                [self.unloadingArray addObject:@{}];
-                [self.CC_table insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.unlodingNum inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+                if (self.unlodingNum <3) {
+                    self.unlodingNum ++;
+                    [self.unloadingArray addObject:@{}];
+                    [self.CC_table insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.unlodingNum inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+                }else{
+                    
+                    NSString *str = @"卸货地址最多添加三个";
+                    [ConfigModel mbProgressHUD:str andView:nil];
+                }
+               
             };
             cell = tempCell;
             
@@ -295,8 +306,8 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
     if (indexPath.row == 0) {
         title = @"装货点";
         placeholder = @"请选择装货点";
-        if (self.startLocation) {
-            content = [content stringByAppendingString:self.startLocation];
+        if (self.startLocation_detail) {
+            content = [content stringByAppendingString:self.startLocation_detail];
         }
     
         
@@ -323,8 +334,8 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
             
             NSDictionary * info = self.unloadingArray[indexPath.row-1];
             if (info) {
-                if (info[@"address"]) {
-                    content = [content stringByAppendingString:info[@"address"]];
+                if (info[@"name"]) {
+                    content = [content stringByAppendingString:info[@"name"]];
                 }
               
             }
@@ -362,7 +373,7 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
 }
 - (void)setupBottomView{
     UIButton * button = [UIButton  buttonWithType:UIButtonTypeCustom];
-    [button setBackgroundColor:UIColorFromHex(0x028BF3)];
+    [button setBackgroundColor:ThemeBlue];
     [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
     NSString * buttonTitle = @"立即发布";
     [button setTitle:buttonTitle forState:UIControlStateNormal];
@@ -404,63 +415,67 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
 
 
 - (void)gotoStartLoaction{
-    CompleteAddressViewController * addressVC = [[CompleteAddressViewController alloc]init];
-    addressVC.chooseType = CompleteAddressType_loading;
-    WeakSelf(weakSelf);
-    addressVC.completeAddressInfoBlock = ^(NSDictionary *addressInfo,NSInteger chooseIndex) {
-        weakSelf.startLocation_detail = addressInfo[@"detail"];
-        weakSelf.startLocation = addressInfo[@"address"];
-        weakSelf.cityName = addressInfo[@"cityName"];
-        weakSelf.startLatitude =[NSString stringWithFormat:@"%@",addressInfo[@"lat"]];
-        weakSelf.startLongitude = [NSString stringWithFormat:@"%@",addressInfo[@"lon"]];
-        [weakSelf.CC_table reloadData];
-    };
-
-     [self.navigationController pushViewController:addressVC animated:YES];
-//    ChooseAddressListViewController * addressVC = [[ChooseAddressListViewController alloc]init];
-//    addressVC.chooseType = ChooseAddressType_loading;
+//    CompleteAddressViewController * addressVC = [[CompleteAddressViewController alloc]init];
+//    addressVC.chooseType = CompleteAddressType_loading;
 //    WeakSelf(weakSelf);
-//    addressVC.chooseAddressInfoBlock = ^(NSDictionary *addressInfo,NSInteger chooseIndex) {
-//        weakSelf.startLocation_detail = addressInfo[@"name"];
-//        weakSelf.startLocation = addressInfo[@"cityName"];
-//        weakSelf.startLatitude =[NSString stringWithFormat:@"%@",addressInfo[@"latitude"]];
-//        weakSelf.startLongitude = [NSString stringWithFormat:@"%@",addressInfo[@"longitude"]];
+//    addressVC.completeAddressInfoBlock = ^(NSDictionary *addressInfo,NSInteger chooseIndex) {
+//        weakSelf.startLocation_detail = addressInfo[@"detail"];
+//        weakSelf.startLocation = addressInfo[@"address"];
+//        weakSelf.cityName = addressInfo[@"cityName"];
+//        weakSelf.startLatitude =[NSString stringWithFormat:@"%@",addressInfo[@"lat"]];
+//        weakSelf.startLongitude = [NSString stringWithFormat:@"%@",addressInfo[@"lon"]];
 //        [weakSelf.CC_table reloadData];
 //    };
-//    [self.navigationController pushViewController:addressVC animated:YES];
+//
+//     [self.navigationController pushViewController:addressVC animated:YES];
+    
+    
+    ChooseAddressListViewController * addressVC = [[ChooseAddressListViewController alloc]init];
+    addressVC.chooseType = ChooseAddressType_loading;
+    WeakSelf(weakSelf);
+    addressVC.chooseAddressInfoBlock = ^(NSDictionary *addressInfo,NSInteger chooseIndex) {
+        weakSelf.startLocation_detail = addressInfo[@"name"];
+        weakSelf.startLocation = addressInfo[@"cityName"];
+        weakSelf.startLatitude =[NSString stringWithFormat:@"%@",addressInfo[@"latitude"]];
+        weakSelf.startLongitude = [NSString stringWithFormat:@"%@",addressInfo[@"longitude"]];
+        [weakSelf.CC_table reloadData];
+    };
+    [self.navigationController pushViewController:addressVC animated:YES];
+    
 }
 - (void)gotoUnloadLoaction:(NSIndexPath *)indexPath{
     
-    CompleteAddressViewController * addressVC = [[CompleteAddressViewController alloc]init];
-    addressVC.chooseType = CompleteAddressType_unLoading;
-    addressVC.chooseIndex = indexPath.row;
-    WeakSelf(weakSelf);
-    addressVC.completeAddressInfoBlock = ^(NSDictionary *addressInfo,NSInteger chooseIndex) {
-        if ([weakSelf.unloadingArray count] >= chooseIndex &&self.unloadingArray[chooseIndex-1]) {
-            [weakSelf.unloadingArray replaceObjectAtIndex:chooseIndex-1 withObject:addressInfo];
-        }else{
-            [weakSelf.unloadingArray addObject:addressInfo];
-        }
-        [self expecteDrive];
-        [self.CC_table reloadData];
-
-    };
-    
-    [self.navigationController pushViewController:addressVC animated:YES];
-//    ChooseAddressListViewController * addressVC = [[ChooseAddressListViewController alloc]init];
+//    CompleteAddressViewController * addressVC = [[CompleteAddressViewController alloc]init];
+//    addressVC.chooseType = CompleteAddressType_unLoading;
 //    addressVC.chooseIndex = indexPath.row;
-//    addressVC.chooseType = ChooseAddressType_unLoading;
-//    addressVC.chooseAddressInfoBlock = ^(NSDictionary *addressInfo,NSInteger chooseIndex) {
-//
-//        if ([self.unloadingArray count] >= chooseIndex &&self.unloadingArray[chooseIndex-1]) {
-//            [self.unloadingArray replaceObjectAtIndex:chooseIndex-1 withObject:addressInfo];
+//    WeakSelf(weakSelf);
+//    addressVC.completeAddressInfoBlock = ^(NSDictionary *addressInfo,NSInteger chooseIndex) {
+//        if ([weakSelf.unloadingArray count] >= chooseIndex &&self.unloadingArray[chooseIndex-1]) {
+//            [weakSelf.unloadingArray replaceObjectAtIndex:chooseIndex-1 withObject:addressInfo];
 //        }else{
-//            [self.unloadingArray addObject:addressInfo];
+//            [weakSelf.unloadingArray addObject:addressInfo];
 //        }
 //        [self expecteDrive];
 //        [self.CC_table reloadData];
+//
 //    };
+//
 //    [self.navigationController pushViewController:addressVC animated:YES];
+    
+    ChooseAddressListViewController * addressVC = [[ChooseAddressListViewController alloc]init];
+    addressVC.chooseIndex = indexPath.row;
+    addressVC.chooseType = ChooseAddressType_unLoading;
+    addressVC.chooseAddressInfoBlock = ^(NSDictionary *addressInfo,NSInteger chooseIndex) {
+
+        if ([self.unloadingArray count] >= chooseIndex &&self.unloadingArray[chooseIndex-1]) {
+            [self.unloadingArray replaceObjectAtIndex:chooseIndex-1 withObject:addressInfo];
+        }else{
+            [self.unloadingArray addObject:addressInfo];
+        }
+        [self expecteDrive];
+        [self.CC_table reloadData];
+    };
+    [self.navigationController pushViewController:addressVC animated:YES];
 }
 //预计车程
 - (void)expecteDrive{
@@ -469,8 +484,8 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
     MAMapPoint point2;
     CLLocationDistance distance  = 0;
     for (NSDictionary * info in self.unloadingArray) {
-        NSNumber * latitude =info[@"lat"];
-        NSNumber * longitude = info[@"lon"];
+        NSNumber * latitude =info[@"latitude"];
+        NSNumber * longitude = info[@"longitude"];
         point2 = MAMapPointForCoordinate(CLLocationCoordinate2DMake([latitude floatValue],[longitude floatValue]));
         //2.计算总距离
         distance = distance + MAMetersBetweenMapPoints(point1,point2);
