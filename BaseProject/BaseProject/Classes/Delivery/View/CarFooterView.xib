@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,8 +15,14 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fabu_wenxitishi" translatesAutoresizingMaskIntoConstraints="NO" id="QNa-lJ-pmZ">
+                    <rect key="frame" x="16" y="6" width="17" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="17" id="IJP-pZ-o2h"/>
+                    </constraints>
+                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="温馨提示：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cAQ-b3-EAy">
-                    <rect key="frame" x="20" y="6" width="76.5" height="18"/>
+                    <rect key="frame" x="37" y="6" width="76.5" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="0.14117647058823529" green="0.14117647058823529" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -30,13 +36,18 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="QNa-lJ-pmZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="ERd-oc-hIf"/>
                 <constraint firstAttribute="trailing" secondItem="jiH-15-izg" secondAttribute="trailing" constant="16" id="HZZ-si-Ybe"/>
-                <constraint firstItem="cAQ-b3-EAy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="Usn-JE-oDd"/>
+                <constraint firstItem="QNa-lJ-pmZ" firstAttribute="top" secondItem="cAQ-b3-EAy" secondAttribute="top" id="PiC-po-NOF"/>
                 <constraint firstItem="jiH-15-izg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="41" id="n8o-EE-fdF"/>
                 <constraint firstItem="cAQ-b3-EAy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="6" id="nNd-mB-qeU"/>
                 <constraint firstItem="jiH-15-izg" firstAttribute="top" secondItem="cAQ-b3-EAy" secondAttribute="bottom" constant="3" id="opp-t5-oal"/>
+                <constraint firstItem="cAQ-b3-EAy" firstAttribute="leading" secondItem="QNa-lJ-pmZ" secondAttribute="trailing" constant="4" id="qCS-od-dXl"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
+    <resources>
+        <image name="fabu_wenxitishi" width="17" height="17"/>
+    </resources>
 </document>

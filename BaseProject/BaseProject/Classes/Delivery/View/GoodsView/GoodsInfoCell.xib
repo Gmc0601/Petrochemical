@@ -19,13 +19,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5hz-XQ-Bmg">
-                        <rect key="frame" x="37" y="13.5" width="35.5" height="17"/>
+                        <rect key="frame" x="43" y="13.5" width="35.5" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2X5-Y9-wNH">
-                        <rect key="frame" x="80.5" y="13.5" width="224.5" height="17"/>
+                        <rect key="frame" x="86.5" y="13.5" width="218.5" height="17"/>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
@@ -38,7 +38,7 @@
                         </constraints>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1ZF-dm-k7d">
-                        <rect key="frame" x="10" y="11" width="21" height="22"/>
+                        <rect key="frame" x="16" y="11" width="21" height="22"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="NdM-Jd-k7U"/>
                             <constraint firstAttribute="width" constant="21" id="PSX-cL-Zk5"/>
@@ -57,7 +57,7 @@
                 <constraint firstAttribute="bottom" secondItem="aaN-OF-ZPN" secondAttribute="bottom" id="UfJ-xR-Auk"/>
                 <constraint firstItem="5hz-XQ-Bmg" firstAttribute="centerY" secondItem="KGk-i7-Jjw" secondAttribute="centerY" id="aBX-ha-WF9"/>
                 <constraint firstItem="1ZF-dm-k7d" firstAttribute="centerY" secondItem="KGk-i7-Jjw" secondAttribute="centerY" id="eoD-6N-jID"/>
-                <constraint firstItem="1ZF-dm-k7d" firstAttribute="leading" secondItem="KGk-i7-Jjw" secondAttribute="leading" constant="10" id="k96-ZV-cok"/>
+                <constraint firstItem="1ZF-dm-k7d" firstAttribute="leading" secondItem="KGk-i7-Jjw" secondAttribute="leading" constant="16" id="k96-ZV-cok"/>
                 <constraint firstItem="aaN-OF-ZPN" firstAttribute="leading" secondItem="KGk-i7-Jjw" secondAttribute="leading" id="kUM-Ol-0z0"/>
             </constraints>
             <connections>

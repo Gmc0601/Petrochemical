@@ -114,6 +114,7 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
     switch (indexPath.row ) {
         case 0:{
             title =  @"空车";
+            imageName = @"fabu_kongche";
             if (self.carNum) {
                content = self.carNum;
             }
@@ -140,6 +141,7 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
             break;
         case 3:{
             title =  @"空车位置";
+            imageName = @"fabu_kongcheweizhi";
             if (self.emptyLocation) {
                 content = self.emptyLocation;
             }
@@ -148,6 +150,7 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
             break;
         case 4:{
             title =  @"装货时间";
+            imageName = @"fabu_zhuanghuoshijian";
             if (self.loadingTime) {
                 content = self.loadingTime;
             }
