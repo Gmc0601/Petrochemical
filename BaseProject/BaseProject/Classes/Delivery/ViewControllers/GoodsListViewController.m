@@ -564,7 +564,7 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
     NSDictionary *dic = nil;
 
     if ( self.startLocation && self.startLocation_detail && self.price && self.startLatitude
-        && self.weight && self.loadingTime && self.startLongitude && self.noteStr  && self.goodsId && [self.unloadingArray count] > 0) {
+        && self.weight && self.loadingTime && self.startLongitude && self.noteStr  && self.goodsName && [self.unloadingArray count] > 0) {
         [self  configJsonUnloadArray];
         NSString * mileage = @"";
         if (self.totalDistance >0) {
@@ -589,7 +589,7 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
                 @"lat":self.startLatitude,
                 @"lon":self.startLongitude,
                 @"remark":self.noteStr,
-                @"type":self.goodsId,
+                @"type":self.goodsName,
                 @"mileage":mileage,
                 @"json":jsonString,
                 @"issue_type":@"2",//发布车源1  发布货源2
