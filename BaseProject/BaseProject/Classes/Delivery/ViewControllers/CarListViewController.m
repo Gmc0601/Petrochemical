@@ -314,10 +314,10 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
 }
 
 - (void)showTimerPicker  {
-    CityPickerVeiw * cityView = [[CityPickerVeiw alloc] initWithFrame:CGRectZero withType:PickerViewType_timer];
-    cityView.col = 3;
+    CityPickerVeiw * cityView = [[CityPickerVeiw alloc] initWithFrame:CGRectZero withType:PickerViewType_carTimer];
+    cityView.col = 2;
     [cityView show];
-    cityView.showSelectedCityNameStr =@"" ;
+    cityView.showSelectedCityNameStr = self.loadingTime ;
     [cityView setCityBlock:^(NSString * value) {
         NSLog(@"%@===",value);
         self.loadingTime = value;

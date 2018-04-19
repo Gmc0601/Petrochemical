@@ -314,8 +314,6 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
         if (self.startLocation_detail) {
             content = [content stringByAppendingString:self.startLocation_detail];
         }
-    
-        
         isHidden = YES;
     }else if(indexPath.row < 2+ self.self.unlodingNum -1&& indexPath.row >0){
         
@@ -342,7 +340,6 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
                 if (info[@"name"]) {
                     content = [content stringByAppendingString:info[@"name"]];
                 }
-              
             }
         }else{
             content = @"";
@@ -406,10 +403,10 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
 
 
 - (void)showTimerPicker  {
-    CityPickerVeiw * cityView = [[CityPickerVeiw alloc] initWithFrame:CGRectZero withType:PickerViewType_timer];
-    cityView.col = 3;
+    CityPickerVeiw * cityView = [[CityPickerVeiw alloc] initWithFrame:CGRectZero withType:PickerViewType_goodsTimer];
+    cityView.col = 2;
     [cityView show];
-    cityView.showSelectedCityNameStr =@"" ;
+    cityView.showSelectedCityNameStr = self.loadingTime ;
     [cityView setCityBlock:^(NSString * value) {
         NSLog(@"%@===",value);
         self.loadingTime = value;
