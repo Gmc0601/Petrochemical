@@ -30,15 +30,15 @@
 }
 
 - (void)setModel:(HomeCarModel *)model {
-    NSString *data = [NSString stringWithFormat:@"%@", model.loading_time];
-    NSString *str = [TimeManage getToday:data];
-    if ([str isEqualToString:@"今天"]) {
-        self.backgroundColor = UIColorFromHex(0xE5F7E3);
-    }else if ([str isEqualToString:@"昨天"]){
-        self.backgroundColor = UIColorFromHex(0xF5F7E3);
-    }else {
-        self.backgroundColor = [UIColor whiteColor];
-    }
+//    NSString *data = [NSString stringWithFormat:@"%@", model.loading_time];
+//    NSString *str = [TimeManage getToday:data];
+//    if ([str isEqualToString:@"今天"]) {
+//        self.backgroundColor = UIColorFromHex(0xE5F7E3);
+//    }else if ([str isEqualToString:@"昨天"]){
+//        self.backgroundColor = UIColorFromHex(0xF5F7E3);
+//    }else {
+//        self.backgroundColor = [UIColor whiteColor];
+//    }
     self.startLab.text = model.origin;
     self.endLab.text = model.destination;
     self.locationLab.text = model.empty;

@@ -31,15 +31,15 @@
 
 - (void)setModel:(HomeGoodsModel *)model {
     
-    NSString *data = [NSString stringWithFormat:@"%@", model.use_time];
-    NSString *str = [TimeManage getToday:data];
-    if ([str isEqualToString:@"今天"]) {
-        self.backgroundColor = UIColorFromHex(0xE5F7E3);
-    }else if ([str isEqualToString:@"昨天"]){
-        self.backgroundColor = UIColorFromHex(0xF5F7E3);
-    }else {
-        self.backgroundColor = [UIColor whiteColor];
-    }
+//    NSString *data = [NSString stringWithFormat:@"%@", model.use_time];
+//    NSString *str = [TimeManage getToday:data];
+//    if ([str isEqualToString:@"今天"]) {
+//        self.backgroundColor = UIColorFromHex(0xE5F7E3);
+//    }else if ([str isEqualToString:@"昨天"]){
+//        self.backgroundColor = UIColorFromHex(0xF5F7E3);
+//    }else {
+//        self.backgroundColor = [UIColor whiteColor];
+//    }
     self.startLab.text = model.loading;
     self.endLab.text = model.unload;
     self.locationLab.text = [NSString stringWithFormat:@"运费:%@元", model.transportation];
