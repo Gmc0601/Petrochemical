@@ -23,7 +23,7 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
 @property(nonatomic, strong) UIView * bottomView;
 @property(nonatomic, copy) NSString * carNum;//车牌号
 @property(nonatomic, copy) NSString * startLocation;//开始位置
-
+@property(nonatomic, copy) NSString * startLocationDetail;//开始位置详情
 @property(nonatomic, copy) NSString * endLocation;//结束位置
 @property(nonatomic, copy) NSString * emptyLocation;//空车位置
 @property(nonatomic, copy) NSString * loadingTime;//装车时间
@@ -461,7 +461,9 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
             //            self.provinceName = state;
             
             //            self.subLocality =placemark.subLocality;
-            self.startLocation   =[NSString stringWithFormat:@"%@%@%@",placemark.locality,placemark.subLocality, placemark.name];
+            NSString * administrativeArea  = placemark.administrativeArea ;
+            self.startLocation   =[NSString stringWithFormat:@"%@%@",administrativeArea?administrativeArea:@"",placemark.locality];
+            self.startLocationDetail = [NSString stringWithFormat:@"%@%@",placemark.subLocality, placemark.name];
             //系统会一直更新数据，直到选择停止更新，因为我们只需要获得一次经纬度即可，所以获取之后就停止更新
             [manager stopUpdatingLocation];
             [self.CC_table reloadData];
