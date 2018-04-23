@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Baseline standard spacing" minToolsVersion="9.0"/>
@@ -187,7 +187,7 @@
                             <color key="textColor" red="0.14117647059999999" green="0.14117647059999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leasjiatu" translatesAutoresizingMaskIntoConstraints="NO" id="Cd4-SS-eQe">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leaswdrzyyzz" translatesAutoresizingMaskIntoConstraints="NO" id="Cd4-SS-eQe">
                             <rect key="frame" x="20" y="279" width="335" height="180"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="Cd4-SS-eQe" secondAttribute="height" multiplier="335:180" id="6Ft-kI-7eY"/>
@@ -258,7 +258,7 @@
         </view>
     </objects>
     <resources>
-        <image name="leasjiatu" width="335" height="180"/>
+        <image name="leaswdrzyyzz" width="335" height="180"/>
         <image name="youbianjiantou" width="8" height="13"/>
     </resources>
 </document>
