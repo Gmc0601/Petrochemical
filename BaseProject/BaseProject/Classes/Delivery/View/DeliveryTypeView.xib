@@ -47,6 +47,8 @@
             </constraints>
             <connections>
                 <outlet property="bgView" destination="alA-KU-Rw9" id="qq6-D2-SAa"/>
+                <outlet property="carBtn" destination="7Pn-bi-iZA" id="lz9-dR-fW6"/>
+                <outlet property="goodsBtn" destination="JrM-H6-tEb" id="8vS-tF-DAz"/>
             </connections>
         </view>
     </objects>

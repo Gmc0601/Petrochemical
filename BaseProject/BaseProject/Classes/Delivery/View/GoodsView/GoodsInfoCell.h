@@ -12,5 +12,5 @@
 @property(nonatomic, assign) NSInteger row;
 @property(nonatomic, copy) void(^inputTextBlock)(NSString *inputText,NSInteger row);
 - (void)setupTFEnabled:(BOOL)enabled withKeyboardType:(UIKeyboardType)type;
-- (void)setupTitle:(NSString *)title withTextFeild:(NSString *)content withPlaceholder:(NSString *)placeholder;
+- (void)setupTitle:(NSString *)title withTextFeild:(NSString *)content withPlaceholder:(NSString *)placeholder withIcon:(NSString *)iconName;
 @end

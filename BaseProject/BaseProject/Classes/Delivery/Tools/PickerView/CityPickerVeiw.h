@@ -10,7 +10,8 @@
 
 typedef NS_ENUM(NSInteger,PickerViewType) {
     PickerViewType_city = 0,
-    PickerViewType_timer ,
+    PickerViewType_carTimer ,
+    PickerViewType_goodsTimer ,
 };
 @interface CityPickerVeiw : UIView<UIPickerViewDataSource,UIPickerViewDelegate>
 @property(nonatomic,strong)UIView * bageView;

@@ -114,6 +114,7 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
     switch (indexPath.row ) {
         case 0:{
             title =  @"空车";
+            imageName = @"fabu_kongche";
             if (self.carNum) {
                content = self.carNum;
             }
@@ -140,6 +141,7 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
             break;
         case 3:{
             title =  @"空车位置";
+            imageName = @"fabu_kongcheweizhi";
             if (self.emptyLocation) {
                 content = self.emptyLocation;
             }
@@ -148,6 +150,7 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
             break;
         case 4:{
             title =  @"装货时间";
+            imageName = @"fabu_zhuanghuoshijian";
             if (self.loadingTime) {
                 content = self.loadingTime;
             }
@@ -185,7 +188,7 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
 }
 - (void)setupBottomView{
     UIButton * button = [UIButton  buttonWithType:UIButtonTypeCustom];
-    [button setBackgroundColor:UIColorFromHex(0x028BF3)];
+    [button setBackgroundColor:ThemeBlue];
     [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
     NSString * buttonTitle = @"立即发布";
     [button setTitle:buttonTitle forState:UIControlStateNormal];
@@ -202,19 +205,21 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
         NSDictionary *datadic = responseObject;
         if ([datadic[@"error"] intValue] == 0) {
             NSDictionary *dic = datadic[@"info"];
-            if ([dic[@"approve"] intValue] == 2) {
-                //  货主认证
-                [ConfigModel saveBoolObject:YES forKey:Shipper_Certification];
-              
-            }else {
-                [ConfigModel saveBoolObject:NO forKey:Shipper_Certification];
-            }
+//            if ([dic[@"approve"] intValue] == 2) {
+//                //  货主认证
+//                [ConfigModel saveBoolObject:YES forKey:Shipper_Certification];
+//              
+//            }else {
+//                [ConfigModel saveBoolObject:NO forKey:Shipper_Certification];
+//                [ConfigModel mbProgressHUD:@"货主认证后，才能发布货源" andView:nil];
+//            }
             if ([dic[@"carAuth"] intValue] == 1) {
                 //  车主认证
                 [ConfigModel saveBoolObject:YES forKey:Car_Certification];
                 [self sendCarInfo];
             }else {
                 [ConfigModel saveBoolObject:NO forKey:Car_Certification];
+                [ConfigModel mbProgressHUD:@"车主认证后，才能发布车源" andView:nil];
             }
             
         }else {
@@ -309,10 +314,10 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
 }
 
 - (void)showTimerPicker  {
-    CityPickerVeiw * cityView = [[CityPickerVeiw alloc] initWithFrame:CGRectZero withType:PickerViewType_timer];
-    cityView.col = 3;
+    CityPickerVeiw * cityView = [[CityPickerVeiw alloc] initWithFrame:CGRectZero withType:PickerViewType_carTimer];
+    cityView.col = 2;
     [cityView show];
-    cityView.showSelectedCityNameStr =@"" ;
+    cityView.showSelectedCityNameStr = self.loadingTime ;
     [cityView setCityBlock:^(NSString * value) {
         NSLog(@"%@===",value);
         self.loadingTime = value;
