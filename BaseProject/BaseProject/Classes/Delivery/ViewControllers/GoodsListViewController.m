@@ -546,12 +546,12 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
     
         for (NSDictionary * dic  in self.unloadingArray) {
             if (dic) {
-                NSString *lat = [NSString stringWithFormat:@"%@",dic[@"lat"]];
-                NSString * lon = [NSString stringWithFormat:@"%@", dic[@"lon"]];
-                NSString * unload_address = dic[@"detail"];
-                NSString * unload =dic[@"address"];
-                NSString * take_mobile = dic[@"mobile"];
-                NSDictionary * tempDic = @{@"lat":lat,@"lon":lon,@"unload":unload,@"unload_address":unload_address,@"take_mobile":take_mobile};
+                NSString *lat = [NSString stringWithFormat:@"%@",dic[@"latitude"]];
+                NSString * lon = [NSString stringWithFormat:@"%@", dic[@"longitude"]];
+                NSString * unload_address = dic[@"cityName"];
+                NSString * unload =dic[@"name"];
+//                NSString * take_mobile = dic[@"mobile"];
+                NSDictionary * tempDic = @{@"lat":lat,@"lon":lon,@"unload":unload,@"unload_address":unload_address, };
                 [self.jsonUnloadArray addObject:tempDic];
             }
     
@@ -561,7 +561,7 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
     NSDictionary *dic = nil;
 
     if ( self.startLocation && self.startLocation_detail && self.price && self.startLatitude
-        && self.weight && self.loadingTime && self.startLongitude && self.noteStr  && self.goodsName && [self.unloadingArray count] > 0) {
+        && self.weight && self.loadingTime && self.startLongitude && self.goodsName && [self.unloadingArray count] > 0) {
         [self  configJsonUnloadArray];
         NSString * mileage = @"";
         if (self.totalDistance >0) {
@@ -577,15 +577,14 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
                                                      encoding:NSUTF8StringEncoding];
         dic = @{
 
-                @"loading":self.cityName,
-                @"loading_address":self.startLocation,
+                @"loading":self.startLocation,
+                @"loading_address":self.startLocation_detail,
                 @"good_price":self.price,
                 @"account_type": self.paymentMethod,
                 @"weight":self.weight,
                 @"use_time":self.loadingTime,
                 @"lat":self.startLatitude,
                 @"lon":self.startLongitude,
-                @"remark":self.noteStr,
                 @"type":self.goodsName,
                 @"mileage":mileage,
                 @"json":jsonString,
@@ -597,8 +596,13 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
            [ConfigModel mbProgressHUD:@"请填写信息" andView:nil];
         return;
     }
+    NSMutableDictionary * paramDic = [NSMutableDictionary dictionary];
+    [paramDic addEntriesFromDictionary:dic];
+    if ( self.noteStr) {
+        [paramDic addEntriesFromDictionary:@{@"remark":self.noteStr}];
+    }
         WeakSelf(weakself);
-        [HttpRequest postPath:@"_issue_car_001" params:dic resultBlock:^(id responseObject, NSError *error) {
+        [HttpRequest postPath:@"_issue_car_001" params:paramDic resultBlock:^(id responseObject, NSError *error) {
 
             NSDictionary *dic = responseObject;
 
