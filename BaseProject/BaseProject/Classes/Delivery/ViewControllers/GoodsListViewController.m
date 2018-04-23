@@ -548,8 +548,8 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
             if (dic) {
                 NSString *lat = [NSString stringWithFormat:@"%@",dic[@"latitude"]];
                 NSString * lon = [NSString stringWithFormat:@"%@", dic[@"longitude"]];
-                NSString * unload_address = dic[@"cityName"];
-                NSString * unload =dic[@"name"];
+                NSString * unload_address = dic[@"name"];
+                NSString * unload =dic[@"cityName"];
 //                NSString * take_mobile = dic[@"mobile"];
                 NSDictionary * tempDic = @{@"lat":lat,@"lon":lon,@"unload":unload,@"unload_address":unload_address, };
                 [self.jsonUnloadArray addObject:tempDic];
