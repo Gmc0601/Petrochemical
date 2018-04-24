@@ -17,6 +17,6 @@
 @property (nonatomic , copy) NSString              * surplus_weight;
 @property (nonatomic , copy) NSString              * type;
 @property (nonatomic , copy) NSString              * avatar_url;
-@property (nonatomic, copy) NSString *is_plat, *linkname;
+@property (nonatomic, copy) NSString *is_plat, *linkname, *fast;
 @property (nonatomic, copy) NSString *transportation;
 @end

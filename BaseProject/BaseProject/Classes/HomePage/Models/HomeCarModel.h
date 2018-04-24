@@ -16,5 +16,5 @@
 @property (nonatomic , copy) NSString              * empty;
 @property (nonatomic , copy) NSString              * license;
 @property (nonatomic , copy) NSString              * avatar_url;
-@property (nonatomic, copy) NSString *is_plat;
+@property (nonatomic, copy) NSString *is_plat, *fast;
 @end

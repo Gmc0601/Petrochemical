@@ -25,6 +25,7 @@
         [self.contentView addSubview:self.nickLabLab];
         [self.contentView addSubview:self.timeLab];
         [self.contentView addSubview:self.callLogo];
+        [self.contentView addSubview:self.fastlogo];
     }
     return self;
 }
@@ -39,6 +40,11 @@
 //    }else {
 //        self.backgroundColor = [UIColor whiteColor];
 //    }
+    if ([model.fast intValue] == 1) {
+        self.fastlogo.hidden = NO;
+    }else {
+        self.fastlogo.hidden = YES;
+    }
     self.startLab.text = model.origin;
     self.endLab.text = model.destination;
     self.locationLab.text = model.empty;
@@ -75,6 +81,14 @@
         make.centerY.equalTo(self.startLab.mas_centerY);
         make.height.mas_equalTo(to.size.height);
         make.width.mas_equalTo(to.size.width);
+    }];
+    
+    UIImage *fast = [UIImage imageNamed:@"jiajidaizi"];
+    [self.fastlogo mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.endLab.mas_right).offset(5);
+        make.centerY.equalTo(self.startLab.mas_centerY);
+        make.height.mas_equalTo(fast.size.height);
+        make.width.mas_equalTo(fast.size.width);
     }];
     
     [self.endLab mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -209,6 +223,15 @@
         _timeLab.font = [UIFont systemFontOfSize:13];
     }
     return _timeLab;
+}
+
+- (UIImageView *)fastlogo {
+    if (!_fastlogo) {
+        _fastlogo = [[UIImageView alloc] init];
+        _fastlogo.backgroundColor = [UIColor clearColor];
+        _fastlogo.image = [UIImage imageNamed:@"jiajidaizi"];
+    }
+    return _fastlogo;
 }
 
 - (UIImageView *)callLogo {

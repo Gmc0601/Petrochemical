@@ -11,7 +11,7 @@
 @interface HomeCarTableViewCell : UITableViewCell
 
 
-@property (nonatomic, strong) UIImageView *lumingLogo, *locaLogo, *callLogo, *headimage, *toLogo;
+@property (nonatomic, strong) UIImageView *lumingLogo, *locaLogo, *callLogo, *headimage, *toLogo, *fastlogo;
 
 @property (nonatomic, strong) UILabel *startLab, *endLab, *locationLab, *nickLabLab, *timeLab;
 
