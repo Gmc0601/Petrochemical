@@ -17,4 +17,6 @@
 
 @property (nonatomic, strong) HomeGoodsModel *model;
 
+@property (nonatomic, strong) UILabel *tag1, *tag2, *tag3;
+
 @end

@@ -25,7 +25,7 @@
     [self.contentView addSubview:self.carNumlab];
     [self.contentView addSubview:self.titleLab];
     [self.contentView addSubview:self.numFile];
-    [self.contentView addSubview:self.checkLogo];
+//    [self.contentView addSubview:self.checkLogo];
     UIButton * addButn = [UIButton buttonWithType:UIButtonTypeCustom];
     addButn.frame = CGRectMake(self.numFile.right - 30, self.numFile.top, 30, 20);
     [addButn setImage:[UIImage imageNamed:@"productDetail_add_enabled.png"] forState:UIControlStateNormal];
@@ -42,8 +42,9 @@
     self.addButn = addButn;
     self.deleteButn = deleteButn;
     self.deleteButn.enabled = NO;
-    [self.contentView addSubview:self.addButn];
-    [self.contentView addSubview:self.deleteButn];
+    [self.contentView addSubview:self.swi];
+//    [self.contentView addSubview:self.addButn];
+//    [self.contentView addSubview:self.deleteButn];
 }
 
 - (void)setModel:(RotCarinfoModel *)model {
@@ -126,12 +127,86 @@
 
 - (UITextField *)numFile {
     if (!_numFile) {
-        _numFile = [[UITextField alloc] initWithFrame:FRAME(self.titleLab.right, self.carNumlab.top, 90, 20)];
+        _numFile = [[UITextField alloc] initWithFrame:FRAME(self.titleLab.right, self.carNumlab.top, 60, 20)];
         _numFile.textAlignment = NSTextAlignmentCenter;
-        _numFile.userInteractionEnabled = NO;
-        _numFile.text = [NSString stringWithFormat:@"%d", self.num];
+        _numFile.font = [UIFont systemFontOfSize:13];
+        _numFile.delegate = self;
+        _numFile.keyboardType = UIKeyboardTypeDecimalPad;
+        [_numFile setValue:[UIFont boldSystemFontOfSize:11] forKeyPath:@"_placeholderLabel.font"];
+        _numFile.placeholder = @"点击输入";
     }
     return _numFile;
+}
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    //    限制只能输入数字
+    BOOL isHaveDian = YES;
+    if ([string isEqualToString:@" "]) {
+        return NO;
+    }
+    
+    if ([textField.text rangeOfString:@"."].location == NSNotFound) {
+        isHaveDian = NO;
+    }
+    if ([string length] > 0) {
+        
+        unichar single = [string characterAtIndex:0];//当前输入的字符
+        if ((single >= '0' && single <= '9') || single == '.') {//数据格式正确
+            
+            if([textField.text length] == 0){
+                if(single == '.') {
+//                    showMsg(@"数据格式有误");
+                    [textField.text stringByReplacingCharactersInRange:range withString:@""];
+                    return NO;
+                }
+            }
+            
+            //输入的字符是否是小数点
+            if (single == '.') {
+                if(!isHaveDian)//text中还没有小数点
+                {
+                    isHaveDian = YES;
+                    return YES;
+                    
+                }else{
+//                    showMsg(@"数据格式有误");
+                    [textField.text stringByReplacingCharactersInRange:range withString:@""];
+                    return NO;
+                }
+            }else{
+                if (isHaveDian) {//存在小数点
+                    
+                    //判断小数点的位数
+                    NSRange ran = [textField.text rangeOfString:@"."];
+                    if (range.location - ran.location <= 2) {
+                        return YES;
+                    }else{
+//                        showMsg(@"最多两位小数");
+                        [ConfigModel mbProgressHUD:@"最多两位小数~" andView:nil];
+                        return NO;
+                    }
+                }else{
+                    return YES;
+                }
+            }
+        }else{//输入的数据格式不正确
+//            showMsg(@"数据格式有误");
+            [textField.text stringByReplacingCharactersInRange:range withString:@""];
+            return NO;
+        }
+    }
+    else
+    {
+        return YES;
+    }
+}
+
+- (UISwitch *)swi {
+    if (!_swi) {
+        _swi = [[UISwitch alloc] initWithFrame:FRAME(self.numFile.right + 10, self.carNumlab.top  - 6, 40, 20)];
+        _swi.on = NO;
+        [_swi addTarget:self action:@selector(checkLogoClick:) forControlEvents:UIControlEventValueChanged];
+    }
+    return _swi;
 }
 
 - (UIButton *)checkLogo {
@@ -144,7 +219,7 @@
     return _checkLogo;
 }
 
-- (void)checkLogoClick:(UIButton *)sender {
+- (void)checkLogoClick:(UISwitch *)sender {
     
     sender.selected = !sender.selected;
     self.check = sender.selected;

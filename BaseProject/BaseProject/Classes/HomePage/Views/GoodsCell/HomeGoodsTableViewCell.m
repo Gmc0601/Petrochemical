@@ -30,7 +30,9 @@
 }
 
 - (void)setModel:(HomeGoodsModel *)model {
-    
+    [self.tag1 removeFromSuperview];
+    [self.tag2 removeFromSuperview];
+    [self.tag3 removeFromSuperview];
 //    NSString *data = [NSString stringWithFormat:@"%@", model.use_time];
 //    NSString *str = [TimeManage getToday:data];
 //    if ([str isEqualToString:@"今天"]) {
@@ -87,6 +89,7 @@
     //  添加分类  #a666c7，#78a1e3，#b4cc44   [NSString stringWithFormat:@"%@ 共%@吨,剩%@吨", model.type, model.weight, model.surplus_weight];
     UILabel *tag1 = [self createLabtext:model.type colot:UIColorFromHex(0xa666c7)];
     [self.contentView addSubview:tag1];
+    self.tag1 = tag1;
     
     [tag1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView.mas_left).offset(10);
@@ -96,14 +99,16 @@
     
     UILabel *tag2 = [self createLabtext:[NSString stringWithFormat:@"共%@吨", model.weight] colot:UIColorFromHex(0x78a1e3)];
     [self.contentView addSubview:tag2];
+    self.tag2 = tag2;
     [tag2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(tag1.mas_right).offset(10);
         make.top.equalTo(self.endLab.mas_bottom).offset(10);
         make.height.mas_equalTo(15);
     }];
     
-    UILabel *tag3 = [self createLabtext:[NSString stringWithFormat:@"剩%@吨", model.weight] colot:UIColorFromHex(0xb4cc44)];
+    UILabel *tag3 = [self createLabtext:[NSString stringWithFormat:@"剩%@吨", model.surplus_weight] colot:UIColorFromHex(0xb4cc44)];
     [self.contentView addSubview:tag3];
+    self.tag3 = tag3;
     [tag3 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(tag2.mas_right).offset(10);
         make.top.equalTo(self.endLab.mas_bottom).offset(10);

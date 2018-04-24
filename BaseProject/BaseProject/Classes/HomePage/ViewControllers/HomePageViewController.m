@@ -405,7 +405,7 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
                 NSArray *CarToolsItemsName = @[@"起点",@"终点",@"装货时间"];
                 [self creatToolsWithToolNames:CarToolsItemsName andContainer:0 andPositionX:0 subView:headerView];
         }else {
-            NSArray *GoodsToolsItemsName = @[@"起点",@"终点",@"货物类型",@"装货时间"];
+            NSArray *GoodsToolsItemsName = @[@"起点",@"终点",@"装货时间"];
             [self creatToolsWithToolNames:GoodsToolsItemsName andContainer:1 andPositionX:kScreenW subView:headerView];
         }
     }
@@ -486,7 +486,7 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
             self.alertView.hidden = YES;
         }];
     }
-    if (sender == _carToolsButtons[2] || sender == _GoodsToolsButtons[3]) {//天数
+    if (sender == _carToolsButtons[2] || sender == _GoodsToolsButtons[2]) {//天数
         CDZPickerBuilder *builder = [CDZPickerBuilder new];
         builder.showMask = YES;
             self.alertView.hidden = NO;
@@ -515,55 +515,55 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
             self.alertView.hidden = YES;
         }];
     }
-    if (sender == _GoodsToolsButtons[2]) {
-        
-        NSMutableArray *tagstr = [[NSMutableArray alloc] init];
-        for (int i = 0; i < self.tagDate.count; i++) {
-            Tagmodel *model = self.tagDate[i];
-            [tagstr addObject:model.type];
-        }
-        
-        [SureMultipleSelectedWindow showWindowWithTitle:@"" selectedConditions:tagstr defaultSelectedConditions:self.tagModel selectedBlock:^(NSArray *selectedArr) {
-             sender.selected = !sender.isSelected;
-            if (selectedArr) {
-                [self.tagModel removeAllObjects];
-                if (selectedArr.count > 0) {
-                    if (![selectedArr[0] isKindOfClass:[NSString class]]) {
-                        for (SureConditionModel *model in selectedArr) {
-                            [self.tagModel addObject:model.title];
-                        }
-                    }
-                }
-            }
-            NSMutableArray *idarr = [[NSMutableArray alloc] init];
-            for (int i = 0; i < self.tagDate.count; i++) {
-                Tagmodel *model = self.tagDate[i];
-                for (int j = 0; j <self.tagModel.count; j++) {
-                    NSString *str = self.tagModel[j];
-                    if ([str isEqualToString:model.type]) {
-                        [idarr addObject:model.id];
-                    }
-                }
-            }
-            NSString *cateStr;
-            for (int i = 0; i < idarr.count; i++) {
-                NSString *str = idarr[i];
-                if (i == 0) {
-                    cateStr = str;
-                }else {
-                    NSString *morestr = [NSString stringWithFormat:@",%@", str];
-                    cateStr = [cateStr stringByAppendingString:morestr];
-                }
-            }
-            if (!cateStr) {
-                cateStr = nil;
-            }
-            self.goodsviewModel.type = cateStr;
-            self.carviewModel.page = 1; self.goodsviewModel.page = 1;
-            [self requestList];
-            
-        }];
-    }
+//    if (sender == _GoodsToolsButtons[2]) {
+//        
+//        NSMutableArray *tagstr = [[NSMutableArray alloc] init];
+//        for (int i = 0; i < self.tagDate.count; i++) {
+//            Tagmodel *model = self.tagDate[i];
+//            [tagstr addObject:model.type];
+//        }
+//        
+//        [SureMultipleSelectedWindow showWindowWithTitle:@"" selectedConditions:tagstr defaultSelectedConditions:self.tagModel selectedBlock:^(NSArray *selectedArr) {
+//             sender.selected = !sender.isSelected;
+//            if (selectedArr) {
+//                [self.tagModel removeAllObjects];
+//                if (selectedArr.count > 0) {
+//                    if (![selectedArr[0] isKindOfClass:[NSString class]]) {
+//                        for (SureConditionModel *model in selectedArr) {
+//                            [self.tagModel addObject:model.title];
+//                        }
+//                    }
+//                }
+//            }
+//            NSMutableArray *idarr = [[NSMutableArray alloc] init];
+//            for (int i = 0; i < self.tagDate.count; i++) {
+//                Tagmodel *model = self.tagDate[i];
+//                for (int j = 0; j <self.tagModel.count; j++) {
+//                    NSString *str = self.tagModel[j];
+//                    if ([str isEqualToString:model.type]) {
+//                        [idarr addObject:model.id];
+//                    }
+//                }
+//            }
+//            NSString *cateStr;
+//            for (int i = 0; i < idarr.count; i++) {
+//                NSString *str = idarr[i];
+//                if (i == 0) {
+//                    cateStr = str;
+//                }else {
+//                    NSString *morestr = [NSString stringWithFormat:@",%@", str];
+//                    cateStr = [cateStr stringByAppendingString:morestr];
+//                }
+//            }
+//            if (!cateStr) {
+//                cateStr = nil;
+//            }
+//            self.goodsviewModel.type = cateStr;
+//            self.carviewModel.page = 1; self.goodsviewModel.page = 1;
+//            [self requestList];
+//            
+//        }];
+//    }
 }
 
 #pragma Mark - Prvite Method
