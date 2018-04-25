@@ -34,14 +34,14 @@
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iFE-6W-j6j">
                                     <rect key="frame" x="40" y="49" width="295" height="2"/>
-                                    <color key="backgroundColor" red="0.36470588240000001" green="0.72549019609999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.93725490199999995" green="0.54662001130000004" blue="0.1982922852" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="2" id="zfX-ef-VYg"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hz8-XX-pD4">
                                     <rect key="frame" x="112.5" y="42" width="15" height="15"/>
-                                    <color key="backgroundColor" red="0.36470588240000001" green="0.72549019609999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.93725490199999995" green="0.54662001130000004" blue="0.1982922852" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="15" id="00s-xQ-kjT"/>
                                         <constraint firstAttribute="height" constant="15" id="CUW-Zc-LGc"/>
@@ -53,7 +53,7 @@
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pIR-tb-cXO">
                                     <rect key="frame" x="248" y="42.5" width="15" height="15"/>
-                                    <color key="backgroundColor" red="0.36470588240000001" green="0.72549019609999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.93725490199999995" green="0.54662001130000004" blue="0.1982922852" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="15" id="c27-w8-OPw"/>
                                         <constraint firstAttribute="height" constant="15" id="evJ-Ol-Byg"/>
@@ -230,7 +230,7 @@
                 </scrollView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YkR-mj-McF">
                     <rect key="frame" x="0.0" y="618" width="375" height="49"/>
-                    <color key="backgroundColor" red="0.0078431372550000003" green="0.5450980392" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.93725490199999995" green="0.54662001130000004" blue="0.1982922852" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="49" id="6Sa-zH-gdg"/>
                     </constraints>

@@ -16,7 +16,6 @@
                 <outlet property="costLabel" destination="qth-fP-PyD" id="7hS-oQ-prN"/>
                 <outlet property="endView" destination="Qvf-8h-BZY" id="6i6-ah-ziL"/>
                 <outlet property="endViewH" destination="XXw-E7-GF0" id="20d-J1-e9y"/>
-                <outlet property="good_priceLabel" destination="g3J-04-7o4" id="Uo8-to-cQs"/>
                 <outlet property="goodsNameLabel" destination="ge9-3b-Y77" id="KuB-2h-JOo"/>
                 <outlet property="goodsWeightLabel" destination="Ya3-3c-vBG" id="XtR-Qb-Rwy"/>
                 <outlet property="loadAddressLabel" destination="fQo-Oa-ZT4" id="hgB-na-9gt"/>
@@ -485,14 +484,8 @@
                                     <color key="textColor" red="0.14117647059999999" green="0.14117647059999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3J-04-7o4">
-                                    <rect key="frame" x="287.5" y="5" width="37.5" height="18"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" red="0.14117647059999999" green="0.14117647059999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PdT-FP-AlI">
-                                    <rect key="frame" x="287.5" y="30" width="37.5" height="18"/>
+                                    <rect key="frame" x="287.5" y="5" width="37.5" height="43"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" red="0.14117647059999999" green="0.14117647059999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
@@ -505,11 +498,10 @@
                                 <constraint firstItem="DGZ-RQ-F7U" firstAttribute="leading" secondItem="36Y-Dd-I7N" secondAttribute="leading" constant="20" id="8BJ-Xy-eUS"/>
                                 <constraint firstItem="bN4-Hl-JhN" firstAttribute="top" secondItem="DGZ-RQ-F7U" secondAttribute="bottom" id="97c-ca-q0C"/>
                                 <constraint firstItem="bN4-Hl-JhN" firstAttribute="leading" secondItem="36Y-Dd-I7N" secondAttribute="leading" constant="20" id="Ksy-NR-R8l"/>
-                                <constraint firstAttribute="trailing" secondItem="g3J-04-7o4" secondAttribute="trailing" constant="20" id="TDw-uL-KV1"/>
                                 <constraint firstAttribute="height" constant="54" id="Txr-lS-l7t"/>
                                 <constraint firstAttribute="bottom" secondItem="bN4-Hl-JhN" secondAttribute="bottom" id="UGR-4X-vqa"/>
                                 <constraint firstItem="DGZ-RQ-F7U" firstAttribute="top" secondItem="36Y-Dd-I7N" secondAttribute="top" id="cjP-4N-9t0"/>
-                                <constraint firstItem="g3J-04-7o4" firstAttribute="top" secondItem="36Y-Dd-I7N" secondAttribute="top" constant="5" id="g0x-gY-P2g"/>
+                                <constraint firstItem="PdT-FP-AlI" firstAttribute="top" secondItem="36Y-Dd-I7N" secondAttribute="top" constant="5" id="dyJ-kc-uGs"/>
                                 <constraint firstAttribute="trailing" secondItem="bN4-Hl-JhN" secondAttribute="trailing" constant="20" id="g1i-uk-tJT"/>
                             </constraints>
                         </view>

@@ -37,7 +37,7 @@
 }
 
 - (void) setupUI{
-    [self setCustomerTitle:@"我的车辆"];
+    [self setCustomerTitle:@"我是车主"];
     self.view.backgroundColor = UIColorFromHex(0xF1F2F2);
     self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     self.tableView.tableFooterView = nil;
@@ -113,7 +113,7 @@
         if ([dic[@"error"] intValue] == 0) {
             NSArray *info = dic[@"info"];
             if ([info isKindOfClass:[NSArray class]]) {
-                [CustomSeletedPickView creatCustomSeletedPickViewWithTitle:@"请选择您的业务员" value:info block:^(NSDictionary *dic) {
+                [CustomSeletedPickView creatCustomSeletedPickViewWithTitle:@"请选择您的服务专员" value:info block:^(NSDictionary *dic) {
                     weakself.selectedSalemanValue = dic;
                 }];
             }

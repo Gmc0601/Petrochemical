@@ -56,11 +56,8 @@
         self.maxLoadTextField.text = validString(self.carInfo[@"load"]);
         [self.drivingLicenceImageView sd_setImageWithURL:[NSURL URLWithString:validString(self.carInfo[@"drive_img"])] placeholderImage:DefaultImage];
         [self.otherImageView sd_setImageWithURL:[NSURL URLWithString:validString(self.carInfo[@"run_img"])] placeholderImage:DefaultImage];
-        
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            weakself.drivingLicenceImageValue = [NSString stringWithFormat:@"%@",self.carInfo[@"drive_img"]].urlImage;
-            weakself.otherImageValue = [NSString stringWithFormat:@"%@",self.carInfo[@"run_img"]].urlImage;
-        });
+        weakself.drivingLicenceImageValue = [NSString stringWithFormat:@"%@",self.carInfo[@"drive_img"]].urlImage;
+        weakself.otherImageValue = [NSString stringWithFormat:@"%@",self.carInfo[@"run_img"]].urlImage;
     } else {
         [self setCustomerTitle:@"添加车辆"];
     }

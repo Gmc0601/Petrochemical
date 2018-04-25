@@ -34,14 +34,14 @@
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K5f-OA-Ko8">
                                     <rect key="frame" x="40" y="49" width="295" height="2"/>
-                                    <color key="backgroundColor" red="0.36470588235294116" green="0.72549019607843135" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.93725490199999995" green="0.54662001130000004" blue="0.1982922852" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="2" id="Yxb-2V-gg0"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0jd-Hi-BiC">
                                     <rect key="frame" x="112.5" y="42" width="15" height="15"/>
-                                    <color key="backgroundColor" red="0.36470588240000001" green="0.72549019609999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.93725490199999995" green="0.54662001130000004" blue="0.1982922852" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="15" id="P8k-Vy-xvX"/>
                                         <constraint firstAttribute="width" constant="15" id="rNl-RX-mEU"/>
@@ -228,7 +228,7 @@
                 </scrollView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BRc-hi-u9c">
                     <rect key="frame" x="0.0" y="618" width="375" height="49"/>
-                    <color key="backgroundColor" red="0.0078431372550000003" green="0.5450980392" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.93725490199999995" green="0.54662001130000004" blue="0.1982922852" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="49" id="Z5I-cZ-66m"/>
                     </constraints>

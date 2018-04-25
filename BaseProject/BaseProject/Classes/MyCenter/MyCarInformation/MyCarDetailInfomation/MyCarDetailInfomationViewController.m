@@ -123,9 +123,10 @@
             self.updatePhoneButton.hidden = NO;
             UIButton *bottomButton = ({
                 UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-                [button setTitle:@"删除车辆" forState:UIControlStateNormal];
-                [button setTitleColor:UIColorFromHex(0x242424) forState:UIControlStateNormal];
-                [button addTarget:self action:@selector(deleteCarInfo) forControlEvents:UIControlEventTouchUpInside];
+                [button setTitle:@"修改车辆信息" forState:UIControlStateNormal];
+                [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                button.backgroundColor = ThemeBlue;
+                [button addTarget:self action:@selector(updateCarInfoAction) forControlEvents:UIControlEventTouchUpInside];
                 button;
             });
             [self.view addSubview:bottomButton];
@@ -173,7 +174,7 @@
                 UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
                 [button setTitle:@"修改车辆信息" forState:UIControlStateNormal];
                 [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-                button.backgroundColor = UIColorFromHex(0x028BF3);
+                button.backgroundColor = ThemeBlue;
                 [button addTarget:self action:@selector(updateCarInfoAction) forControlEvents:UIControlEventTouchUpInside];
                 button;
             });

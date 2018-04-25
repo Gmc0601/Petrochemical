@@ -102,7 +102,7 @@
     self.goodsNameLabel.text = validString(dataSource[@"type"]);
     self.goodsWeightLabel.text = [NSString stringWithFormat:@"%@吨",dataSource[@"weight"]];
     self.good_priceLabel.text = [NSString stringWithFormat:@"货主报价: %@/吨",dataSource[@"good_price"]];
-    self.terrace_priceLabel.text = [NSString stringWithFormat:@"平台报价: %@/吨",dataSource[@"terrace_price"]];
+    self.terrace_priceLabel.text = [NSString stringWithFormat:@" %@/吨",dataSource[@"terrace_price"]];
     self.costLabel.text = [NSString stringWithFormat:@"%@元",dataSource[@"transportation"]];
     self.otherLabel.text = validString(dataSource[@"remark"]);
     self.otherTimeLabel.text = validString(dataSource[@"create_time"]);
