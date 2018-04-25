@@ -11,10 +11,12 @@
 
 @interface HomeGoodsTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) UIImageView *lumingLogo, *locaLogo, *callLogo, *headimage, *toLogo;
+@property (nonatomic, strong) UIImageView *lumingLogo, *locaLogo, *callLogo, *headimage, *toLogo ,*fastlogo;
 
 @property (nonatomic, strong) UILabel *startLab, *endLab, *locationLab, *nickLabLab, *timeLab;
 
 @property (nonatomic, strong) HomeGoodsModel *model;
+
+@property (nonatomic, strong) UILabel *tag1, *tag2, *tag3;
 
 @end

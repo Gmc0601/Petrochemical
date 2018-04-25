@@ -19,18 +19,25 @@
         [self.contentView addSubview:self.startLab];
         [self.contentView addSubview:self.toLogo];
         [self.contentView addSubview:self.endLab];
-//        [self.contentView addSubview:self.locaLogo];
         [self.contentView addSubview:self.locationLab];
         [self.contentView addSubview:self.headimage];
         [self.contentView addSubview:self.nickLabLab];
         [self.contentView addSubview:self.timeLab];
         [self.contentView addSubview:self.callLogo];
+        [self.contentView addSubview:self.fastlogo];
     }
     return self;
 }
 
 - (void)setModel:(HomeGoodsModel *)model {
-    
+    [self.tag1 removeFromSuperview];
+    [self.tag2 removeFromSuperview];
+    [self.tag3 removeFromSuperview];
+    if ([model.fast intValue] == 1) {
+        self.fastlogo.hidden = NO;
+    }else {
+        self.fastlogo.hidden = YES;
+    }
 //    NSString *data = [NSString stringWithFormat:@"%@", model.use_time];
 //    NSString *str = [TimeManage getToday:data];
 //    if ([str isEqualToString:@"今天"]) {
@@ -78,6 +85,14 @@
         make.width.mas_equalTo(to.size.width);
     }];
     
+    UIImage *fast = [UIImage imageNamed:@"jiajidaizi"];
+    [self.fastlogo mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.endLab.mas_right).offset(5);
+        make.centerY.equalTo(self.startLab.mas_centerY);
+        make.height.mas_equalTo(fast.size.height);
+        make.width.mas_equalTo(fast.size.width);
+    }];
+    
     [self.endLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.toLogo.mas_right).offset(5);
         make.top.equalTo(self.contentView.mas_top).offset(10);
@@ -87,6 +102,7 @@
     //  添加分类  #a666c7，#78a1e3，#b4cc44   [NSString stringWithFormat:@"%@ 共%@吨,剩%@吨", model.type, model.weight, model.surplus_weight];
     UILabel *tag1 = [self createLabtext:model.type colot:UIColorFromHex(0xa666c7)];
     [self.contentView addSubview:tag1];
+    self.tag1 = tag1;
     
     [tag1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView.mas_left).offset(10);
@@ -96,14 +112,16 @@
     
     UILabel *tag2 = [self createLabtext:[NSString stringWithFormat:@"共%@吨", model.weight] colot:UIColorFromHex(0x78a1e3)];
     [self.contentView addSubview:tag2];
+    self.tag2 = tag2;
     [tag2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(tag1.mas_right).offset(10);
         make.top.equalTo(self.endLab.mas_bottom).offset(10);
         make.height.mas_equalTo(15);
     }];
     
-    UILabel *tag3 = [self createLabtext:[NSString stringWithFormat:@"剩%@吨", model.weight] colot:UIColorFromHex(0xb4cc44)];
+    UILabel *tag3 = [self createLabtext:[NSString stringWithFormat:@"剩%@吨", model.surplus_weight] colot:UIColorFromHex(0xb4cc44)];
     [self.contentView addSubview:tag3];
+    self.tag3 = tag3;
     [tag3 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(tag2.mas_right).offset(10);
         make.top.equalTo(self.endLab.mas_bottom).offset(10);
@@ -243,6 +261,15 @@
         _timeLab.font = [UIFont systemFontOfSize:13];
     }
     return _timeLab;
+}
+
+- (UIImageView *)fastlogo {
+    if (!_fastlogo) {
+        _fastlogo = [[UIImageView alloc] init];
+        _fastlogo.backgroundColor = [UIColor clearColor];
+        _fastlogo.image = [UIImage imageNamed:@"jiajidaizi"];
+    }
+    return _fastlogo;
 }
 
 - (UIImageView *)callLogo {
