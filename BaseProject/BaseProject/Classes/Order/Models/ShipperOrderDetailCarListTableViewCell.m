@@ -26,7 +26,7 @@
 }
 
 -(void)setData:(NSDictionary *)dataDic{
-    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[dataDic objectForKey:@"img"]?:@""] placeholderImage:DefaultImage];
+    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[dataDic objectForKey:@"avatar_url"]?:@""] placeholderImage:DefaultImage];
     self.nameLabel.text = dataDic[@"car_name"];
     NSInteger state = [dataDic[@"carriage_status"] integerValue];//1待装货 2运输中 3已结束
     if (state==1) {

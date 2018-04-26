@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -220,15 +220,15 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="carLabel" destination="N0G-Ms-rI9" id="4Ag-I2-wc7"/>
-                <outlet property="endAddressLabel" destination="xis-az-RGj" id="xFj-xn-xI8"/>
-                <outlet property="endAreaLabel" destination="Bby-2L-nqy" id="Ue3-qi-wF9"/>
+                <outlet property="endAddressLabel" destination="Bby-2L-nqy" id="97R-fg-LOy"/>
+                <outlet property="endAreaLabel" destination="xis-az-RGj" id="GsH-Y0-o0Q"/>
                 <outlet property="orderNumberLabel" destination="9o5-o9-j13" id="WbJ-bS-uuQ"/>
                 <outlet property="quantityLabel" destination="0Vk-9T-23i" id="Abo-3u-a5j"/>
-                <outlet property="startAddressLabel" destination="vHC-w8-VcV" id="kfZ-d9-tuJ"/>
-                <outlet property="startAreaLabel" destination="jjy-YA-Qw4" id="0SQ-Ng-G7z"/>
+                <outlet property="startAddressLabel" destination="jjy-YA-Qw4" id="2NI-G0-swO"/>
+                <outlet property="startAreaLabel" destination="vHC-w8-VcV" id="c9A-8v-aXT"/>
                 <outlet property="typeLabel" destination="WsW-nN-jsm" id="vrT-3Q-dNg"/>
             </connections>
-            <point key="canvasLocation" x="-95" y="-28"/>
+            <point key="canvasLocation" x="-5" y="9"/>
         </tableViewCell>
     </objects>
     <resources>
