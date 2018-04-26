@@ -22,6 +22,10 @@
 @property (weak, nonatomic) IBOutlet UIImageView *drivingLicenceImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *otherImageView;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *nameViewH;
+@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
+
+
 //value
 @property (strong, nonatomic) NSMutableDictionary *carTypeValue;
 @property (strong, nonatomic) UIImage *drivingLicenceImageValue;
@@ -42,8 +46,9 @@
     }
     
     if (self.carInfo) {
-        __weak typeof(self) weakself = self;
+        //__weak typeof(self) weakself = self;
         [self setCustomerTitle:@"修改车辆信息"];
+        self.nameTextField.text = validString(self.carInfo[@"car_name"]);
         self.carNumberTextField.text = validString(self.carInfo[@"license"]);
         self.carTypeTextField.text = validString(self.carInfo[@"type"]);
         for (NSDictionary *dic in self.carType) {
@@ -56,10 +61,12 @@
         self.maxLoadTextField.text = validString(self.carInfo[@"load"]);
         [self.drivingLicenceImageView sd_setImageWithURL:[NSURL URLWithString:validString(self.carInfo[@"drive_img"])] placeholderImage:DefaultImage];
         [self.otherImageView sd_setImageWithURL:[NSURL URLWithString:validString(self.carInfo[@"run_img"])] placeholderImage:DefaultImage];
-        weakself.drivingLicenceImageValue = [NSString stringWithFormat:@"%@",self.carInfo[@"drive_img"]].urlImage;
-        weakself.otherImageValue = [NSString stringWithFormat:@"%@",self.carInfo[@"run_img"]].urlImage;
+        self.drivingLicenceImageValue = [NSString stringWithFormat:@"%@",self.carInfo[@"drive_img"]].urlImage;
+        self.otherImageValue = [NSString stringWithFormat:@"%@",self.carInfo[@"run_img"]].urlImage;
+        self.nameViewH.constant = 54;
     } else {
         [self setCustomerTitle:@"添加车辆"];
+        self.nameViewH.constant = 0;
     }
 }
 #pragma mark -- method
@@ -118,8 +125,13 @@
     [param setValue:self.drivingLicenceImageValue.base64String forKey:@"drive_img"];
     [param setValue:self.otherImageValue.base64String forKey:@"run_img"];
     if (self.carInfo) {
+        if (self.nameTextField.text.length == 0) {
+            [ConfigModel mbProgressHUD:@"请输入司机姓名" andView:nil];
+            return;
+        }
         [ConfigModel showHud:self];
         [param setValue:self.carId forKey:@"id"];
+        [param setValue:self.nameTextField.text forKey:@"car_name"];
         [HttpRequest postPath:@"_amend_usercar_001" params:param resultBlock:^(id responseObject, NSError *error) {
             [ConfigModel hideHud:self];
             NSDictionary *dic = responseObject;

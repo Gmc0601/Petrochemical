@@ -42,7 +42,7 @@
 
 - (void) setupUI{
     //头部控制的segMent
-    NSArray *titleArr = @[@"抢单中",@"审核中",@"已结束",@"已拒绝"];
+    NSArray *titleArr = @[@"审核中",@"抢单中",@"已结束",@"已拒绝"];
     WJItemsConfig *config = [[WJItemsConfig alloc]init];
     config.itemWidth = kScreenW/4.0;
     config.selectedColor = UIColorFromHex(0x028BF3);

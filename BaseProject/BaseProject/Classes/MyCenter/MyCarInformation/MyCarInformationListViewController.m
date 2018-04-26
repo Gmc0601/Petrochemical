@@ -20,6 +20,7 @@
 @property (strong, nonatomic) NSMutableArray *dataSource;
 @property (assign, nonatomic) BOOL isYewu;
 @property (strong, nonatomic) NSDictionary *selectedSalemanValue;
+@property (strong, nonatomic) UIButton *tempButton;
 @end
 
 @implementation MyCarInformationListViewController
@@ -37,7 +38,7 @@
 }
 
 - (void) setupUI{
-    [self setCustomerTitle:@"我是车主"];
+    [self setCustomerTitle:@"我是车主/调度"];
     self.view.backgroundColor = UIColorFromHex(0xF1F2F2);
     self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     self.tableView.tableFooterView = nil;
@@ -50,10 +51,30 @@
         button;
     });
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
+     _tempButton = ({
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button setTitle:@"暂无车辆，请立即添加" forState:UIControlStateNormal];
+        button.titleLabel.font = [UIFont systemFontOfSize:15];
+        [button setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(rightButtonAction) forControlEvents:UIControlEventTouchUpInside];
+        button;
+    });
+    [self.view addSubview:_tempButton];
+    _tempButton.frame = CGRectMake(0, 0, 200, 60);
+    _tempButton.center = CGPointMake(kScreenW/2, kScreenH/2);
 }
 - (void) jiaoyanYewu{
     [HttpRequest postPath:@"_yewu_001" params:nil resultBlock:^(id responseObject, NSError *error) {
         
+        NSDictionary *dic = responseObject;
+        int errorint = [dic[@"error"] intValue];
+        if (errorint == 0 ) {
+            _isYewu = YES;
+        }else {
+            _isYewu = NO;
+            NSString *errorStr = dic[@"info"];
+            [ConfigModel mbProgressHUD:errorStr andView:nil];
+        }
     }];
 }
 - (void) setupDataSource{
@@ -76,6 +97,11 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if (_dataSource.count == 0) {
+        _tempButton.hidden = NO;
+    } else {
+        _tempButton.hidden = YES;
+    }
     return _dataSource.count;
 }
 
