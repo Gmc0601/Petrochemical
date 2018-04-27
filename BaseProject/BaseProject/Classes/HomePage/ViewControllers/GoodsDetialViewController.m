@@ -27,7 +27,7 @@
 
 @property (nonatomic, strong) GoodsDetailModel *model;
 
-@property (nonatomic, strong) UIButton *commitBtn;
+@property (nonatomic, strong) UIButton *commitBtn, *callBtn;
 
 @property (nonatomic, strong) YYTextView *text;
 
@@ -42,6 +42,10 @@
     [self setCustomerTitle:@"货源详情"];
     [self.view addSubview:self.noUseTableView];
     [self.view addSubview:self.commitBtn];
+    [self.view addSubview:self.callBtn];
+    UILabel *line = [[UILabel alloc] initWithFrame:FRAME(kScreenW/2, self.callBtn.top, kScreenW/2, 1)];
+    line.backgroundColor = RGBColor(230, 240, 241);
+    [self.view addSubview:line];
     [self raccomand];
 }
 
@@ -264,7 +268,7 @@
 
 - (UIButton *)commitBtn {
     if (!_commitBtn) {
-        _commitBtn = [[UIButton alloc] initWithFrame:FRAME(0, self.noUseTableView.bottom, kScreenW, 50)];
+        _commitBtn = [[UIButton alloc] initWithFrame:FRAME(0, self.noUseTableView.bottom, kScreenW/2, 50)];
         [_commitBtn setTitle:@"立即抢单" forState:UIControlStateNormal];
         _commitBtn.backgroundColor = ThemeBlue;
         [_commitBtn addTarget:self action:@selector(commitClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -272,12 +276,25 @@
     return _commitBtn;
 }
 
+- (UIButton *)callBtn {
+    if (!_callBtn) {
+        _callBtn = [[UIButton alloc] initWithFrame:FRAME(kScreenW/2, self.noUseTableView.bottom, kScreenW/2, 50)];
+        [_callBtn setTitleColor:ThemeBlue forState:UIControlStateNormal];
+        UILabel *line = [[UILabel alloc] initWithFrame:FRAME(kScreenW/2, 0, kScreenW/2, 1)];
+        line.backgroundColor = RGBColor(239, 240, 241);
+        [_callBtn addSubview:line];
+        [_callBtn setTitle:@"拨打电话" forState:UIControlStateNormal];
+        [_callBtn addTarget:self action:@selector(call) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _callBtn;
+}
+
+- (void)call {
+    NSMutableString* str=[[NSMutableString alloc]initWithFormat:@"telprompt://%@",self.model.hot_line];
+    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:str]];
+}
+
 - (void)commitClick:(UIButton *)sender {
-    
-  
-    
-    
-    
     
     if ([sender.titleLabel.text isEqualToString:@"管理我的货源"]) {
         MyPublishListViewController *vc = [[MyPublishListViewController alloc] init];

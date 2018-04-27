@@ -22,6 +22,6 @@
 @property (nonatomic , copy) NSString              * load;
 @property (nonatomic , copy) NSString              * origin;
 @property (nonatomic , copy) NSString              * destination;
-@property (nonatomic , copy) NSString              * status;
+@property (nonatomic , copy) NSString              * status, *hot_line;
 
 @end

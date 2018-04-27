@@ -50,7 +50,7 @@
     }
     self.startLab.text = model.loading;
     self.endLab.text = model.unload;
-    self.locationLab.text = [NSString stringWithFormat:@"运费:%@元", model.transportation];
+    self.locationLab.text = [NSString stringWithFormat:@"运费:%@", model.transportation];
     [self.headimage sd_setImageWithURL:[NSURL URLWithString:model.avatar_url] placeholderImage:nil];
     self.nickLabLab.text = model.linkname;
     self.timeLab.text = [NSString stringWithFormat:@"用车时间：%@", model.use_time];

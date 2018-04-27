@@ -24,7 +24,7 @@
 
 @property (nonatomic, strong) NSArray *titleArr, *detailArr, *iconArr;
 
-@property (nonatomic, strong) UIButton *commitBtn;
+@property (nonatomic, strong) UIButton *commitBtn, *callBtn;
 
 @end
 
@@ -243,13 +243,30 @@
 
 - (UIButton *)commitBtn {
     if (!_commitBtn) {
-        _commitBtn = [[UIButton alloc] initWithFrame:FRAME(0, self.noUseTableView.bottom, kScreenW , 50)];
+        _commitBtn = [[UIButton alloc] initWithFrame:FRAME(0, self.noUseTableView.bottom, kScreenW/2, 50)];
+        [_commitBtn setTitle:@"立即抢单" forState:UIControlStateNormal];
         _commitBtn.backgroundColor = ThemeBlue;
-        _commitBtn.titleLabel.font = [UIFont systemFontOfSize:17];
         [_commitBtn addTarget:self action:@selector(commitClick:) forControlEvents:UIControlEventTouchUpInside];
-        [_commitBtn setTitle:@"立即邀请" forState:UIControlStateNormal];
     }
     return _commitBtn;
+}
+
+- (UIButton *)callBtn {
+    if (!_callBtn) {
+        _callBtn = [[UIButton alloc] initWithFrame:FRAME(kScreenW/2, self.noUseTableView.bottom, kScreenW/2, 50)];
+        [_callBtn setTitleColor:ThemeBlue forState:UIControlStateNormal];
+        UILabel *line = [[UILabel alloc] initWithFrame:FRAME(kScreenW/2, 0, kScreenW/2, 1)];
+        line.backgroundColor = RGBColor(239, 240, 241);
+        [_callBtn addSubview:line];
+        [_callBtn setTitle:@"拨打电话" forState:UIControlStateNormal];
+        [_callBtn addTarget:self action:@selector(call) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _callBtn;
+}
+
+- (void)call {
+    NSMutableString* str=[[NSMutableString alloc]initWithFormat:@"telprompt://%@",self.model.hot_line];
+    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:str]];
 }
 
 
