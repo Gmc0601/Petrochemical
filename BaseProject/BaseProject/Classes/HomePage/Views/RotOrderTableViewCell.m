@@ -127,12 +127,12 @@
 
 - (UITextField *)numFile {
     if (!_numFile) {
-        _numFile = [[UITextField alloc] initWithFrame:FRAME(self.titleLab.right, self.carNumlab.top, 60, 20)];
+        _numFile = [[UITextField alloc] initWithFrame:FRAME(self.titleLab.right, self.carNumlab.top, SizeWidth(80), 20)];
         _numFile.textAlignment = NSTextAlignmentCenter;
-        _numFile.font = [UIFont systemFontOfSize:13];
+        _numFile.font = [UIFont systemFontOfSize:17];
         _numFile.delegate = self;
         _numFile.keyboardType = UIKeyboardTypeDecimalPad;
-        [_numFile setValue:[UIFont boldSystemFontOfSize:11] forKeyPath:@"_placeholderLabel.font"];
+        [_numFile setValue:[UIFont boldSystemFontOfSize:SizeWidth(17)] forKeyPath:@"_placeholderLabel.font"];
         _numFile.placeholder = @"点击输入";
     }
     return _numFile;
@@ -202,7 +202,7 @@
 
 - (UISwitch *)swi {
     if (!_swi) {
-        _swi = [[UISwitch alloc] initWithFrame:FRAME(self.numFile.right + 10, self.carNumlab.top  - 6, 40, 20)];
+        _swi = [[UISwitch alloc] initWithFrame:FRAME(kScreenW - 66, self.carNumlab.top  - 6, 40, 20)];
         _swi.on = NO;
         [_swi addTarget:self action:@selector(checkLogoClick:) forControlEvents:UIControlEventValueChanged];
     }

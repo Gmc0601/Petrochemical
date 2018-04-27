@@ -15,7 +15,6 @@
 
 @property (nonatomic, strong) UILabel *startLab, *endLab, *locationLab, *nickLabLab, *timeLab;
 
-
 @property (nonatomic, strong) HomeCarModel *model;
 
 @end

@@ -15,6 +15,7 @@
 #import "RobOrderViewController.h"
 #import "MyCarInformationListViewController.h"
 #import "MyPublishListViewController.h"
+#import "ShipperOrderDetailViewController.h"
 
 @interface GoodsDetialViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -67,14 +68,20 @@
         }
         [self.noUseTableView reloadData];
         
-        if ([self.model.indent_type intValue] == 1) {
-            //  已抢
-            self.commitBtn.backgroundColor = [UIColor grayColor];
-            self.commitBtn.userInteractionEnabled = NO;
+        if (self.type == GoodsDetail) {
+            if ([self.model.indent_type intValue] == 1) {
+                //  已抢
+                self.commitBtn.backgroundColor = [UIColor grayColor];
+                self.commitBtn.userInteractionEnabled = NO;
+            }
+            if ([self.model.user_type intValue] == 1) {
+                [self.commitBtn setTitle:@"管理我的货源" forState:UIControlStateNormal];
+            }
+        }else {
+            [self.commitBtn setTitle:@"查看订单" forState:UIControlStateNormal];
         }
-        if ([self.model.user_type intValue] == 1) {
-            [self.commitBtn setTitle:@"管理我的货源" forState:UIControlStateNormal];
-        }
+        
+        
     }];
 }
 
@@ -99,6 +106,7 @@
     if ([self.detialArr[indexPath.row] isKindOfClass:[NSString class]]) {
       cell.detailTextLabel.text = self.detialArr[indexPath.row];
     }
+    [self updateicon:cell];
     if ([cell.textLabel.text isEqualToString:@"装货点"]) {
         NSDictionary *dic = self.detialArr[indexPath.row];
         NSString *title = dic[@"loading"];
@@ -138,7 +146,59 @@
     }
     
     
+    
     return cell;
+    
+    
+}
+
+- (void)updateicon:(UITableViewCell *)cell {
+    NSString *str ;
+    
+    if ([cell.textLabel.text isEqualToString:@"货单号"]) {
+        str = @"danju";
+    }
+    
+    if ([cell.textLabel.text isEqualToString:@"预计里程"]) {
+        str = @"btn_time";
+    }
+    
+    if ([cell.textLabel.text isEqualToString:@"用车时间"]) {
+        str = @"btn_yongcheshijian";
+    }
+    
+    if ([cell.textLabel.text isEqualToString:@"货物名称"]) {
+        str = @"baoguo-1";
+    }
+    
+    if ([cell.textLabel.text isEqualToString:@"货物重量"]) {
+        str = @"btn_huowuzhongliang";
+    }
+    
+    if ([cell.textLabel.text isEqualToString:@"运输费"]) {
+        str = @"yunshu-feiyong";
+    }
+    
+    if ([cell.textLabel.text isEqualToString:@"运输单价"]) {
+        str = @"btn_danjia";
+    }
+    
+    if ([cell.textLabel.text isEqualToString:@"结算方式"]) {
+        str = @"btn_jiesuan";
+    }
+    
+    cell.imageView.image = [UIImage imageNamed:str];
+    [cell.imageView sizeToFit];
+    
+//    if ([cell.textLabel.text isEqualToString:@""]) {
+//        str = @"";
+//    }
+//
+//    if ([cell.textLabel.text isEqualToString:@""]) {
+//        str = @"";
+//    }
+    
+    
     
     
 }
@@ -275,6 +335,12 @@
         }];
         
        
+    }
+    
+    if ([sender.titleLabel.text isEqualToString:@"查看订单"]) {
+        ShipperOrderDetailViewController *vc = [[ShipperOrderDetailViewController alloc] init];
+        vc.orderId = self.model.good_num;
+        [self.navigationController pushViewController:vc animated:YES];
     }
     
 }

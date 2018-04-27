@@ -22,7 +22,7 @@
 
 @property (nonatomic, strong) CarDetailModel *model;
 
-@property (nonatomic, strong) NSArray *titleArr, *detailArr;
+@property (nonatomic, strong) NSArray *titleArr, *detailArr, *iconArr;
 
 @property (nonatomic, strong) UIButton *commitBtn;
 
@@ -51,14 +51,19 @@
                            self.model.type,
                            self.model.load];
         [self.noUseTableView reloadData];
-        if ([model.status intValue] == 1) {
-            [self.commitBtn setTitle:@"已发出邀请，请等待" forState:UIControlStateNormal];
-            self.commitBtn.backgroundColor = UIColorFromHex(0xcccccc);
-            self.commitBtn.userInteractionEnabled =  NO;
+        if (self.type == CarsDetail) {
+            if ([model.status intValue] == 1) {
+                [self.commitBtn setTitle:@"已发出邀请，请等待" forState:UIControlStateNormal];
+                self.commitBtn.backgroundColor = UIColorFromHex(0xcccccc);
+                self.commitBtn.userInteractionEnabled =  NO;
+            }
+            if ([model.uid isEqualToString:@"11"]) {
+                [self.commitBtn setTitle:@"管理我的车队" forState:UIControlStateNormal];
+            }
+        }else {
+            [self.commitBtn setTitle:@"删除" forState:UIControlStateNormal];
         }
-        if ([model.uid isEqualToString:@"11"]) {
-            [self.commitBtn setTitle:@"管理我的车队" forState:UIControlStateNormal];
-        }
+       
     }];
 }
 
@@ -82,10 +87,11 @@
     cell.textLabel.text = self.titleArr[indexPath.row];
     cell.detailTextLabel.text = self.detailArr[indexPath.row];
     
-    if ([cell.textLabel.text isEqualToString:@"起点"] || [cell.textLabel.text isEqualToString:@"终点"]) {
-        cell.imageView.image = [UIImage imageNamed:@"weizhi"];
+//    if ([cell.textLabel.text isEqualToString:@"起点"] || [cell.textLabel.text isEqualToString:@"终点"]) {
+        NSString *imagestr = self.iconArr[indexPath.row];
+        cell.imageView.image = [UIImage imageNamed:imagestr];
         [cell.imageView sizeToFit];
-    }
+//    }
     
     if ([cell.textLabel.text isEqualToString:@"空车位置"] ) {
         cell.detailTextLabel.textColor = ThemeBlue;
@@ -151,6 +157,13 @@
         _model = [[CarDetailModel alloc] init];
     }
     return _model;
+}
+
+- (NSArray *)iconArr {
+    if (!_iconArr) {
+        _iconArr = @[@"sijixingming",@"cheyuan-chepai", @"icon_nxddz",@"icon_txddz", @"cheyuan_kongcheweizhi", @"cheyuan-zhuanghuoshijian", @"guanticaizhi", @"zaizhong"];
+    }
+    return _iconArr;
 }
 
 - (NSArray *)titleArr {
