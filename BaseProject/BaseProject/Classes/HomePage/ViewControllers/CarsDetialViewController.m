@@ -36,6 +36,10 @@
     [self navitation];
     [self.view addSubview:self.noUseTableView];
     [self.view addSubview:self.commitBtn];
+    [self.view addSubview:self.callBtn];
+    UILabel *line = [[UILabel alloc] initWithFrame:FRAME(kScreenW/2, self.callBtn.top, kScreenW/2, 1)];
+    line.backgroundColor = RGBColor(230, 240, 241);
+    [self.view addSubview:line];
     [self raccommad];
 }
 
