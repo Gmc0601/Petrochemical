@@ -22,9 +22,9 @@
 
 @property (nonatomic, strong) CarDetailModel *model;
 
-@property (nonatomic, strong) NSArray *titleArr, *detailArr;
+@property (nonatomic, strong) NSArray *titleArr, *detailArr, *iconArr;
 
-@property (nonatomic, strong) UIButton *commitBtn;
+@property (nonatomic, strong) UIButton *commitBtn, *callBtn;
 
 @end
 
@@ -36,6 +36,10 @@
     [self navitation];
     [self.view addSubview:self.noUseTableView];
     [self.view addSubview:self.commitBtn];
+    [self.view addSubview:self.callBtn];
+    UILabel *line = [[UILabel alloc] initWithFrame:FRAME(kScreenW/2, self.callBtn.top, kScreenW/2, 1)];
+    line.backgroundColor = RGBColor(230, 240, 241);
+    [self.view addSubview:line];
     [self raccommad];
 }
 
@@ -51,14 +55,19 @@
                            self.model.type,
                            self.model.load];
         [self.noUseTableView reloadData];
-        if ([model.status intValue] == 1) {
-            [self.commitBtn setTitle:@"已发出邀请，请等待" forState:UIControlStateNormal];
-            self.commitBtn.backgroundColor = UIColorFromHex(0xcccccc);
-            self.commitBtn.userInteractionEnabled =  NO;
+        if (self.type == CarsDetail) {
+            if ([model.status intValue] == 1) {
+                [self.commitBtn setTitle:@"已发出邀请，请等待" forState:UIControlStateNormal];
+                self.commitBtn.backgroundColor = UIColorFromHex(0xcccccc);
+                self.commitBtn.userInteractionEnabled =  NO;
+            }
+            if ([model.uid isEqualToString:@"11"]) {
+                [self.commitBtn setTitle:@"管理我的车队" forState:UIControlStateNormal];
+            }
+        }else {
+            [self.commitBtn setTitle:@"删除" forState:UIControlStateNormal];
         }
-        if ([model.uid isEqualToString:@"11"]) {
-            [self.commitBtn setTitle:@"管理我的车队" forState:UIControlStateNormal];
-        }
+       
     }];
 }
 
@@ -82,10 +91,11 @@
     cell.textLabel.text = self.titleArr[indexPath.row];
     cell.detailTextLabel.text = self.detailArr[indexPath.row];
     
-    if ([cell.textLabel.text isEqualToString:@"起点"] || [cell.textLabel.text isEqualToString:@"终点"]) {
-        cell.imageView.image = [UIImage imageNamed:@"weizhi"];
+//    if ([cell.textLabel.text isEqualToString:@"起点"] || [cell.textLabel.text isEqualToString:@"终点"]) {
+        NSString *imagestr = self.iconArr[indexPath.row];
+        cell.imageView.image = [UIImage imageNamed:imagestr];
         [cell.imageView sizeToFit];
-    }
+//    }
     
     if ([cell.textLabel.text isEqualToString:@"空车位置"] ) {
         cell.detailTextLabel.textColor = ThemeBlue;
@@ -151,6 +161,13 @@
         _model = [[CarDetailModel alloc] init];
     }
     return _model;
+}
+
+- (NSArray *)iconArr {
+    if (!_iconArr) {
+        _iconArr = @[@"sijixingming",@"cheyuan-chepai", @"icon_nxddz",@"icon_txddz", @"cheyuan_kongcheweizhi", @"cheyuan-zhuanghuoshijian", @"guanticaizhi", @"zaizhong"];
+    }
+    return _iconArr;
 }
 
 - (NSArray *)titleArr {
@@ -230,13 +247,30 @@
 
 - (UIButton *)commitBtn {
     if (!_commitBtn) {
-        _commitBtn = [[UIButton alloc] initWithFrame:FRAME(0, self.noUseTableView.bottom, kScreenW , 50)];
+        _commitBtn = [[UIButton alloc] initWithFrame:FRAME(0, self.noUseTableView.bottom, kScreenW/2, 50)];
+        [_commitBtn setTitle:@"立即抢单" forState:UIControlStateNormal];
         _commitBtn.backgroundColor = ThemeBlue;
-        _commitBtn.titleLabel.font = [UIFont systemFontOfSize:17];
         [_commitBtn addTarget:self action:@selector(commitClick:) forControlEvents:UIControlEventTouchUpInside];
-        [_commitBtn setTitle:@"立即邀请" forState:UIControlStateNormal];
     }
     return _commitBtn;
+}
+
+- (UIButton *)callBtn {
+    if (!_callBtn) {
+        _callBtn = [[UIButton alloc] initWithFrame:FRAME(kScreenW/2, self.noUseTableView.bottom, kScreenW/2, 50)];
+        [_callBtn setTitleColor:ThemeBlue forState:UIControlStateNormal];
+        UILabel *line = [[UILabel alloc] initWithFrame:FRAME(kScreenW/2, 0, kScreenW/2, 1)];
+        line.backgroundColor = RGBColor(239, 240, 241);
+        [_callBtn addSubview:line];
+        [_callBtn setTitle:@"拨打电话" forState:UIControlStateNormal];
+        [_callBtn addTarget:self action:@selector(call) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _callBtn;
+}
+
+- (void)call {
+    NSMutableString* str=[[NSMutableString alloc]initWithFormat:@"telprompt://%@",self.model.hot_line];
+    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:str]];
 }
 
 

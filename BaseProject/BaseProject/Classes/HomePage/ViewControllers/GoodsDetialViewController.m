@@ -15,6 +15,7 @@
 #import "RobOrderViewController.h"
 #import "MyCarInformationListViewController.h"
 #import "MyPublishListViewController.h"
+#import "ShipperOrderDetailViewController.h"
 
 @interface GoodsDetialViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -26,7 +27,7 @@
 
 @property (nonatomic, strong) GoodsDetailModel *model;
 
-@property (nonatomic, strong) UIButton *commitBtn;
+@property (nonatomic, strong) UIButton *commitBtn, *callBtn;
 
 @property (nonatomic, strong) YYTextView *text;
 
@@ -41,6 +42,10 @@
     [self setCustomerTitle:@"货源详情"];
     [self.view addSubview:self.noUseTableView];
     [self.view addSubview:self.commitBtn];
+    [self.view addSubview:self.callBtn];
+    UILabel *line = [[UILabel alloc] initWithFrame:FRAME(kScreenW/2, self.callBtn.top, kScreenW/2, 1)];
+    line.backgroundColor = RGBColor(230, 240, 241);
+    [self.view addSubview:line];
     [self raccomand];
 }
 
@@ -67,14 +72,20 @@
         }
         [self.noUseTableView reloadData];
         
-        if ([self.model.indent_type intValue] == 1) {
-            //  已抢
-            self.commitBtn.backgroundColor = [UIColor grayColor];
-            self.commitBtn.userInteractionEnabled = NO;
+        if (self.type == GoodsDetail) {
+            if ([self.model.indent_type intValue] == 1) {
+                //  已抢
+                self.commitBtn.backgroundColor = [UIColor grayColor];
+                self.commitBtn.userInteractionEnabled = NO;
+            }
+            if ([self.model.user_type intValue] == 1) {
+                [self.commitBtn setTitle:@"管理我的货源" forState:UIControlStateNormal];
+            }
+        }else {
+            [self.commitBtn setTitle:@"查看订单" forState:UIControlStateNormal];
         }
-        if ([self.model.user_type intValue] == 1) {
-            [self.commitBtn setTitle:@"管理我的货源" forState:UIControlStateNormal];
-        }
+        
+        
     }];
 }
 
@@ -99,6 +110,7 @@
     if ([self.detialArr[indexPath.row] isKindOfClass:[NSString class]]) {
       cell.detailTextLabel.text = self.detialArr[indexPath.row];
     }
+    [self updateicon:cell];
     if ([cell.textLabel.text isEqualToString:@"装货点"]) {
         NSDictionary *dic = self.detialArr[indexPath.row];
         NSString *title = dic[@"loading"];
@@ -138,7 +150,59 @@
     }
     
     
+    
     return cell;
+    
+    
+}
+
+- (void)updateicon:(UITableViewCell *)cell {
+    NSString *str ;
+    
+    if ([cell.textLabel.text isEqualToString:@"货单号"]) {
+        str = @"danju";
+    }
+    
+    if ([cell.textLabel.text isEqualToString:@"预计里程"]) {
+        str = @"btn_time";
+    }
+    
+    if ([cell.textLabel.text isEqualToString:@"用车时间"]) {
+        str = @"btn_yongcheshijian";
+    }
+    
+    if ([cell.textLabel.text isEqualToString:@"货物名称"]) {
+        str = @"baoguo-1";
+    }
+    
+    if ([cell.textLabel.text isEqualToString:@"货物重量"]) {
+        str = @"btn_huowuzhongliang";
+    }
+    
+    if ([cell.textLabel.text isEqualToString:@"运输费"]) {
+        str = @"yunshu-feiyong";
+    }
+    
+    if ([cell.textLabel.text isEqualToString:@"运输单价"]) {
+        str = @"btn_danjia";
+    }
+    
+    if ([cell.textLabel.text isEqualToString:@"结算方式"]) {
+        str = @"btn_jiesuan";
+    }
+    
+    cell.imageView.image = [UIImage imageNamed:str];
+    [cell.imageView sizeToFit];
+    
+//    if ([cell.textLabel.text isEqualToString:@""]) {
+//        str = @"";
+//    }
+//
+//    if ([cell.textLabel.text isEqualToString:@""]) {
+//        str = @"";
+//    }
+    
+    
     
     
 }
@@ -204,7 +268,7 @@
 
 - (UIButton *)commitBtn {
     if (!_commitBtn) {
-        _commitBtn = [[UIButton alloc] initWithFrame:FRAME(0, self.noUseTableView.bottom, kScreenW, 50)];
+        _commitBtn = [[UIButton alloc] initWithFrame:FRAME(0, self.noUseTableView.bottom, kScreenW/2, 50)];
         [_commitBtn setTitle:@"立即抢单" forState:UIControlStateNormal];
         _commitBtn.backgroundColor = ThemeBlue;
         [_commitBtn addTarget:self action:@selector(commitClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -212,12 +276,25 @@
     return _commitBtn;
 }
 
+- (UIButton *)callBtn {
+    if (!_callBtn) {
+        _callBtn = [[UIButton alloc] initWithFrame:FRAME(kScreenW/2, self.noUseTableView.bottom, kScreenW/2, 50)];
+        [_callBtn setTitleColor:ThemeBlue forState:UIControlStateNormal];
+        UILabel *line = [[UILabel alloc] initWithFrame:FRAME(kScreenW/2, 0, kScreenW/2, 1)];
+        line.backgroundColor = RGBColor(239, 240, 241);
+        [_callBtn addSubview:line];
+        [_callBtn setTitle:@"拨打电话" forState:UIControlStateNormal];
+        [_callBtn addTarget:self action:@selector(call) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _callBtn;
+}
+
+- (void)call {
+    NSMutableString* str=[[NSMutableString alloc]initWithFormat:@"telprompt://%@",self.model.hot_line];
+    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:str]];
+}
+
 - (void)commitClick:(UIButton *)sender {
-    
-  
-    
-    
-    
     
     if ([sender.titleLabel.text isEqualToString:@"管理我的货源"]) {
         MyPublishListViewController *vc = [[MyPublishListViewController alloc] init];
@@ -275,6 +352,12 @@
         }];
         
        
+    }
+    
+    if ([sender.titleLabel.text isEqualToString:@"查看订单"]) {
+        ShipperOrderDetailViewController *vc = [[ShipperOrderDetailViewController alloc] init];
+        vc.orderId = self.model.good_num;
+        [self.navigationController pushViewController:vc animated:YES];
     }
     
 }

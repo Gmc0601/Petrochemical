@@ -38,18 +38,19 @@
     }else {
         self.fastlogo.hidden = YES;
     }
-//    NSString *data = [NSString stringWithFormat:@"%@", model.use_time];
-//    NSString *str = [TimeManage getToday:data];
-//    if ([str isEqualToString:@"今天"]) {
-//        self.backgroundColor = UIColorFromHex(0xE5F7E3);
-//    }else if ([str isEqualToString:@"昨天"]){
-//        self.backgroundColor = UIColorFromHex(0xF5F7E3);
-//    }else {
-//        self.backgroundColor = [UIColor whiteColor];
-//    }
+    NSString *data = [NSString stringWithFormat:@"%@", model.use_time];
+    NSString *str = [TimeManage getToday:data];
+    NSLog(@">>>%@", str);
+    if ([str isEqualToString:@"今天"]) {
+        self.backgroundColor = UIColorFromHex(0xE5F7E3);
+    }else if ([str isEqualToString:@"昨天"]){
+        self.backgroundColor = UIColorFromHex(0xF5F7E3);
+    }else {
+        self.backgroundColor = [UIColor whiteColor];
+    }
     self.startLab.text = model.loading;
     self.endLab.text = model.unload;
-    self.locationLab.text = [NSString stringWithFormat:@"运费:%@元", model.transportation];
+    self.locationLab.text = [NSString stringWithFormat:@"运费:%@", model.transportation];
     [self.headimage sd_setImageWithURL:[NSURL URLWithString:model.avatar_url] placeholderImage:nil];
     self.nickLabLab.text = model.linkname;
     self.timeLab.text = [NSString stringWithFormat:@"用车时间：%@", model.use_time];
@@ -87,7 +88,7 @@
     
     UIImage *fast = [UIImage imageNamed:@"jiajidaizi"];
     [self.fastlogo mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.endLab.mas_right).offset(5);
+        make.left.equalTo(self.endLab.mas_right).offset(15);
         make.centerY.equalTo(self.startLab.mas_centerY);
         make.height.mas_equalTo(fast.size.height);
         make.width.mas_equalTo(fast.size.width);
@@ -156,8 +157,8 @@
     
     [self.callLogo mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.contentView.mas_right).offset(-10);
-        make.height.mas_equalTo(40);
-        make.width.mas_equalTo(40);
+        make.height.mas_equalTo(45);
+        make.width.mas_equalTo(45);
         make.centerY.equalTo(self.contentView.mas_centerY);
     }];
     
@@ -189,7 +190,7 @@
     if (!_startLab) {
         _startLab = [[UILabel alloc] init];
         _startLab.backgroundColor = [UIColor clearColor];
-        _startLab.font = [UIFont boldSystemFontOfSize:15];
+        _startLab.font = [UIFont boldSystemFontOfSize:17];
     }
     return _startLab;
 }
@@ -207,7 +208,7 @@
     if (!_endLab) {
         _endLab = [[UILabel alloc] init];
         _endLab.backgroundColor = [UIColor clearColor];
-        _endLab.font = [UIFont boldSystemFontOfSize:15];
+        _endLab.font = [UIFont boldSystemFontOfSize:17];
     }
     return _endLab;
 }

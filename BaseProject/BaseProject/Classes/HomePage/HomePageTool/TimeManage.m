@@ -12,16 +12,22 @@
 
 
 + (NSString *)getToday:(NSString *)date {
+    
+    if (![date containsString:@"月"]) {
+        return @"其他";
+    }
+    NSLog(@"%@", date);
     NSString *str = date;
+//    NSLog(@"...%@", str);
     NSRange range;
     range = [str rangeOfString:@"日"];
     NSRange range2;
     range2 = [str rangeOfString:@"月"];
-    NSRange range3;
-    range3 = [str rangeOfString:@"年"];
+//    NSRange range3;
+//    range3 = [str rangeOfString:@"年"];
     NSRange month ;
-    month.location = range3.location + 1;
-    month.length = range2.location - range3.location - 1;
+    month.location = 0;
+    month.length = range2.location ;
     
     NSString *monthStr = [str substringWithRange:month];
 //    NSLog(@"month:%@",monthStr);
@@ -55,7 +61,7 @@
     
     NSString *nowMonth = [NSString stringWithFormat:@"%ld", comp.month];
     NSString *nowDay = [NSString stringWithFormat:@"%ld", comp.day];
-    
+    NSLog(@"<><>shijian:%@%@", monthStr, datStr);
     
     if ([nowMonth intValue] == [monthStr intValue]) {
         if ([nowDay intValue] == [datStr intValue]) {
