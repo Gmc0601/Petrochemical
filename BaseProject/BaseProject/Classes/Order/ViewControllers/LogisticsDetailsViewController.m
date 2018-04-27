@@ -34,7 +34,7 @@
     self.headImageView.layer.masksToBounds = YES;
     self.carNumberLabel.layer.cornerRadius = 3;
     self.carNumberLabel.layer.masksToBounds = YES;
-    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:DefaultImage];
+   
     [self requestDetail];
     // Do any additional setup after loading the view from its nib.
 }
@@ -57,6 +57,7 @@
             if ([info isKindOfClass:[NSDictionary class]]) {
                 self.infoDic = info;
                 
+                
                 NSArray *list = info[@"dongtai"];
                 if ([list isKindOfClass:[NSArray class]]) {
                     self.listArray = list;
@@ -76,7 +77,7 @@
 
 -(void)loadListView{
     
-    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[self.infoDic objectForKey:@"img"]?:@""] placeholderImage:DefaultImage];
+ [self.headImageView sd_setImageWithURL:[NSURL URLWithString:validString(self.infoDic[@"avatar_url"])] placeholderImage:DefaultImage];
     self.nameLabel.text = self.infoDic[@"car_name"];
     self.carNumberLabel.text  =  self.infoDic[@"license"];
     
@@ -135,6 +136,15 @@
             make.height.mas_greaterThanOrEqualTo(0);
         }];
         NSString *images = validString(dataDic[@"img"]);
+        images = [images stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+        images = [images stringByReplacingOccurrencesOfString:@" " withString:@""];
+        images = [images stringByReplacingOccurrencesOfString:@"(" withString:@""];
+        images = [images stringByReplacingOccurrencesOfString:@")" withString:@""];
+        images = [images stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+        
+//        NSData *data = [images dataUsingEncoding:NSUTF8StringEncoding];
+//        NSError *error;
+       // NSArray *imagesArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
         NSArray *imagesArray = [images componentsSeparatedByString:@","];
         if (imagesArray.count&&images.length) {
             UIScrollView *scrollView = [[UIScrollView alloc] init];
@@ -151,7 +161,10 @@
               
                 
                 UIImageView *imageView = [[UIImageView alloc] init];
-                [imageView sd_setImageWithURL:[NSURL URLWithString:imagesArray[i]] placeholderImage:DefaultImage];
+                NSString *imagePath = imagesArray[i];
+               imagePath = [imagePath stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                
+                [imageView sd_setImageWithURL:[NSURL URLWithString:imagePath] placeholderImage:DefaultImage];
                 [scrollView addSubview:imageView];
                 [imageView mas_updateConstraints:^(MASConstraintMaker *make) {
                     make.top.mas_equalTo(0);
