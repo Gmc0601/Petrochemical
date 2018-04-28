@@ -37,7 +37,7 @@
     self.typeInfoLabel.text = [NSString stringWithFormat:@"共%@吨 剩%@吨",validString(dicModel[@"weight"]),validString(dicModel[@"surplus_weight"])];
     self.startLabel.text = validString(dicModel[@"loading"]);
     self.endLabel.text = validString(dicModel[@"unload"]);
-    self.timeLabel.text = [NSString stringWithFormat:@"装货时间：%@",[self returnTimeValue:validString(dicModel[@"reject_time"])]];
+    self.timeLabel.text = [NSString stringWithFormat:@"装货时间：%@",validString(dicModel[@"create_time"])];
     self.otherInfoLabel.text = [NSString stringWithFormat:@"报价：%@/吨",validString(dicModel[@"good_price"])];
 }
 

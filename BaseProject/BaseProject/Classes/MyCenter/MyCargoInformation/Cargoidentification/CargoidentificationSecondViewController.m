@@ -49,7 +49,7 @@
 #pragma mark -- method
 - (IBAction)selectedSalemanAction:(id)sender {
     __weak typeof(self) weakself = self;
-    [CustomSeletedPickView creatCustomSeletedPickViewWithTitle:@"请选择您的业务员" value:self.salemanValues block:^(NSDictionary *dic) {
+    [CustomSeletedPickView creatCustomSeletedPickViewWithTitle:@"请选择您的服务专员" value:self.salemanValues block:^(NSDictionary *dic) {
         weakself.selectedSalemanValue = dic;
     }];
 }
