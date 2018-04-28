@@ -552,7 +552,7 @@
             resultsStr = [resultsStr stringByAppendingFormat:@"-%@",cityStr];
         }else if (self.col == 3) {
              resultsStr = [resultsStr stringByAppendingFormat:@"-%@",cityStr];
-             resultsStr = [resultsStr stringByAppendingFormat:@"-%@",districtStr];
+//             resultsStr = [resultsStr stringByAppendingFormat:@"-%@",districtStr];
         }
         
     }
