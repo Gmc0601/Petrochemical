@@ -174,7 +174,7 @@
 - (void)addheadView:(UIView *)view {
     
     UILabel *lab1 = [[UILabel alloc] initWithFrame:FRAME(15, 25, kScreenW/2, 15)];
-    lab1.text = @"抢单数量吨";
+    lab1.text = @"抢单数量(吨)";
     [view addSubview:lab1];
     
     UILabel *lab = [[UILabel alloc] initWithFrame:FRAME(kScreenW/3, 25, kScreenW/3 * 2 - 15, 15)];
