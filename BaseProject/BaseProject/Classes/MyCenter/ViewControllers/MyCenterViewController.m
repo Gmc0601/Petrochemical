@@ -24,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *userNickNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *user_statusLabel;
 
+@property (weak, nonatomic) IBOutlet UIView *shareMainView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *shareMainViewH;
 
 @property (nonatomic, strong) UITableView *noUseTableView;
 @property (strong, nonatomic) NSMutableDictionary *userInfo;
@@ -46,6 +48,7 @@
     }
     self.noUseTableView.scrollIndicatorInsets = self.noUseTableView.contentInset;
     [self openShareAction];
+    [self creatCarType];
 }
 
 
@@ -215,9 +218,33 @@
     _shareInfoDic = shareInfoDic;
     _app_onoff = [validString(shareInfoDic[@"app_onoff"]) intValue];
     if (_app_onoff == 2) {
-        
+        self.shareMainViewH.constant = 54;
     }else{
-        
+        self.shareMainViewH.constant = 0;
     }
+}
+
+- (void) creatCarType{
+    [HttpRequest postPath:@"_tanklist_001" params:nil resultBlock:^(id responseObject, NSError *error) {
+        NSDictionary *dic = responseObject;
+        int errorint = [dic[@"error"] intValue];
+        if (errorint == 0 ) {
+            NSArray *info = dic[@"info"];
+            if ([info isKindOfClass:[NSArray class]]) {
+                NSMutableArray *tempArray = @[].mutableCopy;
+                for (NSDictionary *dic in info) {
+                    if ([dic isKindOfClass:[NSDictionary class]]) {
+                        NSMutableDictionary *tempDic = @{}.mutableCopy;
+                        [tempDic setValue:dic[@"id"] forKey:@"type"];
+                        [tempDic setValue:dic[@"type"] forKey:@"linkname"];
+                        [tempArray addObject:tempDic];
+                    }
+                }
+                [[NSUserDefaults standardUserDefaults] setValue:tempArray forKey:@"creatCarTypeArray"];
+            }
+        }else {
+            
+        }
+    }];
 }
 @end

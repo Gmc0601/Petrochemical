@@ -11,7 +11,7 @@
 @implementation UIImage (MyProperty)
 - (NSString *) base64String{
     if ([self isKindOfClass:[UIImage class]]) {
-        NSData *imageData = UIImageJPEGRepresentation(self, 0.6);
+        NSData *imageData = UIImageJPEGRepresentation(self, 0.4);
         NSString *image64 = [imageData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
         return image64;
     }else{

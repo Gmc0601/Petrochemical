@@ -9,13 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "RotCarinfoModel.h"
 
-@interface RotOrderTableViewCell : UITableViewCell
+@interface RotOrderTableViewCell : UITableViewCell<UITextFieldDelegate>
 
 @property (nonatomic, assign) int num, maxNum,id;
 
 @property (nonatomic) BOOL check, canadd;
 
 @property (nonatomic, strong) UILabel *carNumlab, *titleLab;
+
+@property (nonatomic, strong) UISwitch *swi;
 
 @property (nonatomic, strong) UITextField *numFile;
 

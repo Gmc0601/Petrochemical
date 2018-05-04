@@ -31,6 +31,10 @@
 #import "GoodsDetialViewController.h"
 #import "LoginViewController.h"
 #import "CCWebViewViewController.h"
+#import "HomeCarTableViewCell.h"
+#import "HomeGoodsTableViewCell.h"
+#import "TimeManage.h"
+#import "MessageViewController.h"
 
 static NSString *KCarSection1CellID = @"KCarSection1CellID";//车源section1 CellID
 static NSString *KCarSection2CellID = @"KCarSection2CellID";//车源section2 CellID
@@ -91,6 +95,10 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
     [_segmentBoardScrollView addSubview:self.CarTableView];
     [_segmentBoardScrollView addSubview:self.GoodsTableView];
     [self requestList];
+    
+    
+    
+    
 }
 
 - (void)carLoadmore{
@@ -277,6 +285,8 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
 - (void)rightBarClick {
     
     UnloginReturn
+    MessageViewController *com = [[MessageViewController alloc] init];
+    [self.navigationController pushViewController:com animated:YES];
 
 }
 
@@ -347,9 +357,13 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
     }else {
         
         if (tableView == _CarTableView) {// 车源
-            CarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KCarSection1CellID];
+            NSString *cellId = [NSString stringWithFormat:@"k%ld", (long)indexPath.row];
+           HomeCarTableViewCell  *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
             if (!cell) {
-                cell = [[[NSBundle mainBundle]loadNibNamed:@"CarTableViewCell" owner:self options:nil]lastObject];
+                cell = [[HomeCarTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellId];
+                UILabel *line = [[UILabel alloc] initWithFrame:FRAME(0, 100, kScreenW, 2)];
+                line.backgroundColor = RGBColor(239, 240, 241);
+                [cell.contentView addSubview:line];
             }
             cell.model = self.CarListDatas[indexPath.row];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
@@ -357,9 +371,13 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
         }
         
         if (tableView == _GoodsTableView) {//货源
-            GoodsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KGoodsSection1CellID];
+            NSString *cellId = [NSString stringWithFormat:@"k%ld", (long)indexPath.row];
+            HomeGoodsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
             if (!cell) {
-                cell = [[[NSBundle mainBundle]loadNibNamed:@"GoodsTableViewCell" owner:self options:nil]lastObject];
+                cell = [[HomeGoodsTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellId];
+                UILabel *line = [[UILabel alloc] initWithFrame:FRAME(0, 125, kScreenW, 2)];
+                line.backgroundColor = RGBColor(239, 240, 241);
+                [cell.contentView addSubview:line];
             }
             cell.model = self.GoodsListDatas[indexPath.row];
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
@@ -372,7 +390,7 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
 #pragma mark - tableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return indexPath.section ? 80: 180;
+    return indexPath.section ? (tableView == self.CarTableView ? 102 : 127) : 180;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -387,7 +405,7 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
                 NSArray *CarToolsItemsName = @[@"起点",@"终点",@"装货时间"];
                 [self creatToolsWithToolNames:CarToolsItemsName andContainer:0 andPositionX:0 subView:headerView];
         }else {
-            NSArray *GoodsToolsItemsName = @[@"起点",@"终点",@"货物类型",@"装货时间"];
+            NSArray *GoodsToolsItemsName = @[@"起点",@"终点",@"装货时间"];
             [self creatToolsWithToolNames:GoodsToolsItemsName andContainer:1 andPositionX:kScreenW subView:headerView];
         }
     }
@@ -468,7 +486,7 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
             self.alertView.hidden = YES;
         }];
     }
-    if (sender == _carToolsButtons[2] || sender == _GoodsToolsButtons[3]) {//天数
+    if (sender == _carToolsButtons[2] || sender == _GoodsToolsButtons[2]) {//天数
         CDZPickerBuilder *builder = [CDZPickerBuilder new];
         builder.showMask = YES;
             self.alertView.hidden = NO;
@@ -497,55 +515,55 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
             self.alertView.hidden = YES;
         }];
     }
-    if (sender == _GoodsToolsButtons[2]) {
-        
-        NSMutableArray *tagstr = [[NSMutableArray alloc] init];
-        for (int i = 0; i < self.tagDate.count; i++) {
-            Tagmodel *model = self.tagDate[i];
-            [tagstr addObject:model.type];
-        }
-        
-        [SureMultipleSelectedWindow showWindowWithTitle:@"" selectedConditions:tagstr defaultSelectedConditions:self.tagModel selectedBlock:^(NSArray *selectedArr) {
-             sender.selected = !sender.isSelected;
-            if (selectedArr) {
-                [self.tagModel removeAllObjects];
-                if (selectedArr.count > 0) {
-                    if (![selectedArr[0] isKindOfClass:[NSString class]]) {
-                        for (SureConditionModel *model in selectedArr) {
-                            [self.tagModel addObject:model.title];
-                        }
-                    }
-                }
-            }
-            NSMutableArray *idarr = [[NSMutableArray alloc] init];
-            for (int i = 0; i < self.tagDate.count; i++) {
-                Tagmodel *model = self.tagDate[i];
-                for (int j = 0; j <self.tagModel.count; j++) {
-                    NSString *str = self.tagModel[j];
-                    if ([str isEqualToString:model.type]) {
-                        [idarr addObject:model.id];
-                    }
-                }
-            }
-            NSString *cateStr;
-            for (int i = 0; i < idarr.count; i++) {
-                NSString *str = idarr[i];
-                if (i == 0) {
-                    cateStr = str;
-                }else {
-                    NSString *morestr = [NSString stringWithFormat:@",%@", str];
-                    cateStr = [cateStr stringByAppendingString:morestr];
-                }
-            }
-            if (!cateStr) {
-                cateStr = nil;
-            }
-            self.goodsviewModel.type = cateStr;
-            self.carviewModel.page = 1; self.goodsviewModel.page = 1;
-            [self requestList];
-            
-        }];
-    }
+//    if (sender == _GoodsToolsButtons[2]) {
+//        
+//        NSMutableArray *tagstr = [[NSMutableArray alloc] init];
+//        for (int i = 0; i < self.tagDate.count; i++) {
+//            Tagmodel *model = self.tagDate[i];
+//            [tagstr addObject:model.type];
+//        }
+//        
+//        [SureMultipleSelectedWindow showWindowWithTitle:@"" selectedConditions:tagstr defaultSelectedConditions:self.tagModel selectedBlock:^(NSArray *selectedArr) {
+//             sender.selected = !sender.isSelected;
+//            if (selectedArr) {
+//                [self.tagModel removeAllObjects];
+//                if (selectedArr.count > 0) {
+//                    if (![selectedArr[0] isKindOfClass:[NSString class]]) {
+//                        for (SureConditionModel *model in selectedArr) {
+//                            [self.tagModel addObject:model.title];
+//                        }
+//                    }
+//                }
+//            }
+//            NSMutableArray *idarr = [[NSMutableArray alloc] init];
+//            for (int i = 0; i < self.tagDate.count; i++) {
+//                Tagmodel *model = self.tagDate[i];
+//                for (int j = 0; j <self.tagModel.count; j++) {
+//                    NSString *str = self.tagModel[j];
+//                    if ([str isEqualToString:model.type]) {
+//                        [idarr addObject:model.id];
+//                    }
+//                }
+//            }
+//            NSString *cateStr;
+//            for (int i = 0; i < idarr.count; i++) {
+//                NSString *str = idarr[i];
+//                if (i == 0) {
+//                    cateStr = str;
+//                }else {
+//                    NSString *morestr = [NSString stringWithFormat:@",%@", str];
+//                    cateStr = [cateStr stringByAppendingString:morestr];
+//                }
+//            }
+//            if (!cateStr) {
+//                cateStr = nil;
+//            }
+//            self.goodsviewModel.type = cateStr;
+//            self.carviewModel.page = 1; self.goodsviewModel.page = 1;
+//            [self requestList];
+//            
+//        }];
+//    }
 }
 
 #pragma Mark - Prvite Method
@@ -618,11 +636,11 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
         _TopSegmentedControl.segmentedControlLineStyle = LLSegmentedControlStyleUnderline;
         _TopSegmentedControl.segmentedControlTitleSpacingStyle = LLSegmentedControlTitleSpacingStyleWidthAutoFit;
         _TopSegmentedControl.lineWidthEqualToTextWidth = YES;
-        _TopSegmentedControl.textColor = [UIColor darkTextColor];
-        _TopSegmentedControl.selectedTextColor = UIColorFromHex(0x028BF3);
+        _TopSegmentedControl.textColor = [UIColor whiteColor];
+        _TopSegmentedControl.selectedTextColor = [UIColor whiteColor];
         _TopSegmentedControl.font = [UIFont systemFontOfSize:18];
         _TopSegmentedControl.selectedFont = [UIFont boldSystemFontOfSize:18];
-        _TopSegmentedControl.lineColor = UIColorFromHex(0x028BF3);
+        _TopSegmentedControl.lineColor = [UIColor whiteColor];
         _TopSegmentedControl.lineHeight = 2.f;
         // segmentedControlTitleSpacingStyle 设置为 LLSegmentedControlTitleSpacingStyleSpacingFixed
         // 则不需要设置 titleWidth 属性
@@ -641,6 +659,7 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
 - (UITableView *)CarTableView{
     if (!_CarTableView) {
         _CarTableView = [[UITableView alloc]initWithFrame:CGRectMake(kScreenW,0, kScreenW, kScreenH -  _statusbarHeight - _tabbarHeight - _navbarHeight) style:UITableViewStylePlain];
+        _CarTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _CarTableView.delegate = self;
         _CarTableView.dataSource = self;
         _GoodsTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -670,6 +689,7 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
         _GoodsTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kScreenW, kScreenH -  _statusbarHeight - _tabbarHeight - _navbarHeight ) style:UITableViewStylePlain];
         // 下拉刷新
         _GoodsTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+        _GoodsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _GoodsTableView.mj_header= [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             [self goodsreload];
         }];
@@ -741,5 +761,7 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
     }
     return _tagModel;
 }
+
+
 
 @end

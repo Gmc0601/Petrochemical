@@ -10,9 +10,6 @@
 
 @interface MyPublishCargoDetailXiehuoView()
 
-@property (weak, nonatomic) IBOutlet UILabel *unload_address;
-@property (weak, nonatomic) IBOutlet UILabel *unload;
-
 @end
 
 @implementation MyPublishCargoDetailXiehuoView
@@ -26,7 +23,7 @@
 */
 - (void) setDataDic:(NSDictionary *)dataDic{
     _dataDic = dataDic;
-    self.unload_address.text = validString(dataDic[@"unload_address"]);
-    self.unload.text = validString(dataDic[@"unload"]);
+    self.unload.text = validString(dataDic[@"unload_address"]);
+    self.unload_address.text = validString(dataDic[@"unload"]);
 }
 @end

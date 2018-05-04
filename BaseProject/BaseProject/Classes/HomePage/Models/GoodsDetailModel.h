@@ -34,6 +34,6 @@
 @property (nonatomic , copy) NSString              * good_num;
 @property (nonatomic , copy) NSArray<Xiehuo *>              * xiehuo;
 @property (nonatomic , copy) NSString              * loading;
-@property (nonatomic , copy) NSString              * cost;
+@property (nonatomic , copy) NSString              * cost, *hot_line;
 
 @end

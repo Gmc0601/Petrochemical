@@ -10,6 +10,7 @@
 #import "CustomSeletedPickView.h"
 #import "LeasCustomAlbum.h"
 #import "UIImage+MyProperty.h"
+#import "NSString+commom.h"
 #import "MyCenterViewController.h"
 
 @interface CargoidentificationSecondViewController ()
@@ -30,6 +31,10 @@
     [self setCustomerTitle:@"货主认证"];
     self.automaticallyAdjustsScrollViewInsets = YES;
     [self setupSalemanDataSource];
+    if (self.isRevamp == YES) {
+        self.companyNameTextField.text = validString(self.infoDic[@"company_name"]);
+        self.companyImageValue = [NSString stringWithFormat:@"%@",self.infoDic[@"hand_img"]].urlImage;
+    }
 }
 - (void) setupSalemanDataSource{
     [HttpRequest postPath:@"_professionallist_001" params:nil resultBlock:^(id responseObject, NSError *error) {
@@ -44,7 +49,7 @@
 #pragma mark -- method
 - (IBAction)selectedSalemanAction:(id)sender {
     __weak typeof(self) weakself = self;
-    [CustomSeletedPickView creatCustomSeletedPickViewWithTitle:@"请选择您的业务员" value:self.salemanValues block:^(NSDictionary *dic) {
+    [CustomSeletedPickView creatCustomSeletedPickViewWithTitle:@"请选择您的服务专员" value:self.salemanValues block:^(NSDictionary *dic) {
         weakself.selectedSalemanValue = dic;
     }];
 }
@@ -63,19 +68,35 @@
     [param setValue:self.companyNameTextField.text forKey:@"company_name"];
     [param setValue:self.companyImageValue.base64String forKey:@"permit"];
     [param setValue:[NSString stringWithFormat:@"%@",self.selectedSalemanValue[@"mobile"]] forKey:@"profession_mobile"];
-    [ConfigModel showHud:self];
-    [HttpRequest postPath:@"_goods_enter_001" params:param resultBlock:^(id responseObject, NSError *error) {
-        [ConfigModel hideHud:self];
-        NSDictionary *dic = responseObject;
-        int errorint = [dic[@"error"] intValue];
-        if (errorint == 0 ) {
-            [ConfigModel mbProgressHUD:@"提交成功" andView:nil];
-            [self customPopVC];
-        }else {
-            NSString *errorStr = dic[@"info"];
-            [ConfigModel mbProgressHUD:errorStr andView:nil];
-        }
-    }];
+    if (self.isRevamp == YES) {
+        [ConfigModel showHud:self];
+        [HttpRequest postPath:@"_save_goods_001" params:param resultBlock:^(id responseObject, NSError *error) {
+            [ConfigModel hideHud:self];
+            NSDictionary *dic = responseObject;
+            int errorint = [dic[@"error"] intValue];
+            if (errorint == 0 ) {
+                [ConfigModel mbProgressHUD:@"提交成功" andView:nil];
+                [self customPopVC];
+            }else {
+                NSString *errorStr = dic[@"info"];
+                [ConfigModel mbProgressHUD:errorStr andView:nil];
+            }
+        }];
+    }else{
+        [ConfigModel showHud:self];
+        [HttpRequest postPath:@"_goods_enter_001" params:param resultBlock:^(id responseObject, NSError *error) {
+            [ConfigModel hideHud:self];
+            NSDictionary *dic = responseObject;
+            int errorint = [dic[@"error"] intValue];
+            if (errorint == 0 ) {
+                [ConfigModel mbProgressHUD:@"提交成功" andView:nil];
+                [self customPopVC];
+            }else {
+                NSString *errorStr = dic[@"info"];
+                [ConfigModel mbProgressHUD:errorStr andView:nil];
+            }
+        }];
+    }
 }
 
 - (void) customPopVC{

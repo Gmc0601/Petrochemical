@@ -37,7 +37,7 @@
         if (self.pickerType == PickerViewType_city) {
             [self dataCityConfiguer];
            
-        }else if (self.pickerType == PickerViewType_timer){
+        }else if (self.pickerType == PickerViewType_carTimer || self.pickerType == PickerViewType_goodsTimer){
             [self dataTimerConfiguer];
         }
         [self uiConfiguer];
@@ -72,11 +72,98 @@
 
 - (void)dataTimerConfiguer{
 
-    section1 =[self getMonth];
-    section2 = [self getDaysAtMonth:1 atYears:[self getCurrentYear]];
-    section3 =[self  getHours];
+    section1 =[self getMonthDay];
+    NSString * tempType = @"";
+    if (  self.pickerType == PickerViewType_goodsTimer) {
+        tempType = @"随时装货";
+    }else if (self.pickerType == PickerViewType_carTimer){
+        tempType = @"随时装车";
+    }
+    section2 = [self getTimeInterval:tempType];
+//    section2 = [self getDaysAtMonth:1 atYears:[self getCurrentYear]];
+//    section3 =[self  getHours];
     
     
+}
+- (NSArray *)getTimeInterval:(NSString *)monthDay{
+      NSMutableArray * array = [NSMutableArray array];
+    NSString * tempType = @"";
+    if (  self.pickerType == PickerViewType_goodsTimer) {
+        tempType = @"随时装货";
+    }else if (self.pickerType == PickerViewType_carTimer){
+        tempType = @"随时装车";
+    }
+    if ([monthDay isEqualToString:tempType]) {
+        [array addObject:@"全天"];
+    }else{
+         [array addObject:@"全天"];
+        for (NSInteger interval =  0; interval <= 20; interval++) {
+            
+            if (interval%4 == 0) {
+                NSString * intervalStr = @"";
+                NSString * center = @"-";
+                if (interval<10) {
+                    NSString * startTimer = @"";
+                     NSString * endTimer = @"";
+                    
+                    if (interval +4 <10) {
+                        endTimer = [NSString stringWithFormat:@"0%ld:00",interval+4];
+                    }else{
+                        endTimer = [NSString stringWithFormat:@"%ld:00",interval+4];
+                    }
+                      startTimer = [NSString stringWithFormat:@"0%ld:00",interval];
+                    intervalStr  = [startTimer stringByAppendingString:center];
+                    intervalStr =  [intervalStr  stringByAppendingString:endTimer];
+                }else{
+                    NSString * startTimer = @"";
+                    NSString * endTimer = @"";
+                    endTimer = [NSString stringWithFormat:@"%ld:00",interval+4];
+                    startTimer = [NSString stringWithFormat:@"%ld:00",interval];
+                    intervalStr  = [startTimer stringByAppendingString:center];
+                    intervalStr =  [intervalStr  stringByAppendingString:endTimer];
+                }
+                [array addObject:intervalStr];
+            }
+        }
+    }
+    return array;
+}
+- (NSArray *)getMonthDay{
+    NSMutableArray * array = [NSMutableArray array];
+    NSInteger currentMoth = [self  getCurrentMonth];
+    NSInteger currentDay  = [self getCurrentDay];
+    for (NSInteger i = currentMoth;  i< ((currentDay >1?1:0) +12 + currentMoth) ; i++) {
+        NSInteger tempMoth = i;
+        NSInteger tempYears = [self getCurrentYear];
+        if (i > 12) {
+            tempMoth= i-12;
+            tempYears = tempYears + 1;
+        }
+       NSArray * days = [self getDaysAtMonth:tempMoth atYears:tempYears];
+        if (currentMoth != i) {
+            currentDay = 1;
+        }
+        for (NSInteger day = currentDay ;day <= [days count] ; day++) {
+            NSInteger tempDay = day;
+            NSString *monthDay = @"";
+            if (i == currentMoth && day == currentDay) {
+                NSString * tempType = @"";
+                if (  self.pickerType == PickerViewType_goodsTimer) {
+                    tempType = @"随时装货";
+                }else if (self.pickerType == PickerViewType_carTimer){
+                    tempType = @"随时装车";
+                }
+                monthDay = [NSString stringWithFormat:tempType];
+            }else{
+                monthDay = [NSString stringWithFormat:@"%ld月%ld日",(long)tempMoth,(long)tempDay]; 
+            }
+            [array addObject:monthDay];
+        }
+    }
+    
+ 
+   
+    return  array;
 }
 - (NSArray *)getMonth{
     NSMutableArray * array = [NSMutableArray array];
@@ -101,6 +188,23 @@
     // 获取各时间字段的数值
  
     return comp.year;
+}
+- (NSInteger)getCurrentDay{
+    NSCalendar *gregorian = [[NSCalendar alloc]
+                             initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    // 获取当前日期
+    NSDate* dt = [NSDate date];
+    // 定义一个时间字段的旗标，指定将会获取指定年、月、日、时、分、秒的信息
+    unsigned unitFlags = NSCalendarUnitYear |
+    NSCalendarUnitMonth |  NSCalendarUnitDay |
+    NSCalendarUnitHour |  NSCalendarUnitMinute |
+    NSCalendarUnitSecond | NSCalendarUnitWeekday;
+    // 获取不同时间字段的信息
+    NSDateComponents* comp = [gregorian components: unitFlags
+                                          fromDate:dt];
+    // 获取各时间字段的数值
+    
+    return comp.day;
 }
 
 - (NSInteger)getCurrentMonth{
@@ -211,72 +315,36 @@
         if (self.col==3) {
             [cityPickerView selectRow:index3 inComponent:2 animated:NO];
         }
-        
-        
-        
         province *sheng=[section1 objectAtIndex:index1];
         provinceStr=sheng.name;
-        
         city *shi=[section2 objectAtIndex:index2];
         cityStr=shi.name;
-        
         district *xian=[section3 objectAtIndex:index3];
         districtStr=xian.name;
-        
         resultsStr=[NSString stringWithFormat:@"%@-%@-%@",provinceStr,cityStr,districtStr];
-    }else if (self.pickerType == PickerViewType_timer){
- 
-//            NSArray * nameArray = [_showSelectedCityNameStr componentsSeparatedByString:@"-"];
-//
-//            if (nameArray.count==3) {
-//                NSString * name1 = nameArray.firstObject;
-//                NSUInteger index=0;
-//                for (province *model in section1) {
-//                    if ([model.name isEqualToString:name1]) {
-//                        index= [section1 indexOfObject:model];
-//                        break;
-//                    }
-//                }
-//                index1=index;
-//                NSString * name2 = nameArray[1];
-//                //第二个区
-//                province * section1Model =section1[index];
-//                section2 =section1Model.city;
-//                for (city * xianModel in section2) {
-//                    if ([xianModel.name isEqualToString:name2]) {
-//                        index= [section2 indexOfObject:xianModel];
-//                        break;
-//                    }
-//                }
-//                index2=index;
-//                NSString * name3 = nameArray.lastObject;
-//                //第三个区
-//                city * cityModel =section2[index];
-//                section3 =cityModel.district;
-//                for (district * districtModel in section3) {
-//                    if ([districtModel.name isEqualToString:name3]) {
-//                        index= [section3 indexOfObject:districtModel];
-//                        break;
-//                    }
-//                }
-//                index3=index;
-//                [cityPickerView reloadAllComponents];
-//            }
-        
-            [cityPickerView selectRow:index1 inComponent:0 animated:NO];
-            if (self.col == 2) {
-                [cityPickerView selectRow:index2 inComponent:1 animated:NO];
+    }else if (self.pickerType == PickerViewType_carTimer || self.pickerType == PickerViewType_goodsTimer){
+        if (showSelectedCityNameStr) {
+            NSArray * timerArray = [showSelectedCityNameStr componentsSeparatedByString:@" "];
+            if ( [timerArray count] >1) {
+                if ([[self getMonthDay] containsObject: timerArray[0]]) {
+                    index1 = [[self getMonthDay] indexOfObject:timerArray[0]];
+                }
+                NSString * temp = [self getMonthDay][index1];
+                section2 =  [self getTimeInterval:temp];
+                if([section2 containsObject: timerArray[1]]){
+                    index2 = [section2 indexOfObject:timerArray[1]];
+                }
             }
-            if (self.col==3) {
-                [cityPickerView selectRow:index3 inComponent:2 animated:NO];
-            }
-        
-           provinceStr =[NSString stringWithFormat:@"%@",[section1 objectAtIndex:index1]];
-           cityStr =[section2 objectAtIndex:index2];
-           districtStr =[section3 objectAtIndex:index3];
-        
-           resultsStr = [NSString stringWithFormat:@"%ld-%@-%@ %@:00:00",[self getCurrentYear],provinceStr,cityStr,districtStr];
-      
+        }
+      [cityPickerView reloadComponent:1];
+        [cityPickerView selectRow:index1 inComponent:0 animated:NO];
+        if (self.col == 2) {
+            [cityPickerView selectRow:index2 inComponent:1 animated:NO];
+        }
+        provinceStr =[NSString stringWithFormat:@"%@",[section1 objectAtIndex:index1]];
+        cityStr = [section2 objectAtIndex:index2];
+        resultsStr =  [NSString stringWithFormat:@"%@ %@",provinceStr,cityStr];
+       
     }
     
 
@@ -363,17 +431,17 @@
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
     NSString * title = nil;
-    if (self.pickerType == PickerViewType_timer) {
+    if (self.pickerType == PickerViewType_carTimer || self.pickerType == PickerViewType_goodsTimer) {
         if (component ==0 ) {
            
-            title = [NSString stringWithFormat:@"%@月",section1[row]];
+            title = [NSString stringWithFormat:@"%@",section1[row]];
             
         }
         else if (component== 1){
-             title =  [NSString stringWithFormat:@"%@日",section2[row]];
+             title =  [NSString stringWithFormat:@"%@",section2[row]];
         }
         else if (component== 2){
-            title = [NSString stringWithFormat:@"%@点",section3[row]];
+            title = [NSString stringWithFormat:@"%@",section3[row]];
         }
     }else if (self.pickerType == PickerViewType_city){
         if (component ==0 ) {
@@ -396,11 +464,12 @@
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
-    if (self.pickerType == PickerViewType_timer) {
+    if (self.pickerType == PickerViewType_carTimer || self.pickerType == PickerViewType_goodsTimer) {
         //滚动一区的时候
         if (component==0) {
-            NSInteger month = [section1[row] integerValue];
-            section2= [self getDaysAtMonth:month atYears:[self getCurrentYear]];
+            NSString * month = section1[row] ;
+//            section2= [self getDaysAtMonth:month atYears:[self getCurrentYear]];
+              section2 = [self getTimeInterval:month];
             [pickerView reloadComponent:1];
             [pickerView selectRow:0 inComponent:1 animated:YES];
         }
@@ -438,7 +507,7 @@
 }
 - (void)setModelComponent:(NSInteger)component Row:(NSInteger)row {
     
-    if (self.pickerType == PickerViewType_timer) {
+    if (self.pickerType == PickerViewType_carTimer || self.pickerType == PickerViewType_goodsTimer) {
         
         if (component == 0) {
             provinceStr = section1[row];
@@ -449,7 +518,8 @@
         } else {
             districtStr =section3[row];
         }
-        resultsStr = [NSString stringWithFormat:@"%ld-%@-%@ %@:00:00",[self getCurrentYear],provinceStr,cityStr,districtStr];
+        resultsStr = [NSString stringWithFormat:@"%@ %@",provinceStr,cityStr];
+//        resultsStr = [NSString stringWithFormat:@"%ld-%@-%@ %@:00:00",[self getCurrentYear],provinceStr,cityStr,districtStr];
         
     }else if (self.pickerType == PickerViewType_city){
         if (component == 0) {
@@ -482,7 +552,7 @@
             resultsStr = [resultsStr stringByAppendingFormat:@"-%@",cityStr];
         }else if (self.col == 3) {
              resultsStr = [resultsStr stringByAppendingFormat:@"-%@",cityStr];
-             resultsStr = [resultsStr stringByAppendingFormat:@"-%@",districtStr];
+//             resultsStr = [resultsStr stringByAppendingFormat:@"-%@",districtStr];
         }
         
     }

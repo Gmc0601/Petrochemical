@@ -68,13 +68,14 @@
 }
 
 - (void) setupDataSource{
+    [ConfigModel showHud:self];
     NSMutableDictionary *param = @{}.mutableCopy;
-//    [param setValue:TokenKey forKey:@"userToken"];
     [param setValue:@"1" forKey:@"page"];
     [param setValue:@"2000" forKey:@"size"];
     [param setValue:_searchStr forKey:@"content"];
     [param setValue:@(menuIndex+1) forKey:@"status"];
-    [HttpRequest postPath:@"_user_goods_001" params:param resultBlock:^(id responseObject, NSError *error) {
+    [HttpRequest postPath:@"_userindent_001" params:param resultBlock:^(id responseObject, NSError *error) {
+        [ConfigModel hideHud:self];
         NSDictionary *dic = responseObject;
         
         int errorint = [dic[@"error"] intValue];

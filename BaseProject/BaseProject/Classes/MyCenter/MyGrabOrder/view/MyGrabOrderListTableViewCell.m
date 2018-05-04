@@ -42,8 +42,8 @@
     self.nameLabel.text = @"";
     self.startLabel.text = validString(dic[@"loading"]);
     self.endLabel.text = validString(dic[@"unload"]);
-    NSString *otherStr = [NSString stringWithFormat:@"%@     共%@吨     ¥%@/吨",dic[@"type"],dic[@"weight"],dic[@"good_price"]];
+    NSString *otherStr = [NSString stringWithFormat:@"%@     共%@吨     ¥%@/吨",dic[@"type"],dic[@"weight"],dic[@"rough_weight"]];
     self.otherLabel.text = otherStr;
-    self.weighLabel.text = [NSString stringWithFormat:@"%@吨",dic[@"surplus_weight"]];
+    self.weighLabel.text = [NSString stringWithFormat:@"%@吨",dic[@"rough_weight"]];
 }
 @end

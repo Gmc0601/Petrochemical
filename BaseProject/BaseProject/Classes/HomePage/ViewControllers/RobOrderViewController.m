@@ -14,7 +14,7 @@
 
 @interface RobOrderViewController ()<UITableViewDelegate, UITableViewDataSource>{
     float maxWigth;
-    int addWigth;
+    float addWigth;
 }
 
 @property (nonatomic, strong) UITableView *noUseTableView;
@@ -91,8 +91,8 @@
             RotOrderTableViewCell *cell = [self.noUseTableView cellForRowAtIndexPath:indexPath];
             
             if (cell.check) {
-                if ((addWigth + [cell.numFile.text intValue]) <= [self.balance intValue]) {
-                    addWigth += [cell.numFile.text intValue];
+                if ((addWigth + [cell.numFile.text floatValue]) <= [self.balance floatValue]) {
+                    addWigth += [cell.numFile.text floatValue];
                     NSString *key = [NSString stringWithFormat:@"%d", cell.id];
                     NSString *velau = cell.numFile.text;
                     NSDictionary *dic = @{
@@ -108,7 +108,7 @@
                     NSString *jsonString = [[NSString alloc] initWithData:jsonData
                                                                  encoding:NSUTF8StringEncoding];
                     self.viewmodel.json = jsonString;
-                    self.viewmodel.grab_weight = [NSString stringWithFormat:@"%d", addWigth];
+                    self.viewmodel.grab_weight = [NSString stringWithFormat:@"%.2f", addWigth];
                     if (addWigth == [self.balance intValue]) {
                         for (int row = 0; row < self.dateArr.count  ; row++) {
                             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
@@ -123,7 +123,7 @@
                 }else {
                     cell.checkLogo.selected = NO;
                     cell.check = NO;
-                    [ConfigModel mbProgressHUD:@"没有跟多数量可抢" andView:nil];
+                    [ConfigModel mbProgressHUD:@"没有更多数量可抢" andView:nil];
                 }
                 
             }else {
@@ -133,7 +133,7 @@
             
             
         }
-        self.blanceLab.text = [NSString stringWithFormat:@"%d", addWigth];
+        self.blanceLab.text = [NSString stringWithFormat:@"%.2f", addWigth];
         
     };
     return cell;

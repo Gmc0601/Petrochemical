@@ -46,6 +46,7 @@
 
 - (IBAction)statusButtonAction:(id)sender {
     CargoidentificationFirstViewController *CargoidentificationVC1 = [CargoidentificationFirstViewController new];
+    CargoidentificationVC1.isRevamp = YES;
     [self.navigationController pushViewController:CargoidentificationVC1 animated:YES];
 }
 

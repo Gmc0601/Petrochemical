@@ -24,6 +24,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenW, 49)];
+    backView.backgroundColor = [UIColor redColor];
+    [self.tabBar insertSubview:backView atIndex:0];
+//    self.tabBar.opaque = YES;
     // 初始化所有控制器
     [self setUpChildVC];
 //    //  设置中间按钮
@@ -57,7 +61,7 @@
     [self setChildVC:video title:@"咨询" image:@"zixun" selectedImage:@"zixundian"];
     
     MyCenterViewController *myVC = [[MyCenterViewController alloc] init];
-    [self setChildVC:myVC title:@"我的" image:@"wode" selectedImage:@"wodedian"];
+    [self setChildVC:myVC title:@"我的" image:@"unwode" selectedImage:@"wodedian"];
 
 }
 
@@ -65,9 +69,13 @@
     
     childVC.tabBarItem.title = title;
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    dict[NSForegroundColorAttributeName] = [UIColor blackColor];
+    dict[NSForegroundColorAttributeName] = [UIColor whiteColor];
     dict[NSFontAttributeName] = [UIFont systemFontOfSize:10];
     [childVC.tabBarItem setTitleTextAttributes:dict forState:UIControlStateNormal];
+    NSMutableDictionary *dicts = [NSMutableDictionary dictionary];
+    dicts[NSForegroundColorAttributeName] = ThemeBlue;
+    dicts[NSFontAttributeName] = [UIFont systemFontOfSize:10];
+    [childVC.tabBarItem setTitleTextAttributes:dicts forState:UIControlStateSelected];
     childVC.tabBarItem.image = [[UIImage imageNamed:image] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     childVC.tabBarItem.selectedImage = [[UIImage imageNamed:selectedImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     TBNavigationController *nav = [[TBNavigationController alloc] initWithRootViewController:childVC];

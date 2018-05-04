@@ -12,4 +12,6 @@
 @property (strong, nonatomic) NSString *nameStr;
 @property (strong, nonatomic) NSString *idCardStr;
 @property (strong, nonatomic) NSString *idCardImageStr;
+@property (assign, nonatomic) BOOL isRevamp;
+@property (strong, nonatomic) NSDictionary *infoDic;
 @end

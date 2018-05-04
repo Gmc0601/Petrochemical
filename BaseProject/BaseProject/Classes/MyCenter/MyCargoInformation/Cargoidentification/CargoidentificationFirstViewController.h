@@ -10,4 +10,6 @@
 
 @interface CargoidentificationFirstViewController : BaseViewController
 
+@property (assign, nonatomic)  BOOL isRevamp;
+
 @end
