@@ -60,6 +60,7 @@
 		427176492080874900D8DF70 /* HomeCarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 427176482080874900D8DF70 /* HomeCarTableViewCell.m */; };
 		4271764C2080875E00D8DF70 /* HomeGoodsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4271764B2080875E00D8DF70 /* HomeGoodsTableViewCell.m */; };
 		4271764F2080A40F00D8DF70 /* TimeManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4271764E2080A40F00D8DF70 /* TimeManage.m */; };
+		42974022209DAE910026DC8D /* GuideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42974021209DAE910026DC8D /* GuideView.m */; };
 		42A4443B1EF133E000F90791 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42A444391EF133E000F90791 /* Main.storyboard */; };
 		42A4443E1EF133E000F90791 /* BaseProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 42A4443C1EF133E000F90791 /* BaseProject.xcdatamodeld */; };
 		42A444401EF133E000F90791 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42A4443F1EF133E000F90791 /* Assets.xcassets */; };
@@ -387,6 +388,8 @@
 		4271764B2080875E00D8DF70 /* HomeGoodsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeGoodsTableViewCell.m; sourceTree = "<group>"; };
 		4271764D2080A40F00D8DF70 /* TimeManage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimeManage.h; sourceTree = "<group>"; };
 		4271764E2080A40F00D8DF70 /* TimeManage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimeManage.m; sourceTree = "<group>"; };
+		42974020209DAE910026DC8D /* GuideView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuideView.h; sourceTree = "<group>"; };
+		42974021209DAE910026DC8D /* GuideView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuideView.m; sourceTree = "<group>"; };
 		42A4442D1EF133E000F90791 /* BaseProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42A4443A1EF133E000F90791 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		42A4443D1EF133E000F90791 /* BaseProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BaseProject.xcdatamodel; sourceTree = "<group>"; };
@@ -1028,6 +1031,8 @@
 				422F20272047F7B6009481CC /* LoginViewController.h */,
 				422F20252047F7B6009481CC /* LoginViewController.m */,
 				422F20262047F7B6009481CC /* LoginViewController.xib */,
+				42974020209DAE910026DC8D /* GuideView.h */,
+				42974021209DAE910026DC8D /* GuideView.m */,
 			);
 			path = "Login&&Regist";
 			sourceTree = "<group>";
@@ -2514,6 +2519,7 @@
 				8298E2E1206E1312006284F2 /* MyCenterUserGuideViewController.m in Sources */,
 				035A23F1206C7F6D0003CD31 /* EmptyCarCell.m in Sources */,
 				8298E2DA206E0B66006284F2 /* MyGrabOrderListViewController.m in Sources */,
+				42974022209DAE910026DC8D /* GuideView.m in Sources */,
 				7AFAE4A7205A0C5E00B14406 /* Passport.m in Sources */,
 				420D18262057A71300E1D8E1 /* UILabel+Width.m in Sources */,
 				42F10C35206E331700C9C8EC /* HomeCarModel.m in Sources */,
