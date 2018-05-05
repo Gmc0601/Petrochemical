@@ -303,7 +303,7 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
 }
 - (void)showCityPicker  {
     CityPickerVeiw * cityView = [[CityPickerVeiw alloc] initWithFrame:CGRectZero withType:PickerViewType_city];
-    cityView.col = 3;
+    cityView.col = 2;
     [cityView show];
     cityView.showSelectedCityNameStr =@"" ;
     [cityView setCityBlock:^(NSString * value) {

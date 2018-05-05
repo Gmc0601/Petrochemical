@@ -43,6 +43,7 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
 @property(nonatomic, strong) NSArray *selectedGoodsIndexs;
 @property(nonatomic, copy) NSString *noteStr;//备注
 @property(nonatomic, strong) NSMutableArray * jsonUnloadArray;
+@property(nonatomic, assign) BOOL  goodsEditor;
 @end
 
 @implementation GoodsListViewController
@@ -246,7 +247,7 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
             break;
         case 3:
         {
-            title = @"货物重量（吨）";
+            title = @"货物总量（吨）";
             placeholder = @"请选择货物重量";
             if (self.weight) {
                 content = self.weight;
@@ -284,8 +285,10 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
         default:
             break;
     }
+    BOOL  tfEditor = NO;
     if (indexPath.row == 3||indexPath.row == 4) {
-        [cell setupTFEnabled:YES withKeyboardType:keyType];
+        tfEditor = YES;
+        [cell setupTFEnabled:tfEditor withKeyboardType:keyType];
         cell.row = indexPath.row;
         WeakSelf(weakSelf);
         cell.inputTextBlock = ^(NSString *inputText,NSInteger row) {
@@ -299,7 +302,10 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
             
         };
     }else{
-        [cell setupTFEnabled:NO withKeyboardType:keyType];
+        if (indexPath.row == 2) {
+            tfEditor = self.goodsEditor;
+        }
+        [cell setupTFEnabled:tfEditor withKeyboardType:keyType];
     }
     [cell setupTitle:title withTextFeild:content withPlaceholder:placeholder withIcon:iconName];
 }
@@ -361,7 +367,9 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
         if (indexPath.row == 1) {
             [self showTimerPicker];
         }else if (indexPath.row == 2){
-            [self gotoShowGoodsType];
+            if (!self.goodsEditor) {
+                [self gotoShowGoodsType];
+            } 
         }
         
     }
@@ -522,7 +530,7 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
 - (void)showGoodsChooseView:(NSArray *)goodsArray{
     GoodsChooseView * goodsView = [[GoodsChooseView alloc]initWithFrame:CGRectZero withArray:goodsArray withSelectedGoodsIndex:self.selectedGoodsIndexs];
     WeakSelf(weakSelf);
-    goodsView.chooseBlock = ^(NSArray *selectedArray) {
+    goodsView.chooseBlock = ^(NSArray *selectedArray,BOOL isEdit) {
         weakSelf.goodsName = @"";
         weakSelf.goodsId = @"";
         for (int i = 0;i<[selectedArray count];i++) {
@@ -534,6 +542,7 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
             weakSelf.goodsName = [weakSelf.goodsName stringByAppendingString:tempGoodsName];
         }
         weakSelf.selectedGoodsIndexs = selectedArray;
+        weakSelf.goodsEditor = isEdit;
         [weakSelf.CC_table reloadData];
     };
     [goodsView show];

@@ -47,6 +47,30 @@
     line.backgroundColor = RGBColor(230, 240, 241);
     [self.view addSubview:line];
     [self raccomand];
+    [HttpRequest postPath:@"_userinfo_001" params:nil resultBlock:^(id responseObject, NSError *error) {
+        NSDictionary *datadic = responseObject;
+        if ([datadic[@"error"] intValue] == 0) {
+            NSDictionary *dic = datadic[@"info"];
+            if ([dic[@"approve"] intValue] == 2) {
+                //  货主认证
+                [ConfigModel saveBoolObject:YES forKey:Shipper_Certification];
+                
+            }else {
+                [ConfigModel saveBoolObject:NO forKey:Shipper_Certification];
+                [self.callBtn setTitle:@"平台热线" forState:UIControlStateNormal];
+            }
+            if ([dic[@"carAuth"] intValue] == 1) {
+                //  车主认证
+                [ConfigModel saveBoolObject:YES forKey:Car_Certification];
+            }else {
+                [ConfigModel saveBoolObject:NO forKey:Car_Certification];
+            }
+            
+        }else {
+            NSString *str = datadic[@"info"];
+            [ConfigModel mbProgressHUD:str andView:nil];
+        }
+    }];
 }
 
 - (void)raccomand {
@@ -279,7 +303,8 @@
 - (UIButton *)callBtn {
     if (!_callBtn) {
         _callBtn = [[UIButton alloc] initWithFrame:FRAME(kScreenW/2, self.noUseTableView.bottom, kScreenW/2, 50)];
-        [_callBtn setTitleColor:ThemeBlue forState:UIControlStateNormal];
+        [_callBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _callBtn.backgroundColor = [UIColor blueColor];
         UILabel *line = [[UILabel alloc] initWithFrame:FRAME(kScreenW/2, 0, kScreenW/2, 1)];
         line.backgroundColor = RGBColor(239, 240, 241);
         [_callBtn addSubview:line];

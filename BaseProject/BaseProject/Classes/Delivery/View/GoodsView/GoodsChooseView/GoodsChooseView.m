@@ -16,6 +16,7 @@ NSString * const GoodsChooseCellIdentifier = @"GoodsChooseCellIdentifier";
 @property(nonatomic, strong) UICollectionView * collectionView;
 @property(nonatomic, strong) NSMutableArray * selectedArray;
 @property(nonatomic, strong) NSArray * showArray;
+@property(nonatomic, assign) BOOL   isEdit;
 @end
 @implementation GoodsChooseView
 - (UICollectionView *)collectionView{
@@ -112,10 +113,7 @@ NSString * const GoodsChooseCellIdentifier = @"GoodsChooseCellIdentifier";
     if ([btn.titleLabel.text isEqualToString:@"取消"]) {
         [self dismis];
     } else {
-        if (self.chooseBlock) {
-            self.chooseBlock(self.selectedArray);
-            [self dismis];
-        }
+        [self  completeAction];
     }
 }
 
@@ -128,7 +126,7 @@ NSString * const GoodsChooseCellIdentifier = @"GoodsChooseCellIdentifier";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [self.showArray count];
+    return [self.showArray count] +1;
 }
 
 
@@ -145,14 +143,24 @@ NSString * const GoodsChooseCellIdentifier = @"GoodsChooseCellIdentifier";
     [tempCell setupSelectedStete: isSelected];
     tempCell.indexPath = indexPath;
     tempCell.buttonBlock = ^(NSIndexPath *indexPath) {
-        [self changeGoodsState:indexPath];
+        if (indexPath.row < [self.showArray count]) {
+            [self changeGoodsState:indexPath];
+        }else{
+            [self  inputGoods];
+        }
     };
-    [tempCell setupGoodsInfo:self.showArray[indexPath.row]];
+    if (indexPath.row <[self.showArray count]) {
+         [tempCell setupGoodsInfo:self.showArray[indexPath.row]];
+    }else{
+        
+        [tempCell setupGoodsInfo:@{@"type":@"手动输入"}];
+    }
     cell = tempCell;
     cell.backgroundColor = [UIColor purpleColor];
     
     return cell;
 }
+
 
 
 #pragma mark ---- UICollectionViewDelegateFlowLayout
@@ -201,7 +209,12 @@ NSString * const GoodsChooseCellIdentifier = @"GoodsChooseCellIdentifier";
 // 选中某item
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self changeGoodsState:indexPath];
+    if (indexPath.row < [self.showArray count]) {
+         [self changeGoodsState:indexPath];
+    }else{
+          [self  inputGoods];
+    }
+    
 }
 - (void)changeGoodsState:(NSIndexPath *)indexPath {
     
@@ -212,6 +225,17 @@ NSString * const GoodsChooseCellIdentifier = @"GoodsChooseCellIdentifier";
     }
     [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
 }
-
+- (void)inputGoods{
+    self.isEdit = YES;
+    [self completeAction];
+}
+- (void)completeAction{
+    
+    if (self.chooseBlock) {
+         self.chooseBlock(self.selectedArray,self.isEdit);
+        [self dismis];
+    }
+   
+}
 @end
 

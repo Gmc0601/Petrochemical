@@ -502,7 +502,7 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
             if (sender == _carToolsButtons[2]) {
                 self.carviewModel.data = data;
             }
-            if (sender == _GoodsToolsButtons[3]) {
+            if (sender == _GoodsToolsButtons[2]) {
                 self.goodsviewModel.data = data;
             }
             

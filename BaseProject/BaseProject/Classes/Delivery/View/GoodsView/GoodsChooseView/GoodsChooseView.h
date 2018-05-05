@@ -11,7 +11,8 @@
 @interface GoodsChooseView : UIView
 @property(nonatomic,strong)UIView * bageView;
 - (instancetype)initWithFrame:(CGRect)frame withArray:(NSArray *)showArray withSelectedGoodsIndex:(NSArray *)selectedGoodsIndexs;
-@property(nonatomic, copy) void(^chooseBlock)(NSArray * selectedArray);
+@property(nonatomic, copy) void(^chooseBlock)(NSArray * selectedArray,BOOL isEdit);
+@property(nonatomic, copy) void(^editorBlock)();
 -(void)show;
 @end
 
