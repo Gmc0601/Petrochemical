@@ -46,7 +46,9 @@
     UIButton *rightButton = ({
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         button.frame = CGRectMake(0, 0, 20, 44);
-        [button setImage:[UIImage imageNamed:@"leastianjia"] forState:UIControlStateNormal];
+       // [button setImage:[UIImage imageNamed:@"leastianjia"] forState:UIControlStateNormal];
+        [button setTitleColor:RGBColor(43, 154, 241) forState:UIControlStateNormal];
+        [button setTitle:@"增加" forState:UIControlStateNormal];
         [button addTarget:self action:@selector(rightButtonAction) forControlEvents:UIControlEventTouchUpInside];
         button;
     });
