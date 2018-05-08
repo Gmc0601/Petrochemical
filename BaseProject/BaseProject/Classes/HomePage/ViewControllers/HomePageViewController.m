@@ -35,7 +35,7 @@
 #import "HomeGoodsTableViewCell.h"
 #import "TimeManage.h"
 #import "MessageViewController.h"
-
+#import "UIButton+message.h"
 static NSString *KCarSection1CellID = @"KCarSection1CellID";//车源section1 CellID
 static NSString *KCarSection2CellID = @"KCarSection2CellID";//车源section2 CellID
 static NSString *KCarCyclePageCellID = @"KCarCyclePageCellID";//车源轮播图CellID
@@ -51,6 +51,7 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
     CGFloat _tabbarHeight;
     CGFloat _statusbarHeight;
     int page;  //   scrollview  显示页面
+     UIButton *messageButton;
 }
 
 @property (nonatomic, strong)LLSegmentedControl *TopSegmentedControl;// 导航栏顶部选择器 车源，货源
@@ -95,7 +96,7 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
     [_segmentBoardScrollView addSubview:self.CarTableView];
     [_segmentBoardScrollView addSubview:self.GoodsTableView];
     [self requestList];
-    
+    [self setNavInfo];
     
     
     
@@ -261,8 +262,6 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
 }
 
 - (void)setNavigation {
-    //  rightBtn
-    [self addRightBarButtonWithFirstImage:[UIImage imageNamed:@"xin"] action:@selector(rightBarClick)];
     //  titleView
     NSArray *dataArray = @[@"货源大厅", @"车源大厅"];
     CGFloat const kScrollViewHeight = kScreenH;
@@ -282,6 +281,20 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
     }
 }
 
+-(void)setNavInfo{
+    messageButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    messageButton.frame = CGRectMake(0, 0, 44, 44);
+    
+    [messageButton setImage:[UIImage imageNamed:@"xin"] forState:UIControlStateNormal];
+    [messageButton setImage:[UIImage imageNamed:@"xinyuandian"] forState:UIControlStateSelected];
+    [messageButton addTarget:self action:@selector(rightBarClick) forControlEvents:UIControlEventTouchUpInside];
+    messageButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    [messageButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 5 * kScreenWidth / 375.0)];
+    
+    UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:messageButton];
+    self.navigationItem.rightBarButtonItem = rightBarButtonItem;
+}
+
 - (void)rightBarClick {
     
     UnloginReturn
@@ -295,6 +308,7 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
     [self.TopSegmentedControl removeFromSuperview];
     self.TopSegmentedControl = nil;
      [self.navigationItem setTitleView:self.TopSegmentedControl];
+     [messageButton updateMessage];
 }
 
 - (void)didReceiveMemoryWarning {
