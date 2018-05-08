@@ -226,7 +226,7 @@
     if (!_locationLab) {
         _locationLab = [[UILabel alloc] init];
         _locationLab.backgroundColor = [UIColor clearColor];
-        _locationLab.textColor = ThemeBlue;
+        _locationLab.textColor = [UIColor redColor];
         _locationLab.font = [UIFont systemFontOfSize:14];
     }
     return _locationLab;

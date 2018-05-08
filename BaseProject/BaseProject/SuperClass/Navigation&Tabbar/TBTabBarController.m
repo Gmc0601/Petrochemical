@@ -58,7 +58,7 @@
     [self setChildVC:order title:@"订单" image:@"dingda" selectedImage:@"dingdandian"];
     
     InformationViewController *video = [[InformationViewController alloc] init];
-    [self setChildVC:video title:@"咨询" image:@"zixun" selectedImage:@"zixundian"];
+    [self setChildVC:video title:@"资讯" image:@"zixun" selectedImage:@"zixundian"];
     
     MyCenterViewController *myVC = [[MyCenterViewController alloc] init];
     [self setChildVC:myVC title:@"我的" image:@"unwode" selectedImage:@"wodedian"];

@@ -24,16 +24,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bizhi" translatesAutoresizingMaskIntoConstraints="NO" id="c7o-UQ-drN">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back" translatesAutoresizingMaskIntoConstraints="NO" id="c7o-UQ-drN">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qidongyelogo" translatesAutoresizingMaskIntoConstraints="NO" id="irz-Ou-VL4">
-                    <rect key="frame" x="122" y="82" width="131" height="100"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="131" id="ilx-56-kjp"/>
-                        <constraint firstAttribute="height" constant="100" id="uIm-OX-XL2"/>
-                    </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jae-Oy-YUL">
                     <rect key="frame" x="30" y="328" width="315" height="1"/>
@@ -185,9 +177,7 @@
                 <constraint firstItem="Jae-Oy-YUL" firstAttribute="top" secondItem="QmR-6Q-cOb" secondAttribute="bottom" constant="8" id="YEj-91-ZWH"/>
                 <constraint firstAttribute="trailing" secondItem="D6T-jv-Wiq" secondAttribute="trailing" constant="30" id="aG7-qx-WZK"/>
                 <constraint firstItem="jDq-Ch-GuW" firstAttribute="top" secondItem="ad9-w9-hb4" secondAttribute="bottom" constant="10" id="aUp-91-bcn"/>
-                <constraint firstItem="irz-Ou-VL4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="82" id="bGG-B0-PT0"/>
                 <constraint firstItem="bpq-R9-uTU" firstAttribute="centerX" secondItem="c7o-UQ-drN" secondAttribute="centerX" id="cZ9-Ix-ZYT"/>
-                <constraint firstItem="irz-Ou-VL4" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="e0w-Rn-upv"/>
                 <constraint firstAttribute="bottom" secondItem="RzX-P3-Ykb" secondAttribute="bottom" constant="142" id="fbC-JH-mn6"/>
                 <constraint firstAttribute="trailing" secondItem="c7o-UQ-drN" secondAttribute="trailing" id="fyu-xS-fyH"/>
                 <constraint firstItem="OhG-E1-OTp" firstAttribute="width" secondItem="QmR-6Q-cOb" secondAttribute="height" multiplier="41:6" constant="-33" id="hgt-6J-EGX"/>
@@ -204,9 +194,8 @@
         </view>
     </objects>
     <resources>
-        <image name="bizhi" width="375" height="667"/>
+        <image name="back" width="375" height="812"/>
         <image name="phoneicon_sj" width="10" height="16"/>
-        <image name="qidongyelogo" width="141" height="115"/>
         <image name="suoicon_zc_mm" width="12" height="16"/>
     </resources>
 </document>

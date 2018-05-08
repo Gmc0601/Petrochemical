@@ -133,7 +133,11 @@
         _numFile.delegate = self;
         _numFile.keyboardType = UIKeyboardTypeDecimalPad;
         [_numFile setValue:[UIFont boldSystemFontOfSize:SizeWidth(17)] forKeyPath:@"_placeholderLabel.font"];
+        UIColor *color = ThemeBlue;
         _numFile.placeholder = @"点击输入";
+        _numFile.attributedPlaceholder = [[NSAttributedString alloc] initWithString:_numFile.placeholder attributes:@{NSForegroundColorAttributeName: color}];
+//                [_numFile setValue:[UIColor blueColor]forKeyPath:@"_placeholderLabel.textColor"];
+        
     }
     return _numFile;
 }

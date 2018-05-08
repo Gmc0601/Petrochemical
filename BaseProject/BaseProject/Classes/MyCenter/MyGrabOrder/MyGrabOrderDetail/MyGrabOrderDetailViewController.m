@@ -93,7 +93,7 @@
     self.loadWeightLabel.text = [NSString stringWithFormat:@"%@吨",dataSource[@"rough_weight"]];
     self.phoneLabel.text = validString(dataSource[@"car_mobile"]);
     self.orderNumberLabel.text = validString(dataSource[@"good_num"]);
-    self.loadingLabel.text = validString(dataSource[@"loading"]);
+    self.loadingLabel.text = validString(dataSource[@"loading"]);//loading_address
     self.loadAddressLabel.text = validString(dataSource[@"loading_address"]);
     NSString *mileage = validString(dataSource[@"mileage"]);
     NSString *mileageTime = [NSString stringWithFormat:@"%.1f",[mileage doubleValue]/60.0];
@@ -115,8 +115,8 @@
             MyPublishCargoDetailXiehuoView *end = [[NSBundle mainBundle] loadNibNamed:@"MyPublishCargoDetailXiehuoView" owner:self options:nil].firstObject;
             end.frame = CGRectMake(0, index*54, kScreenW, 54);
             //end.dataDic = xiehuo[index];
-            end.unload_address.text = validString(unload_address[index]);
-            end.unload.text = validString(unload[index]);
+            end.unload_address.text = validString(unload[index]);////unload[index]
+            end.unload.text = validString(unload_address[index]);
             [self.endView addSubview:end];
         }
     }

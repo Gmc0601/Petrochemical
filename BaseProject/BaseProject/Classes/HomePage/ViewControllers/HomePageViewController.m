@@ -35,7 +35,12 @@
 #import "HomeGoodsTableViewCell.h"
 #import "TimeManage.h"
 #import "MessageViewController.h"
+<<<<<<< HEAD
 #import "UIButton+message.h"
+=======
+#import "GuideView.h"
+
+>>>>>>> 285a2b64cc291f543c618cfcbeab21caca2ec52e
 static NSString *KCarSection1CellID = @"KCarSection1CellID";//车源section1 CellID
 static NSString *KCarSection2CellID = @"KCarSection2CellID";//车源section2 CellID
 static NSString *KCarCyclePageCellID = @"KCarCyclePageCellID";//车源轮播图CellID
@@ -79,8 +84,6 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
 @property (nonatomic, strong) NSMutableArray *tagDate;
 @property (nonatomic, strong) NSMutableArray *tagModel;
 
-
-
 @end
 
 @implementation Tagmodel
@@ -96,11 +99,20 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
     [_segmentBoardScrollView addSubview:self.CarTableView];
     [_segmentBoardScrollView addSubview:self.GoodsTableView];
     [self requestList];
+<<<<<<< HEAD
     [self setNavInfo];
     
     
     
+=======
+    if (![ConfigModel getBoolObjectforKey:FirstLoad]) {
+        GuideView *view = [[GuideView alloc] initWithFrame:FRAME(0, 0, kScreenW, kScreenH)];
+        [view pop];
+        [ConfigModel saveBoolObject:YES forKey:FirstLoad];
+    }
+>>>>>>> 285a2b64cc291f543c618cfcbeab21caca2ec52e
 }
+
 
 - (void)carLoadmore{
     [[self.carviewModel.homeCarCommand execute:@"homeCar"] subscribeNext:^(NSArray * x) {
@@ -516,7 +528,7 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
             if (sender == _carToolsButtons[2]) {
                 self.carviewModel.data = data;
             }
-            if (sender == _GoodsToolsButtons[3]) {
+            if (sender == _GoodsToolsButtons[2]) {
                 self.goodsviewModel.data = data;
             }
             

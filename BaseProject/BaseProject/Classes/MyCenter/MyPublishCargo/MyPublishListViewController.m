@@ -45,7 +45,7 @@
     NSArray *titleArr = @[@"审核中",@"抢单中",@"已拒绝",@"已结束"];
     WJItemsConfig *config = [[WJItemsConfig alloc]init];
     config.itemWidth = kScreenW/4.0;
-    config.selectedColor = UIColorFromHex(0x028BF3);
+    config.selectedColor = ThemeBlue;
     config.linePercent = 0.3;
     self.topItemsView = [[WJItemsControlView alloc]initWithFrame:CGRectMake(0, 64, kScreenW, 44)];
     self.topItemsView.tapAnimation = YES;
@@ -74,7 +74,7 @@
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         button.frame = CGRectMake(0, 0, 20, 44);
         [button setTitle:@"发布" forState:UIControlStateNormal];
-        [button setTitleColor:UIColorFromHex(0x242424) forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
         [button addTarget:self action:@selector(rightButtonAction) forControlEvents:UIControlEventTouchUpInside];
         button;
     });
