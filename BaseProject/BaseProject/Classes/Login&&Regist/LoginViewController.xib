@@ -24,7 +24,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back" translatesAutoresizingMaskIntoConstraints="NO" id="c7o-UQ-drN">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="7501334" translatesAutoresizingMaskIntoConstraints="NO" id="c7o-UQ-drN">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jae-Oy-YUL">
@@ -194,7 +194,7 @@
         </view>
     </objects>
     <resources>
-        <image name="back" width="375" height="812"/>
+        <image name="7501334" width="375" height="667"/>
         <image name="phoneicon_sj" width="10" height="16"/>
         <image name="suoicon_zc_mm" width="12" height="16"/>
     </resources>

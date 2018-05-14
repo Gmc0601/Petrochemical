@@ -2265,8 +2265,8 @@
 				TargetAttributes = {
 					42A4442C1EF133E000F90791 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = PA574T6LR3;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = 63NQ5B962G;
+						ProvisioningStyle = Manual;
 					};
 					42A444481EF133E000F90791 = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -2796,9 +2796,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PA574T6LR3;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 63NQ5B962G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BaseProject",
@@ -2812,10 +2812,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/BaseProject/Library/WechatSDK1.8.2",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "cc.petrochemical-Luming.apptext";
+				PRODUCT_BUNDLE_IDENTIFIER = "cc.petrochemical-Luming.apponline";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "c1786c48-3825-4d1a-a9d4-c5783bb42d2f";
+				PROVISIONING_PROFILE_SPECIFIER = luming_Company_adhoc;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2826,9 +2826,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PA574T6LR3;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 63NQ5B962G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BaseProject",
@@ -2842,10 +2842,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/BaseProject/Library/WechatSDK1.8.2",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "cc.petrochemical-Luming.apptext";
+				PRODUCT_BUNDLE_IDENTIFIER = "cc.petrochemical-Luming.apponline";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "c1786c48-3825-4d1a-a9d4-c5783bb42d2f";
+				PROVISIONING_PROFILE_SPECIFIER = luming_Company_adhoc;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

@@ -68,9 +68,6 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
 
 @property (nonatomic, strong)UITableView *GoodsTableView;//货源首页list
 @property (nonatomic, strong) NSArray *GoodsListDatas;//货源列表数据源
-//@property (nonatomic, strong) TYCyclePagerView *GoodsPagerView;//货源轮播页
-//@property (nonatomic, strong) TYPageControl *GoodsPageControl;//货源轮播页面控制器
-//@property (nonatomic, strong) NSMutableArray *GoodsCyclePageDatas;//货源轮播图数据源
 @property (nonatomic, copy) NSArray *GoodsToolsButtons;
 @property (nonatomic, strong)UIWindow *coverWindow;
 @property (nonatomic, strong)UIView *alertView;
