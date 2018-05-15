@@ -52,7 +52,7 @@
     NSArray *titleArr = @[@"运输信息",@"货源详情"];
     WJItemsConfig *config = [[WJItemsConfig alloc]init];
     config.itemWidth = kScreenW/2.0;
-    config.selectedColor = UIColorFromHex(0x028BF3);
+    config.selectedColor = ThemeBlue;
     config.linePercent = 0.2;
     self.topItemsView = [[WJItemsControlView alloc]initWithFrame:CGRectMake(0, 0, kScreenW, 44)];
     self.topItemsView.tapAnimation = YES;

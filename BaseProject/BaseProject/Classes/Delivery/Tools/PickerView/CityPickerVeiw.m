@@ -94,9 +94,8 @@
         tempType = @"随时装车";
     }
     if ([monthDay isEqualToString:tempType]) {
-        [array addObject:@"全天"];
+        [array addObject:tempType];
     }else{
-         [array addObject:@"全天"];
         for (NSInteger interval =  0; interval <= 20; interval++) {
             
             if (interval%4 == 0) {

@@ -34,7 +34,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setCustomerTitle:@"咨询"];
+    [self setCustomerTitle:@"资讯"];
 
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenW, kScreenH-64-49) style:UITableViewStylePlain];
     _tableView.delegate = self;

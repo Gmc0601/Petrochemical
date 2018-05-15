@@ -37,9 +37,9 @@
     [self.view addSubview:self.noUseTableView];
     [self.view addSubview:self.commitBtn];
     [self.view addSubview:self.callBtn];
-    UILabel *line = [[UILabel alloc] initWithFrame:FRAME(kScreenW/2, self.callBtn.top, kScreenW/2, 1)];
-    line.backgroundColor = RGBColor(230, 240, 241);
-    [self.view addSubview:line];
+//    UILabel *line = [[UILabel alloc] initWithFrame:FRAME(kScreenW/2, self.callBtn.top, kScreenW/2, 1)];
+//    line.backgroundColor = RGBColor(230, 240, 241);
+//    [self.view addSubview:line];
     [self raccommad];
     [HttpRequest postPath:@"_userinfo_001" params:nil resultBlock:^(id responseObject, NSError *error) {
         NSDictionary *datadic = responseObject;
@@ -282,10 +282,7 @@
     if (!_callBtn) {
         _callBtn = [[UIButton alloc] initWithFrame:FRAME(kScreenW/2, self.noUseTableView.bottom, kScreenW/2, 50)];
         [_callBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        _callBtn.backgroundColor = [UIColor blueColor];
-        UILabel *line = [[UILabel alloc] initWithFrame:FRAME(kScreenW/2, 0, kScreenW/2, 1)];
-        line.backgroundColor = RGBColor(239, 240, 241);
-        [_callBtn addSubview:line];
+        _callBtn.backgroundColor = UIColorHex(0x2683f5);
         [_callBtn setTitle:@"拨打电话" forState:UIControlStateNormal];
         [_callBtn addTarget:self action:@selector(call) forControlEvents:UIControlEventTouchUpInside];
     }

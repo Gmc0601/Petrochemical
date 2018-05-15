@@ -25,10 +25,8 @@
     [super viewDidLoad];
     [self setCustomerTitle:@"位置"];
     [self addRightBarButtonItemWithTitle:@"导航" action:@selector(right)];
-    [AMapServices sharedServices].apiKey = @"c566d3a7bcf00f73ba43f1d82b20b6cf";
-    MAPointAnnotation *pointAnnotation = [[MAPointAnnotation alloc] init];
-    pointAnnotation.coordinate = CLLocationCoordinate2DMake([self.latitude floatValue], [self.longitude floatValue]);
-    [self.mapView addAnnotation:pointAnnotation];
+    [AMapServices sharedServices].apiKey = @"47884e7c3c495b95c4303de711d07123";
+    
     [self mapViewinit];
 }
 
@@ -59,19 +57,25 @@
         self.mapView = [[MAMapView alloc] initWithFrame:self.view.bounds];
     }
     ///初始化地图
-    [self.mapView setZoomLevel:18 animated:YES];
+    [self.mapView setZoomLevel:14 animated:YES];
     self.mapView.showsCompass = YES;
-    self.mapView.showsUserLocation = YES;
-    self.mapView.userTrackingMode = MAUserTrackingModeFollow;
+    self.mapView.showsUserLocation = NO;
+//    self.mapView.userTrackingMode = MAUserTrackingModeFollow;
     self.locationManager = [[AMapLocationManager alloc] init];
     self.locationManager.delegate = self;
     self.mapView.delegate= self;
+    self.mapView.centerCoordinate = CLLocationCoordinate2DMake([self.latitude floatValue], [self.longitude floatValue]);
+    
     // 带逆地理信息的一次定位（返回坐标和地址信息）
     [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
     //   定位超时时间，最低2s，此处设置为10s
     self.locationManager.locationTimeout = 2;
     //   逆地理请求超时时间，最低2s，此处设置为10s
     self.locationManager.reGeocodeTimeout = 2;
+    MAPointAnnotation *pointAnnotation = [[MAPointAnnotation alloc] init];
+    pointAnnotation.coordinate = CLLocationCoordinate2DMake([self.latitude floatValue], [self.longitude floatValue]);
+    pointAnnotation.title = @"空车位置";
+    [self.mapView addAnnotation:pointAnnotation];
     [self.view addSubview:self.mapView];
 }
 

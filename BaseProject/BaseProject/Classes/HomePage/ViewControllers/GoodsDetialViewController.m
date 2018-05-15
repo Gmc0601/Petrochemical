@@ -43,9 +43,6 @@
     [self.view addSubview:self.noUseTableView];
     [self.view addSubview:self.commitBtn];
     [self.view addSubview:self.callBtn];
-    UILabel *line = [[UILabel alloc] initWithFrame:FRAME(kScreenW/2, self.callBtn.top, kScreenW/2, 1)];
-    line.backgroundColor = RGBColor(230, 240, 241);
-    [self.view addSubview:line];
     [self raccomand];
     [HttpRequest postPath:@"_userinfo_001" params:nil resultBlock:^(id responseObject, NSError *error) {
         NSDictionary *datadic = responseObject;
@@ -83,7 +80,8 @@
         NSDictionary *dic = @{@"loading" : self.model.loading,
                               @"loading_address" : self.model.loading_address
                               };
-        NSArray *dearr =  @[self.model.good_num, self.model.mileage, self.model.use_time,self.model.type, self.model.weight, self.model.good_price, self.model.cost, self.model.account_type];
+        NSString *weight = [NSString stringWithFormat:@"%@吨", self.model.weight];
+        NSArray *dearr =  @[self.model.good_num, self.model.mileage, self.model.use_time,self.model.type, weight, self.model.good_price, self.model.cost, self.model.account_type];
         self.detialArr = [[NSMutableArray alloc] initWithArray:dearr];
         [self.detialArr insertObject:dic atIndex:1];
         self.text.text = self.model.remark;
@@ -304,10 +302,10 @@
     if (!_callBtn) {
         _callBtn = [[UIButton alloc] initWithFrame:FRAME(kScreenW/2, self.noUseTableView.bottom, kScreenW/2, 50)];
         [_callBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        _callBtn.backgroundColor = [UIColor blueColor];
-        UILabel *line = [[UILabel alloc] initWithFrame:FRAME(kScreenW/2, 0, kScreenW/2, 1)];
-        line.backgroundColor = RGBColor(239, 240, 241);
-        [_callBtn addSubview:line];
+        _callBtn.backgroundColor = UIColorHex(0x2683f5);
+//        UILabel *line = [[UILabel alloc] initWithFrame:FRAME(kScreenW/2, 0, kScreenW/2, 1)];
+//        line.backgroundColor = RGBColor(239, 240, 241);
+//        [_callBtn addSubview:line];
         [_callBtn setTitle:@"拨打电话" forState:UIControlStateNormal];
         [_callBtn addTarget:self action:@selector(call) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -389,7 +387,7 @@
 
 - (NSMutableArray *)titleArr {
     if (!_titleArr) {
-        NSArray *arr = @[@"货单号",@"装货点", @"预计里程", @"用车时间", @"货物名称", @"货物重量", @"运输单价", @"运输费", @"结算方式"];
+        NSArray *arr = @[@"货单号",@"装货点", @"预计里程", @"用车时间", @"货物名称", @"货物总量", @"运输单价", @"运输费", @"结算方式"];
         _titleArr = [[NSMutableArray alloc] initWithArray:arr];
     }
     return _titleArr;

@@ -118,6 +118,8 @@
 
 #define UserToken @"userTOken"
 
+#define FirstLoad @"firstload"
+
 
 
 #endif /* Header_pch */
