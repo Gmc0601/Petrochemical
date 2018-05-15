@@ -38,7 +38,7 @@
     self.startLabel.text = validString(dicModel[@"loading"]);
     self.endLabel.text = validString(dicModel[@"unload"]);
     self.timeLabel.text = [NSString stringWithFormat:@"装货时间：%@",validString(dicModel[@"create_time"])];
-    self.otherInfoLabel.text = [NSString stringWithFormat:@"报价：%@/吨",validString(dicModel[@"good_price"])];
+    self.otherInfoLabel.text = [NSString stringWithFormat:@"报价：%@",validString(dicModel[@"good_price"])];
 }
 
 - (NSString *) returnTimeValue:(NSString *) str{
