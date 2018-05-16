@@ -75,9 +75,9 @@
     section1 =[self getMonthDay];
     NSString * tempType = @"";
     if (  self.pickerType == PickerViewType_goodsTimer) {
-        tempType = @"随时装货";
+        tempType = @"随时用车";
     }else if (self.pickerType == PickerViewType_carTimer){
-        tempType = @"随时装车";
+        tempType = @"随时装货";
     }
     section2 = [self getTimeInterval:tempType];
 //    section2 = [self getDaysAtMonth:1 atYears:[self getCurrentYear]];
@@ -89,41 +89,59 @@
       NSMutableArray * array = [NSMutableArray array];
     NSString * tempType = @"";
     if (  self.pickerType == PickerViewType_goodsTimer) {
-        tempType = @"随时装货";
+        tempType = @"随时用车";
     }else if (self.pickerType == PickerViewType_carTimer){
-        tempType = @"随时装车";
+        tempType = @"随时装货";
     }
     if ([monthDay isEqualToString:tempType]) {
         [array addObject:tempType];
     }else{
-        for (NSInteger interval =  0; interval <= 20; interval++) {
-            
-            if (interval%4 == 0) {
-                NSString * intervalStr = @"";
-                NSString * center = @"-";
-                if (interval<10) {
-                    NSString * startTimer = @"";
-                     NSString * endTimer = @"";
-                    
-                    if (interval +4 <10) {
-                        endTimer = [NSString stringWithFormat:@"0%ld:00",interval+4];
-                    }else{
-                        endTimer = [NSString stringWithFormat:@"%ld:00",interval+4];
-                    }
-                      startTimer = [NSString stringWithFormat:@"0%ld:00",interval];
-                    intervalStr  = [startTimer stringByAppendingString:center];
-                    intervalStr =  [intervalStr  stringByAppendingString:endTimer];
-                }else{
-                    NSString * startTimer = @"";
-                    NSString * endTimer = @"";
-                    endTimer = [NSString stringWithFormat:@"%ld:00",interval+4];
-                    startTimer = [NSString stringWithFormat:@"%ld:00",interval];
-                    intervalStr  = [startTimer stringByAppendingString:center];
-                    intervalStr =  [intervalStr  stringByAppendingString:endTimer];
-                }
-                [array addObject:intervalStr];
-            }
-        }
+        NSString * startTimer = @"";
+        NSString * endTimer = @"";
+        NSString * intervalStr = @"";
+        NSString * center = @"-";
+
+        startTimer = [NSString stringWithFormat:@"00:00"];
+        endTimer = [NSString stringWithFormat:@"12:00"];
+        intervalStr  = [startTimer stringByAppendingString:center];
+        intervalStr =  [intervalStr  stringByAppendingString:endTimer];
+        [array addObject:intervalStr];
+       
+        
+        startTimer = [NSString stringWithFormat:@"12:00"];
+        endTimer = [NSString stringWithFormat:@"24:00"];
+        intervalStr  = [startTimer stringByAppendingString:center];
+        intervalStr =  [intervalStr  stringByAppendingString:endTimer];
+        [array addObject:intervalStr];
+        
+//        for (NSInteger interval =  0; interval <= 20; interval++) {
+//
+//            if (interval%4 == 0) {
+//                NSString * intervalStr = @"";
+//                NSString * center = @"-";
+//                if (interval<12) {
+//                    NSString * startTimer = @"";
+//                    NSString * endTimer = @"";
+//
+//                    if (interval +4 <10) {
+//                        endTimer = [NSString stringWithFormat:@"0%ld:00",interval+4];
+//                    }else{
+//                        endTimer = [NSString stringWithFormat:@"%ld:00",interval+4];
+//                    }
+//                    startTimer = [NSString stringWithFormat:@"0%ld:00",interval];
+//                    intervalStr  = [startTimer stringByAppendingString:center];
+//                    intervalStr =  [intervalStr  stringByAppendingString:endTimer];
+//                }else{
+//                    NSString * startTimer = @"";
+//                    NSString * endTimer = @"";
+//                    endTimer = [NSString stringWithFormat:@"%ld:00",interval+4];
+//                    startTimer = [NSString stringWithFormat:@"%ld:00",interval];
+//                    intervalStr  = [startTimer stringByAppendingString:center];
+//                    intervalStr =  [intervalStr  stringByAppendingString:endTimer];
+//                }
+//                [array addObject:intervalStr];
+//            }
+//        }
     }
     return array;
 }
@@ -148,9 +166,9 @@
             if (i == currentMoth && day == currentDay) {
                 NSString * tempType = @"";
                 if (  self.pickerType == PickerViewType_goodsTimer) {
-                    tempType = @"随时装货";
+                    tempType = @"随时用车";
                 }else if (self.pickerType == PickerViewType_carTimer){
-                    tempType = @"随时装车";
+                    tempType = @"随时装货";
                 }
                 monthDay = [NSString stringWithFormat:tempType];
             }else{
