@@ -30,6 +30,18 @@
     
     [self loadWebView];
     
+    if (self.backmiss) {
+         [self addLeftBarButtonWithImage:[UIImage imageNamed:@"zz"] action:@selector(backAction)];
+    }
+    
+}
+
+- (void)backAction {
+    if (self.backmiss) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {

@@ -180,8 +180,11 @@
 - (IBAction)userAgreeClick:(id)sender {
     CCWebViewViewController *vc = [[CCWebViewViewController alloc] init];
     vc.titlestr = @"注册协议";
+    vc.backmiss = YES;
     vc.UrlStr = @"http://116.62.142.20/Public/zcxy";
-    [self.navigationController pushViewController:vc animated:YES];
+//    [self.navigationController pushViewController:vc animated:YES];
+    UINavigationController *na = [[UINavigationController alloc] initWithRootViewController:vc];
+    [self presentViewController:na animated:YES completion:nil];
 }
 
 
