@@ -20,7 +20,7 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TFZ-SF-10X">
+        <view contentMode="scaleToFill" id="TFZ-SF-10X">
             <rect key="frame" x="0.0" y="0.0" width="375" height="873"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -525,7 +525,7 @@
                         <constraint firstAttribute="trailing" secondItem="NWh-7h-7jU" secondAttribute="trailing" id="qlU-JU-NFk"/>
                         <constraint firstItem="P5Z-KL-C21" firstAttribute="leading" secondItem="g0t-U7-d6u" secondAttribute="leading" id="qqK-R2-c3l"/>
                         <constraint firstItem="3zV-lJ-nzx" firstAttribute="top" secondItem="W0W-sG-Kw0" secondAttribute="bottom" id="tgQ-Nz-z9P"/>
-                        <constraint firstAttribute="bottom" secondItem="3zV-lJ-nzx" secondAttribute="bottom" id="ujs-dj-bSi"/>
+                        <constraint firstAttribute="bottom" secondItem="3zV-lJ-nzx" secondAttribute="bottom" constant="20" id="ujs-dj-bSi"/>
                         <constraint firstItem="P5Z-KL-C21" firstAttribute="top" secondItem="0ff-9V-IIz" secondAttribute="bottom" id="uo1-gz-C8m"/>
                         <constraint firstItem="TN2-5w-uTP" firstAttribute="leading" secondItem="g0t-U7-d6u" secondAttribute="leading" id="xBr-dq-2Hh"/>
                     </constraints>
@@ -540,7 +540,7 @@
                 <constraint firstItem="g0t-U7-d6u" firstAttribute="top" secondItem="TFZ-SF-10X" secondAttribute="top" id="x5s-h6-j10"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-101" y="-494"/>
+            <point key="canvasLocation" x="-173" y="-541"/>
         </view>
     </objects>
     <resources>
