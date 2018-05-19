@@ -59,6 +59,7 @@
 }
 
 -(void)initView{
+    
     NSString * video = validString(self.infoDic[@"video"]);
     self.nameLabel.text = self.infoDic[@"title"];
     self.dateLabel.text = self.infoDic[@"create_time"];
