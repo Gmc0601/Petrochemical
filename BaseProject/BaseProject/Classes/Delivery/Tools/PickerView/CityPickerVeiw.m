@@ -94,8 +94,10 @@
         tempType = @"随时装货";
     }
     if ([monthDay isEqualToString:tempType]) {
-        [array addObject:tempType];
+//        [array addObject:tempType];
+        [array addObject:@""];
     }else{
+        [array addObject:tempType];
         NSString * startTimer = @"";
         NSString * endTimer = @"";
         NSString * intervalStr = @"";
@@ -170,7 +172,7 @@
                 }else if (self.pickerType == PickerViewType_carTimer){
                     tempType = @"随时装货";
                 }
-                monthDay = [NSString stringWithFormat:tempType];
+                monthDay = [NSString stringWithFormat:@"%@",tempType];
             }else{
                 monthDay = [NSString stringWithFormat:@"%ld月%ld日",(long)tempMoth,(long)tempDay]; 
             }
@@ -528,11 +530,13 @@
         
         if (component == 0) {
             provinceStr = section1[row];
-           
+            cityStr = section2.firstObject;
+            districtStr = section2.firstObject;
         } else if (component==1) {
             cityStr = section2[row];
           
         } else {
+           
             districtStr =section3[row];
         }
         resultsStr = [NSString stringWithFormat:@"%@ %@",provinceStr,cityStr];
