@@ -9,5 +9,5 @@ pod 'ReactiveObjC'
 pod 'MJExtension'
 pod ‘AMap3DMap’
 pod ‘AMapLocation’
-
+pod 'JPush'
 end

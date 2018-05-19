@@ -225,6 +225,12 @@
 
 - (void)checkLogoClick:(UISwitch *)sender {
     
+    if ([self.numFile.text intValue] <= 0) {
+        [ConfigModel mbProgressHUD:@"请输入数量后在选择" andView:nil];
+        sender.on = NO;
+        return;
+    }
+    
     sender.selected = !sender.selected;
     self.check = sender.selected;
     if (self.checkBlock) {

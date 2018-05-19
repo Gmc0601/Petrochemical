@@ -15,6 +15,7 @@
 #import "WXApi.h"
 #import <TencentOpenAPI/TencentOAuth.h>
 #import "TencentOpenAPI/QQApiInterface.h"
+#import "AppDelegate+Jpush.h"
 
 
 @interface AppDelegate ()<WXApiDelegate,QQApiInterfaceDelegate>
@@ -54,6 +55,7 @@
     
     [self selectedWXApi];
     [self selectedQQAction];
+    [self initJpushapplication:application optins:launchOptions];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
     [self configureAPIKey];
@@ -78,6 +80,7 @@
 
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
+    [application setApplicationIconBadgeNumber:0];
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }

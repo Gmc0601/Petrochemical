@@ -15,4 +15,6 @@
 - (void)setTitleImage:(NSString *)imageStr;
 
 
+- (void)backAction;
+
 @end

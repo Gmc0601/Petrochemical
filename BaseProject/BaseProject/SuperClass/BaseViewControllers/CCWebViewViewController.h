@@ -32,4 +32,6 @@
 
 @property (nonatomic, copy) NSString *titlestr;
 
+@property (nonatomic, assign) BOOL backmiss;
+
 @end
