@@ -47,7 +47,9 @@
     config.itemWidth = kScreenW/4.0;
     config.selectedColor = ThemeBlue;
     config.linePercent = 0.3;
-    self.topItemsView = [[WJItemsControlView alloc]initWithFrame:CGRectMake(0, 64, kScreenW, 44)];
+    float  statusbarHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
+
+    self.topItemsView = [[WJItemsControlView alloc]initWithFrame:CGRectMake(0, 44+statusbarHeight, kScreenW, 44)];
     self.topItemsView.tapAnimation = YES;
     self.topItemsView.config = config;
     self.topItemsView.backgroundColor = [UIColor whiteColor];

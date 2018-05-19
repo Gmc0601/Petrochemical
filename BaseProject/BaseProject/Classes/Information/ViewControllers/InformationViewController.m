@@ -35,8 +35,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setCustomerTitle:@"资讯"];
+    float  statusbarHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
 
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenW, kScreenH-64-49) style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, statusbarHeight+44, kScreenW, kScreenH-44-statusbarHeight-49) style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.backgroundColor = RGBColor(227, 227, 227);

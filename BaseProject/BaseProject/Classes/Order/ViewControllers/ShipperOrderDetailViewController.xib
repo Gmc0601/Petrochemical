@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -31,14 +32,14 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IPt-eI-aTM">
-                    <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                    <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="oYN-Ko-JQd"/>
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vtB-es-UFw">
-                    <rect key="frame" x="0.0" y="108" width="375" height="704"/>
+                    <rect key="frame" x="0.0" y="88" width="375" height="724"/>
                     <color key="backgroundColor" red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="jlq-0h-Suq"/>
@@ -46,7 +47,7 @@
                     </connections>
                 </tableView>
                 <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZZ-CP-2y3">
-                    <rect key="frame" x="0.0" y="108" width="375" height="704"/>
+                    <rect key="frame" x="0.0" y="88" width="375" height="724"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SOj-AA-pyu">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="338"/>
@@ -409,6 +410,7 @@
             <constraints>
                 <constraint firstItem="cZZ-CP-2y3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="2dk-Qn-71o"/>
                 <constraint firstItem="IPt-eI-aTM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="3uG-Qn-wqI"/>
+                <constraint firstItem="IPt-eI-aTM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="topMargin" id="6Bg-YS-ASu"/>
                 <constraint firstItem="cZZ-CP-2y3" firstAttribute="top" secondItem="IPt-eI-aTM" secondAttribute="bottom" id="Dsu-Jx-qLA"/>
                 <constraint firstItem="SOj-AA-pyu" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="Gbo-fo-H4M"/>
                 <constraint firstItem="vtB-es-UFw" firstAttribute="top" secondItem="IPt-eI-aTM" secondAttribute="bottom" id="JaF-mx-4sA"/>
@@ -416,7 +418,6 @@
                 <constraint firstAttribute="bottom" secondItem="cZZ-CP-2y3" secondAttribute="bottom" id="V9o-hx-8IO"/>
                 <constraint firstItem="vtB-es-UFw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="eEq-SW-ayZ"/>
                 <constraint firstAttribute="trailing" secondItem="vtB-es-UFw" secondAttribute="trailing" id="eaS-ee-mnQ"/>
-                <constraint firstItem="IPt-eI-aTM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="rwA-Cp-VUG"/>
                 <constraint firstAttribute="bottom" secondItem="vtB-es-UFw" secondAttribute="bottom" id="spT-Bm-029"/>
                 <constraint firstAttribute="trailing" secondItem="IPt-eI-aTM" secondAttribute="trailing" id="xJ2-8V-CcE"/>
             </constraints>
