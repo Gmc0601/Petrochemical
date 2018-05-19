@@ -15,6 +15,7 @@
 #import "WXApi.h"
 #import <TencentOpenAPI/TencentOAuth.h>
 #import "TencentOpenAPI/QQApiInterface.h"
+#import "AppDelegate+Jpush.h"
 
 
 @interface AppDelegate ()<WXApiDelegate,QQApiInterfaceDelegate>
@@ -54,6 +55,7 @@
     
     [self selectedWXApi];
     [self selectedQQAction];
+    [self initJpushapplication:application optins:launchOptions];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
     [self configureAPIKey];

@@ -152,6 +152,7 @@
 		42F795DA1F00CC3E00A11A69 /* TBRefreshFootView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F795D31F00CC3E00A11A69 /* TBRefreshFootView.m */; };
 		42F795DB1F00CC3E00A11A69 /* TBRefreshHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F795D51F00CC3E00A11A69 /* TBRefreshHeadView.m */; };
 		42F795DC1F00CC3E00A11A69 /* UIScrollView+TBRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F795D71F00CC3E00A11A69 /* UIScrollView+TBRefresh.m */; };
+		42FFE01E20AFC00000207285 /* AppDelegate+Jpush.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FFE01D20AFC00000207285 /* AppDelegate+Jpush.m */; };
 		7A286F05205912D0006E4E0A /* WJItemsControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A286F03205912CF006E4E0A /* WJItemsControlView.m */; };
 		7A328DCB205BA58700BF9DAC /* InformationImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A328DC9205BA58700BF9DAC /* InformationImageTableViewCell.m */; };
 		7A328DCC205BA58700BF9DAC /* InformationImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A328DCA205BA58700BF9DAC /* InformationImageTableViewCell.xib */; };
@@ -369,6 +370,7 @@
 		420D18252057A71300E1D8E1 /* UILabel+Width.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Width.h"; sourceTree = "<group>"; };
 		420D18442057AA9100E1D8E1 /* MyCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCenterViewController.h; sourceTree = "<group>"; };
 		420D18452057AA9100E1D8E1 /* MyCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCenterViewController.m; sourceTree = "<group>"; };
+		421B796D20AE639A00FC6139 /* BaseProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BaseProject.entitlements; sourceTree = "<group>"; };
 		422F1FFA2047E858009481CC /* UIViewController+BarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BarButton.m"; sourceTree = "<group>"; };
 		422F1FFB2047E858009481CC /* UIViewController+BarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BarButton.h"; sourceTree = "<group>"; };
 		422F1FFD2047E8B2009481CC /* UIButton+SSEdgeInsets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+SSEdgeInsets.m"; sourceTree = "<group>"; };
@@ -561,6 +563,8 @@
 		42F795D51F00CC3E00A11A69 /* TBRefreshHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBRefreshHeadView.m; sourceTree = "<group>"; };
 		42F795D61F00CC3E00A11A69 /* UIScrollView+TBRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TBRefresh.h"; sourceTree = "<group>"; };
 		42F795D71F00CC3E00A11A69 /* UIScrollView+TBRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TBRefresh.m"; sourceTree = "<group>"; };
+		42FFE01C20AFC00000207285 /* AppDelegate+Jpush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Jpush.h"; sourceTree = "<group>"; };
+		42FFE01D20AFC00000207285 /* AppDelegate+Jpush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Jpush.m"; sourceTree = "<group>"; };
 		65EBE4FCE8758654A9B05419 /* libPods-BaseProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BaseProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A286F03205912CF006E4E0A /* WJItemsControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJItemsControlView.m; sourceTree = "<group>"; };
 		7A286F04205912CF006E4E0A /* WJItemsControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJItemsControlView.h; sourceTree = "<group>"; };
@@ -1062,6 +1066,7 @@
 		42A4442F1EF133E000F90791 /* BaseProject */ = {
 			isa = PBXGroup;
 			children = (
+				421B796D20AE639A00FC6139 /* BaseProject.entitlements */,
 				42C84EB31EF2DC7B0008189D /* Header.pch */,
 				035A2417206CC7300003CD31 /* APIKey.h */,
 				42C84EB21EF2DC7B0008189D /* CCUrl.h */,
@@ -1193,6 +1198,8 @@
 		42C84EAA1EF2DB060008189D /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				42FFE01C20AFC00000207285 /* AppDelegate+Jpush.h */,
+				42FFE01D20AFC00000207285 /* AppDelegate+Jpush.m */,
 				42C84EAB1EF2DB060008189D /* AppDelegate.h */,
 				42C84EAC1EF2DB060008189D /* AppDelegate.m */,
 				42C84EAD1EF2DB060008189D /* main.m */,
@@ -2267,6 +2274,14 @@
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 63NQ5B962G;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.DataProtection = {
+								enabled = 0;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					42A444481EF133E000F90791 = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -2530,6 +2545,7 @@
 				829762892073642300F1F003 /* CargoidentificationProgressViewController.m in Sources */,
 				827CFED22079C0CA000564D9 /* MyCarDetailUpdatePhoneViewController.m in Sources */,
 				8211DC532062014900A747A4 /* UIImage+MyProperty.m in Sources */,
+				42FFE01E20AFC00000207285 /* AppDelegate+Jpush.m in Sources */,
 				42F795DB1F00CC3E00A11A69 /* TBRefreshHeadView.m in Sources */,
 				427176492080874900D8DF70 /* HomeCarTableViewCell.m in Sources */,
 				03E7471E207904DE00E6B992 /* TTextView.m in Sources */,
@@ -2796,7 +2812,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_ENTITLEMENTS = BaseProject/BaseProject.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 63NQ5B962G;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2814,8 +2831,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "cc.petrochemical-Luming.apponline";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c1786c48-3825-4d1a-a9d4-c5783bb42d2f";
-				PROVISIONING_PROFILE_SPECIFIER = luming_Company_adhoc;
+				PROVISIONING_PROFILE = "a5e049a8-1b90-45e9-9a4f-63c84fa4b148";
+				PROVISIONING_PROFILE_SPECIFIER = luming_Company_Develop;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2826,7 +2843,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_ENTITLEMENTS = BaseProject/BaseProject.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 63NQ5B962G;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2844,8 +2862,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "cc.petrochemical-Luming.apponline";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c1786c48-3825-4d1a-a9d4-c5783bb42d2f";
-				PROVISIONING_PROFILE_SPECIFIER = luming_Company_adhoc;
+				PROVISIONING_PROFILE = "a5e049a8-1b90-45e9-9a4f-63c84fa4b148";
+				PROVISIONING_PROFILE_SPECIFIER = luming_Company_Develop;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

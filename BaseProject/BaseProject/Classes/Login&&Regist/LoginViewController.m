@@ -10,6 +10,7 @@
 #import "CCWebViewViewController.h"
 #import <YYKit.h>
 #import "ViewController.h"
+#import <JPUSHService.h>
 @interface LoginViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *phoneText;
@@ -164,8 +165,10 @@
         if ([datadic[@"error"] intValue] == 0) {
             NSDictionary *data = datadic[@"info"];
             NSString *user_token = data[@"userToken"];
+            NSString *mobile = data[@"mobile"];
             [ConfigModel saveBoolObject:YES forKey:IsLogin];
             [ConfigModel saveString:user_token forKey:UserToken];
+            [JPUSHService setTags:nil alias:mobile callbackSelector:@selector(tagsAliasCallback:tags:alias:) object:self];
             [self presentViewController:[ViewController new] animated:YES completion:nil];
         }else {
             NSString *str = datadic[@"info"];
@@ -175,7 +178,9 @@
 
     }];
 }
-
+- (void)tagsAliasCallback:(int)iResCode tags:(NSSet*)tags alias:(NSString*)alias {
+    NSLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, tags , alias);
+}
 
 - (IBAction)userAgreeClick:(id)sender {
     CCWebViewViewController *vc = [[CCWebViewViewController alloc] init];
