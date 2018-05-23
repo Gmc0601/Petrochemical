@@ -7,6 +7,8 @@
 //
 
 #import "SettingNickNameViewController.h"
+#import "UITextField+MyProperty.h"
+
 
 @interface SettingNickNameViewController ()
 
@@ -19,6 +21,7 @@
     [self setCustomerTitle:@"修改昵称"];
     self.automaticallyAdjustsScrollViewInsets = YES;
     [self.nickNameTextField becomeFirstResponder];
+    self.nickNameTextField.maxWords = 6;
 }
 
 

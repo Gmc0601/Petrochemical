@@ -278,6 +278,11 @@
 		82B6D2FE205F63B100C65CA4 /* AddMyCarInformationFristViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82B6D2FC205F63B100C65CA4 /* AddMyCarInformationFristViewController.xib */; };
 		82B6D302205F63CE00C65CA4 /* AddMyCarInformationSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B6D300205F63CE00C65CA4 /* AddMyCarInformationSecondViewController.m */; };
 		82B6D303205F63CE00C65CA4 /* AddMyCarInformationSecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82B6D301205F63CE00C65CA4 /* AddMyCarInformationSecondViewController.xib */; };
+		82DCE6DB20B551ED00A2B3AF /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DCE6D920B551ED00A2B3AF /* UIView+Extension.m */; };
+		82DCE6E220B5599800A2B3AF /* TPImageShow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82DCE6DD20B5599800A2B3AF /* TPImageShow.xib */; };
+		82DCE6E320B5599800A2B3AF /* TPImageShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DCE6DE20B5599800A2B3AF /* TPImageShow.m */; };
+		82DCE6E420B5599900A2B3AF /* ImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DCE6E120B5599800A2B3AF /* ImageCollectionViewCell.m */; };
+		82DCE6E720B55CC800A2B3AF /* UITextField+MyProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DCE6E520B55CC800A2B3AF /* UITextField+MyProperty.m */; };
 		82DD2E03207E19DE00DD6C1C /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DD2E02207E19DE00DD6C1C /* TencentOpenAPI.framework */; };
 		82FCF93E2070C2E50050140D /* MyGrabOrderListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82FCF93C2070C2E50050140D /* MyGrabOrderListTableViewCell.m */; };
 		82FCF93F2070C2E50050140D /* MyGrabOrderListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82FCF93D2070C2E50050140D /* MyGrabOrderListTableViewCell.xib */; };
@@ -784,6 +789,15 @@
 		82B6D2FF205F63CE00C65CA4 /* AddMyCarInformationSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddMyCarInformationSecondViewController.h; sourceTree = "<group>"; };
 		82B6D300205F63CE00C65CA4 /* AddMyCarInformationSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddMyCarInformationSecondViewController.m; sourceTree = "<group>"; };
 		82B6D301205F63CE00C65CA4 /* AddMyCarInformationSecondViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddMyCarInformationSecondViewController.xib; sourceTree = "<group>"; };
+		82DCE6D920B551ED00A2B3AF /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		82DCE6DA20B551ED00A2B3AF /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		82DCE6DD20B5599800A2B3AF /* TPImageShow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TPImageShow.xib; sourceTree = "<group>"; };
+		82DCE6DE20B5599800A2B3AF /* TPImageShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPImageShow.m; sourceTree = "<group>"; };
+		82DCE6DF20B5599800A2B3AF /* ImageCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCollectionViewCell.h; sourceTree = "<group>"; };
+		82DCE6E020B5599800A2B3AF /* TPImageShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPImageShow.h; sourceTree = "<group>"; };
+		82DCE6E120B5599800A2B3AF /* ImageCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCollectionViewCell.m; sourceTree = "<group>"; };
+		82DCE6E520B55CC800A2B3AF /* UITextField+MyProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+MyProperty.m"; sourceTree = "<group>"; };
+		82DCE6E620B55CC800A2B3AF /* UITextField+MyProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+MyProperty.h"; sourceTree = "<group>"; };
 		82DD2E02207E19DE00DD6C1C /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
 		82FCF93B2070C2E50050140D /* MyGrabOrderListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyGrabOrderListTableViewCell.h; sourceTree = "<group>"; };
 		82FCF93C2070C2E50050140D /* MyGrabOrderListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyGrabOrderListTableViewCell.m; sourceTree = "<group>"; };
@@ -1114,6 +1128,10 @@
 		42C84EA21EF2DB060008189D /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				82DCE6E620B55CC800A2B3AF /* UITextField+MyProperty.h */,
+				82DCE6E520B55CC800A2B3AF /* UITextField+MyProperty.m */,
+				82DCE6DA20B551ED00A2B3AF /* UIView+Extension.h */,
+				82DCE6D920B551ED00A2B3AF /* UIView+Extension.m */,
 				420D18252057A71300E1D8E1 /* UILabel+Width.h */,
 				420D18242057A71300E1D8E1 /* UILabel+Width.m */,
 				422F202A2047F847009481CC /* UIWebView+TS_JavaScriptContext.h */,
@@ -1151,6 +1169,7 @@
 		42C84EA61EF2DB060008189D /* Factory */ = {
 			isa = PBXGroup;
 			children = (
+				82DCE6DC20B5599800A2B3AF /* TPImageShow */,
 				82B6D29C205F4EE400C65CA4 /* CustomAlbum */,
 				7AFAE4A4205A0C5E00B14406 /* Passport */,
 				42F795CA1F00CBDF00A11A69 /* Factory */,
@@ -2175,6 +2194,18 @@
 			path = AddMyCarInformation;
 			sourceTree = "<group>";
 		};
+		82DCE6DC20B5599800A2B3AF /* TPImageShow */ = {
+			isa = PBXGroup;
+			children = (
+				82DCE6DD20B5599800A2B3AF /* TPImageShow.xib */,
+				82DCE6DE20B5599800A2B3AF /* TPImageShow.m */,
+				82DCE6DF20B5599800A2B3AF /* ImageCollectionViewCell.h */,
+				82DCE6E020B5599800A2B3AF /* TPImageShow.h */,
+				82DCE6E120B5599800A2B3AF /* ImageCollectionViewCell.m */,
+			);
+			path = TPImageShow;
+			sourceTree = "<group>";
+		};
 		82DD2E01207E19CF00DD6C1C /* TencentQQ */ = {
 			isa = PBXGroup;
 			children = (
@@ -2351,6 +2382,7 @@
 				42F795D91F00CC3E00A11A69 /* arrowup@2x.png in Resources */,
 				422F20292047F7B6009481CC /* LoginViewController.xib in Resources */,
 				8298E2DB206E0B66006284F2 /* MyGrabOrderListViewController.xib in Resources */,
+				82DCE6E220B5599800A2B3AF /* TPImageShow.xib in Resources */,
 				0396E68F2071DF1800B7EFDA /* GoodsInfoCell.xib in Resources */,
 				7AFAE525205A3FCE00B14406 /* README.md in Resources */,
 				7AFD2210205F86DD009DB138 /* TransportDynamicsViewController.xib in Resources */,
@@ -2507,6 +2539,7 @@
 				42F10C5F206E331800C9C8EC /* TAAnimatedDotView.m in Sources */,
 				7AFAE4EA205A236600B14406 /* MJRefreshBackGifFooter.m in Sources */,
 				7AFAE4F1205A236600B14406 /* MJRefreshStateHeader.m in Sources */,
+				82DCE6E320B5599800A2B3AF /* TPImageShow.m in Sources */,
 				035A2402206C7F830003CD31 /* ChooseAddressListViewController.m in Sources */,
 				7AFAE523205A3FCE00B14406 /* MASViewConstraint.m in Sources */,
 				035A23DF206C7F4A0003CD31 /* CityNameModel.m in Sources */,
@@ -2533,6 +2566,7 @@
 				42F795DB1F00CC3E00A11A69 /* TBRefreshHeadView.m in Sources */,
 				427176492080874900D8DF70 /* HomeCarTableViewCell.m in Sources */,
 				03E7471E207904DE00E6B992 /* TTextView.m in Sources */,
+				82DCE6DB20B551ED00A2B3AF /* UIView+Extension.m in Sources */,
 				82B6D29F205F4EE400C65CA4 /* LeasCustomAlbum.m in Sources */,
 				42F10C4C206E331700C9C8EC /* GoodsTableViewCell.m in Sources */,
 				8211DC57206205D100A747A4 /* CustomSeletedPickView.m in Sources */,
@@ -2623,6 +2657,7 @@
 				42F10C31206E331700C9C8EC /* BaseModel.m in Sources */,
 				42F10C3B206E331700C9C8EC /* CarsDetialViewController.m in Sources */,
 				82B6D2CD205F4F5900C65CA4 /* IQNSArray+Sort.m in Sources */,
+				82DCE6E720B55CC800A2B3AF /* UITextField+MyProperty.m in Sources */,
 				42F10C30206E331700C9C8EC /* BannerModel.m in Sources */,
 				42C84EB11EF2DB060008189D /* main.m in Sources */,
 				7AFAE4EF205A236600B14406 /* MJRefreshAutoNormalFooter.m in Sources */,
@@ -2643,6 +2678,7 @@
 				42F795BE1F00C8B200A11A69 /* TBTabBarController.m in Sources */,
 				42F10C51206E331800C9C8EC /* SureFooterCollectionReusableView.m in Sources */,
 				42F10C58206E331800C9C8EC /* TYCyclePagerTransformLayout.m in Sources */,
+				82DCE6E420B5599900A2B3AF /* ImageCollectionViewCell.m in Sources */,
 				42F10C53206E331800C9C8EC /* SureHeaderCollectionReusableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,6 +10,7 @@
 #import "Masonry.h"
 #import "MyCarDetailUpdatePhoneViewController.h"
 #import "AddMyCarInformationSecondViewController.h"
+#import "TPImageShow.h"
 
 @interface MyCarDetailInfomationViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *statusImageView;
@@ -57,6 +58,26 @@
 }
 
 #pragma mark -- method
+
+- (IBAction)showDrive_imgAction:(id)sender {
+    
+    NSMutableArray *imagesMutableArray=[[NSMutableArray alloc] init];
+    
+    NSString *imageUrl = [self setImageWithUrl:validString(self.dataSource[@"drive_img"]) andWithSize:@"600"];
+    [imagesMutableArray addObject:imageUrl];
+    [TPImageShow imageShowWithData:imagesMutableArray andSmallImageData:nil currentIndex:0 clickImage:nil];
+}
+
+- (IBAction)showRun_imgAction:(id)sender {
+    
+    NSMutableArray *imagesMutableArray=[[NSMutableArray alloc] init];
+    
+    NSString *imageUrl = [self setImageWithUrl:validString(self.dataSource[@"run_img"]) andWithSize:@"600"];
+    [imagesMutableArray addObject:validString(self.dataSource[@"run_img"])];
+    [TPImageShow imageShowWithData:imagesMutableArray andSmallImageData:nil currentIndex:0 clickImage:nil];
+}
+
+
 - (void) deleteCarInfo{
     __weak typeof(self) weakslef = self;
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"确定删除该车辆吗？" message:@"删除后，该车辆将无法接单，对应的司机也无法登录App。" preferredStyle:UIAlertControllerStyleAlert];
@@ -202,6 +223,35 @@
         default:
             break;
     }
+}
+
+
+//查看大图
+
+//图片处理
+-(NSString *)setImageWithUrl:(NSString *)url andWithSize:(NSString *)sizeNum{
+    
+    //    NSLog(@"%@",url);
+    NSString *string = nil;
+    if (![url isEqual:[NSNull null]]&&url.length>=12) {
+        
+        if ([url containsString:@"wx."]) {
+            return url;
+        }
+        else  if ([url containsString:@"vod."]) {//阿里云存储
+            return url;
+        }
+        else{
+            NSMutableString *urlPath = [[NSMutableString alloc]initWithString:url];
+            urlPath = (NSMutableString *)[urlPath stringByReplacingOccurrencesOfString:@"images." withString:@"imageprocess."];
+            string = [NSString stringWithFormat:@"%@@!%@",urlPath,sizeNum];
+
+            return string;
+        }
+    }else if(![url isEqual:[NSNull null]]&&url.length<12){
+        return url;
+    }
+    return string;
 }
 
 @end

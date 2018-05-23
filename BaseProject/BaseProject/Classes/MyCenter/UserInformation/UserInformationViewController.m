@@ -29,7 +29,11 @@
 }
 
 - (void) setupDataSource{
-    self.nickNameLabel.text = validString(self.userinfo[@"nickname"]);
+    NSString *name = validString(self.userinfo[@"nickname"]);
+    if (name.length > 6) {
+        name = [name substringFromIndex:name.length - 6];
+    }
+    self.nickNameLabel.text = name;
     [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:validString(self.userinfo[@"avatar_url"])] placeholderImage:DefaultImage];
 }
 #pragma mark -- method

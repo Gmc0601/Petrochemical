@@ -782,10 +782,6 @@
 		5BA65075F00F1B0AD2122941B786E449 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		5C495E6104607E6A97C988EC6D19EC64 /* MAPolyline.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MAPolyline.h; path = MAMapKit.framework/Headers/MAPolyline.h; sourceTree = "<group>"; };
 		5CF059060F89806F91D2036BBE4AF073 /* NSSet+RACSequenceAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSSet+RACSequenceAdditions.h"; path = "ReactiveObjC/NSSet+RACSequenceAdditions.h"; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		5D98F5C8445C974237B10C38F90481C2 /* libjcore-ios-1.1.7.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; path = "libjcore-ios-1.1.7.a"; sourceTree = "<group>"; };
-=======
->>>>>>> 96b2aacb7e665621703d17ea5dc5cbcf45ffbc64
 		5DA2CA6E334CCA89A4F63161782FBA4A /* AFAutoPurgingImageCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFAutoPurgingImageCache.m; path = "UIKit+AFNetworking/AFAutoPurgingImageCache.m"; sourceTree = "<group>"; };
 		5DE1AE2AB03FBEE11482322C666F3D86 /* RACKVOChannel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RACKVOChannel.m; path = ReactiveObjC/RACKVOChannel.m; sourceTree = "<group>"; };
 		5EF469BE8D20B08827AC4569C05C4E35 /* NSObject+YYAdd.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+YYAdd.h"; path = "YYKit/Base/Foundation/NSObject+YYAdd.h"; sourceTree = "<group>"; };
@@ -886,10 +882,7 @@
 		8DFA696EC57BDD4AD8633F34136F58F8 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "UIKit+AFNetworking/UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		8ECA89935CED68BF53598C1AB0A1E110 /* SDWebImageFrame.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageFrame.h; path = SDWebImage/SDWebImageFrame.h; sourceTree = "<group>"; };
 		8F6AD953D448BB735DA51589DA2952DB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
-<<<<<<< HEAD
-=======
 		8F743667F72CDBA06065B4A72DBE29A5 /* libjpush-ios-3.0.9.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; path = "libjpush-ios-3.0.9.a"; sourceTree = "<group>"; };
->>>>>>> 96b2aacb7e665621703d17ea5dc5cbcf45ffbc64
 		9079FB8B2CD5C53AA996CA3C2F784230 /* NSDictionary+RACSequenceAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+RACSequenceAdditions.m"; path = "ReactiveObjC/NSDictionary+RACSequenceAdditions.m"; sourceTree = "<group>"; };
 		90D6F5CD518E40A9CC6C8A8B3C1D518C /* AMapLocationVersion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMapLocationVersion.h; path = AMapLocationKit.framework/Headers/AMapLocationVersion.h; sourceTree = "<group>"; };
 		90DBFB91BD16FE3F59A7E36AF998176B /* NSOrderedSet+RACSequenceAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSOrderedSet+RACSequenceAdditions.m"; path = "ReactiveObjC/NSOrderedSet+RACSequenceAdditions.m"; sourceTree = "<group>"; };
@@ -923,10 +916,6 @@
 		A084593C244178CA66547924312B0168 /* RACSubscriptingAssignmentTrampoline.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACSubscriptingAssignmentTrampoline.h; path = ReactiveObjC/RACSubscriptingAssignmentTrampoline.h; sourceTree = "<group>"; };
 		A095EAD7FA6B36C3F2AA7747DD677450 /* RACTestScheduler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RACTestScheduler.m; path = ReactiveObjC/RACTestScheduler.m; sourceTree = "<group>"; };
 		A0AD95A0130F2EB47EF0F5796321AD53 /* AFURLSessionManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLSessionManager.h; path = AFNetworking/AFURLSessionManager.h; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		A0E4AB410AB1E28387FA604248D47270 /* libjpush-ios-3.0.8.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; path = "libjpush-ios-3.0.8.a"; sourceTree = "<group>"; };
-=======
->>>>>>> 96b2aacb7e665621703d17ea5dc5cbcf45ffbc64
 		A1DD2510E3B317E1E9534D492F671DBB /* RACCompoundDisposableProvider.d */ = {isa = PBXFileReference; includeInIndex = 1; name = RACCompoundDisposableProvider.d; path = ReactiveObjC/RACCompoundDisposableProvider.d; sourceTree = "<group>"; };
 		A25AB628F7EDC99C4FF6FA7337F07F87 /* NSString+RACKeyPathUtilities.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+RACKeyPathUtilities.m"; path = "ReactiveObjC/NSString+RACKeyPathUtilities.m"; sourceTree = "<group>"; };
 		A32AEBDA081E38EE6D331129F018321A /* AMapLocationManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMapLocationManager.h; path = AMapLocationKit.framework/Headers/AMapLocationManager.h; sourceTree = "<group>"; };
@@ -1126,10 +1115,7 @@
 		FE1EA6B278EAC82C337EB2EEF9595F54 /* NSObject+RACDescription.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+RACDescription.m"; path = "ReactiveObjC/NSObject+RACDescription.m"; sourceTree = "<group>"; };
 		FE7A186A351855F0590BF0EAE0DC93B7 /* YYWebImageManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YYWebImageManager.m; path = YYKit/Image/YYWebImageManager.m; sourceTree = "<group>"; };
 		FE9845C0E785BC9193CE226D217F9CC0 /* RACScheduler+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "RACScheduler+Private.h"; path = "ReactiveObjC/RACScheduler+Private.h"; sourceTree = "<group>"; };
-<<<<<<< HEAD
-=======
 		FF1CA5B5C2479EB80618ADCE829C5C20 /* libjcore-ios-1.1.9.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; path = "libjcore-ios-1.1.9.a"; sourceTree = "<group>"; };
->>>>>>> 96b2aacb7e665621703d17ea5dc5cbcf45ffbc64
 		FF59073803C7E4A86B78D03C2749750C /* SDWebImageOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageOperation.h; path = SDWebImage/SDWebImageOperation.h; sourceTree = "<group>"; };
 		FF8565A9C636792E72660B6D3885F934 /* RACSubscriber.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RACSubscriber.h; path = ReactiveObjC/RACSubscriber.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1373,37 +1359,6 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/ReactiveObjC";
-<<<<<<< HEAD
-			sourceTree = "<group>";
-		};
-		399B33A0CA368EABEBAF7B9C1F92FFC0 /* AMapFoundation */ = {
-			isa = PBXGroup;
-			children = (
-				A93C8A530189E3393BFD7ED0497A206A /* AMapFoundationKit.h */,
-				DC6D629D27D06E66966E1C98EF9F25D9 /* AMapFoundationVersion.h */,
-				DA653EDA8A611AECEEE8325FD2FD6B29 /* AMapServices.h */,
-				58AF1250D896AA6706264960B05B541A /* AMapURLSearch.h */,
-				24E5200C348DF99ED509E504247F63C4 /* AMapURLSearchConfig.h */,
-				8B7FAAA84A765574370E201A5D361AC7 /* AMapURLSearchType.h */,
-				4876D6C646D3337464BBA9748BC09B99 /* AMapUtility.h */,
-				FAEFADEBD5F3F68CA7F64454F9E6FFD9 /* Frameworks */,
-			);
-			name = AMapFoundation;
-			path = AMapFoundation;
-			sourceTree = "<group>";
-		};
-		3B127FA2E5F0B794380459FC9DDBD071 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				5D98F5C8445C974237B10C38F90481C2 /* libjcore-ios-1.1.7.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		3DE3E90632A9E8CA8D82A508D0F49571 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-=======
 			sourceTree = "<group>";
 		};
 		399B33A0CA368EABEBAF7B9C1F92FFC0 /* AMapFoundation */ = {
@@ -1425,7 +1380,6 @@
 		3DE3E90632A9E8CA8D82A508D0F49571 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
->>>>>>> 96b2aacb7e665621703d17ea5dc5cbcf45ffbc64
 				4AF1EEAB9EB95584431A648F0AAA4D94 /* MJExtension.xcconfig */,
 				8627C76FB1441A1A32D674E45EB0ED7B /* MJExtension-dummy.m */,
 				2DAAC044A31B815F603FCCA49C4F71A1 /* MJExtension-prefix.pch */,
@@ -1561,23 +1515,6 @@
 			sourceTree = "<group>";
 		};
 		7DB954766D9FFA043F309323F65B63D2 /* Pods */ = {
-<<<<<<< HEAD
-			isa = PBXGroup;
-			children = (
-				0F0D2739C7D452E7B5B66A6672F5AF65 /* AFNetworking */,
-				2BABE7978273328D569CC6CAF84533F3 /* AMap3DMap */,
-				399B33A0CA368EABEBAF7B9C1F92FFC0 /* AMapFoundation */,
-				04E0D1D79106A16D1FB83C8CC00C6874 /* AMapLocation */,
-				A62ED6D7B5247EF0AD7604E4450921C1 /* JCore */,
-				9684B28709B0B3205D236CBA4766864F /* JPush */,
-				64C34DC1815AFC1F81EB9E0EC42DE9CC /* MBProgressHUD */,
-				32DF57121584C1328742C5FA8FF5FE8E /* MJExtension */,
-				DF445066122CB7199C6C312DE500A5B2 /* ReactiveObjC */,
-				B53F675F3AE9AE81BE0142F4F1132F56 /* SDWebImage */,
-				A632A01468B7BBA56FC1CE38D4F5887B /* YYKit */,
-			);
-			name = Pods;
-=======
 			isa = PBXGroup;
 			children = (
 				0F0D2739C7D452E7B5B66A6672F5AF65 /* AFNetworking */,
@@ -1601,7 +1538,6 @@
 				8F743667F72CDBA06065B4A72DBE29A5 /* libjpush-ios-3.0.9.a */,
 			);
 			name = Frameworks;
->>>>>>> 96b2aacb7e665621703d17ea5dc5cbcf45ffbc64
 			sourceTree = "<group>";
 		};
 		91CC98F4915C73626822F6FFF5800D3C /* Products */ = {
@@ -1622,11 +1558,7 @@
 			isa = PBXGroup;
 			children = (
 				9B59FF1710764220289D1B23667C98D2 /* JPUSHService.h */,
-<<<<<<< HEAD
-				C7F14F6E81E2A42D60BA2E165B21B375 /* Frameworks */,
-=======
 				8EF4AAC67FA744009A9DDAFBE5807E26 /* Frameworks */,
->>>>>>> 96b2aacb7e665621703d17ea5dc5cbcf45ffbc64
 			);
 			name = JPush;
 			path = JPush;
@@ -1652,11 +1584,7 @@
 		A62ED6D7B5247EF0AD7604E4450921C1 /* JCore */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
-				3B127FA2E5F0B794380459FC9DDBD071 /* Frameworks */,
-=======
 				FD8B00AD8E2E368CB2164359C09EA65A /* Frameworks */,
->>>>>>> 96b2aacb7e665621703d17ea5dc5cbcf45ffbc64
 			);
 			name = JCore;
 			path = JCore;
@@ -1879,26 +1807,10 @@
 			sourceTree = "<group>";
 		};
 		B53F675F3AE9AE81BE0142F4F1132F56 /* SDWebImage */ = {
-<<<<<<< HEAD
 			isa = PBXGroup;
 			children = (
 				52016DB9AE8671411094AC7042CED209 /* Core */,
 				50C2E5509B2BF5A5FD0D68858170739D /* Support Files */,
-			);
-			name = SDWebImage;
-			path = SDWebImage;
-			sourceTree = "<group>";
-		};
-		C7F14F6E81E2A42D60BA2E165B21B375 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				A0E4AB410AB1E28387FA604248D47270 /* libjpush-ios-3.0.8.a */,
-=======
-			isa = PBXGroup;
-			children = (
-				52016DB9AE8671411094AC7042CED209 /* Core */,
-				50C2E5509B2BF5A5FD0D68858170739D /* Support Files */,
->>>>>>> 96b2aacb7e665621703d17ea5dc5cbcf45ffbc64
 			);
 			name = SDWebImage;
 			path = SDWebImage;
@@ -2169,8 +2081,6 @@
 			isa = PBXGroup;
 			children = (
 				ED2D922A60E8B22855DE0420C3BA6BD0 /* AMapFoundationKit.framework */,
-<<<<<<< HEAD
-=======
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2179,7 +2089,6 @@
 			isa = PBXGroup;
 			children = (
 				FF1CA5B5C2479EB80618ADCE829C5C20 /* libjcore-ios-1.1.9.a */,
->>>>>>> 96b2aacb7e665621703d17ea5dc5cbcf45ffbc64
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2945,11 +2854,7 @@
 /* Begin XCBuildConfiguration section */
 		0DE4198B0136C341AAA47F3390F983C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-<<<<<<< HEAD
-			baseConfigurationReference = C3108389DBDD4A32597873091A53341D /* MBProgressHUD.xcconfig */;
-=======
 			baseConfigurationReference = 9A1C0CD5F94E873197D6AFB6B54631D3 /* ReactiveObjC.xcconfig */;
->>>>>>> 96b2aacb7e665621703d17ea5dc5cbcf45ffbc64
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -2972,11 +2877,7 @@
 		};
 		14F00A805CB8BD4A51330FB76A07B641 /* Release */ = {
 			isa = XCBuildConfiguration;
-<<<<<<< HEAD
-			baseConfigurationReference = 9A1C0CD5F94E873197D6AFB6B54631D3 /* ReactiveObjC.xcconfig */;
-=======
 			baseConfigurationReference = C3108389DBDD4A32597873091A53341D /* MBProgressHUD.xcconfig */;
->>>>>>> 96b2aacb7e665621703d17ea5dc5cbcf45ffbc64
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -3063,11 +2964,7 @@
 		};
 		2946D24682D665FA8DB64B5E6F799787 /* Debug */ = {
 			isa = XCBuildConfiguration;
-<<<<<<< HEAD
-			baseConfigurationReference = 4AF1EEAB9EB95584431A648F0AAA4D94 /* MJExtension.xcconfig */;
-=======
 			baseConfigurationReference = 7E512A243F70E3B73EC2BF2BD935F007 /* AFNetworking.xcconfig */;
->>>>>>> 96b2aacb7e665621703d17ea5dc5cbcf45ffbc64
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -3114,11 +3011,7 @@
 		};
 		5A72D6CC1ED1B9814AA40478F3944754 /* Debug */ = {
 			isa = XCBuildConfiguration;
-<<<<<<< HEAD
-			baseConfigurationReference = 4AF1EEAB9EB95584431A648F0AAA4D94 /* MJExtension.xcconfig */;
-=======
 			baseConfigurationReference = 09E2936033267758EBF0AEBEF2546F80 /* YYKit.xcconfig */;
->>>>>>> 96b2aacb7e665621703d17ea5dc5cbcf45ffbc64
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -3141,11 +3034,7 @@
 		};
 		5CE679FD843B74A294B71CB9AABED4FB /* Release */ = {
 			isa = XCBuildConfiguration;
-<<<<<<< HEAD
-			baseConfigurationReference = 7E512A243F70E3B73EC2BF2BD935F007 /* AFNetworking.xcconfig */;
-=======
 			baseConfigurationReference = 4AF1EEAB9EB95584431A648F0AAA4D94 /* MJExtension.xcconfig */;
->>>>>>> 96b2aacb7e665621703d17ea5dc5cbcf45ffbc64
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -3192,11 +3081,7 @@
 		};
 		87B062C32CA6B8021CE2A617A04F5975 /* Debug */ = {
 			isa = XCBuildConfiguration;
-<<<<<<< HEAD
-			baseConfigurationReference = 7E512A243F70E3B73EC2BF2BD935F007 /* AFNetworking.xcconfig */;
-=======
 			baseConfigurationReference = 56D41BD00021EF2718C7F4E3160C4410 /* SDWebImage.xcconfig */;
->>>>>>> 96b2aacb7e665621703d17ea5dc5cbcf45ffbc64
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -3219,11 +3104,7 @@
 		};
 		A8A7CF7F3498B9153DE269AD61A1D43E /* Release */ = {
 			isa = XCBuildConfiguration;
-<<<<<<< HEAD
-			baseConfigurationReference = 56D41BD00021EF2718C7F4E3160C4410 /* SDWebImage.xcconfig */;
-=======
 			baseConfigurationReference = 09E2936033267758EBF0AEBEF2546F80 /* YYKit.xcconfig */;
->>>>>>> 96b2aacb7e665621703d17ea5dc5cbcf45ffbc64
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -3247,11 +3128,7 @@
 		};
 		C3601C47E18C0AE6EC866511CF8ADFAD /* Release */ = {
 			isa = XCBuildConfiguration;
-<<<<<<< HEAD
-			baseConfigurationReference = 56D41BD00021EF2718C7F4E3160C4410 /* SDWebImage.xcconfig */;
-=======
 			baseConfigurationReference = 7E512A243F70E3B73EC2BF2BD935F007 /* AFNetworking.xcconfig */;
->>>>>>> 96b2aacb7e665621703d17ea5dc5cbcf45ffbc64
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -3273,73 +3150,10 @@
 			};
 			name = Release;
 		};
-<<<<<<< HEAD
-		C3E37FB098AE76440E29106ADBF00CEB /* Debug */ = {
-=======
 		CDB0A0B66A132CC97F00E969AA425B8A /* Release */ = {
->>>>>>> 96b2aacb7e665621703d17ea5dc5cbcf45ffbc64
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EE7EBA5083031A538F04C1D270D73B13 /* Pods-BaseProject.release.xcconfig */;
 			buildSettings = {
-<<<<<<< HEAD
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_REQUIRED = NO;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_DEBUG=1",
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SYMROOT = "${SRCROOT}/../build";
-=======
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -3355,17 +3169,12 @@
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
->>>>>>> 96b2aacb7e665621703d17ea5dc5cbcf45ffbc64
 			};
-			name = Debug;
+			name = Release;
 		};
 		CEF8271AEF03B6F4988FE27E7E7BE613 /* Release */ = {
 			isa = XCBuildConfiguration;
-<<<<<<< HEAD
-			baseConfigurationReference = C3108389DBDD4A32597873091A53341D /* MBProgressHUD.xcconfig */;
-=======
 			baseConfigurationReference = 9A1C0CD5F94E873197D6AFB6B54631D3 /* ReactiveObjC.xcconfig */;
->>>>>>> 96b2aacb7e665621703d17ea5dc5cbcf45ffbc64
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -3389,11 +3198,7 @@
 		};
 		DD35DE5283443BFBD8E6B8F30180CBA0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-<<<<<<< HEAD
-			baseConfigurationReference = 9A1C0CD5F94E873197D6AFB6B54631D3 /* ReactiveObjC.xcconfig */;
-=======
 			baseConfigurationReference = 15E748F5436E5832C241F0253F781EAD /* Pods-BaseProject.debug.xcconfig */;
->>>>>>> 96b2aacb7e665621703d17ea5dc5cbcf45ffbc64
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -3435,11 +3240,7 @@
 			};
 			name = Debug;
 		};
-<<<<<<< HEAD
-		DA03565BE765DB55C6448FB363A44481 /* Release */ = {
-=======
 		F4568DEE257655D290C2B9CEAB37C934 /* Release */ = {
->>>>>>> 96b2aacb7e665621703d17ea5dc5cbcf45ffbc64
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -3495,52 +3296,6 @@
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
 			};
-<<<<<<< HEAD
-			name = Release;
-		};
-		EB68A63C65FD9E378160C0590BC78562 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 09E2936033267758EBF0AEBEF2546F80 /* YYKit.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/YYKit/YYKit-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		F8BD76F96684737AD885377092E36239 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 09E2936033267758EBF0AEBEF2546F80 /* YYKit.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/YYKit/YYKit-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-=======
->>>>>>> 96b2aacb7e665621703d17ea5dc5cbcf45ffbc64
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
@@ -3549,13 +3304,8 @@
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-<<<<<<< HEAD
-				C3E37FB098AE76440E29106ADBF00CEB /* Debug */,
-				DA03565BE765DB55C6448FB363A44481 /* Release */,
-=======
 				1EE19F5DD95931924296F637BF18BD8F /* Debug */,
 				F4568DEE257655D290C2B9CEAB37C934 /* Release */,
->>>>>>> 96b2aacb7e665621703d17ea5dc5cbcf45ffbc64
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

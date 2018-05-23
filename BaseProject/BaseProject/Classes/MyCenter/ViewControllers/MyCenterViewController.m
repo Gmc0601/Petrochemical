@@ -174,7 +174,11 @@
     _userInfo = userInfo;
     self.user_status = [[NSString stringWithFormat:@"%@",userInfo[@"approve"]] intValue];
     [self.userHeaderImageView sd_setImageWithURL:[NSURL URLWithString:validString(userInfo[@"avatar_url"])] placeholderImage:DefaultImage];
-    self.userNickNameLabel.text = validString(userInfo[@"nickname"]);
+    NSString *name = validString(userInfo[@"nickname"]);
+    if (name.length > 6) {
+        name = [name substringFromIndex:name.length - 6];
+    }
+    self.userNickNameLabel.text = name;
 }
 - (void) setUser_status:(int)user_status{
     _user_status = user_status;

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -259,7 +259,7 @@
                                 <constraint firstAttribute="height" constant="3" id="NDF-tm-Bal"/>
                             </constraints>
                         </view>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pOh-Ll-x8m">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pOh-Ll-x8m">
                             <rect key="frame" x="20" y="431" width="157.5" height="99.5"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="pOh-Ll-x8m" secondAttribute="height" multiplier="158:100" id="5cs-1X-kxN"/>
@@ -271,7 +271,7 @@
                             <color key="textColor" red="0.14117647058823529" green="0.14117647058823529" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZWw-go-8Di">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZWw-go-8Di">
                             <rect key="frame" x="197.5" y="431" width="157.5" height="99.5"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="车辆行驶证" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pug-Lm-is3">
@@ -280,6 +280,18 @@
                             <color key="textColor" red="0.14117647059999999" green="0.14117647059999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Oe-fc-mYN">
+                            <rect key="frame" x="20" y="431" width="157.5" height="99.5"/>
+                            <connections>
+                                <action selector="showDrive_imgAction:" destination="-1" eventType="touchUpInside" id="RQb-uB-d7p"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SUh-ap-ALF">
+                            <rect key="frame" x="197.5" y="431" width="157.5" height="99.5"/>
+                            <connections>
+                                <action selector="showRun_imgAction:" destination="-1" eventType="touchUpInside" id="lil-dB-7nM"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -293,6 +305,8 @@
                         <constraint firstItem="Kdr-En-2lK" firstAttribute="top" secondItem="WQY-FE-x47" secondAttribute="bottom" id="D8G-EN-93d"/>
                         <constraint firstItem="ADX-ig-wDR" firstAttribute="leading" secondItem="HFL-Qm-8lb" secondAttribute="leading" id="DPE-Ax-9t8"/>
                         <constraint firstItem="ZWw-go-8Di" firstAttribute="top" secondItem="pOh-Ll-x8m" secondAttribute="top" id="E0x-Wf-Faf"/>
+                        <constraint firstItem="8Oe-fc-mYN" firstAttribute="trailing" secondItem="pOh-Ll-x8m" secondAttribute="trailing" id="FBk-2D-S2g"/>
+                        <constraint firstItem="8Oe-fc-mYN" firstAttribute="bottom" secondItem="pOh-Ll-x8m" secondAttribute="bottom" id="FaT-17-08y"/>
                         <constraint firstAttribute="trailing" secondItem="Olf-p8-RuL" secondAttribute="trailing" id="GLj-V5-KqL"/>
                         <constraint firstItem="wfo-33-qmf" firstAttribute="leading" secondItem="HFL-Qm-8lb" secondAttribute="leading" id="GMb-3C-mAv"/>
                         <constraint firstItem="Kdr-En-2lK" firstAttribute="leading" secondItem="HFL-Qm-8lb" secondAttribute="leading" id="H52-gJ-BlE"/>
@@ -305,6 +319,7 @@
                         <constraint firstItem="KvT-LF-n36" firstAttribute="top" secondItem="wfo-33-qmf" secondAttribute="bottom" constant="18" id="Wou-rQ-Iux"/>
                         <constraint firstAttribute="trailing" secondItem="DMT-we-2SN" secondAttribute="trailing" id="WzQ-kI-D4E"/>
                         <constraint firstItem="Olf-p8-RuL" firstAttribute="leading" secondItem="HFL-Qm-8lb" secondAttribute="leading" id="ZDI-oc-k4L"/>
+                        <constraint firstItem="8Oe-fc-mYN" firstAttribute="top" secondItem="pOh-Ll-x8m" secondAttribute="top" id="ZeY-E4-roe"/>
                         <constraint firstAttribute="trailing" secondItem="Kdr-En-2lK" secondAttribute="trailing" id="Zqw-CL-wMF"/>
                         <constraint firstItem="pOh-Ll-x8m" firstAttribute="width" secondItem="HFL-Qm-8lb" secondAttribute="width" multiplier="1:2" constant="-30" id="aal-1i-zMx"/>
                         <constraint firstItem="ZWw-go-8Di" firstAttribute="leading" secondItem="pOh-Ll-x8m" secondAttribute="trailing" constant="20" id="bSB-CI-tG1"/>
@@ -317,6 +332,8 @@
                         <constraint firstItem="DMT-we-2SN" firstAttribute="top" secondItem="lZH-h6-bnZ" secondAttribute="bottom" id="gb4-to-sKL"/>
                         <constraint firstItem="Q72-1U-wdC" firstAttribute="top" secondItem="Olf-p8-RuL" secondAttribute="bottom" id="gkR-vh-5fG"/>
                         <constraint firstAttribute="trailing" secondItem="wfo-33-qmf" secondAttribute="trailing" id="hPt-kj-lQP"/>
+                        <constraint firstItem="SUh-ap-ALF" firstAttribute="top" secondItem="ZWw-go-8Di" secondAttribute="top" id="hTS-MT-xwj"/>
+                        <constraint firstItem="8Oe-fc-mYN" firstAttribute="leading" secondItem="pOh-Ll-x8m" secondAttribute="leading" id="i3E-IL-Tuo"/>
                         <constraint firstAttribute="trailing" secondItem="ADX-ig-wDR" secondAttribute="trailing" id="jHw-Cu-t4B"/>
                         <constraint firstItem="pOh-Ll-x8m" firstAttribute="leading" secondItem="HFL-Qm-8lb" secondAttribute="leading" constant="20" id="jvu-J6-O5g"/>
                         <constraint firstItem="pug-Lm-is3" firstAttribute="leading" secondItem="ZWw-go-8Di" secondAttribute="leading" id="l51-A2-mOj"/>
@@ -324,7 +341,10 @@
                         <constraint firstItem="pug-Lm-is3" firstAttribute="top" secondItem="wfo-33-qmf" secondAttribute="bottom" constant="18" id="oBY-Qm-69Z"/>
                         <constraint firstItem="lZH-h6-bnZ" firstAttribute="leading" secondItem="HFL-Qm-8lb" secondAttribute="leading" id="qYD-Z1-mKo"/>
                         <constraint firstItem="KvT-LF-n36" firstAttribute="leading" secondItem="HFL-Qm-8lb" secondAttribute="leading" constant="21" id="qbG-Rz-LfW"/>
+                        <constraint firstItem="SUh-ap-ALF" firstAttribute="leading" secondItem="ZWw-go-8Di" secondAttribute="leading" id="sNC-bx-fzV"/>
                         <constraint firstItem="DMT-we-2SN" firstAttribute="leading" secondItem="HFL-Qm-8lb" secondAttribute="leading" id="t7u-X7-laQ"/>
+                        <constraint firstItem="SUh-ap-ALF" firstAttribute="bottom" secondItem="ZWw-go-8Di" secondAttribute="bottom" id="uIp-px-reS"/>
+                        <constraint firstItem="SUh-ap-ALF" firstAttribute="trailing" secondItem="ZWw-go-8Di" secondAttribute="trailing" id="vsp-5c-EzD"/>
                         <constraint firstItem="WQY-FE-x47" firstAttribute="leading" secondItem="HFL-Qm-8lb" secondAttribute="leading" id="w2C-7N-qL5"/>
                         <constraint firstItem="Q72-1U-wdC" firstAttribute="leading" secondItem="HFL-Qm-8lb" secondAttribute="leading" id="ycT-PL-35B"/>
                         <constraint firstAttribute="bottom" secondItem="ZWw-go-8Di" secondAttribute="bottom" constant="60" id="ziw-be-vvu"/>
