@@ -10,6 +10,7 @@
 #import "CCWebViewViewController.h"
 #import <YYKit.h>
 #import "ViewController.h"
+#import "TBNavigationController.h"
 @interface LoginViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *phoneText;
@@ -181,7 +182,9 @@
     CCWebViewViewController *vc = [[CCWebViewViewController alloc] init];
     vc.titlestr = @"注册协议";
     vc.UrlStr = @"http://116.62.142.20/Public/zcxy";
-    [self.navigationController pushViewController:vc animated:YES];
+    vc.backmiss = YES;
+    TBNavigationController *na = [[TBNavigationController alloc] initWithRootViewController:vc];
+    [self.navigationController pushViewController:na animated:YES];
 }
 
 

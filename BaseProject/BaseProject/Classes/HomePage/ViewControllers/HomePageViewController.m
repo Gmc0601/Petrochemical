@@ -60,14 +60,14 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
 @property (nonatomic, strong) UIScrollView *segmentBoardScrollView;
 
 @property (nonatomic, strong)UITableView *CarTableView;//车源首页list
-@property (nonatomic, strong) NSArray *CarListDatas;//车源列表数据源
+@property (nonatomic, strong) NSMutableArray *CarListDatas;//车源列表数据源
 @property (nonatomic, strong) TYCyclePagerView *CarPagerView;//车源轮播页
 @property (nonatomic, strong) TYPageControl *CarPageControl;//车源轮播页面控制器
 @property (nonatomic, strong) NSMutableArray *CarCyclePageDatas;//车源轮播图数据源
 @property (nonatomic, copy) NSArray *carToolsButtons;
 
 @property (nonatomic, strong)UITableView *GoodsTableView;//货源首页list
-@property (nonatomic, strong) NSArray *GoodsListDatas;//货源列表数据源
+@property (nonatomic, strong) NSMutableArray *GoodsListDatas;//货源列表数据源
 @property (nonatomic, copy) NSArray *GoodsToolsButtons;
 @property (nonatomic, strong)UIWindow *coverWindow;
 @property (nonatomic, strong)UIView *alertView;
@@ -691,9 +691,9 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
 }
 
 //车源list数据源
-- (NSArray *)CarListDatas{
+- (NSMutableArray *)CarListDatas{
     if (!_CarListDatas) {
-        _CarListDatas = [[NSArray alloc]init];
+        _CarListDatas = [[NSMutableArray alloc]init];
     }
     return _CarListDatas;
 }
@@ -718,9 +718,9 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
 }
 
 //货源list数据源
-- (NSArray *)GoodsListDatas{
+- (NSMutableArray *)GoodsListDatas{
     if (!_GoodsListDatas) {
-        _GoodsListDatas = [[NSArray alloc]init];
+        _GoodsListDatas = [[NSMutableArray alloc]init];
     }
     return _GoodsListDatas;
 }
