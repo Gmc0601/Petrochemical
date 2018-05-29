@@ -33,6 +33,7 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
 @property(nonatomic, copy) NSString * maxLoad;//最大载重
 @property(nonatomic, strong) CLLocationManager *locationManager;
 @property(nonatomic, assign) NSInteger isOpenLocation;
+
 @end
 
 @implementation CarListViewController
@@ -168,7 +169,8 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
         [self gotoEmptyCarVC];
     }else if (indexPath.row == 1){
         
-        [self getStartLoction];
+//        [self getStartLoction];
+        [self changeStartCity];
     } else if (indexPath.row == 2){
         
         [self showCityPicker ];
@@ -301,18 +303,49 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 - (void)showCityPicker  {
+ CityPickerVeiw * cityView = [[CityPickerVeiw alloc] initWithFrame:CGRectZero withType:PickerViewType_city];
+    cityView.col = 2;
+    [cityView show];
+    cityView.showSelectedCityNameStr =@"" ;
+    [cityView setCityBlock:^(NSString * value) {
+        NSLog(@"%@===",value);
+        NSArray *array = [value componentsSeparatedByString:@"-"];
+        
+        if ([array.firstObject isEqualToString:array[1]]) {
+            NSString * tempStr = @"";
+            for (int i = 0; i< [array count];i++) {
+                if (i != 0 ) {
+                    value = [tempStr stringByAppendingString:array[i]];
+                }
+            }
+        }
+        self.endLocation =  [value stringByReplacingOccurrencesOfString:@"-" withString:@""];
+        [self.CC_table reloadData];
+    }];
+}
+- (void)changeStartCity{
     CityPickerVeiw * cityView = [[CityPickerVeiw alloc] initWithFrame:CGRectZero withType:PickerViewType_city];
     cityView.col = 2;
     [cityView show];
     cityView.showSelectedCityNameStr =@"" ;
     [cityView setCityBlock:^(NSString * value) {
         NSLog(@"%@===",value);
-        self.endLocation =  [value stringByReplacingOccurrencesOfString:@"-" withString:@""];
+        NSArray *array = [value componentsSeparatedByString:@"-"]; 
+        if ([array.firstObject isEqualToString:array[1]]) {
+            NSString * tempStr = @"";
+            for (int i = 0; i< [array count];i++) {
+                if (i != 0 ) {
+                    value = [tempStr stringByAppendingString:array[i]];
+                }
+            }
+        }
+        self.startLocation =  [value stringByReplacingOccurrencesOfString:@"-" withString:@""];
         [self.CC_table reloadData];
     }];
+    
 }
-
 - (void)showTimerPicker  {
     CityPickerVeiw * cityView = [[CityPickerVeiw alloc] initWithFrame:CGRectZero withType:PickerViewType_carTimer];
     cityView.col = 2;
