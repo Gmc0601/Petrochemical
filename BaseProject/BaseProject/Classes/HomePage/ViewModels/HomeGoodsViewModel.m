@@ -13,16 +13,19 @@
 - (instancetype)init {
     if(self == [super init]) {
         _homeGoodsCommad = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
-            self.page = 1; self.dataArr = [NSMutableArray new];
-            self.haveMore = YES;
+            if (self.page <= 0) {
+                self.page = 1;
+            }
+            ; self.dataArr = [NSMutableArray new];
+            self.haveMore = NO;
             return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
                 
                 NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
                 [dic setValue:@(self.page) forKey:@"page"];
                 [dic setValue:self.data forKey:@"data"];
-                [dic setValue:@"20" forKey:@"size"];
+                [dic setValue:@"2000" forKey:@"size"];
                 if (self.page == 1) {
-                    self.haveMore = YES;
+                    self.haveMore = NO;
                     [self.dataArr removeAllObjects];
                 }
                 if (!self.data) {
@@ -52,7 +55,8 @@
                         NSArray *infoArr = datadic[@"info"];
                         [self.dataArr addObjectsFromArray:[HomeGoodsModel mj_objectArrayWithKeyValuesArray:infoArr]];
                         if (infoArr.count == 20) {
-                            self.page ++;
+                            self.page++;
+                            NSLog(@"》》》%d", self.page);
                         }else {
                             self.haveMore = NO;
                         }

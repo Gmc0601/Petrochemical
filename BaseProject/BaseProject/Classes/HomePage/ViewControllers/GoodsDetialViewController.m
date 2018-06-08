@@ -17,7 +17,7 @@
 #import "MyPublishListViewController.h"
 #import "ShipperOrderDetailViewController.h"
 
-@interface GoodsDetialViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface GoodsDetialViewController ()<UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
 
 @property (nonatomic, strong) UITableView *noUseTableView;
 
@@ -40,6 +40,7 @@
     [super viewDidLoad];
      self.edgesForExtendedLayout=UIRectEdgeNone;
     [self setCustomerTitle:@"货源详情"];
+    [self addRightBarButtonItemWithTitle:@"结束订单" action:@selector(finish)];
     [self.view addSubview:self.noUseTableView];
     [self.view addSubview:self.commitBtn];
     [self.view addSubview:self.callBtn];
@@ -69,6 +70,31 @@
         }
     }];
 }
+
+- (void)finish {
+    UIAlertView *alter = [[UIAlertView alloc] initWithTitle:@"提示" message:@"是否结束订单" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [alter show];
+}
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        NSDictionary *dic = @{
+                              @"id" : self.idStr
+                              };
+        [HttpRequest postPath:@"_delete_goods_001" params:dic resultBlock:^(id responseObject, NSError *error) {
+            if([error isEqual:[NSNull null]] || error == nil){
+                NSLog(@"success");
+            }
+            NSDictionary *datadic = responseObject;
+            if ([datadic[@"error"] intValue] == 0) {
+                [self.navigationController popViewControllerAnimated:YES];
+            }else {
+                NSString *str = datadic[@"info"];
+                [ConfigModel mbProgressHUD:str andView:nil];
+            }
+        }];
+    }
+}
+
 
 - (void)raccomand {
     [[self.viewmodel.goodDetialCommand execute:@"goodDetial"] subscribeNext:^(GoodsDetailModel * model) {

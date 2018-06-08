@@ -338,8 +338,15 @@
         provinceStr=sheng.name;
         city *shi=[section2 objectAtIndex:index2];
         cityStr=shi.name;
-        district *xian=[section3 objectAtIndex:index3];
-        districtStr=xian.name;
+        if (self.col ==2) {
+            districtStr = @"";
+        }
+        
+        if (self.col ==3) {
+            district *xian=[section3 objectAtIndex:index3];
+            districtStr=xian.name;
+        }
+        
         resultsStr=[NSString stringWithFormat:@"%@-%@-%@",provinceStr,cityStr,districtStr];
     }else if (self.pickerType == PickerViewType_carTimer || self.pickerType == PickerViewType_goodsTimer){
         if (showSelectedCityNameStr) {
@@ -418,6 +425,7 @@
         [self dismis];
     } else {
         if (self.CityBlock) {
+            
             self.CityBlock(resultsStr);
              [self dismis];
         }

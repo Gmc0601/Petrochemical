@@ -73,7 +73,7 @@
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         button.frame = CGRectMake(0, 0, 20, 44);
         [button setTitle:@"发布" forState:UIControlStateNormal];
-        [button setTitleColor:UIColorFromHex(0x242424) forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
         [button addTarget:self action:@selector(rightButtonAction) forControlEvents:UIControlEventTouchUpInside];
         button;
     });

@@ -62,7 +62,7 @@
     
     UIButton *rightbBarButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 88, 44)];
     [rightbBarButton setTitle:itemTitle forState:(UIControlStateNormal)];
-    [rightbBarButton setTitleColor:kBlackColor forState:(UIControlStateNormal)];
+    [rightbBarButton setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
     rightbBarButton.titleLabel.font = [UIFont systemFontOfSize:14];
     [rightbBarButton addTarget:self action:action forControlEvents:(UIControlEventTouchUpInside)];
     rightbBarButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
