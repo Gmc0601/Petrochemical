@@ -73,6 +73,7 @@
     NSMutableArray *imagesMutableArray=[[NSMutableArray alloc] init];
     
     NSString *imageUrl = [self setImageWithUrl:validString(self.dataSource[@"run_img"]) andWithSize:@"600"];
+    [imagesMutableArray addObject:imageUrl];
     [imagesMutableArray addObject:validString(self.dataSource[@"run_img"])];
     [TPImageShow imageShowWithData:imagesMutableArray andSmallImageData:nil currentIndex:0 clickImage:nil];
 }

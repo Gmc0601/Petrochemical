@@ -2302,8 +2302,8 @@
 				TargetAttributes = {
 					42A4442C1EF133E000F90791 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 63NQ5B962G;
-						ProvisioningStyle = Manual;
+						DevelopmentTeam = XM54CYU6S2;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.DataProtection = {
 								enabled = 0;
@@ -2834,8 +2834,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = BaseProject/BaseProject.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 63NQ5B962G;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XM54CYU6S2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BaseProject",
@@ -2851,8 +2851,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "cc.petrochemical-Luming.apponline";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a5e049a8-1b90-45e9-9a4f-63c84fa4b148";
-				PROVISIONING_PROFILE_SPECIFIER = luming_Company_Develop;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2865,8 +2865,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = BaseProject/BaseProject.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 63NQ5B962G;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XM54CYU6S2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BaseProject",
@@ -2882,8 +2882,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "cc.petrochemical-Luming.apponline";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a5e049a8-1b90-45e9-9a4f-63c84fa4b148";
-				PROVISIONING_PROFILE_SPECIFIER = luming_Company_Develop;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
