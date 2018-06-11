@@ -8,6 +8,7 @@
 
 #import "LogisticsDetailsViewController.h"
 #import "Masonry.h"
+#import "TPImageShow.h"
 @interface LogisticsDetailsViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -136,16 +137,7 @@
             make.height.mas_greaterThanOrEqualTo(0);
         }];
         NSString *images = validString(dataDic[@"img"]);
-        images = [images stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-        images = [images stringByReplacingOccurrencesOfString:@" " withString:@""];
-        images = [images stringByReplacingOccurrencesOfString:@"(" withString:@""];
-        images = [images stringByReplacingOccurrencesOfString:@")" withString:@""];
-        images = [images stringByReplacingOccurrencesOfString:@"\"" withString:@""];
-        
-//        NSData *data = [images dataUsingEncoding:NSUTF8StringEncoding];
-//        NSError *error;
-       // NSArray *imagesArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-        NSArray *imagesArray = [images componentsSeparatedByString:@","];
+        NSArray *imagesArray = [self filterImage:images];
         if (imagesArray.count&&images.length) {
             UIScrollView *scrollView = [[UIScrollView alloc] init];
             [itemView addSubview:scrollView];
@@ -157,13 +149,14 @@
                 make.bottom.mas_equalTo(-10);
             }];
 
-            for (int i = 0; i<imagesArray.count; i++) {
+            for (int j = 0; j<imagesArray.count; j++) {
               
                 
                 UIImageView *imageView = [[UIImageView alloc] init];
-                NSString *imagePath = imagesArray[i];
+                NSString *imagePath = imagesArray[j];
                imagePath = [imagePath stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-                
+                imageView.tag = 1000*i+j;
+                imageView.userInteractionEnabled = YES;
                 [imageView sd_setImageWithURL:[NSURL URLWithString:imagePath] placeholderImage:DefaultImage];
                 [scrollView addSubview:imageView];
                 [imageView mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -171,11 +164,17 @@
                     make.bottom.mas_equalTo(0);
                     make.width.mas_equalTo(50);
                     make.height.mas_equalTo(50);
-                    make.left.mas_equalTo((50+10)*i);
-                    if (i==imagesArray.count-1) {
+                    make.left.mas_equalTo((50+10)*j);
+                    if (j==imagesArray.count-1) {
                         make.right.mas_equalTo(0);
                     }
                 }];
+                
+                UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesture:)];
+                tapGesture.numberOfTapsRequired = 1; //点击次数
+                tapGesture.numberOfTouchesRequired = 1; //点击手指数
+                [imageView addGestureRecognizer:tapGesture];
+                
                 
             }
             
@@ -216,6 +215,37 @@
             make.bottom.equalTo(lastView.mas_bottom);
         }];
     }
+}
+
+//轻击手势触发方法
+-(void)tapGesture:(UITapGestureRecognizer *)sender
+{
+    
+    NSInteger i = sender.view.tag/1000;
+    NSInteger j = sender.view.tag%1000;
+    NSDictionary *dataDic = self.listArray[i];
+    
+    NSString *images = validString(dataDic[@"img"]);
+    NSArray *imagesArray = [self filterImage:images];
+    
+      [TPImageShow imageShowWithData:imagesArray andSmallImageData:nil currentIndex:j clickImage:nil];
+
+    //your code
+}
+
+-(NSArray *)filterImage:(NSString *)imageString{
+    NSString *images = validString(imageString);
+    images = [images stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    images = [images stringByReplacingOccurrencesOfString:@" " withString:@""];
+    images = [images stringByReplacingOccurrencesOfString:@"(" withString:@""];
+    images = [images stringByReplacingOccurrencesOfString:@")" withString:@""];
+    images = [images stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+    
+    //        NSData *data = [images dataUsingEncoding:NSUTF8StringEncoding];
+    //        NSError *error;
+    // NSArray *imagesArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+    NSArray *imagesArray = [images componentsSeparatedByString:@","];
+    return imagesArray;
 }
 
 - (void)didReceiveMemoryWarning {
