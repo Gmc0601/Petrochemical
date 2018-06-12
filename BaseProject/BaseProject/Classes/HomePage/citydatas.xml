@@ -2,6 +2,14 @@
 <resources>
     <string name="provinces">{
     "provinces": [
+    {
+    "citys": [
+    {
+    "citysName": "全部"
+    }
+    ],
+    "provinceName": "全部"
+    },
         {
             "citys": [
                 {

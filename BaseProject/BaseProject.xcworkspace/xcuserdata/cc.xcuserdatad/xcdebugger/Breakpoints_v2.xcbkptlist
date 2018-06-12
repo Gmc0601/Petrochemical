@@ -20,7 +20,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BaseProject/Classes/HomePage/ViewModels/HomeGoodsViewModel.m"
-            timestampString = "549205999.046507"
+            timestampString = "550501632.839703"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "58"
@@ -36,7 +36,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BaseProject/Classes/HomePage/ViewModels/HomeGoodsViewModel.m"
-            timestampString = "549205999.046602"
+            timestampString = "550501632.839775"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "61"
@@ -52,7 +52,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BaseProject/Classes/HomePage/ViewModels/HomeGoodsViewModel.m"
-            timestampString = "549205999.046669"
+            timestampString = "550501632.839844"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "51"
@@ -68,12 +68,12 @@
                   moduleName = "BaseProject"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gengmingchen/Desktop/SVN/Petrochemical/BaseProject/BaseProject/Classes/HomePage/ViewModels/HomeGoodsViewModel.m"
-                  timestampString = "549205999.273748"
+                  timestampString = "550501523.484445"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "51"
                   endingLineNumber = "51"
-                  offsetFromSymbolStart = "1392">
+                  offsetFromSymbolStart = "1447">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -83,7 +83,7 @@
                   moduleName = "BaseProject"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gengmingchen/Desktop/SVN/Petrochemical/BaseProject/BaseProject/Classes/HomePage/ViewModels/HomeGoodsViewModel.m"
-                  timestampString = "549205999.279075"
+                  timestampString = "550501523.486402"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "52"
@@ -98,7 +98,7 @@
                   moduleName = "BaseProject"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gengmingchen/Desktop/SVN/Petrochemical/BaseProject/BaseProject/Classes/HomePage/ViewModels/HomeGoodsViewModel.m"
-                  timestampString = "549205999.283187"
+                  timestampString = "550501523.488463"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "51"
@@ -115,7 +115,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BaseProject/Classes/HomePage/ViewModels/HomeGoodsViewModel.m"
-            timestampString = "549205999.0467269"
+            timestampString = "550501632.8398989"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
@@ -131,7 +131,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BaseProject/Classes/HomePage/ViewModels/HomeGoodsViewModel.m"
-            timestampString = "549205999.046779"
+            timestampString = "550501632.839944"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "28"
@@ -147,7 +147,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BaseProject/Classes/HomePage/ViewModels/HomeGoodsViewModel.m"
-            timestampString = "549205999.046828"
+            timestampString = "550501632.839987"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "16"
@@ -163,12 +163,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BaseProject/Classes/HomePage/ViewModels/HomeGoodsViewModel.m"
-            timestampString = "549205999.046874"
+            timestampString = "550501632.840029"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "29"
             endingLineNumber = "29"
             landmarkName = "-init"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BaseProject/Classes/HomePage/ViewControllers/HomePageViewController.m"
+            timestampString = "550501632.840075"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "481"
+            endingLineNumber = "481"
+            landmarkName = "-ToolItemButtonClick:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

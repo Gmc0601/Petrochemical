@@ -478,15 +478,27 @@ static NSString *KGoodsSection2CellID = @"KGoodsSection2CellID";//货源section2
             [sender setTitle:city forState:UIControlStateNormal];
             NSString *str = [NSString stringWithFormat:@"%@%@", provin, city];
             if (sender == _carToolsButtons[0]) {
+                if ([provin isEqualToString:@"全部"]) {
+                    str = nil;
+                }
                 self.carviewModel.origin = str;
             }
             if (sender == _carToolsButtons[1]) {
+                if ([provin isEqualToString:@"全部"]) {
+                    str = nil;
+                }
                 self.carviewModel.destination = str;
             }
             if (sender == _GoodsToolsButtons[0]) {
+                if ([provin isEqualToString:@"全部"]) {
+                    str = nil;
+                }
                 self.goodsviewModel.loading = str;
             }
             if (sender == _GoodsToolsButtons[1]) {
+                if ([provin isEqualToString:@"全部"]) {
+                    str = nil;
+                }
                 self.goodsviewModel.destination = str;
             }
             self.carviewModel.page = 1; self.goodsviewModel.page = 1;
