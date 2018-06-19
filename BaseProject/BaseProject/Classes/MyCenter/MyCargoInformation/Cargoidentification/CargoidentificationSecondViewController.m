@@ -60,6 +60,15 @@
     }];
 }
 - (IBAction)requestAction:(id)sender {
+    if (self.salesmanNameLabel.text.length == 0) {
+        [ConfigModel mbProgressHUD:@"请选择服务专员" andView:nil];
+        return;
+    }
+    if (self.companyNameTextField.text.length == 0) {
+        [ConfigModel mbProgressHUD:@"请输入企业名称" andView:nil];
+        return;
+    }
+    
     NSDictionary *param = @{}.mutableCopy;
     [param setValue:UserToken forKey:@"userToken"];
     [param setValue:self.nameStr forKey:@"linkname"];

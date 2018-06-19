@@ -156,7 +156,7 @@
                 make.left.equalTo(@0);
                 make.height.equalTo(@49);
                 make.right.equalTo(@0);
-                make.bottom.equalTo(@0);
+                make.bottom.equalTo(@-34);
             }];
             UIView *lineView = ({
                 UIView *view = [[UIView alloc] init];
