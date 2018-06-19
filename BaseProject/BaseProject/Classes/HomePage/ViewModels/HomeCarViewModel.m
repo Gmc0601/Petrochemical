@@ -33,11 +33,11 @@
                     [dic setValue:self.data forKey:@"data"];
                 }
                 
-                if(self.origin){
+                if(self.origin.length > 0){
                     [dic setValue:self.origin forKey:@"origin"];
                 }
                 
-                if(self.description) {
+                if(self.destination.length > 0) {
                     [dic setValue:self.destination forKey:@"destination"];
                 }
                 [HttpRequest postPath:@"_homepage_car_001" params:dic resultBlock:^(id responseObject, NSError *error) {

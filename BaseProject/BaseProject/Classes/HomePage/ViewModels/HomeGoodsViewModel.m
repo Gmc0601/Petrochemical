@@ -37,11 +37,11 @@
                     [dic setValue:self.data forKey:@"data"];
                 }
                 
-                if(self.loading){
+                if(self.loading.length > 0){
                     [dic setValue:self.loading forKey:@"loading"];
                 }
                 
-                if(self.destination) {
+                if(self.destination.length > 0) {
                     [dic setValue:self.destination forKey:@"destination"];
                 }
                 if (self.type) {

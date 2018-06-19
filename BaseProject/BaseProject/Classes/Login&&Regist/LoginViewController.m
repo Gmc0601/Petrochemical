@@ -184,7 +184,7 @@
     vc.UrlStr = @"http://116.62.142.20/Public/zcxy";
     vc.backmiss = YES;
     TBNavigationController *na = [[TBNavigationController alloc] initWithRootViewController:vc];
-    [self.navigationController pushViewController:na animated:YES];
+    [self presentViewController:na animated:YES completion:nil];
 }
 
 

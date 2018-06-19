@@ -223,7 +223,7 @@
         str = @"baoguo-1";
     }
     
-    if ([cell.textLabel.text isEqualToString:@"货物重量"]) {
+    if ([cell.textLabel.text isEqualToString:@"货物总量"]) {
         str = @"btn_huowuzhongliang";
     }
     
