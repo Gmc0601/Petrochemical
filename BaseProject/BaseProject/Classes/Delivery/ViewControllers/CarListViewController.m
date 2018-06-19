@@ -235,15 +235,15 @@ NSString * const CarCellIdentifier = @"CarCellIdentifier";
 
 - (void)sendCarInfo{
     NSDictionary *dic = nil;
-    if (self.car_id && self.startLocation&&self.endLocation&&self.emptyLocation&&self.lon&&self.lat&& self.loadingTime) {
+    if (self.car_id && self.startLocation&&self.endLocation&&self.emptyLocation&& self.loadingTime) {
        dic = @{
                               @"userToken":@"02c8f878c1d5463b5bea89e893cde184",
                               @"car_id":self.car_id,
                               @"origin":self.startLocation,
                               @"destination":self.endLocation,
                               @"empty":self.emptyLocation,
-                              @"lon":[NSString stringWithFormat:@"%f",self.lon],
-                              @"lat":[NSString stringWithFormat:@"%f",self.lat],
+//                              @"lon":[NSString stringWithFormat:@"%f",self.lon],
+//                              @"lat":[NSString stringWithFormat:@"%f",self.lat],
                               @"loading_time":self.loadingTime,
                               //                          @"load":self.maxLoad,
                               @"issue_type":@"1",//发布车源1  发布货源2
