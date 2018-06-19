@@ -63,7 +63,7 @@
     
     NSMutableArray *imagesMutableArray=[[NSMutableArray alloc] init];
     
-    NSString *imageUrl = [self setImageWithUrl:validString(self.dataSource[@"drive_img"]) andWithSize:@"600"];
+    NSString *imageUrl = validString(self.dataSource[@"drive_img"]);
     [imagesMutableArray addObject:imageUrl];
     [TPImageShow imageShowWithData:imagesMutableArray andSmallImageData:nil currentIndex:0 clickImage:nil];
 }
@@ -72,7 +72,7 @@
     
     NSMutableArray *imagesMutableArray=[[NSMutableArray alloc] init];
     
-    NSString *imageUrl = [self setImageWithUrl:validString(self.dataSource[@"run_img"]) andWithSize:@"600"];
+    NSString *imageUrl = validString(self.dataSource[@"run_img"]);
     [imagesMutableArray addObject:imageUrl];
     [imagesMutableArray addObject:validString(self.dataSource[@"run_img"])];
     [TPImageShow imageShowWithData:imagesMutableArray andSmallImageData:nil currentIndex:0 clickImage:nil];
