@@ -71,7 +71,7 @@ NSString * UITableViewCellIdentifier = @"UITableViewCellIdentifier";
     searchView.tag = 98989893;
    
     [self.view addSubview:searchView];
-    searchView.frame = CGRectMake(0, self.CC_table.frame.origin.y-50, self.view.frame.size.width, 50);
+    searchView.frame = CGRectMake(0, (self.navigationController.navigationBar.frame.size.height+[[UIApplication sharedApplication] statusBarFrame].size.height), self.view.frame.size.width, 50);
     searchView.inputText = ^(NSString *inputText) {
         [self searchInput:inputText];
     };
@@ -80,7 +80,7 @@ NSString * UITableViewCellIdentifier = @"UITableViewCellIdentifier";
     };
 }
 -(CGRect)getTableFrame{
-    return CGRectMake(0, 64 + 50, kScreenW, kScreenH - 64 - 50);
+    return CGRectMake(0, (self.navigationController.navigationBar.frame.size.height+[[UIApplication sharedApplication] statusBarFrame].size.height) + 50, kScreenW, kScreenH - (self.navigationController.navigationBar.frame.size.height+[[UIApplication sharedApplication] statusBarFrame].size.height)  - 50);
 }
 
 - (void)searchInput:(NSString *)inputText{
