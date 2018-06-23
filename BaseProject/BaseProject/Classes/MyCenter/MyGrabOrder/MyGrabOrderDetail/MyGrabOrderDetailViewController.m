@@ -96,9 +96,9 @@
     self.loadingLabel.text = validString(dataSource[@"loading"]);//loading_address
     self.loadAddressLabel.text = validString(dataSource[@"loading_address"]);
     NSString *mileage = validString(dataSource[@"mileage"]);
-    NSString *mileageTime = [NSString stringWithFormat:@"%.1f",[mileage doubleValue]/60.0];
-    self.yujichechengLabel.text = [NSString stringWithFormat:@"%@公里/%@小时",mileage,mileageTime];
-    self.carTimeLabel.text = validString(dataSource[@"use_time"]);
+    //NSString *mileageTime = [NSString stringWithFormat:@"%.1f",[mileage doubleValue]/60.0];
+    self.yujichechengLabel.text = [NSString stringWithFormat:@"%@",mileage];
+    self.carTimeLabel.text = validString(dataSource[@"use_data"]);
     self.goodsNameLabel.text = validString(dataSource[@"type"]);
     self.goodsWeightLabel.text = [NSString stringWithFormat:@"%@吨",dataSource[@"weight"]];
     self.good_priceLabel.text = [NSString stringWithFormat:@"货主报价: %@/吨",dataSource[@"good_price"]];

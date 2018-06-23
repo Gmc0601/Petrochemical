@@ -35,7 +35,7 @@
 
 - (void) setDic:(NSDictionary *)dic{
     _dic = dic;
-    NSString *orderNum = validString(dic[@""]);
+    NSString *orderNum = validString(dic[@"good_num"]);
     self.orderNumberLabel.text = [NSString stringWithFormat:@"货单号:%@",orderNum];
     self.carTypeLabel.text = @"用车";
     self.timeLabel.text = validString(dic[@"use_time"]);
