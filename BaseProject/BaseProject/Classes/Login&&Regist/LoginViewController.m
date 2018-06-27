@@ -167,6 +167,7 @@
             NSString *user_token = data[@"userToken"];
             [ConfigModel saveBoolObject:YES forKey:IsLogin];
             [ConfigModel saveString:user_token forKey:UserToken];
+            [ConfigModel saveString: self.phoneText.text forKey:@"phone"];
             [self presentViewController:[ViewController new] animated:YES completion:nil];
         }else {
             NSString *str = datadic[@"info"];

@@ -53,7 +53,7 @@
             if ([dic[@"approve"] intValue] == 2) {
                 //  货主认证
                 [ConfigModel saveBoolObject:YES forKey:Shipper_Certification];
-                 [self addRightBarButtonItemWithTitle:@"结束订单" action:@selector(finish)];
+                
             }else {
                 [ConfigModel saveBoolObject:NO forKey:Shipper_Certification];
                 [self.callBtn setTitle:@"平台热线" forState:UIControlStateNormal];
@@ -101,6 +101,9 @@
 - (void)raccomand {
     [[self.viewmodel.goodDetialCommand execute:@"goodDetial"] subscribeNext:^(GoodsDetailModel * model) {
         self.model = model;
+        if ( [self.model.user_type isEqualToString:@"1"]) {
+             [self addRightBarButtonItemWithTitle:@"结束订单" action:@selector(finish)];
+        }
         NSArray *arr = model.xiehuo;
         for (int i = 0; i < arr.count; i++) {
             [self.titleArr insertObject:@"卸货点" atIndex:2];
