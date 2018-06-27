@@ -40,7 +40,8 @@
     [super viewDidLoad];
      self.edgesForExtendedLayout=UIRectEdgeNone;
     [self setCustomerTitle:@"货源详情"];
-    [self addRightBarButtonItemWithTitle:@"结束订单" action:@selector(finish)];
+    
+    
     [self.view addSubview:self.noUseTableView];
     [self.view addSubview:self.commitBtn];
     [self.view addSubview:self.callBtn];
@@ -52,7 +53,7 @@
             if ([dic[@"approve"] intValue] == 2) {
                 //  货主认证
                 [ConfigModel saveBoolObject:YES forKey:Shipper_Certification];
-                
+                 [self addRightBarButtonItemWithTitle:@"结束订单" action:@selector(finish)];
             }else {
                 [ConfigModel saveBoolObject:NO forKey:Shipper_Certification];
                 [self.callBtn setTitle:@"平台热线" forState:UIControlStateNormal];
@@ -60,6 +61,7 @@
             if ([dic[@"carAuth"] intValue] == 1) {
                 //  车主认证
                 [ConfigModel saveBoolObject:YES forKey:Car_Certification];
+                
             }else {
                 [ConfigModel saveBoolObject:NO forKey:Car_Certification];
             }
