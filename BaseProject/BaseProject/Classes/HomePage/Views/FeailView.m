@@ -35,17 +35,17 @@
 
 - (UITextView *)content {
     if (!_content) {
-        _content = [[UITextView alloc] initWithFrame:FRAME(5, 10, self.whitView.width - 10, SizeHeight(280))];
+        _content = [[UITextView alloc] initWithFrame:FRAME(5, 10, self.whitView.width - 10, SizeHeight(200))];
         _content.textColor = [UIColor blackColor];
         _content.textAlignment = NSTextAlignmentCenter;
         _content.text = @"您好，为了合作共赢互赢互利的原则，我公司规定：\n"
         "\n"
-        "一；司机运输途中必须确保货物安全，保证货物无泄漏，无污染。 \n"
-        "二；未按规定时间运送货物到达’逾期造成严重损失’由车上负责，不可抗拒因素除外。\n"
-        "三；在运输途中出现交通事故，车上承担赔偿责任。  \n"
+        "一：司机运输途中必须确保货物安全，保证货物无泄漏，无污染。 \n"
+        "二：未按规定时间运送货物到达,逾期造成严重损失,由车上负责，不可抗拒因素除外。\n"
+        "三：在运输途中出现交通事故，车上承担赔偿责任。  \n"
         "四：运输过程中货物灭失、短少、变质、被盗、交货不清等因素、车上应承担全部责任。\n"
         "\n"
-        "您必须同意以上合作规定，才能在本平台进行做单，谢谢支持！\n";
+        "您必须同意以上合作规定，才能在本平台进行做单，谢谢支持！";
         _content.font = [UIFont systemFontOfSize:14];
         _content.userInteractionEnabled = YES;
         _content.editable= NO;
@@ -56,7 +56,7 @@
 
 - (UIButton *)clickBtn {
     if (!_clickBtn) {
-        _clickBtn = [[UIButton alloc] initWithFrame:FRAME(self.whitView.width/2 ,SizeHeight(300), self.whitView.width/2, SizeHeight(30))];
+        _clickBtn = [[UIButton alloc] initWithFrame:FRAME(self.whitView.width/2 ,SizeHeight(210), self.whitView.width/2, SizeHeight(30))];
         [_clickBtn setTitle:@"同意" forState:UIControlStateNormal];
         [_clickBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [_clickBtn addTarget:self action:@selector(click) forControlEvents:UIControlEventTouchUpInside];
@@ -65,7 +65,7 @@
 }
 - (UIButton *)cancleBtn {
     if (!_cancleBtn) {
-        _cancleBtn = [[UIButton alloc] initWithFrame:FRAME(0, SizeHeight(300), self.whitView.width/2, SizeHeight(30))];
+        _cancleBtn = [[UIButton alloc] initWithFrame:FRAME(0, SizeHeight(210), self.whitView.width/2, SizeHeight(30))];
         [_cancleBtn setTitle:@"不同意" forState:UIControlStateNormal];
         [_cancleBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [_cancleBtn addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
@@ -82,7 +82,7 @@
 
 - (UIView *)whitView{
     if (!_whitView) {
-        _whitView = [[UIView alloc] initWithFrame:CGRectMake(SizeWidth(20), kScreenH /2 - SizeHeight(175), kScreenW - SizeWidth(40), SizeHeight(350))];
+        _whitView = [[UIView alloc] initWithFrame:CGRectMake(SizeWidth(20), kScreenH /2 - SizeHeight(130), kScreenW - SizeWidth(40), SizeHeight(260))];
         _whitView.backgroundColor = [UIColor whiteColor];
         [_whitView.layer setMasksToBounds: YES];
         [_whitView.layer setCornerRadius:SizeHeight(15)];
