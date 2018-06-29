@@ -27,11 +27,11 @@
 @end
 
 @interface CCWebViewViewController : BaseViewController
-
+@property (nonatomic, strong) UIWebView *webView;
 @property (nonatomic, copy) NSString *UrlStr;
 
 @property (nonatomic, copy) NSString *titlestr;
 
 @property (nonatomic, assign) BOOL backmiss;
-
+- (void)reload;
 @end

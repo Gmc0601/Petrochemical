@@ -53,7 +53,7 @@
             if ([dic[@"approve"] intValue] == 2) {
                 //  货主认证
                 [ConfigModel saveBoolObject:YES forKey:Shipper_Certification];
-                
+                [self.callBtn setTitle:@"拨打电话" forState:UIControlStateNormal];
             }else {
                 [ConfigModel saveBoolObject:NO forKey:Shipper_Certification];
                 [self.callBtn setTitle:@"平台热线" forState:UIControlStateNormal];
@@ -61,9 +61,10 @@
             if ([dic[@"carAuth"] intValue] == 1) {
                 //  车主认证
                 [ConfigModel saveBoolObject:YES forKey:Car_Certification];
-                
+                [self.callBtn setTitle:@"拨打电话" forState:UIControlStateNormal];
             }else {
                 [ConfigModel saveBoolObject:NO forKey:Car_Certification];
+                [self.callBtn setTitle:@"平台热线" forState:UIControlStateNormal];
             }
             
         }else {

@@ -7,7 +7,7 @@
 //
 
 #import "LoginViewController.h"
-#import "CCWebViewViewController.h"
+#import "UserAgreementViewController.h"
 #import <YYKit.h>
 #import "ViewController.h"
 #import "TBNavigationController.h"
@@ -180,10 +180,11 @@
 
 
 - (IBAction)userAgreeClick:(id)sender {
-    CCWebViewViewController *vc = [[CCWebViewViewController alloc] init];
+    UserAgreementViewController *vc = [[UserAgreementViewController alloc] init];
     vc.titlestr = @"注册协议";
     vc.UrlStr = @"http://116.62.142.20/Public/zcxy";
     vc.backmiss = YES;
+    [vc reload];
     TBNavigationController *na = [[TBNavigationController alloc] initWithRootViewController:vc];
     [self presentViewController:na animated:YES completion:nil];
 }

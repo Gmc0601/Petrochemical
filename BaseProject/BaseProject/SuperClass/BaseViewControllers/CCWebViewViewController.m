@@ -16,7 +16,7 @@
 @interface CCWebViewViewController ()<UIWebViewDelegate, JSObjcDelegate, TSWebViewDelegate>
 
 @property (nonatomic, strong) JSContext *context;
-@property (nonatomic, strong) UIWebView *webView;
+
 @property (nonatomic, copy) NSString *title, *content, *url, *immgUrl;
 
 @end
@@ -29,7 +29,7 @@
     [self createView];
     
     [self loadWebView];
-    
+ 
     if (self.backmiss) {
          [self addLeftBarButtonWithImage:[UIImage imageNamed:@"zz"] action:@selector(backAction)];
     }
@@ -56,7 +56,8 @@
 
 - (void)loadWebView {
     
-     [self.webView loadHTMLString:validString(self.UrlStr) baseURL:nil];
+//     [self.webView loadHTMLString:validString(self.UrlStr) baseURL:nil];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.UrlStr]]];
     [self.webView reload];
     
 }

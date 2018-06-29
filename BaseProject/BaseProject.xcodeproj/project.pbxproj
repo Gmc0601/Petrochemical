@@ -47,6 +47,7 @@
 		0396E69C207224B000B7EFDA /* GoodsChooseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0396E69B207224B000B7EFDA /* GoodsChooseView.m */; };
 		0396E6A02072299300B7EFDA /* GoodsChooseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0396E69E2072299300B7EFDA /* GoodsChooseCell.m */; };
 		0396E6A12072299300B7EFDA /* GoodsChooseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0396E69F2072299300B7EFDA /* GoodsChooseCell.xib */; };
+		03B80A9E20E5C83200FA06C4 /* UserAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B80A9D20E5C83200FA06C4 /* UserAgreementViewController.m */; };
 		03E7471E207904DE00E6B992 /* TTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E7471D207904DE00E6B992 /* TTextView.m */; };
 		420D18262057A71300E1D8E1 /* UILabel+Width.m in Sources */ = {isa = PBXBuildFile; fileRef = 420D18242057A71300E1D8E1 /* UILabel+Width.m */; };
 		420D18462057AA9100E1D8E1 /* MyCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420D18452057AA9100E1D8E1 /* MyCenterViewController.m */; };
@@ -369,6 +370,8 @@
 		0396E69D2072299300B7EFDA /* GoodsChooseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsChooseCell.h; sourceTree = "<group>"; };
 		0396E69E2072299300B7EFDA /* GoodsChooseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsChooseCell.m; sourceTree = "<group>"; };
 		0396E69F2072299300B7EFDA /* GoodsChooseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoodsChooseCell.xib; sourceTree = "<group>"; };
+		03B80A9C20E5C83200FA06C4 /* UserAgreementViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserAgreementViewController.h; sourceTree = "<group>"; };
+		03B80A9D20E5C83200FA06C4 /* UserAgreementViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserAgreementViewController.m; sourceTree = "<group>"; };
 		03E7471C207904DD00E6B992 /* TTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTextView.h; sourceTree = "<group>"; };
 		03E7471D207904DE00E6B992 /* TTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTextView.m; sourceTree = "<group>"; };
 		420D18242057A71300E1D8E1 /* UILabel+Width.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Width.m"; sourceTree = "<group>"; };
@@ -1051,6 +1054,8 @@
 				422F20262047F7B6009481CC /* LoginViewController.xib */,
 				42974020209DAE910026DC8D /* GuideView.h */,
 				42974021209DAE910026DC8D /* GuideView.m */,
+				03B80A9C20E5C83200FA06C4 /* UserAgreementViewController.h */,
+				03B80A9D20E5C83200FA06C4 /* UserAgreementViewController.m */,
 			);
 			path = "Login&&Regist";
 			sourceTree = "<group>";
@@ -2621,6 +2626,7 @@
 				42A4443E1EF133E000F90791 /* BaseProject.xcdatamodeld in Sources */,
 				42F795DA1F00CC3E00A11A69 /* TBRefreshFootView.m in Sources */,
 				0396E6892071D50B00B7EFDA /* AddUnloadCell.m in Sources */,
+				03B80A9E20E5C83200FA06C4 /* UserAgreementViewController.m in Sources */,
 				422F202F2047F882009481CC /* CCWebViewViewController.m in Sources */,
 				42F10C4F206E331800C9C8EC /* SureConditionCollectionViewCell.m in Sources */,
 				0396E6932071DF7500B7EFDA /* GoodsNoteCell.m in Sources */,
