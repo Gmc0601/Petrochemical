@@ -116,14 +116,18 @@ NSString * UITableViewCellIdentifier = @"UITableViewCellIdentifier";
     }
     if (!self.cityName||self.cityName.length == 0) {
         UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"请您选择城市" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction  *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+        UIAlertAction  *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self showCityPicker];
+        }];
         [alert addAction:action];
         [self presentViewController:alert animated:YES completion:nil];
+        return ;
     }
     [self doClear];
     [self.addressArray removeAllObjects];
     [self.geoFenceManager addKeywordPOIRegionForMonitoringWithKeyword:keyword POIType:@"" city:self.cityName  size:20 customID:@"poi_1"];
 }
+
 - (void)doClear {
  
     [self.geoFenceManager removeAllGeoFenceRegions];  //移除所有已经添加的围栏，如果有正在请求的围栏也会丢弃
@@ -145,9 +149,11 @@ NSString * UITableViewCellIdentifier = @"UITableViewCellIdentifier";
                 CGFloat  longitude =region.POIItem.location.longitude;
                 NSString * name = region.POIItem.name;
            
-                NSDictionary * region =  @{@"latitude":@(latitude),@"longitude":@(longitude),@"name":name,                   @"cityName": self.area};
-                [self.addressArray addObject:region];
-              
+                if (self.area && latitude &&longitude && name) {
+                    NSDictionary * region =  @{@"latitude":@(latitude),@"longitude":@(longitude),@"name":name,                   @"cityName": self.area};
+                    [self.addressArray addObject:region];
+                }
+                
             }
             if ([self.addressArray count] >0) {
                
