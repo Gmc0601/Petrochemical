@@ -584,14 +584,12 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
                                                              error:nil];
         NSString *jsonString = [[NSString alloc] initWithData:jsonData
                                                      encoding:NSUTF8StringEncoding];
-        if(!self.price){
-            self.price = @"0";
-        }
+      
         dic = @{
 
                 @"loading":self.startLocation,
                 @"loading_address":self.startLocation_detail,
-                @"good_price":self.price,
+       
                 @"account_type": self.paymentMethod,
                 @"weight":self.weight,
                 @"use_time":self.loadingTime,
@@ -602,6 +600,8 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
                 @"json":jsonString,
                 @"issue_type":@"2",//发布车源1  发布货源2
                 };
+        
+        
     }
     
     if (!dic) {
@@ -610,6 +610,10 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
     }
     NSMutableDictionary * paramDic = [NSMutableDictionary dictionary];
     [paramDic addEntriesFromDictionary:dic];
+    
+    if (self.price && [self.price integerValue] > 0) {
+        [paramDic addEntriesFromDictionary:@{@"good_price":self.price}];
+    }
     if ( self.noteStr) {
         [paramDic addEntriesFromDictionary:@{@"remark":self.noteStr}];
     }
