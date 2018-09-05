@@ -569,7 +569,7 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
 - (void)sendGoodsInfo{
     NSDictionary *dic = nil;
 
-    if ( self.startLocation && self.startLocation_detail && self.price && self.startLatitude
+    if ( self.startLocation && self.startLocation_detail  && self.startLatitude
         && self.weight && self.loadingTime && self.startLongitude && self.goodsName && [self.unloadingArray count] > 0) {
         [self  configJsonUnloadArray];
         NSString * mileage = @"";
@@ -584,6 +584,9 @@ NSString * const GoodsNoteCellIdentifier = @"GoodsNoteCellIdentifier";
                                                              error:nil];
         NSString *jsonString = [[NSString alloc] initWithData:jsonData
                                                      encoding:NSUTF8StringEncoding];
+        if(!self.price){
+            self.price = @"0";
+        }
         dic = @{
 
                 @"loading":self.startLocation,
